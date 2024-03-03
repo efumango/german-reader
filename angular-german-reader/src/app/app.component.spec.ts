@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'german-reader' title`, () => {
+  it(`should have the 'angular-german-reader' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('german-reader');
+    expect(app.title).toEqual('angular-german-reader');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, german-reader');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-german-reader');
   });
 });
