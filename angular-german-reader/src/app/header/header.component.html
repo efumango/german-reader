@@ -1,0 +1,6 @@
+<!-- header.component.html -->
+<nav>
+  <button *ngIf="!isLoggedIn" routerLink="/login">Login</button>
+  <button *ngIf="!isLoggedIn" routerLink="/signup">Signup</button>
+  <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+</nav>

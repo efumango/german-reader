@@ -1,3 +1,4 @@
+from sqlite3 import IntegrityError
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -35,7 +36,7 @@ def init_db():
 with app.app_context():
     init_db()
 
-@app.route('/signup', methods=['POST'])
+@app.route('/api/signup', methods=['POST'])
 def api_signup():
     data = request.get_json()
     username = data.get('username')
@@ -45,13 +46,16 @@ def api_signup():
     if user:
         return jsonify({'message': 'Username already exists.'}), 409
 
-    new_user = User(username=username, password=generate_password_hash(password))
-    db.session.add(new_user)
-    db.session.commit()
+    try:
+        new_user = User(username=username, password=generate_password_hash(password))
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'User registered successfully'}), 201
+    except IntegrityError:
+        db.session.rollback()
+        return jsonify({'message': 'Failed to register user'}), 500
 
-    return jsonify({'message': 'User registered successfully'}), 201
-
-@app.route('/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login():
     username = request.json.get('username')
     password = request.json.get('password')
@@ -59,12 +63,12 @@ def login():
     user = User.query.filter_by(username=username).first()
 
     if user and check_password_hash(user.password, password):
-        access_token = create_access_token(identity=username)
-        return jsonify(access_token=access_token), 200
+        access_token = create_access_token(identity=user.username)
+        return jsonify(user={'username': user.username, 'token': access_token}), 200
 
     return jsonify({"msg": "Bad username or password"}), 401
 
-@app.route('/protected', methods=['GET'])
+@app.route('/api/protected', methods=['GET'])
 @jwt_required()
 def protected():
     current_user = get_jwt_identity()
