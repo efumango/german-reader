@@ -38,9 +38,10 @@ export class AuthService {
     return this.http.post<any>('http://127.0.0.1:5000/api/login', { username, password })
       .pipe(
         map(response => {
-          if (response && response.access_token) {
-            const token = response.access_token;
+          if (response && response.user && response.user.token) {
+            const token = response.user.token;
             localStorage.setItem('currentUser', JSON.stringify({ username, token }));
+            this.currentUserSubject.next(username);
             return { username, token };
           } else {
             throw new Error('No token received');
@@ -58,6 +59,6 @@ export class AuthService {
       localStorage.removeItem('currentUser');
     }
     this.currentUserSubject.next(null);
-    //this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }
