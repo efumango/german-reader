@@ -1,15 +1,16 @@
 // src/app/signup/signup.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service'; // Adjust path as necessary
 import { Router } from '@angular/router';
-
+import { CommonModule
+ } from '@angular/common';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class SignupComponent {
   signupForm = this.fb.group({
@@ -18,8 +19,9 @@ export class SignupComponent {
   });
 
   constructor(private fb: FormBuilder, 
-    private authService: AuthService,
-    private router: Router) {}
+    public authService: AuthService,
+    private router: Router
+    ) {}
 
   onSubmit() {
     if (this.signupForm.valid) {

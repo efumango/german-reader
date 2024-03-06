@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+<form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <input type="text" formControlName="username" placeholder="Username">
     <input type="password" formControlName="password" placeholder="Password">
     <button type="submit">Sign Up</button>

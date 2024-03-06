@@ -2,22 +2,26 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule, CommonModule]
 })
+
 export class LoginComponent {
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  isLoggedIn: boolean = false;
 
+  constructor(private fb: FormBuilder, public authService: AuthService, private router: Router) {}
+  
   onSubmit() {
     if (this.loginForm.valid) {
       const username = this.loginForm.value.username;
@@ -27,7 +31,7 @@ export class LoginComponent {
           next: (user) => {
             if (user && user.token) {
               console.log("Login successful.")
-              //this.router.navigate(['/dashboard']); 
+              this.router.navigate(['/dashboard']); 
             } else {
               console.error('Login successful, but no token received');
             }
