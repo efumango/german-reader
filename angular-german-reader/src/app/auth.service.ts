@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   signup(username: string, password: string) {
-    return this.http.post<any>('http://127.0.0.1:5000/api/signup', { username, password })
+    return this.http.post<any>('http://127.0.0.1:5000/auth/signup', { username, password })
       .pipe(
         catchError(error => {
           console.error('Signup error', error);
@@ -34,7 +34,7 @@ export class AuthService {
   }
   
   login(username: string, password: string) {
-    return this.http.post<any>('http://127.0.0.1:5000/api/login', { username, password })
+    return this.http.post<any>('http://127.0.0.1:5000/auth/login', { username, password })
       .pipe(
         map(response => {
           if (response && response.user && response.user.token) {
