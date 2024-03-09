@@ -41,8 +41,8 @@ export class AuthService {
             const token = response.user.token;
             localStorage.setItem('currentUser', JSON.stringify({ username, token }));
             this.currentUserSubject.next(username);
-          
             return { username, token };
+            
           } else {
             throw new Error('No token received');
           }

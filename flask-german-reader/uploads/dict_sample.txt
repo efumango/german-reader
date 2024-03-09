@@ -1,0 +1,69 @@
+# DE-EN vocabulary database	compiled by dict.cc
+# Date and time	2024-03-08 23:49
+# License	THIS WORK IS PROTECTED BY INTERNATIONAL COPYRIGHT LAWS!
+# License	Private use is allowed as long as the data, or parts of it, are not published or given away.
+# License	By using this file, you agree to be bound to the Terms of Use published at the following URL:  
+# License	https://www.dict.cc/translation_file_request.php
+# Contains data from	http://dict.tu-chemnitz.de/ with friendly permission by Frank Richter, TU Chemnitz 
+# Brought to you by	Paul Hemetsberger and the users of https://www.dict.cc/, 2002 - 2024
+
+&#945;-Keratin {n}	&#945;-keratin	noun	[biochem.] 
+&#945;-Lactalbumin {n} <&#945;-La>	&#945;-lactalbumin <&#945;-La>	noun	[biochem.] 
+&#946;-Mercaptoethanol {n}	&#946;-mercaptoethanol	noun	[biochem.] 
+& Co.	and company <& Co.>		[comm.] [econ.] 
+'Die' heißt mein Unterrock, und 'der' hängt im Schrank. [regional] [Satz, mit dem Kinder gerügt werden, die von einer (anwesenden) Frau mit 'die' sprechen]	'She' is the cat's mother. [used to encourage children to use names instead of pronouns to refer to females to whom they should show respect]		[idiom] 
+'n Abend allerseits! [ugs.]	Evening all! [coll.]		
+'nauf [regional] [hinauf]	up	adv	
+'Nduja {f} [auch: Nduja]	'nduja [also: nduja]	noun	[gastr.] 
+'ne Macke haben [ugs.]	to be off one's head [coll.]	verb	[idiom] 
+'ne Menge ... [ugs.]	plenty of ...		
+'ne Menge [ugs.]	lots of [coll.]		
+'nen interessanten Job habt ihr Jungs da. [ugs.]	Interesting job you guys have.		
+'nen [ugs.] [einen]	a		
+'nen [ugs.] [einen]	an		
+'ne [ugs.] [eine]	a		
+'nunter [regional] [hinunter]	down	adv	
+'n [ugs.] [ein, einen]	a		
+'n [ugs.] [ein, einen]	an		
+'s ist [meist poet.: es ist]	'tis		
+'s war	'twas		
+'türlich! [ugs.] [Natürlich!]	That's for sure.		
+((für) etw. [Akk.]) pauken [ugs.] [intensiv lernen]	to cram ((for) sth.) [coll.]	verb	
+(1x) täglich	once a day <q.d.> <qd> [quaque die]	adv	[med.] [pharm.] 
+(4) Vesta {f}	(4) Vesta [asteroid]	noun	[astron.] 
+(3122) Florence [Substantiv ohne Artikel] [ersatzweise: der Asteroid (3122) Florence]	3122 Florence [1981 ET₃]	noun	[astron.] 
+(3200) Phaethon {m}	(3200) Phaethon [1983 TB]	noun	[astron.] 
+(90377) Sedna {f} {m}	(90377) Sedna	noun	[astron.] 
+(101955) Bennu [Substantiv ohne Artikel] [ersatzweise: der Asteroid (101955) Bennu]	101955 Bennu [1999 RQ₃₆]	noun	[astron.] 
+(136108) Haumea {f}	(136108) Haumea	noun	[astron.] 
+(A-) Prima-Vista-Singen {n}	sight-singing	noun	[mus.] 
+(abends) ausgehen	to go for a night out	verb	
+(abends) ausgehen	to have a night out	verb	
+(aber) auch so	(but) even so		
+(aber) dennoch	even so		
+(Aber) mit Wonne!	With great pleasure!		
+(aber) trotzdem	even so		
+(Abessinischer) Korallenbaum {m}	coral tree [Erythrina abyssinica]	noun	[bot.] [T] 
+(Abessinischer) Korallenbaum {m}	red-hot poker tree [Erythrina abyssinica]	noun	[bot.] [T] 
+(Abfall) durchstöbern	to scavenge	verb	
+(abgedrehte) Wurst {f}	sausage link [Am.] [a segment of sausage in a chain]	noun	[gastr.] 
+(abgedrehte) Würste {pl}	sausage links [Am.]	noun	[FoodInd.] [gastr.] 
+(abgedroschene) Phrase {f}	buzzword [stock phrase]	noun	
+(abgeschlossener) Kleinraum {m}	cubicle	noun	
+(abnorm) überstreckbares Knie {n} [das einen nach vorn offenen Winkel bildet] [Genu recurvatum]	knee hyperextension [Genu recurvatum]	noun	[med.] 
+(abnorme) Menschenscheu {f}	anthropophobia	noun	[psych.] 
+(absichtliche) Radarstörung {f}	radar jamming	noun	[aviat.] [naut.] 
+(absichtlicher) Kopfstoß {m} [Boxen]	(intentional) head butt	noun	[sports] 
+(absolut) sicher sein, dass ... [überzeugt sein]	to be positive that ...	verb	
+(absolut) unerklärlich sein	to defy (any) explanation	verb	
+(absolute) Hellempfindlichkeit {f} [für photopisches bzw. skotopisches Sehen der Wellenlänge]	luminous efficacy <K>	noun	[phys.] 
+(Abstehender) Salzschwingel {m}	European alkali grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	northern saltmarsh grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	reflexed meadow grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	reflexed salt grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	reflexed saltmarsh-grass / saltmarsh grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	slender alkali grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	spreading alkaligrass / alkali-grass / alkali grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	sweet grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Abstehender) Salzschwingel {m}	weeping alkaligrass / alkali-grass / alkali grass [Puccinellia distans, syn.: P. capillaris, P. limosa, P sevamgensis, Atropis distans, Glyceria distans, Poa distans]	noun	[bot.] [T] 
+(Ace) Kunstharz {n}	ace resin	noun	[chem.] 

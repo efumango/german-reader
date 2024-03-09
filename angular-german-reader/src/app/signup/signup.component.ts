@@ -40,7 +40,8 @@ export class SignupComponent {
           },
           error: error => {
             // Handle signup error
-            console.error('Signup failed', error);
+            alert('Username already existed.')
+            console.error('Signup failed: Username already existed.', error);
           }
         });
       } else {

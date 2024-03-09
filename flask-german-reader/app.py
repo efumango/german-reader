@@ -1,17 +1,15 @@
-from flask import Flask
-from config import DevelopmentConfig
+import logging
+from flask import Flask, request
+from config import DevelopmentConfig, TestingConfig
 from flask_cors import CORS
 from extensions import db, login_manager, jwt
 
 def create_app(config_class=DevelopmentConfig):
+
     app = Flask(__name__)
     app.config.from_object(config_class)
 
     CORS(app)
-
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
 
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
@@ -20,6 +18,13 @@ def create_app(config_class=DevelopmentConfig):
 
     from auth import auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
+
+    from dict.routes import dictionary_bp
+    app.register_blueprint(dictionary_bp, url_prefix='/api')
+
+    db.init_app(app)
+    with app.app_context():
+        db.create_all()
 
     return app
 

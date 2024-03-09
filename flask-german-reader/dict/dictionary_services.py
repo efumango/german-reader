@@ -1,0 +1,33 @@
+from flask import Blueprint
+from flask_login import current_user
+from models import DictionaryEntry
+from extensions import db
+
+# Create a Blueprint
+dictionary_bp = Blueprint('dictionary_bp', __name__)
+
+def insert_into_database(user_id, word, definition, pos=None, additional_info=None):
+    new_entry = DictionaryEntry(user_id=user_id, word=word, definition=definition, pos=pos, additional_info=additional_info)
+    db.session.add(new_entry)
+    db.session.commit()
+
+def process_dictionary(filepath):
+    user_id = current_user.get_id()
+    with open(filepath, 'r') as file:
+        for line in file:
+            # Skip metadata lines
+            if line.startswith('#'):
+                continue
+            
+            # Split line into components and ensure there are at least 2 non-null columns
+            parts = line.strip().split('\t')
+            if len(parts) < 2:
+                continue  # Skip lines that don't have at least word and definition
+            
+            word, definition = parts[0], parts[1]
+            pos = parts[2] if len(parts) > 2 else None
+            additional_info = parts[3] if len(parts) > 3 else None
+            
+            # Insert into database with user_id
+            insert_into_database(user_id, word, definition, pos, additional_info)
+
