@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask_login import current_user
 from models import DictionaryEntry
 from extensions import db
+from models.user import User
 
 # Create a Blueprint
 dictionary_bp = Blueprint('dictionary_bp', __name__)
@@ -11,9 +12,16 @@ def insert_into_database(user_id, word, definition, pos=None, additional_info=No
     db.session.add(new_entry)
     db.session.commit()
 
-def process_dictionary(filepath):
-    user_id = current_user.get_id()
-    with open(filepath, 'r') as file:
+def process_dictionary(filepath, user_identity):
+    # Retrieve the user based on user_identity
+    user = User.query.filter_by(id=user_identity).first()
+
+    if not user:
+        raise Exception('User not found')
+    
+    user_id = user.id 
+
+    with open(filepath, 'r', encoding='utf-8') as file:
         for line in file:
             # Skip metadata lines
             if line.startswith('#'):

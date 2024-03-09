@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -22,10 +22,31 @@ export class UploadDictionariesComponent {
 
   uploadDictionary() {
     if (!this.fileToUpload) return;
+  
+    // Retrieve the current user and token from local storage
+    const currentUserJson = localStorage.getItem('currentUser');
+    if (!currentUserJson) {
+      console.error('No current user found in local storage');
+      return;
+    }
+    const currentUser = JSON.parse(currentUserJson);
+    const token = currentUser.token;
+  
+    if (!token) {
+      console.error('No token found for current user');
+      return;
+    }
+  
     const formData: FormData = new FormData();
     formData.append('dictionary', this.fileToUpload, this.fileToUpload.name);
-
-    this.http.post('http://127.0.0.1:5000/api/upload-dictionary', formData).subscribe({
+  
+    // Set the headers with the Authorization header
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    // Make the HTTP request with the headers
+    this.http.post('http://127.0.0.1:5000/api/upload-dictionary', formData, { headers: headers }).subscribe({
       next: (response) => {
         console.log(response);
         this.uploadStatus = 'Upload successful!';
@@ -36,4 +57,5 @@ export class UploadDictionariesComponent {
       }
     });
   }
+  
 }
