@@ -1,3 +1,5 @@
+import os 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class Config(object):
     DEBUG = False
@@ -6,6 +8,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = 'shizuo'
+    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 
 class DevelopmentConfig(Config):
     DEBUG = True

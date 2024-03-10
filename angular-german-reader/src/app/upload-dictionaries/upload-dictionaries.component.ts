@@ -1,55 +1,69 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-upload-dictionaries',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './upload-dictionaries.component.html',
-  styleUrl: './upload-dictionaries.component.css'
+  styleUrls: ['./upload-dictionaries.component.css']
 })
 export class UploadDictionariesComponent {
-  
+
   fileToUpload: File | null = null;
   uploadStatus: string | null = null;
 
   constructor(private http: HttpClient) {}
 
-  onFileSelected(event: any) {
-    this.fileToUpload = event.target.files[0];
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (!target.files || target.files.length === 0) {
+      console.error('No file selected.');
+      return;
+    }
+    this.fileToUpload = target.files[0];
   }
 
   uploadDictionary() {
-    if (!this.fileToUpload) return;
-  
-    // Retrieve the current user and token from local storage
-    const currentUserJson = localStorage.getItem('currentUser');
-    if (!currentUserJson) {
-      console.error('No current user found in local storage');
+    const token = this.getCurrentUserToken();
+    if (!token) return; // Exit if token is not available
+
+    if (!this.fileToUpload) {
+      console.error('No file to upload.');
       return;
     }
-    const currentUser = JSON.parse(currentUserJson);
-    const token = currentUser.token;
-  
-    if (!token) {
-      console.error('No token found for current user');
-      return;
-    }
-  
-    const formData: FormData = new FormData();
-    formData.append('dictionary', this.fileToUpload, this.fileToUpload.name);
-  
-    // Set the headers with the Authorization header
+
+    const chunkSize = 1 * 1024 * 1024; // for 1MB chunk size
+    const totalChunks = Math.ceil(this.fileToUpload.size / chunkSize);
+    const fileUuid = uuidv4(); // Generate a unique UUID for the file
+
+    Array.from({ length: totalChunks }).forEach((_, index) => {
+      const start = index * chunkSize;
+      const end = Math.min(start + chunkSize, this.fileToUpload!.size);
+      const chunk = this.fileToUpload!.slice(start, end);
+      this.uploadChunk(chunk, index, totalChunks, token, fileUuid);
+    });
+  }
+
+  private uploadChunk(chunk: Blob, chunkNumber: number, totalChunks: number, token: string, fileUuid: string) {
+    const formData = new FormData();
+    formData.append('dictionary', chunk, this.fileToUpload!.name); 
+    formData.append('dzchunkindex', String(chunkNumber));
+    formData.append('dztotalchunkcount', String(totalChunks));
+    formData.append('dzuuid', fileUuid); 
+
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-  
-    // Make the HTTP request with the headers
-    this.http.post('http://127.0.0.1:5000/api/upload-dictionary', formData, { headers: headers }).subscribe({
+
+    this.http.post('http://127.0.0.1:5000/api/upload-dictionary', formData, { headers }).subscribe({
       next: (response) => {
         console.log(response);
-        this.uploadStatus = 'Upload successful!';
+        if (chunkNumber + 1 === totalChunks) {
+          this.uploadStatus = 'Upload successful!';
+        }
       },
       error: (error) => {
         console.error(error);
@@ -57,5 +71,22 @@ export class UploadDictionariesComponent {
       }
     });
   }
+
+  private getCurrentUserToken(): string | null {
+    const currentUserJson = localStorage.getItem('currentUser');
+    if (!currentUserJson) {
+      this.uploadStatus = 'No current user found in local storage';
+      return null;
+    }
+
+    const currentUser = JSON.parse(currentUserJson);
+    const token = currentUser.token;
   
+    if (!token) {
+      this.uploadStatus = 'No token found for current user';
+      return null;
+    }
+
+    return token;
+  }
 }
