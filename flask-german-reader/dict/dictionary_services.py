@@ -1,3 +1,5 @@
+from sqlite3 import OperationalError
+import time
 from flask import Blueprint
 from sqlalchemy import insert
 from models import DictionaryEntry
@@ -30,15 +32,28 @@ def process_dictionary(filepath, user_identity):
                 'additional_info': additional_info
             })
 
-    batch_size = 500  # Define the size of each batch
+    batch_size = 500 
     if entries_data:
         try:
             for i in range(0, len(entries_data), batch_size):
-                # Execute batch insert
                 batch = entries_data[i:i+batch_size]
                 stmt = insert(DictionaryEntry).values(batch)
-                db.session.execute(stmt)
-                db.session.commit()
+
+                retries = 5
+                backoff = 1
+
+                for attempt in range(retries):
+                    try:
+                        db.session.execute(stmt)
+                        break  # If successful, break out of the retry loop
+                    except OperationalError as e:
+                        if 'database is locked' in str(e):
+                            time.sleep(backoff)
+                            backoff *= 2  # Exponential backoff
+                        else:
+                            raise e  # If the error is not a lock, re-raise
+            # Commit only once outside the loop after all batches are inserted
+            db.session.commit()
         except Exception as e:
             db.session.rollback()
-            print(f"Error during batch insert: {e}")
+            raise

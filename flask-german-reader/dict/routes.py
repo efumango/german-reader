@@ -41,7 +41,7 @@ def upload_dictionary():
         user_identity = get_jwt_identity()
         process_dictionary(final_path, user_identity)
         # Cleanup: remove the chunks and directory
-        cleanup_chunks(uuid, current_app.config['UPLOAD_FOLDER'])
+        # cleanup_chunks(uuid, current_app.config['UPLOAD_FOLDER'])
         return jsonify({'message': 'Dictionary uploaded and processed'}), 200
     
     return jsonify({'message': 'Chunk uploaded'}), 200
