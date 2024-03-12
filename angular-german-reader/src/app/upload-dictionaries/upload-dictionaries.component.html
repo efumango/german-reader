@@ -1,7 +1,7 @@
 <div class="upload-container">
-    <h2>Upload Dictionary</h2>
-    <input type="file" (change)="onFileSelected($event)" accept=".txt" />
-    <button (click)="uploadDictionary()" [disabled]="!fileToUpload">Upload Dictionary</button>
-    <p *ngIf="uploadStatus">{{ uploadStatus }}</p>
-  </div>
-  
+  <h2>Upload Dictionary</h2>
+  <input type="file" (change)="onFileSelected($event)" accept=".txt" />
+  <button (click)="uploadDictionary()" [disabled]="uploadInProgress || !fileToUpload">Upload Dictionary</button>
+  <p *ngIf="uploadStatus">{{ uploadStatus }}</p>
+  <p *ngIf="uploadInProgress">Data is being processed...</p>
+</div>

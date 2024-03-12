@@ -7,6 +7,8 @@ from flask import Blueprint
 
 dictionary_bp = Blueprint('dictionary_bp', __name__)
 
+upload_status_tracker = {}
+
 @dictionary_bp.route('/upload-dictionary', methods=['POST'])
 @jwt_required()
 def upload_dictionary():
@@ -37,14 +39,27 @@ def upload_dictionary():
     if all_chunks_received(uuid, total_chunks, current_app.config['UPLOAD_FOLDER'], filename):
         # Merge chunks
         final_path = merge_chunks(uuid, total_chunks, current_app.config['UPLOAD_FOLDER'], filename)
-        # Process the dictionary file
+        # Get user id
         user_identity = get_jwt_identity()
-        process_dictionary(final_path, user_identity)
+        # Mark the upload as processing 
+        upload_status_tracker[uuid] = 'processing'
+        try:
+            # Process the dictionary file
+            process_dictionary(final_path, user_identity)
+            upload_status_tracker[uuid] = 'processed'
+        except Exception as e:
+            upload_status_tracker[uuid] = 'failed'
         # Cleanup: remove the chunks and directory
-        # cleanup_chunks(uuid, current_app.config['UPLOAD_FOLDER'])
+        cleanup_chunks(uuid, current_app.config['UPLOAD_FOLDER'])
         return jsonify({'message': 'Dictionary uploaded and processed'}), 200
     
     return jsonify({'message': 'Chunk uploaded'}), 200
+
+@dictionary_bp.route('/upload-status/<uuid>', methods=['GET'])
+@jwt_required()
+def get_upload_status(uuid):
+    status = upload_status_tracker.get(uuid, 'unknown')
+    return jsonify({'status': status}), 200
 
 def all_chunks_received(uuid, total_chunks, upload_folder, filename):
     temp_dir = os.path.join(upload_folder, uuid)
@@ -64,7 +79,14 @@ def merge_chunks(uuid, total_chunks, upload_folder, filename):
 
 def cleanup_chunks(uuid, upload_folder):
     temp_dir = os.path.join(upload_folder, uuid)
-    for chunk in os.listdir(temp_dir):
-        os.remove(os.path.join(temp_dir, chunk))
-    os.rmdir(temp_dir)
+    # Check if the temporary directory exists
+    if os.path.exists(temp_dir):
+        for chunk in os.listdir(temp_dir):
+            chunk_path = os.path.join(temp_dir, chunk)
+            # Check if the chunk file exists before trying to delete it
+            if os.path.isfile(chunk_path):
+                os.remove(chunk_path)
+        # Remove the temporary directory after all chunks have been deleted
+        os.rmdir(temp_dir)
+
 
