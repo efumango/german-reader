@@ -63,8 +63,6 @@ def get_upload_status(uuid):
 
 def all_chunks_received(uuid, total_chunks, upload_folder, filename):
     temp_dir = os.path.join(upload_folder, uuid)
-    # Counts the number of files in the uuid directory
-    # and compares it to the expected total chunks
     return len(os.listdir(temp_dir)) == int(total_chunks)
 
 def merge_chunks(uuid, total_chunks, upload_folder, filename):
