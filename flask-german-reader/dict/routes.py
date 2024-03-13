@@ -81,12 +81,17 @@ def cleanup_chunks(uuid, upload_folder):
     temp_dir = os.path.join(upload_folder, uuid)
     # Check if the temporary directory exists
     if os.path.exists(temp_dir):
-        for chunk in os.listdir(temp_dir):
-            chunk_path = os.path.join(temp_dir, chunk)
-            # Check if the chunk file exists before trying to delete it
-            if os.path.isfile(chunk_path):
-                os.remove(chunk_path)
-        # Remove the temporary directory after all chunks have been deleted
-        os.rmdir(temp_dir)
-
+        # Get the list of chunk files
+        chunk_files = [f for f in os.listdir(temp_dir) if os.path.isfile(os.path.join(temp_dir, f))]
+        # Iterate over chunk files and delete them
+        for chunk_file in chunk_files:
+            try:
+                os.remove(os.path.join(temp_dir, chunk_file))
+            except OSError as e:
+                print(f"Error deleting file {chunk_file}: {e.strerror}")
+        # After all chunks are deleted, attempt to remove the directory
+        try:
+            os.rmdir(temp_dir)  # This will only work if the directory is empty
+        except OSError as e:
+            print(f"Error removing directory {temp_dir}: {e.strerror}")
 
