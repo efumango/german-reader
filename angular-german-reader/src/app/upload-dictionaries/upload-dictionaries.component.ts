@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-upload-dictionaries',
@@ -19,7 +20,7 @@ export class UploadDictionariesComponent {
   uploadInProgress: boolean = false;
   private pollingSubscription: Subscription | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -32,7 +33,7 @@ export class UploadDictionariesComponent {
 
   uploadDictionary() {
     this.uploadInProgress = true;
-    const token = this.getCurrentUserToken();
+    const token = this.authService.getCurrentUserToken();
     if (!token) return; // Exit if token is not available
 
     if (!this.fileToUpload) {
@@ -47,12 +48,14 @@ export class UploadDictionariesComponent {
     let chunksUploaded = 0;
     this.uploadInProgress = true;
 
+    // Upload chunks 
     Array.from({ length: totalChunks }).forEach((_, index) => {
       const start = index * chunkSize;
       const end = Math.min(start + chunkSize, this.fileToUpload!.size);
       const chunk = this.fileToUpload!.slice(start, end);
       this.uploadChunk(chunk, index, totalChunks, token, fileUuid, () => {
         chunksUploaded++;
+        // Start polling for status from backend when all chunks are uploaded
         if (chunksUploaded === totalChunks) {
           this.startPollingForStatus(fileUuid);
         }
@@ -85,56 +88,38 @@ export class UploadDictionariesComponent {
   }
 
   private startPollingForStatus(uuid: string) {
-      const token = this.getCurrentUserToken(); // Retrieve the current user token
-      if (!token) {
+    const token = this.authService.getCurrentUserToken();
+    if (!token) {
         console.error('Token not found. Cannot poll status.');
         return;
-      }
+    }
 
       const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });
+      'Authorization': `Bearer ${token}`
+    });
 
-      const pollingInterval = interval(10000); // Poll every 10 seconds
-    
-      this.pollingSubscription = pollingInterval.pipe(
-        takeWhile(() => this.uploadInProgress)
-      ).subscribe(() => {
-        this.http.get(`http://127.0.0.1:5000/api/upload-status/${uuid}`, { headers }).subscribe({
-          next: (response: any) => {
-            if (response.status === 'processed') {
-              this.uploadStatus = "Upload successful!";
-              this.uploadInProgress = false;
-              this.pollingSubscription?.unsubscribe();
-            } else if (response.status === 'failed') {
-              this.uploadStatus = "Upload failed. Please try again.";
-              this.uploadInProgress = false;
-              this.pollingSubscription?.unsubscribe();
-            }
-          },
-          error: (error) => {
-            console.error("Error polling upload status:", error);
-          }
-        });
-      });
-    }
-
-  private getCurrentUserToken(): string | null {
-    const currentUserJson = localStorage.getItem('currentUser');
-    if (!currentUserJson) {
-      this.uploadStatus = 'No current user found in local storage';
-      return null;
-    }
-
-    const currentUser = JSON.parse(currentUserJson);
-    const token = currentUser.token;
+    const pollingInterval = interval(10000); // Poll every 10 seconds
   
-    if (!token) {
-      this.uploadStatus = 'No token found for current user';
-      return null;
-    }
-
-    return token;
+    this.pollingSubscription = pollingInterval.pipe(
+      takeWhile(() => this.uploadInProgress)
+    ).subscribe(() => {
+      this.http.get(`http://127.0.0.1:5000/api/upload-status/${uuid}`, { headers }).subscribe({
+        next: (response: any) => {
+          if (response.status === 'processed') {
+            this.uploadStatus = "Upload successful!";
+            this.uploadInProgress = false;
+            this.pollingSubscription?.unsubscribe();
+          } else if (response.status === 'failed') {
+            this.uploadStatus = "Upload failed. Please try again.";
+            this.uploadInProgress = false;
+            this.pollingSubscription?.unsubscribe();
+          }
+        },
+        error: (error) => {
+          console.error("Error polling upload status:", error);
+        }
+      });
+    });
   }
 }
 

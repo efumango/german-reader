@@ -23,6 +23,17 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  getCurrentUserToken(): string | null {
+    const currentUserJson = localStorage.getItem('currentUser');
+    if (!currentUserJson) {
+      console.log('No current user found in local storage');
+      return null;
+    }
+
+    const currentUser = JSON.parse(currentUserJson);
+    return currentUser.token || null;
+  }
+
   signup(username: string, password: string) {
     return this.http.post<any>('http://127.0.0.1:5000/auth/signup', { username, password })
       .pipe(
