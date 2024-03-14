@@ -1,15 +1,14 @@
 from extensions import db
 
 class DictionaryEntry(db.Model):
+    __tablename__ = 'dictionary_entry'
+    
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  
-    word = db.Column(db.String(255), nullable=False)
-    definition = db.Column(db.Text, nullable=False)
-    pos = db.Column(db.String(50), nullable=True)  # Part of Speech
-    additional_info = db.Column(db.Text, nullable=True)
+    word = db.Column(db.String(255), nullable=False, index=True)
+    definition = db.Column(db.Text, nullable=False, index=True)
 
-    # Define a relationship 
-    user = db.relationship('User', backref=db.backref('dictionary_entries', lazy=True))
+    # A composite unique constraint ensuring that each word-definition pair is unique
+    __table_args__ = (db.UniqueConstraint('word', 'definition', name='_word_definition_uc'),)
 
     def __repr__(self):
-        return f"<DictionaryEntry {self.word}>"
+        return f"<DictionaryEntry {self.word}: {self.definition}>"

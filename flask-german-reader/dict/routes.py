@@ -49,6 +49,7 @@ def upload_dictionary():
             upload_status_tracker[uuid] = 'processed'
         except Exception as e:
             upload_status_tracker[uuid] = 'failed'
+            print(e)
         # Cleanup: remove the chunks and directory
         cleanup_chunks(uuid, current_app.config['UPLOAD_FOLDER'])
         return jsonify({'message': 'Dictionary uploaded and processed'}), 200
