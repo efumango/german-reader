@@ -1,8 +1,9 @@
 import logging
-from flask import Flask, request
-from config import DevelopmentConfig, TestingConfig
+from flask import Flask
+from config import DevelopmentConfig
 from flask_cors import CORS
 from extensions import db, login_manager, jwt
+from celery_utils import init_celery, celery
 
 def create_app(config_class=DevelopmentConfig):
 
@@ -25,6 +26,8 @@ def create_app(config_class=DevelopmentConfig):
     db.init_app(app)
     with app.app_context():
         db.create_all()
+
+    #init_celery(celery, app)
 
     return app
 

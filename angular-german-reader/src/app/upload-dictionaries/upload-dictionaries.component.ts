@@ -13,8 +13,8 @@ import { AuthService } from '../auth.service';
   templateUrl: './upload-dictionaries.component.html',
   styleUrls: ['./upload-dictionaries.component.css']
 })
-export class UploadDictionariesComponent {
 
+export class UploadDictionariesComponent {
   fileToUpload: File | null = null;
   uploadStatus: string | null = null;
   uploadInProgress: boolean = false;
@@ -29,34 +29,38 @@ export class UploadDictionariesComponent {
       return;
     }
     this.fileToUpload = target.files[0];
+    this.uploadStatus = null; // Reset upload status message when a new file is selected
   }
 
   uploadDictionary() {
-    this.uploadInProgress = true;
-    const token = this.authService.getCurrentUserToken();
-    if (!token) return; // Exit if token is not available
-
     if (!this.fileToUpload) {
       console.error('No file to upload.');
       return;
     }
+
+    this.uploadInProgress = true;
+    this.uploadStatus = "Uploading..."; // Provide immediate feedback that the upload has started
+    const token = this.authService.getCurrentUserToken();
+    if (!token) return; // Exit if token is not available
 
     const chunkSize = 1 * 1024 * 1024; // for 1MB chunk size
     const totalChunks = Math.ceil(this.fileToUpload.size / chunkSize);
     const fileUuid = uuidv4(); // Generate a unique UUID for the file
 
     let chunksUploaded = 0;
-    this.uploadInProgress = true;
 
-    // Upload chunks 
+    // Upload chunks
     Array.from({ length: totalChunks }).forEach((_, index) => {
       const start = index * chunkSize;
       const end = Math.min(start + chunkSize, this.fileToUpload!.size);
       const chunk = this.fileToUpload!.slice(start, end);
       this.uploadChunk(chunk, index, totalChunks, token, fileUuid, () => {
         chunksUploaded++;
+        // Update the upload status with progress
+        this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} chunks processed)`;
         // Start polling for status from backend when all chunks are uploaded
         if (chunksUploaded === totalChunks) {
+          this.uploadStatus = "Processing complete";
           this.startPollingForStatus(fileUuid);
         }
       });
@@ -90,14 +94,14 @@ export class UploadDictionariesComponent {
   private startPollingForStatus(uuid: string) {
     const token = this.authService.getCurrentUserToken();
     if (!token) {
-        console.error('Token not found. Cannot poll status.');
-        return;
+      console.error('Token not found. Cannot poll status.');
+      return;
     }
-
-      const headers = new HttpHeaders({
+  
+    const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-
+  
     const pollingInterval = interval(10000); // Poll every 10 seconds
   
     this.pollingSubscription = pollingInterval.pipe(
@@ -105,18 +109,26 @@ export class UploadDictionariesComponent {
     ).subscribe(() => {
       this.http.get(`http://127.0.0.1:5000/api/upload-status/${uuid}`, { headers }).subscribe({
         next: (response: any) => {
-          if (response.status === 'processed') {
+          if (response.status === 'complete') {
             this.uploadStatus = "Upload successful!";
             this.uploadInProgress = false;
-            this.pollingSubscription?.unsubscribe();
-          } else if (response.status === 'failed') {
-            this.uploadStatus = "Upload failed. Please try again.";
-            this.uploadInProgress = false;
-            this.pollingSubscription?.unsubscribe();
+            if (this.pollingSubscription) {
+              this.pollingSubscription.unsubscribe();
+              this.pollingSubscription = null; 
+            }
+          } else if (response.status === 'processing') {
+            const progress = `Processing (${response.processed_chunks}/${response.total_chunks} chunks processed)`;
+            this.uploadStatus = progress;
           }
         },
         error: (error) => {
           console.error("Error polling upload status:", error);
+          this.uploadStatus = "Failed to check upload status. Please try again.";
+          this.uploadInProgress = false;
+          if (this.pollingSubscription) {
+            this.pollingSubscription.unsubscribe();
+            this.pollingSubscription = null; 
+          }
         }
       });
     });
