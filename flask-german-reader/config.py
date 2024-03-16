@@ -9,6 +9,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = 'shizuo'
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
+    UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
     broker_url = 'amqp://guest:guest@localhost'
     result_backend = 'rpc://'
 

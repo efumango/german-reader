@@ -3,4 +3,5 @@ db.sqlite-journal
 __pycache__/
 venv/
 uploads/
+uploaded_texts/
 .vscode/

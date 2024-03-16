@@ -22,6 +22,9 @@ def create_app(config_class=DevelopmentConfig):
     from dict.routes import dictionary_bp
     app.register_blueprint(dictionary_bp, url_prefix='/api')
 
+    from text.routes import text_bp 
+    app.register_blueprint(text_bp, url_prefix='/text')
+
     db.init_app(app)
     with app.app_context():
         db.create_all()
