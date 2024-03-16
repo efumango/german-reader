@@ -1,8 +1,8 @@
 # celery_utils.py
 from celery import Celery
-
 # Define the Celery instance at the module level.
-celery = Celery(__name__, broker='amqp://guest:guest@localhost', backend='rpc://')
+celery = Celery(__name__, broker='amqp://guest:guest@localhost', backend='rpc://', imports=('dict.dictionary_services'))
+
 
 def init_celery(app):
     # Configure Celery using the Flask app's settings
