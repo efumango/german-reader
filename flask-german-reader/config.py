@@ -9,13 +9,13 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = 'shizuo'
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
-    broker_url = 'redis://localhost:6379/0'  
-    result_backend = 'redis://localhost:6379/0'
+    broker_url = 'amqp://guest:guest@localhost'
+    result_backend = 'rpc://'
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    broker_url = 'redis://localhost:6379/0'
-    result_backend = 'redis://localhost:6379/0'
+    broker_url = 'amqp://guest:guest@localhost'
+    result_backend = 'rpc://'
     
 class TestingConfig(Config):
     TESTING = True

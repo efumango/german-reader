@@ -10,8 +10,8 @@ import time
 import os
 from global_sessions import upload_sessions
 
-#@celery.task(bind=True)
-def process_chunk_async(chunk_path, user_identity, uuid, total_chunks):
+@celery.task(bind=True,name='process_chunk_async')
+def process_chunk_async(self, chunk_path, user_identity, uuid, total_chunks):
     user = User.query.filter_by(id=user_identity).first()
     if not user:
         raise Exception('User not found')
@@ -110,10 +110,10 @@ def update_upload_session(uuid, total_chunks):
     # Check if all chunks are processed
     if session['processed_chunks'] == session['total_chunks']:
         session['complete'] = True
-        finalize_upload_async(uuid)
+        finalize_upload_async.delay(uuid)
 
-#@celery.task(bind=True)
-def finalize_upload_async(uuid):
+@celery.task(bind=True, name='finalize_upload_async')
+def finalize_upload_async(self, uuid):
     session = upload_sessions.get(uuid)
     if session and session['complete']:
         # Cleanup temporary files

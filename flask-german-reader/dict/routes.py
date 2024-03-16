@@ -28,7 +28,7 @@ def upload_dictionary():
     file.save(chunk_path)
 
     #temporarily remove celery for testing
-    process_chunk_async(chunk_path, user_identity, uuid, total_chunks)
+    process_chunk_async.delay(chunk_path, user_identity, uuid, total_chunks)
     
     return jsonify({'message': 'Chunk received'}), 202
 

@@ -60,7 +60,7 @@ export class UploadDictionariesComponent {
         this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} chunks processed)`;
         // Start polling for status from backend when all chunks are uploaded
         if (chunksUploaded === totalChunks) {
-          this.uploadStatus = "Processing complete";
+          this.uploadStatus = "All chunks uploaded";
           this.startPollingForStatus(fileUuid);
         }
       });
