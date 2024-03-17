@@ -22,6 +22,7 @@ bootstrapApplication(AppComponent, {
       { path: 'welcome', loadComponent: () => import('./app/welcome/welcome.component').then(m => m.WelcomeComponent) },
       { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Redirect empty path to /welcome
       { path: 'dashboard', loadComponent: () => import('./app/dashboard/dashboard.component').then(m => m.DashboardComponent), canActivate: [AuthGuard.canActivate] },
+      { path: 'reader/:filename', loadComponent: () => import('./app/reader/reader.component').then(m=>m.ReaderComponent),canActivate: [AuthGuard.canActivate]}
     ])),
   ],
 }).catch(err => console.error(err));

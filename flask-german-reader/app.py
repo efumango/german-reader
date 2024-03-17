@@ -1,13 +1,14 @@
-import logging
-from flask import Flask, request
-from config import DevelopmentConfig, TestingConfig
+from flask import Flask
+from config import DevelopmentConfig
 from flask_cors import CORS
 from extensions import db, login_manager, jwt
+from celery_utils import celery, init_celery
 
 def create_app(config_class=DevelopmentConfig):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
+    #init_celery(app)
 
     CORS(app)
 
@@ -21,6 +22,9 @@ def create_app(config_class=DevelopmentConfig):
 
     from dict.routes import dictionary_bp
     app.register_blueprint(dictionary_bp, url_prefix='/api')
+
+    from text.routes import text_bp 
+    app.register_blueprint(text_bp, url_prefix='/text')
 
     db.init_app(app)
     with app.app_context():
