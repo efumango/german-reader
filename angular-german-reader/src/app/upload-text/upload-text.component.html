@@ -4,7 +4,7 @@
 
 <h2>Uploaded Texts</h2>
 <div *ngFor="let file of uploadedFiles">
-    <a href="javascript:void(0)" (click)="onView(file)">{{ file }}</a>
+    <a [routerLink]="['/reader', file]">{{ file }}</a>
     <button (click)="onDelete(file)">Delete</button>
 </div>
 

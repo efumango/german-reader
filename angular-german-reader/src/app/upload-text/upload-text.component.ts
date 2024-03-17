@@ -2,11 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-upload-text',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './upload-text.component.html',
   styleUrl: './upload-text.component.css'
 })
@@ -77,25 +77,6 @@ export class UploadTextComponent {
           console.error('Failed to fetch uploaded files', error);
         }
     });
-  }
-
-  onView(file: string): void {
-    if (!this.token) return;
-  
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    });
-  
-    this.http.get(`http://127.0.0.1:5000/text/files/${file}`, { headers, responseType: 'blob' })
-      .subscribe({
-        next: (blob) => {
-          const fileURL = URL.createObjectURL(blob);
-          window.open(fileURL, '_blank');
-        },
-        error: (error) => {
-          console.error('Failed to fetch file', error);
-        }
-      });
   }
 
   onDelete(filename: string): void{
