@@ -57,11 +57,10 @@ export class UploadDictionariesComponent {
       this.uploadChunk(chunk, index, totalChunks, token, fileUuid, () => {
         chunksUploaded++;
         // Update the upload status with progress
-        this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} chunks processed)`;
+        this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} processed)`;
         // Start polling for status from backend when all chunks are uploaded
         if (chunksUploaded === totalChunks) {
-          this.uploadStatus = "All chunks uploaded";
-          this.startPollingForStatus(fileUuid);
+          this.uploadStatus = "All chunks processed";
         }
       });
     });
@@ -91,47 +90,5 @@ export class UploadDictionariesComponent {
     });
   }
 
-  private startPollingForStatus(uuid: string) {
-    const token = this.authService.getCurrentUserToken();
-    if (!token) {
-      console.error('Token not found. Cannot poll status.');
-      return;
-    }
-  
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-  
-    const pollingInterval = interval(10000); // Poll every 10 seconds
-  
-    this.pollingSubscription = pollingInterval.pipe(
-      takeWhile(() => this.uploadInProgress)
-    ).subscribe(() => {
-      this.http.get(`http://127.0.0.1:5000/api/upload-status/${uuid}`, { headers }).subscribe({
-        next: (response: any) => {
-          if (response.status === 'complete') {
-            this.uploadStatus = "Upload successful!";
-            this.uploadInProgress = false;
-            if (this.pollingSubscription) {
-              this.pollingSubscription.unsubscribe();
-              this.pollingSubscription = null; 
-            }
-          } else if (response.status === 'processing') {
-            const progress = `Processing (${response.processed_chunks}/${response.total_chunks} chunks processed)`;
-            this.uploadStatus = progress;
-          }
-        },
-        error: (error) => {
-          console.error("Error polling upload status:", error);
-          this.uploadStatus = "Failed to check upload status. Please try again.";
-          this.uploadInProgress = false;
-          if (this.pollingSubscription) {
-            this.pollingSubscription.unsubscribe();
-            this.pollingSubscription = null; 
-          }
-        }
-      });
-    });
-  }
 }
 

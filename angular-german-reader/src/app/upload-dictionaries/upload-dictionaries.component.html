@@ -3,5 +3,4 @@
   <input type="file" (change)="onFileSelected($event)" accept=".txt" />
   <button (click)="uploadDictionary()" [disabled]="uploadInProgress || !fileToUpload">Upload Dictionary</button>
   <p *ngIf="uploadStatus">{{ uploadStatus }}</p>
-  <p *ngIf="uploadInProgress">Data is being processed...</p>
 </div>

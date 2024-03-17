@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, current_app
 from werkzeug.utils import secure_filename
-from dict.dictionary_services import process_chunk_async
+from dict.dictionary_services import process_chunk
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from global_sessions import upload_sessions
 import os 
@@ -27,16 +27,6 @@ def upload_dictionary():
     chunk_path = os.path.join(temp_dir, f"{filename}.part{chunk_index}")
     file.save(chunk_path)
 
-    #temporarily remove celery for testing
-    process_chunk_async.delay(chunk_path, user_identity, uuid, total_chunks)
+    process_chunk(chunk_path, user_identity)
     
-    return jsonify({'message': 'Chunk received'}), 202
-
-@dictionary_bp.route('/upload-status/<uuid>', methods=['GET'])
-def upload_status(uuid):
-    session = upload_sessions.get(uuid)
-    if not session:
-        return jsonify({'message': 'Upload session not found'}), 404
-    
-    status = 'complete' if session.get('complete', False) else 'processing'
-    return jsonify({'status': status, 'processed_chunks': session.get('processed_chunks', 0), 'total_chunks': session.get('total_chunks', 0)}), 200
+    return jsonify({'message': 'Processing complete'}), 200
