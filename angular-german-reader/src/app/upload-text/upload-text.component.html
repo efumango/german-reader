@@ -1,6 +1,7 @@
 <h2>Upload Text</h2>
 <input type="file" (change)="onFileSelected($event)" accept=".txt">
-<button (click)="onUpload()">Upload</button>
+<button (click)="onUpload()" [disabled]="isUploading">Upload</button>
+<p>{{ uploadMessage }}</p>
 
 <h2>Uploaded Texts</h2>
 <div *ngFor="let file of uploadedFiles">

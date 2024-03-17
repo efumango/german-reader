@@ -14,7 +14,9 @@ import { RouterModule } from '@angular/router';
 export class UploadTextComponent {
   selectedFile: File | null = null;
   uploadedFiles: string[] = [];
-  
+  isUploading: boolean = false; 
+  uploadMessage: string = ''
+
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -44,6 +46,9 @@ export class UploadTextComponent {
 
     if (!this.token) return; 
 
+    this.uploadMessage = ''; // Reset message
+    this.isUploading = true; // Start the upload process
+
     const formData = new FormData();
     formData.append('text', this.selectedFile!, this.selectedFile!.name);
     const headers = new HttpHeaders({
@@ -53,10 +58,12 @@ export class UploadTextComponent {
     this.http.post('http://127.0.0.1:5000/text/upload-text', formData, {headers})
       .subscribe({
         next: (response) => {
-          console.log('Upload successful', response);
+          this.uploadMessage = 'Upload successful!';
+          this.isUploading = false; // Upload finished
         },
         error: (error) => {
-          console.error('Upload error', error);
+          this.uploadMessage = 'Upload error. Please try again.';
+          this.isUploading = false; // Upload finished
         }
     })
   }
