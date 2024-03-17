@@ -10,18 +10,15 @@ class Config(object):
     JWT_SECRET_KEY = 'shizuo'
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
-    broker_url = 'amqp://guest:guest@localhost'
-    result_backend = 'rpc://'
-
+    MAX_CONTENT_LENGTH = 20 * 1024 * 1024
+    
 class DevelopmentConfig(Config):
     DEBUG = True
-    broker_url = 'amqp://guest:guest@localhost'
-    result_backend = 'rpc://'
+   
     
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
-    
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'   
 
 class ProductionConfig(Config):
     SECRET_KEY = 'production_secret_key'

@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from '../auth.service';
 
@@ -16,10 +14,9 @@ import { AuthService } from '../auth.service';
 
 export class UploadDictionariesComponent {
   fileToUpload: File | null = null;
-  uploadStatus: string | null = null;
+  uploadStatus: string | null = "File size must not exceed 20 MB.";
   uploadInProgress: boolean = false;
-  private pollingSubscription: Subscription | null = null;
-
+  
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   onFileSelected(event: Event) {
@@ -29,12 +26,19 @@ export class UploadDictionariesComponent {
       return;
     }
     this.fileToUpload = target.files[0];
-    this.uploadStatus = null; // Reset upload status message when a new file is selected
+    this.uploadStatus = ""; // Reset upload status message when a new file is selected
   }
 
   uploadDictionary() {
+    const MAX_SIZE = 20 * 1024 * 1024;
+
     if (!this.fileToUpload) {
       console.error('No file to upload.');
+      return;
+    }
+
+    if (this.fileToUpload.size > MAX_SIZE) {
+      this.uploadStatus = 'File size exceeds 20 MB.';
       return;
     }
 
@@ -58,7 +62,6 @@ export class UploadDictionariesComponent {
         chunksUploaded++;
         // Update the upload status with progress
         this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} processed)`;
-        // Start polling for status from backend when all chunks are uploaded
         if (chunksUploaded === totalChunks) {
           this.uploadStatus = "All chunks processed";
         }

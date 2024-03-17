@@ -2,13 +2,11 @@ from flask import Flask
 from config import DevelopmentConfig
 from flask_cors import CORS
 from extensions import db, login_manager, jwt
-from celery_utils import celery, init_celery
 
 def create_app(config_class=DevelopmentConfig):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
-    #init_celery(app)
 
     CORS(app)
 

@@ -1,11 +1,15 @@
+from http.client import REQUEST_ENTITY_TOO_LARGE
 from flask import Blueprint, request, jsonify, current_app
 from werkzeug.utils import secure_filename
 from dict.dictionary_services import process_chunk
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from global_sessions import upload_sessions
 import os 
 
 dictionary_bp = Blueprint('dictionary_bp', __name__)
+
+@dictionary_bp.errorhandler(REQUEST_ENTITY_TOO_LARGE)
+def handle_file_too_large(e):
+    return jsonify({'message': 'File size exceeds 20 MB.'}), 413
 
 @dictionary_bp.route('/upload-dictionary', methods=['POST'])
 @jwt_required()
@@ -29,4 +33,4 @@ def upload_dictionary():
 
     process_chunk(chunk_path, user_identity)
     
-    return jsonify({'message': 'Processing complete'}), 200
+    return jsonify({'message': 'Chunk processed'}), 200

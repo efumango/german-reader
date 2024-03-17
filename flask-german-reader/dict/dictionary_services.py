@@ -1,7 +1,6 @@
 import os
 import sqlite3
 from models import User
-from sqlalchemy.dialects.postgresql import insert
 
 def process_chunk(chunk_path, user_identity):
     conn = sqlite3.connect("C:\\Users\\efuma\\Downloads\\german_reader\\flask-german-reader\\instance\\db.sqlite")
