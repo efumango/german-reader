@@ -13,4 +13,14 @@
 
 .highlight {
     background-color: yellow;
-  }
+}
+
+.action-box {
+    position: absolute;
+    background: black;
+    color: white;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    visibility: hidden; /* Initially hidden to measure dimensions */
+}
