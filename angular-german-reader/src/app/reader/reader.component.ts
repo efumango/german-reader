@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TextSelectionDirective } from '../text-selection.directive';
 
 @Component({
   selector: 'app-reader',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TextSelectionDirective],
   templateUrl: './reader.component.html',
   styleUrl: './reader.component.css'
 })

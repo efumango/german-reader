@@ -63,7 +63,7 @@ export class UploadDictionariesComponent {
         // Update the upload status with progress
         this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} processed)`;
         if (chunksUploaded === totalChunks) {
-          this.uploadStatus = "All chunks processed";
+          this.uploadStatus = "Data processed.";
         }
       });
     });
