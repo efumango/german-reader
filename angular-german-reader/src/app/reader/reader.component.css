@@ -15,12 +15,16 @@
     background-color: yellow;
 }
 
-.action-box {
-    position: absolute;
-    background: black;
-    color: white;
+.text-selection-button {
     padding: 4px 8px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
     cursor: pointer;
     border-radius: 4px;
-    visibility: hidden; /* Initially hidden to measure dimensions */
-}
+    margin: 0;
+    font-size: 1rem;
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
+    transform: translateX(-50%);
+  }

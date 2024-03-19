@@ -7,7 +7,7 @@ def create_app(config_class=DevelopmentConfig):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
-
+    
     CORS(app)
 
     login_manager.init_app(app)
@@ -22,8 +22,11 @@ def create_app(config_class=DevelopmentConfig):
     app.register_blueprint(dictionary_bp, url_prefix='/api')
 
     from text.routes import text_bp 
-    app.register_blueprint(text_bp, url_prefix='/text')
+    app.register_blueprint(text_bp, url_prefix='/api')
 
+    from lookup.routes import lookup_bp 
+    app.register_blueprint(lookup_bp, url_prefix='/api')
+    
     db.init_app(app)
     with app.app_context():
         db.create_all()

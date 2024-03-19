@@ -32,5 +32,5 @@ def upload_dictionary():
     file.save(chunk_path)
 
     process_chunk(chunk_path, user_identity)
-    
+        
     return jsonify({'message': 'Chunk processed'}), 200

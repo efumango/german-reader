@@ -1,44 +1,46 @@
-import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { Directive, ElementRef, Renderer2, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Directive({
   selector: '[appTextSelection]',
   standalone: true
 })
 export class TextSelectionDirective {
-  private actionBox: HTMLElement | null = null;
+  private selectedText: string = '';
+  private button: HTMLElement | null = null;
+  private removeClickListener: Function | null = null;
+  @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseup') onMouseUp() {
     const selection = window.getSelection();
     if (!selection || selection.toString().trim() === '') {
-      this.removeActionBox();
+      this.removeButton();
       return;
     }
-    
+
+    this.selectedText = selection.toString().trim();
+
     // Clear previous highlights
     this.clearHighlights();
 
-    const range = selection.getRangeAt(0);
-    if (!range) return;
-    
-    // Highlight selection
-    const span = this.renderer.createElement('span');
-    this.renderer.addClass(span, 'highlight');
-    range.surroundContents(span);
-    
-    // Position the action box
-    this.positionActionBox(span);
-
-    // Clear selection
-    window.getSelection()?.removeAllRanges();
+    // Highlight selection & create lookup button 
+    this.highlightSelection(selection);
+    this.createButton(selection);
   }
 
   @HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent) {
     if (!this.el.nativeElement.contains(event.target)) {
+      this.removeButton();
       this.clearHighlights();
-      this.removeActionBox(); 
     }
+  }
+
+  private highlightSelection(selection: Selection) {
+    const range = selection.getRangeAt(0);
+    const span = this.renderer.createElement('span');
+    this.renderer.addClass(span, 'highlight');
+    range.surroundContents(span);
   }
 
   private clearHighlights() {
@@ -52,51 +54,54 @@ export class TextSelectionDirective {
     });
   }
 
-  private positionActionBox(span: HTMLElement) {
-    if (this.actionBox) {
-      this.renderer.removeChild(this.el.nativeElement, this.actionBox);
+  private createButton(selection: Selection) {
+    if (this.button) {
+      this.removeButton();
     }
+  
+    // Create a button element
+    this.button = this.renderer.createElement('button');
+    this.renderer.addClass(this.button, 'text-selection-button');
+    if (this.button){
+    this.button.textContent = 'Look Up';
+  
+    // Get the bounding rectangle of the selection
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+  
+    // Calculate the top and left positions
+    const topPosition = rect.top + window.scrollY - 30; 
+    // Center the button over the selection
+    const leftPosition = rect.left + window.scrollX + (rect.width / 2);
+  
+    // Set styles for the button
+    this.renderer.setStyle(this.button, 'position', 'absolute');
+    this.renderer.setStyle(this.button, 'top', `${topPosition}px`);
+    // Adjust the button's left position to account for its own width
+    this.renderer.setStyle(this.button, 'transform', `translateX(-50%)`);
+    this.renderer.setStyle(this.button, 'left', `${leftPosition}px`);
+    this.renderer.setStyle(this.button, 'z-index', '1000');
+  
+    // Append the button to the body of the document
+    this.renderer.appendChild(document.body, this.button);
+  
+    // Listen for the click event on the button
+    this.removeClickListener = this.renderer.listen(this.button, 'click', (event) => {
+      this.textSelected.emit(this.selectedText);
+      this.removeButton();
+      event.stopPropagation(); // Prevent the document:click event
+    });
+  }}
+  
 
-    // Create the action box element
-    this.actionBox = this.renderer.createElement('div');
-    this.renderer.addClass(this.actionBox, 'action-box');
-    if (this.actionBox){
-      this.actionBox.textContent = 'Lookup'; // Set the call to action text
-
-      // Initially set the box to be invisible to measure its dimensions
-      this.renderer.setStyle(this.actionBox, 'visibility', 'hidden');
-
-      // Append the action box to the container to measure its dimensions
-      this.renderer.appendChild(this.el.nativeElement, this.actionBox);
-
-      // Measure dimensions
-      const actionBoxHeight = this.actionBox.offsetHeight;
-      const actionBoxWidth = this.actionBox.offsetWidth;
-      const spanWidth = span.offsetWidth;
-
-      // Calculate the center position
-      const centerLeft = span.offsetLeft + (spanWidth / 2) - (actionBoxWidth / 2);
-      
-      // Set position of action box 
-      this.renderer.setStyle(this.actionBox, 'top', `${span.offsetTop - actionBoxHeight - 5}px`); // Above the selected text
-      this.renderer.setStyle(this.actionBox, 'left', `${centerLeft}px`); // In the middle of the selected text 
-      this.renderer.setStyle(this.actionBox, 'visibility', 'visible'); // Make the box visible
-
-      // Listen for clicks on the action box
-      this.actionBox.addEventListener('click', this.onActionBoxClick.bind(this));
-    }
-  }
-
-  private onActionBoxClick() {
-    console.log('Action box clicked');
-    // Define what should happen when the action box is clicked
-  }
-
-  private removeActionBox() {
-    if (this.actionBox) {
-      this.actionBox.removeEventListener('click', this.onActionBoxClick.bind(this));
-      this.renderer.removeChild(this.el.nativeElement, this.actionBox);
-      this.actionBox = null;
+  private removeButton() {
+    if (this.button) {
+      if (this.removeClickListener) {
+        this.removeClickListener();
+        this.removeClickListener = null;
+      }
+      this.renderer.removeChild(document.body, this.button);
+      this.button = null;
     }
   }
 }

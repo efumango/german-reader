@@ -18,7 +18,7 @@ export class UploadTextComponent {
   uploadMessage: string = ''
 
   constructor(private http: HttpClient, private authService: AuthService) { }
-
+  
   ngOnInit(): void {
     this.fetchUploadedFiles();
   }
@@ -33,10 +33,7 @@ export class UploadTextComponent {
   }
 
   token = this.authService.getCurrentUserToken();
-  headers = new HttpHeaders({
-    'Authorization' : `Bearer ${this.token}`
-  })
-  
+
   onUpload(): void {
 
     if (!this.selectedFile) {
@@ -55,7 +52,7 @@ export class UploadTextComponent {
       'Authorization' : `Bearer ${this.token}`
     })
 
-    this.http.post('http://127.0.0.1:5000/text/upload-text', formData, {headers})
+    this.http.post('http://127.0.0.1:5000/api/upload-text', formData, {headers})
       .subscribe({
         next: (response) => {
           this.uploadMessage = 'Upload successful!';
@@ -75,7 +72,7 @@ export class UploadTextComponent {
       'Authorization' : `Bearer ${this.token}`
     })
 
-    this.http.get<string[]>('http://127.0.0.1:5000/text/files', {headers})
+    this.http.get<string[]>('http://127.0.0.1:5000/api/files', {headers})
       .subscribe({
         next: (files) => {
           this.uploadedFiles = files;
@@ -93,7 +90,7 @@ export class UploadTextComponent {
       'Authorization' : `Bearer ${this.token}`
     })
     
-    this.http.post('http://127.0.0.1:5000/text/delete_file', {filename}, {headers})
+    this.http.post('http://127.0.0.1:5000/api/delete_file', {filename}, {headers})
       .subscribe({
         next: (response) => {
           console.log('File deleted successfully', response);

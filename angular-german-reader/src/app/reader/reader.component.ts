@@ -14,6 +14,7 @@ import { TextSelectionDirective } from '../text-selection.directive';
 })
 export class ReaderComponent {
   textContent: string = '';
+  token = this.authService.getCurrentUserToken();
 
   constructor(
     private http: HttpClient, 
@@ -31,17 +32,16 @@ export class ReaderComponent {
   }
 
   onView(filename: string): void {
-    const token = this.authService.getCurrentUserToken();
-    if (!token) {
+    if (!this.token) {
       console.error('No token available for authentication.');
       return;
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
 
-    this.http.get(`http://127.0.0.1:5000/text/files/${filename}`, { headers, responseType: 'text' })
+    this.http.get(`http://127.0.0.1:5000/api/files/${filename}`, { headers, responseType: 'text' })
       .subscribe({
         next: (content) => {
           this.textContent = content;
@@ -50,5 +50,26 @@ export class ReaderComponent {
           console.error('Failed to fetch file', error);
         }
       });
+  }
+
+  logSelectedText(text: string) {
+    console.log('Selected text:', text);
+  }
+
+  onLookUp(text: string){
+    if (!this.token) {
+      console.error('No token available for authentication.');
+      return;
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    });
+
+    this.http.post(`http://127.0.0.1:5000/api/analyze-text`, {text}, {headers}).
+    subscribe({
+      next: (response) => console.log('Response from backend:', response),
+      error: (error) => console.error('Error:', error)
+    });
   }
 }

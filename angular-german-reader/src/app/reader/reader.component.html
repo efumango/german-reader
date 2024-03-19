@@ -1,4 +1,4 @@
-<div class="text-container" *ngIf="textContent" appTextSelection>
+<div class="text-container" *ngIf="textContent" appTextSelection (textSelected)="onLookUp($event)">
     {{ textContent }}
   </div>
   
