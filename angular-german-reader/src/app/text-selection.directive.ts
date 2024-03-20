@@ -74,13 +74,9 @@ export class TextSelectionDirective {
     // Center the button over the selection
     const leftPosition = rect.left + window.scrollX + (rect.width / 2);
   
-    // Set styles for the button
-    this.renderer.setStyle(this.button, 'position', 'absolute');
+    // Set position for the button
     this.renderer.setStyle(this.button, 'top', `${topPosition}px`);
-    // Adjust the button's left position to account for its own width
-    this.renderer.setStyle(this.button, 'transform', `translateX(-50%)`);
     this.renderer.setStyle(this.button, 'left', `${leftPosition}px`);
-    this.renderer.setStyle(this.button, 'z-index', '1000');
   
     // Append the button to the body of the document
     this.renderer.appendChild(document.body, this.button);

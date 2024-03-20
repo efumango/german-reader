@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TextSelectionDirective } from '../text-selection.directive';
+import nlp from 'de-compromise';
 
 @Component({
   selector: 'app-reader',
@@ -52,8 +53,21 @@ export class ReaderComponent {
       });
   }
 
-  logSelectedText(text: string) {
-    console.log('Selected text:', text);
+  onTextSelected(text: string) {
+    this.processText(text);
+  }
+
+  processText(text: string): void{
+    let doc = nlp(text);
+    if (doc.has('#Verb')){
+      console.log(text + ' is a verb')
+    } 
+    else if (doc.has('#Preposition')){
+      console.log(text + ' is a preposition')
+    }
+    else{
+      console.log(text + ' is neither verb nor preposition')
+    }
   }
 
   onLookUp(text: string){

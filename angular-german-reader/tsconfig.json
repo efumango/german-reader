@@ -1,5 +1,4 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
-{
+{ "include":["src/decs.d.ts"],
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
@@ -29,5 +28,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
 }
