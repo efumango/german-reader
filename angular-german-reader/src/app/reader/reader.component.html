@@ -1,4 +1,5 @@
-<div class="text-container" *ngIf="textContent" appTextSelection (textSelected)="onTextSelected($event)">
-    {{ textContent }}
-  </div>
+<div class="text-container" *ngIf="textContent" 
+appTextSelection (textSelected)="onTextSelected($event)" (textContext)="onTextContext($event)"
+[innerHTML]="textContent">
+</div>
   
