@@ -1,4 +1,5 @@
 import { Directive, ElementRef, Renderer2, HostListener, Output, EventEmitter } from '@angular/core';
+import nlp from 'de-compromise'
 
 @Directive({
   selector: '[appTextSelection]',
@@ -20,8 +21,12 @@ export class TextSelectionDirective {
       return;
     }
 
+    // Get selected text
     this.selectedText = selection.toString().trim();
     
+    // Determine the number of words selected
+    const numWords = this.selectedText.split(/\s+/).length;
+
     // Clear previous highlights
     this.clearHighlights();
 
@@ -85,17 +90,50 @@ export class TextSelectionDirective {
   
     // Listen for the click event on the button
     this.removeClickListener = this.renderer.listen(this.button, 'click', (event) => {
-    this.textSelected.emit(this.selectedText);
-    // Emit selected text and its context
-    const sentence = this.getSentenceContainingWord(this.selectedText);
-    if (sentence) {
-    const trimmedSentence = this.trimSentenceAroundSelectedWord(sentence, this.selectedText, 10, 10);
-    this.textContext.emit({text: this.selectedText, context: trimmedSentence});
-    }
-    this.removeButton();
-    event.stopPropagation(); // Prevent the document:click event
+      event.stopPropagation(); // Prevent the document:click event
+      this.determineContextAndEmit(selection);
+      this.removeButton();
     });
-  }}
+  }
+}
+
+private determineContextAndEmit(selection: Selection) {
+  const numWords = this.selectedText.split(/\s+/).length;
+  const containsVerb = this.containsVerb(this.selectedText);
+  const isLikelyPrefix = this.isLikelyPrefix(this.selectedText);
+  const beginsWithInseparablePrefix = this.beginsWithInseparablePrefix(this.selectedText);
+  
+  // For more than two words or two words without a verb, emit only the selected text without context.
+  if (numWords >= 2) {
+    this.textSelected.emit(this.selectedText);
+    return; // Exit the method early
+  }
+
+  // Proceed with context determination for other cases
+  let beforeWords = 0, afterWords = 0;
+
+  if (containsVerb && !beginsWithInseparablePrefix) {
+    // For single verbs that are likely to be inseparable: find prefix
+    // emit selected text with extended context after the verb: 2 words before, 10 words after
+    beforeWords = 2;
+    afterWords = 10;
+  } else if (numWords === 1 && isLikelyPrefix) {
+    // For single words that are likely prefixes: find verb
+    // emit selected text with extended context before the prefix: 10 words before, 2 words after
+    beforeWords = 10;
+    afterWords = 2;
+  } else {
+    beforeWords = 2;
+    afterWords = 2;
+  }
+
+  // Retrieve and trim the sentence based on calculated beforeWords and afterWords
+  const sentence = this.getSentenceContainingWord(this.selectedText);
+  if (sentence) {
+    const context = (beforeWords === 0 && afterWords === 0) ? "" : this.trimSentenceAroundSelectedWord(sentence, this.selectedText, beforeWords, afterWords);
+    this.textContext.emit({ text: this.selectedText, context });
+  }
+}
 
   private removeButton() {
     if (this.button) {
@@ -125,7 +163,7 @@ export class TextSelectionDirective {
     if (!(container instanceof HTMLParagraphElement)) return null;
   
     const paragraphText = container.textContent || '';
-    const sentences = paragraphText.split(/(?<=[.!?])\s+/);
+    const sentences = paragraphText.split(/(?<=[.!?;])\s+/);
     const rangeStartOffset = this.getRangeStartOffsetWithinParagraph(range, container);
   
     let cumulativeLength = 0;
@@ -149,23 +187,50 @@ export class TextSelectionDirective {
   }
   
   private trimSentenceAroundSelectedWord(sentence: string, selectedWord: string, beforeWords: number, afterWords: number): string {
-    const selectedWordRegex = new RegExp(`\\b${selectedWord}\\b`, 'i'); // Use regex for word boundary detection
     const words = sentence.split(/\s+/);
-    let selectedIndex = -1;
-
-    // Find the index of the word that matches the selected word, accounting for punctuation.
-    for (let i = 0; i < words.length; i++) {
-        if (selectedWordRegex.test(words[i])) {
-            selectedIndex = i;
-            break; // Stop at the first occurrence
-        }
-    }
+    let selectedIndex = words.findIndex(word => new RegExp(`\\b${selectedWord}\\b`, 'i').test(word));
 
     if (selectedIndex === -1) return sentence;
-
+    
     const start = Math.max(0, selectedIndex - beforeWords);
     const end = Math.min(words.length, selectedIndex + afterWords + 1);
-
     return words.slice(start, end).join(' ');
   }
+
+  // List of separable verb prefixes
+  private separableVerbPrefixes: string[] = [
+    'ab', 'an', 'auf', 'aus', 'auseinander', 'bei', 'da', 'dabei', 'dar', 'daran',
+    'dazwischen', 'durch', 'ein', 'empor', 'entgegen', 'entlang', 'entzwei', 'fehl',
+    'fern', 'fest', 'fort', 'frei', 'gegenüber', 'gleich', 'heim', 'her', 'herab',
+    'heran', 'herauf', 'heraus', 'herbei', 'herein', 'herüber', 'herum', 'herunter',
+    'hervor', 'hin', 'hinab', 'hinauf', 'hinaus', 'hinein', 'hinterher', 'hinunter',
+    'hinweg', 'hinzu', 'hoch', 'los', 'mit', 'nach', 'nebenher', 'nieder', 'statt',
+    'um', 'vor', 'voran', 'voraus', 'vorbei', 'vorüber', 'vorweg', 'weg', 'weiter',
+    'wieder', 'zu', 'zurecht', 'zurück', 'zusammen', 'durch', 'über', 'um', 'unter',
+    'voll', 'wieder'
+  ];
+
+  private inseparableVerbPrefixes: string[] = [
+    'be', 'emp', 'ent', 'er', 'ge', 'hinter', 'miss', 'wider', 'ver', 'zer'
+  ];
+
+  private isLikelyPrefix(word: string): boolean {
+    // Normalize the word by removing trailing punctuation and converting to lowercase
+    const normalizedWord = word.replace(/[^\w\s]|_$/, '').toLowerCase();
+    return this.separableVerbPrefixes.includes(normalizedWord);
+  }
+
+  private beginsWithInseparablePrefix(word: string): boolean {
+    // Normalize the word by converting to lowercase for comparison
+    const normalizedWord = word.toLowerCase();
+
+    // Check if the word begins with any of the inseparable prefixes
+    return this.inseparableVerbPrefixes.some(prefix => normalizedWord.startsWith(prefix));
+  }
+
+  private containsVerb(word: string): boolean{
+    let doc = nlp(word);
+    return doc.has('#Verb')
+  }
+
 }

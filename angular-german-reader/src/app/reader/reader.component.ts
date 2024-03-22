@@ -61,29 +61,7 @@ import nlp from 'de-compromise';
       return paragraphs.map(paragraph => `<p>${paragraph.trim()}</p>`).join('');
     }    
     
-    onTextSelected(text: string) {
-      this.processText(text);
-    }
-
-    processText(text: string): void{
-      let doc = nlp(text);
-      if (doc.has('#Verb')){
-        console.log(text + ' is a verb')
-      } 
-      else if (doc.has('#Preposition')){
-        console.log(text + ' is a preposition')
-      }
-      else{
-        console.log(text + ' is neither verb nor preposition')
-      }
-    }
-  
-    onTextContext(context: { text: string, context: string }) {
-        console.log('Selected Text:', context.text);
-        console.log('Surrounding Words:', context.context);
-    }
-    
-    onLookUp(text: string){
+    onTextSelected(text: string){
       if (!this.token) {
         console.error('No token available for authentication.');
         return;
@@ -93,10 +71,26 @@ import nlp from 'de-compromise';
         'Authorization': `Bearer ${this.token}`
       });
 
-      this.http.post(`http://127.0.0.1:5000/api/analyze-text`, {text}, {headers}).
+      this.http.post(`http://127.0.0.1:5000/api/query-db`, {text}, {headers}).
       subscribe({
         next: (response) => console.log('Response from backend:', response),
         error: (error) => console.error('Error:', error)
+      });
+    }
+
+    onTextContext(textContext: { text: string, context: string }) {
+      if (!this.token) {
+        console.error('No token available for authentication.');
+        return;
+      }
+    
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`
+      });
+    
+      // Call the endpoint that handles the selected text with context
+      this.http.post('http://127.0.0.1:5000/api/process-and-query-db', textContext, { headers }).subscribe(response => {
+        console.log('DB Query Response for Text with Context:', response);
       });
     }
   }
