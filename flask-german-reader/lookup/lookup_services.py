@@ -11,13 +11,22 @@ def query_db(text, user_identity, limit):
         if not user:
             return jsonify({'error': 'User not found'}), 404
 
-        # Query the dictionary entries for the user
-        entries = db.session.query(DictionaryEntry.word, DictionaryEntry.definition).join(
-            UserDictionaryMapping, DictionaryEntry.id == UserDictionaryMapping.entry_id
-        ).filter(
-            (DictionaryEntry.word == text) | (DictionaryEntry.word.like(f'%{text}%')),
-            UserDictionaryMapping.user_id == user_identity
-        ).limit(limit).all()
+        # Search patterns in the order of preference: 
+        # exact match, start with, contain, broad match 
+        search_patterns = [text, text + " %", "% " + text + " %", "%" + text + "%"]
+
+        entries = []
+        for pattern in search_patterns:
+            entries = db.session.query(DictionaryEntry.word, DictionaryEntry.definition).join(
+                UserDictionaryMapping, DictionaryEntry.id == UserDictionaryMapping.entry_id
+            ).filter(
+                DictionaryEntry.word.like(pattern),
+                UserDictionaryMapping.user_id == user_identity
+            ).order_by(db.func.length(DictionaryEntry.word)).limit(limit).all()
+
+            # Break the loop if entries are found for the current pattern
+            if entries:
+                break
 
         if entries:
             results = [{'queried_word': text, 'word': word, 'definition': definition} for word, definition in entries]
@@ -28,7 +37,7 @@ def query_db(text, user_identity, limit):
         # Log the exception to your Flask app's logger
         current_app.logger.error(f'Error querying database: {str(e)}')
         return jsonify({'error': 'Internal server error'}), 500
-
+    
 def hanta_processing(text, context, wordType):
     tagger = ht.HanoverTagger('morphmodel_ger.pgz')
     # Tokenize the context
@@ -36,7 +45,8 @@ def hanta_processing(text, context, wordType):
     
     # Lemmatize and tag POS
     lemmata = tagger.tag_sent(words)
-    lemmatized_word = ""
+
+    lemmatized_word = None
 
     if wordType == 'default':
         for lem in lemmata:
@@ -68,4 +78,9 @@ def hanta_processing(text, context, wordType):
                         lemmatized_word = lem[1]
                     break  # Break the outer loop once processed
 
-    return lemmatized_word
+    # Check if lemmatized_word has been assigned a value
+    if lemmatized_word is not None:
+        return lemmatized_word
+    else:
+        # Handle the case where the word was not found
+        return text 
