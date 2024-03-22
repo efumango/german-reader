@@ -10,7 +10,7 @@ export class TextSelectionDirective {
   private button: HTMLElement | null = null;
   private removeClickListener: Function | null = null;
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
-  @Output() textContext: EventEmitter<{ text: string, context: string }> = new EventEmitter<{ text: string, context: string }>();
+  @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -102,7 +102,8 @@ private determineContextAndEmit(selection: Selection) {
   const containsVerb = this.containsVerb(this.selectedText);
   const isLikelyPrefix = this.isLikelyPrefix(this.selectedText);
   const beginsWithInseparablePrefix = this.beginsWithInseparablePrefix(this.selectedText);
-  
+  var wordType = ''
+
   // For more than two words or two words without a verb, emit only the selected text without context.
   if (numWords >= 2) {
     this.textSelected.emit(this.selectedText);
@@ -117,21 +118,24 @@ private determineContextAndEmit(selection: Selection) {
     // emit selected text with extended context after the verb: 2 words before, 10 words after
     beforeWords = 2;
     afterWords = 10;
+    wordType = 'canBeSepVerb'
   } else if (numWords === 1 && isLikelyPrefix) {
     // For single words that are likely prefixes: find verb
     // emit selected text with extended context before the prefix: 10 words before, 2 words after
     beforeWords = 10;
     afterWords = 2;
+    wordType = 'canBePrefix'
   } else {
     beforeWords = 2;
     afterWords = 2;
+    wordType = 'default'
   }
 
   // Retrieve and trim the sentence based on calculated beforeWords and afterWords
   const sentence = this.getSentenceContainingWord(this.selectedText);
   if (sentence) {
     const context = (beforeWords === 0 && afterWords === 0) ? "" : this.trimSentenceAroundSelectedWord(sentence, this.selectedText, beforeWords, afterWords);
-    this.textContext.emit({ text: this.selectedText, context });
+    this.textContext.emit({ text: this.selectedText, context, wordType });
   }
 }
 

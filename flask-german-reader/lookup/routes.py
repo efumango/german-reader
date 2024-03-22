@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from lookup.lookup_services import query_db
+from lookup.lookup_services import query_db, hanta_processing
 
 lookup_bp = Blueprint('lookup_bp', __name__)
 
@@ -18,7 +18,7 @@ def handle_query_db():
     text = data['text']
     
     # Query for the text in the database 
-    response_data = query_db(text, user_identity,limit=5)
+    response_data = query_db(text, user_identity, limit=10)
     
     return response_data
 
@@ -26,6 +26,7 @@ def handle_query_db():
 @jwt_required()
 def process_and_query_db():
     data = request.get_json()
+    user_identity = get_jwt_identity()
 
     # Check if the required 'text' field is present
     if not data or 'text' not in data:
@@ -33,16 +34,11 @@ def process_and_query_db():
 
     text = data['text']
     context = data.get('context')
+    wordType = data.get('wordType')
 
     # Process the text and optional context
     if context:
-        print("Processing text with context for POS tagging and lemmatization...")
-        # Placeholder for actual NLP processing and DB querying logic
-        result = {"processed": True, "text": text, "context": context}
-    else:
-        # Directly query the DB with text if no context is provided
-        print("Directly querying the DB with text...")
-        # Placeholder for actual DB querying logic
-        result = {"queried": True, "text": text}
+        lemmatized_text = hanta_processing(text, context, wordType)
+        response_data = query_db(lemmatized_text, user_identity, limit=10)
 
-    return jsonify(result)
+    return response_data
