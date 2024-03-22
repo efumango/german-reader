@@ -1,13 +1,15 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from lookup.lookup_services import query_db
 
 lookup_bp = Blueprint('lookup_bp', __name__)
 
 @lookup_bp.route('/query-db', methods=['POST'])
 @jwt_required()
-def query_db():
+def handle_query_db():
     data = request.get_json()
-    
+    user_identity = get_jwt_identity()
+
     # Check if the required 'text' field is present
     if not data or 'text' not in data:
         return jsonify({'error': 'Missing text'}), 400
@@ -15,10 +17,10 @@ def query_db():
     # Retrieve the text from the request
     text = data['text']
     
-    # Placeholder for database query logic
-    response_data = {'text': text, 'message': 'Text received and processed successfully'}
+    # Query for the text in the database 
+    response_data = query_db(text, user_identity,limit=5)
     
-    return jsonify(response_data)
+    return response_data
 
 @lookup_bp.route('/process-and-query-db', methods=['POST'])
 @jwt_required()
