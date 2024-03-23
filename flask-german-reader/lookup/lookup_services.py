@@ -1,41 +1,57 @@
 from flask import jsonify, current_app
-from models import User, DictionaryEntry, UserDictionaryMapping
 from extensions import db
 from HanTa import HanoverTagger as ht
 import nltk
+from extensions import db 
+from sqlalchemy import text
 
-def query_db(text, user_identity, limit):
+def query_db(raw_text, user_identity, limit):
     try:
-        # Check if the user exists using SQLAlchemy
-        user = User.query.filter_by(id=user_identity).first()
-        if not user:
+        # Check if the user exists with raw SQL
+        user_result = db.session.execute(
+            text("SELECT * FROM user WHERE id = :user_id"),
+            {"user_id": user_identity}
+        ).fetchone()
+
+        if not user_result:
             return jsonify({'error': 'User not found'}), 404
 
         # Search patterns in the order of preference: 
-        # exact match, start with, contain, broad match 
-        search_patterns = [text, text + " %", "% " + text + " %", "%" + text + "%"]
+        # exact match, start with, contain, broad match
+        search_patterns = [
+            raw_text,
+            raw_text + " %",
+            "% " + raw_text + " %",
+            "%" + raw_text + "%"
+        ]
 
-        entries = []
+        entries = None
         for pattern in search_patterns:
-            entries = db.session.query(DictionaryEntry.word, DictionaryEntry.definition).join(
-                UserDictionaryMapping, DictionaryEntry.id == UserDictionaryMapping.entry_id
-            ).filter(
-                DictionaryEntry.word.like(pattern),
-                UserDictionaryMapping.user_id == user_identity
-            ).order_by(db.func.length(DictionaryEntry.word)).limit(limit).all()
+            entries = db.session.execute(
+                text(
+                    "SELECT de.word, de.definition FROM dictionary_entry de "
+                    "JOIN user_dictionary_mapping udm ON de.id = udm.entry_id "
+                    "WHERE de.word LIKE :pattern AND udm.user_id = :user_id "
+                    "ORDER BY LENGTH(de.word) LIMIT :limit"
+                ),
+                {'pattern': pattern, 'user_id': user_identity, 'limit': limit}
+            ).fetchall()
 
             # Break the loop if entries are found for the current pattern
             if entries:
                 break
 
         if entries:
-            results = [{'queried_word': text, 'word': word, 'definition': definition} for word, definition in entries]
+            results = [
+                {'queried_word': raw_text, 'word': entry[0], 'definition': entry[1]}
+                for entry in entries
+            ]
             return jsonify(results), 200
         else:
-            return jsonify({'error': f'Word "{text}" not found in the dictionary for the current user'}), 200
+            return jsonify({'error': f'Word "{raw_text}" not found in the dictionary for the current user'}), 200
     except Exception as e:
         # Log the exception to your Flask app's logger
-        current_app.logger.error(f'Error querying database: {str(e)}')
+        current_app.logger.error(f'Error querying database with raw SQL: {str(e)}')
         return jsonify({'error': 'Internal server error'}), 500
     
 def hanta_processing(text, context, wordType):
