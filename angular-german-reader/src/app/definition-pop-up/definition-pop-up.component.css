@@ -1,28 +1,28 @@
 .popup {
-    position: absolute;
-    width: 300px; 
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
-    z-index: 2000; 
-  }
-  
-  .popup .loading {
-    padding: 20px;
-    text-align: center;
-    color: #999;
-  }
-  
-  /* General style for the content */
-  .popup div {
-    padding: 10px 15px;
-    border-bottom: 1px solid #eee; /* horizontal line effect */
-  }
-  
-  /* The last element shouldn't have a border-bottom */
-  .popup div:last-child {
-    border-bottom: none;
-  }
-  
-  
-  
+  position: absolute;
+  width: 250px; 
+  max-height: 300px; /* Maximum height for the pop-up */
+  overflow-y: auto; /* Makes it scrollable when content exceeds max-height */
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  z-index: 2000;
+  transform: translateX(-50%); /* Centers the pop-up horizontally */
+}
+
+.popup .loading {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+}
+
+/* General style for the content */
+.popup div {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee; /* horizontal line effect */
+}
+
+/* The last element shouldn't have a border-bottom */
+.popup div:last-child {
+  border-bottom: none;
+}

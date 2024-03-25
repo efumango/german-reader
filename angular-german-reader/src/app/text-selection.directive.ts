@@ -13,7 +13,7 @@ export class TextSelectionDirective {
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
   @Output() popUpPosition: EventEmitter<{ x: number, y: number}> = new EventEmitter<{ x: number, y: number }>();
-
+  @Output() clickOutsidePopUp: EventEmitter<void> = new EventEmitter<void>();
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseup') onMouseUp() {
@@ -39,6 +39,12 @@ export class TextSelectionDirective {
   }
 
   @HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent) {
+    const popUpElement = document.querySelector('.popup'); // Query for pop-up element 
+    // Check if the click is outside the pop-up element 
+    if (popUpElement && !popUpElement.contains(event.target as Node)) {
+      this.clickOutsidePopUp.emit(); // Emit event to signal that click happened outside the pop-up.
+    }
+
     if (!this.el.nativeElement.contains(event.target)) {
       this.removeButton();
       this.clearHighlights();
@@ -240,32 +246,31 @@ export class TextSelectionDirective {
     return doc.has('#Verb')
   }
 
-  private emitPopupPosition(selection: Selection){
+  private emitPopupPosition(selection: Selection) {
     const range = selection.getRangeAt(0);
     const rect = range.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
-    const estimatedPopupHeight = 200; // Assuming the height of your popup
+    const estimatedPopupHeight = 100; // An estimate or maximum expected height
 
-    // Determine if there's enough space above or below
+    // Determine initial Y position (above or below the selection)
+    let popupPositionY = rect.top + window.scrollY; // Default to below
     const spaceAbove = rect.top;
     const spaceBelow = viewportHeight - rect.bottom;
 
-    let popupPositionY;
-
-    if (spaceAbove > estimatedPopupHeight || spaceAbove > spaceBelow) {
-      // If there's more space above, or not enough space below, position above
-      popupPositionY = rect.top + window.scrollY - estimatedPopupHeight;
+    if (spaceBelow < estimatedPopupHeight && spaceAbove > estimatedPopupHeight) {
+        // Not enough space below and more space above, position above
+        popupPositionY -= estimatedPopupHeight;
     } else {
-      // Otherwise, position below
-      popupPositionY = rect.bottom + window.scrollY;
+        // Default or enough space below, position below
+        popupPositionY += rect.height;
     }
-    
-    // Emit the determined position for the popup
-    this.popUpPosition.emit({
-      x: rect.left + window.scrollX + (rect.width / 2), // Center horizontally
-      y: popupPositionY
-    });
-  }
 
+    // Emit the initial position
+    this.popUpPosition.emit({
+        x: rect.left + window.scrollX + (rect.width / 2), // Center horizontally
+        y: popupPositionY
+    });
+}
+  
 }
 

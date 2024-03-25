@@ -120,10 +120,6 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
         });
       }
 
-    handlePopUp(position: { x: number, y: number }){
-      this.popupPosition = position;
-    }
-
     private processResponse(response: any): void {
       if (Array.isArray(response)) {
         // Process the array of results
@@ -137,5 +133,36 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
       }
       this.loadingPopUp = false;
       this.showPopup = true;
+    }
+    
+    handlePopUp(position: { x: number, y: number }){
+      this.popupPosition = position;
+    }
+
+    handleClickOutsidePopUp(): void {
+      this.showPopup = false;
     }  
+
+    ngAfterViewChecked() {
+      if (this.showPopup) {
+        this.adjustPopUpPositionIfNeeded();
+      }
+    }
+    
+    adjustPopUpPositionIfNeeded() {
+      requestAnimationFrame(() => { 
+          const popUpElement = document.querySelector('.popup') as HTMLElement; 
+          if (!popUpElement) return;
+  
+          const popUpRect = popUpElement.getBoundingClientRect();
+          let { y } = this.popupPosition; 
+  
+          if (y + popUpRect.height > window.innerHeight) {
+              // The pop-up overflows the viewport, adjust it upwards
+              y -= (y + popUpRect.height - window.innerHeight + 10); // 10px for a small buffer
+          }
+  
+          popUpElement.style.top = `${y}px`;
+      });
+    }
   }

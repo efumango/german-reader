@@ -3,6 +3,7 @@ appTextSelection
 (textSelected)="onTextSelected($event)" 
 (textContext)="onTextContext($event)"
 (popUpPosition)="handlePopUp($event)"
+(clickOutsidePopUp)="handleClickOutsidePopUp()"
 [innerHTML]="textContent">
 </div>
 <app-definition-pop-up *ngIf="showPopup" 
