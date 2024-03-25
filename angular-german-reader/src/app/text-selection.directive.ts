@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Renderer2, HostListener, Output, EventEmitter } from '@angular/core';
 import nlp from 'de-compromise'
+import { Position } from './models/position';
 
 @Directive({
   selector: '[appTextSelection]',
@@ -11,6 +12,7 @@ export class TextSelectionDirective {
   private removeClickListener: Function | null = null;
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
+  @Output() popUpPosition: EventEmitter<{ x: number, y: number}> = new EventEmitter<{ x: number, y: number }>();
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -92,12 +94,13 @@ export class TextSelectionDirective {
     this.removeClickListener = this.renderer.listen(this.button, 'click', (event) => {
       event.stopPropagation(); // Prevent the document:click event
       this.determineContextAndEmit(selection);
+      this.emitPopupPosition(selection);
       this.removeButton();
     });
   }
 }
 
-private determineContextAndEmit(selection: Selection) {
+  private determineContextAndEmit(selection: Selection) {
   const numWords = this.selectedText.split(/\s+/).length;
   const containsVerb = this.containsVerb(this.selectedText);
   const isLikelyPrefix = this.isLikelyPrefix(this.selectedText);
@@ -237,4 +240,32 @@ private determineContextAndEmit(selection: Selection) {
     return doc.has('#Verb')
   }
 
+  private emitPopupPosition(selection: Selection){
+    const range = selection.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const estimatedPopupHeight = 200; // Assuming the height of your popup
+
+    // Determine if there's enough space above or below
+    const spaceAbove = rect.top;
+    const spaceBelow = viewportHeight - rect.bottom;
+
+    let popupPositionY;
+
+    if (spaceAbove > estimatedPopupHeight || spaceAbove > spaceBelow) {
+      // If there's more space above, or not enough space below, position above
+      popupPositionY = rect.top + window.scrollY - estimatedPopupHeight;
+    } else {
+      // Otherwise, position below
+      popupPositionY = rect.bottom + window.scrollY;
+    }
+    
+    // Emit the determined position for the popup
+    this.popUpPosition.emit({
+      x: rect.left + window.scrollX + (rect.width / 2), // Center horizontally
+      y: popupPositionY
+    });
+  }
+
 }
+

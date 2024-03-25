@@ -1,5 +1,12 @@
 <div class="text-container" *ngIf="textContent" 
-appTextSelection (textSelected)="onTextSelected($event)" (textContext)="onTextContext($event)"
+appTextSelection 
+(textSelected)="onTextSelected($event)" 
+(textContext)="onTextContext($event)"
+(popUpPosition)="handlePopUp($event)"
 [innerHTML]="textContent">
 </div>
-  
+<app-definition-pop-up *ngIf="showPopup" 
+[data]="popupData" 
+[position]="popupPosition" 
+[loading]="loadingPopUp"
+[visible]="showPopup"></app-definition-pop-up>

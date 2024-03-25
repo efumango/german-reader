@@ -5,11 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TextSelectionDirective } from '../text-selection.directive';
 import nlp from 'de-compromise';
-
+import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up.component';
+ 
   @Component({
     selector: 'app-reader',
     standalone: true,
-    imports: [CommonModule, TextSelectionDirective],
+    imports: [CommonModule, TextSelectionDirective, DefinitionPopUpComponent],
     templateUrl: './reader.component.html',
     styleUrl: './reader.component.css'
   })
@@ -17,10 +18,15 @@ import nlp from 'de-compromise';
     textContent: string = '';
     token = this.authService.getCurrentUserToken();
 
+    popupData: any[] = [];
+    popupPosition: { x: number, y: number } = { x: 0, y: 0 };
+    showPopup: boolean = false;
+    loadingPopUp: boolean = false;
+
     constructor(
       private http: HttpClient, 
       private authService: AuthService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
     ) { }
 
     ngOnInit(): void {
@@ -62,6 +68,9 @@ import nlp from 'de-compromise';
     }    
     
     onTextSelected(text: string){
+      this.loadingPopUp = true;
+      this.showPopup = true;
+
       if (!this.token) {
         console.error('No token available for authentication.');
         return;
@@ -71,11 +80,19 @@ import nlp from 'de-compromise';
         'Authorization': `Bearer ${this.token}`
       });
 
+      this.loadingPopUp = true;
       this.http.post(`http://127.0.0.1:5000/api/query-db`, {text}, {headers}).
       subscribe({
-        next: (response) => console.log('Response from backend:', response),
-        error: (error) => console.error('Error:', error)
-      });
+        next: (response: any) => {
+          console.log('Response from backend:', response);
+          this.processResponse(response);
+        },
+          error: (error) => {
+            console.error('Error:', error);
+            this.loadingPopUp = false;
+          }
+        }
+      );
     }
 
     onTextContext(textContext: { text: string, context: string }) {
@@ -87,10 +104,38 @@ import nlp from 'de-compromise';
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${this.token}`
       });
-    
+      
+      this.loadingPopUp = true;
       // Call the endpoint that handles the selected text with context
-      this.http.post('http://127.0.0.1:5000/api/process-and-query-db', textContext, { headers }).subscribe(response => {
-        console.log('DB Query Response for Text with Context:', response);
-      });
+      this.http.post('http://127.0.0.1:5000/api/process-and-query-db', textContext, { headers })
+        .subscribe({
+          next: (response: any) => {
+            console.log('Response from backend:', response);
+            this.processResponse(response);  
+          },
+          error: (error) => {
+            console.error('Error:', error);
+            this.loadingPopUp = false;
+          }
+        });
+      }
+
+    handlePopUp(position: { x: number, y: number }){
+      this.popupPosition = position;
     }
+
+    private processResponse(response: any): void {
+      if (Array.isArray(response)) {
+        // Process the array of results
+        this.popupData = response.map(item => ({
+          word: item.word,
+          definition: item.definition
+        }));
+      } else if (response && typeof response.error === 'string') {
+        // Handle case where response is an error object with a string message
+        this.popupData = [{ word: 'Info', definition: response.error }];
+      }
+      this.loadingPopUp = false;
+      this.showPopup = true;
+    }  
   }
