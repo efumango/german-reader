@@ -1,6 +1,5 @@
 import { Directive, ElementRef, Renderer2, HostListener, Output, EventEmitter } from '@angular/core';
 import nlp from 'de-compromise'
-import { Position } from './models/position';
 
 @Directive({
   selector: '[appTextSelection]',
@@ -250,7 +249,7 @@ export class TextSelectionDirective {
     const range = selection.getRangeAt(0);
     const rect = range.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
-    const estimatedPopupHeight = 100; // An estimate or maximum expected height
+    const estimatedPopupHeight = 100; // An estimate of expected height
 
     // Determine initial Y position (above or below the selection)
     let popupPositionY = rect.top + window.scrollY; // Default to below

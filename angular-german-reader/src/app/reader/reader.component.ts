@@ -125,11 +125,12 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
         // Process the array of results
         this.popupData = response.map(item => ({
           word: item.word,
-          definition: item.definition
+          definition: item.definition,
+          isWord: true
         }));
       } else if (response && typeof response.error === 'string') {
         // Handle case where response is an error object with a string message
-        this.popupData = [{ word: 'Info', definition: response.error }];
+        this.popupData = [{ word: 'Info', definition: response.error, isWord: false }];
       }
       this.loadingPopUp = false;
       this.showPopup = true;

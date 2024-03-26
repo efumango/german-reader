@@ -27,6 +27,9 @@ def create_app(config_class=DevelopmentConfig):
     from lookup.routes import lookup_bp 
     app.register_blueprint(lookup_bp, url_prefix='/api')
     
+    from vocab.routes import vocab_bp
+    app.register_blueprint(vocab_bp, url_prefix='/api')
+    
     db.init_app(app)
     with app.app_context():
         db.create_all()
