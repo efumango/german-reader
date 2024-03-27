@@ -80,9 +80,9 @@ def hanta_processing(text, context, wordType):
                         if subsequent_lem[2] == 'PTKVZ':
                             lemmatized_word = subsequent_lem[1] + lem[1]
                             break
-                    else:  # No break encountered
+                    else:  
                         lemmatized_word = lem[1]
-                    break  # Break the outer loop once processed
+                    break 
 
                 # Handle prefixes
                 if wordType == 'canBePrefix' and pos == 'PTKVZ':
@@ -90,9 +90,9 @@ def hanta_processing(text, context, wordType):
                         if previous_lem[2] in ['VV(FIN)', 'VV(IMP)']:
                             lemmatized_word = lem[1] + previous_lem[1]
                             break
-                    else:  # No break encountered
+                    else:  
                         lemmatized_word = lem[1]
-                    break  # Break the outer loop once processed
+                    break  
 
     # Check if lemmatized_word has been assigned a value
     if lemmatized_word is not None:

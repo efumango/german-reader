@@ -14,7 +14,7 @@ export class VocabComponent {
   vocabList: any[] = [];
 
   constructor(private vocabService: VocabService){ }
-
+  
   ngOnInit() {
     this.fetchVocabList();
   }
@@ -64,15 +64,31 @@ export class VocabComponent {
     });
   }
 
-
   exportToCSV() {
-    const data = this.vocabList.map(({ word, definition }) => `"${word}","${definition}"`).join('\n');
-    const blob = new Blob([data], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'vocab-list.csv';
-    a.click();
+    // Filter for selected items only
+    const selectedItems = this.vocabList.filter(vocab => vocab.selected);
+  
+    // Proceed only if there are selected items
+    if (selectedItems.length > 0) {
+      const data = selectedItems.map(({ word, definition }) => `"${word}","${definition}"`).join('\n');
+      const blob = new Blob([data], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'selected-vocab-list.csv';  
+      a.click();
+    } else {
+      alert('No items selected for export.');
+    }
   }
+  
+
+  selectAllToggle: boolean = false;
+
+  selectAll() {
+  this.selectAllToggle = !this.selectAllToggle;
+  this.vocabList.forEach(vocab => vocab.selected = this.selectAllToggle);
+}
+
 
 }

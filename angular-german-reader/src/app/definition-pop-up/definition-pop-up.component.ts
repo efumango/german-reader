@@ -23,5 +23,5 @@ export class DefinitionPopUpComponent {
       error: err => console.error('Error adding word', err)
     });
   }
-
+  
 }

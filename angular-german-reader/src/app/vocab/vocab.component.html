@@ -1,10 +1,10 @@
+<button (click)="selectAll()">Select All / Deselect All</button>
 <div class="vocab-list">
-    <div *ngFor="let vocab of vocabList; let i = index">
-      <input type="checkbox" [(ngModel)]="vocab.selected" />
-      {{ vocab.word }}: {{ vocab.definition }}
-    </div>
+  <div *ngFor="let vocab of vocabList; let i = index">
+    <input type="checkbox" [(ngModel)]="vocab.selected" />
+    {{ vocab.word }}: {{ vocab.definition }}
   </div>
-  <button (click)="deleteSelected()">Delete Selected</button>
-  <button (click)="deduplicate()">Deduplicate</button>
-  <button (click)="exportToCSV()">Export to CSV</button>
-  
+</div>
+<button (click)="deleteSelected()">Delete Selected</button>
+<button (click)="deduplicate()">Deduplicate</button>
+<button (click)="exportToCSV()">Export to CSV</button>
