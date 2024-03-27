@@ -1,7 +1,7 @@
 <div class="text-container" *ngIf="textContent" 
 appTextSelection 
-(textSelected)="onTextSelected($event)" 
-(textContext)="onTextContext($event)"
+(textSelected)="limitedQueryWithoutContext($event)" 
+(textContext)="limitedQueryWithContext($event)"
 (popUpPosition)="handlePopUp($event)"
 (clickOutsidePopUp)="handleClickOutsidePopUp()"
 [innerHTML]="textContent">
@@ -10,4 +10,6 @@ appTextSelection
 [data]="popupData" 
 [position]="popupPosition" 
 [loading]="loadingPopUp"
-[visible]="showPopup"></app-definition-pop-up>
+[visible]="showPopup"
+[searchQuery]="searchQuery"
+(searchAllClicked)="searchAll($event)"></app-definition-pop-up>

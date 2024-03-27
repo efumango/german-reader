@@ -23,6 +23,8 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
     showPopup: boolean = false;
     loadingPopUp: boolean = false;
 
+    searchQuery: string = '';
+
     constructor(
       private http: HttpClient, 
       private authService: AuthService,
@@ -67,7 +69,8 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
       return paragraphs.map(paragraph => `<p>${paragraph.trim()}</p>`).join('');
     }    
     
-    onTextSelected(text: string){
+    // Query db without context, max. 10 results 
+    limitedQueryWithoutContext(text: string){
       this.loadingPopUp = true;
       this.showPopup = true;
 
@@ -95,7 +98,8 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
       );
     }
 
-    onTextContext(textContext: { text: string, context: string }) {
+    // Query with context, max. 10 results 
+    limitedQueryWithContext(textContext: { text: string, context: string }) {
       if (!this.token) {
         console.error('No token available for authentication.');
         return;
@@ -119,6 +123,39 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
           }
         });
       }
+    
+    // Query for all results, no context
+    searchAll(searchQuery: string){
+      if (!searchQuery) {
+        return;
+      }
+
+      this.loadingPopUp = true;
+      this.showPopup = true;
+
+      if (!this.token) {
+        console.error('No token available for authentication.');
+        return;
+      }
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${this.token}`
+      });
+
+      this.loadingPopUp = true;
+      this.http.post(`http://127.0.0.1:5000/api/query-all`, {searchQuery}, {headers}).
+      subscribe({
+        next: (response: any) => {
+          console.log('Response from backend:', response);
+          this.processResponse(response);
+        },
+          error: (error) => {
+            console.error('Error:', error);
+            this.loadingPopUp = false;
+          }
+        }
+      );
+    }
 
     private processResponse(response: any): void {
       if (Array.isArray(response)) {
@@ -126,14 +163,18 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
         this.popupData = response.map(item => ({
           word: item.word,
           definition: item.definition,
-          isWord: true
+          queried_word: item.queried_word,
+          isWord: true,
+          isAdded: false
         }));
+        
       } else if (response && typeof response.error === 'string') {
         // Handle case where response is an error object with a string message
-        this.popupData = [{ word: 'Info', definition: response.error, isWord: false }];
+        this.popupData = [{ word: 'Info', definition: response.error, isWord: false, queried_word: response.queried_word }];
       }
       this.loadingPopUp = false;
       this.showPopup = true;
+      this.searchQuery = this.popupData[0].queried_word;
     }
     
     handlePopUp(position: { x: number, y: number }){

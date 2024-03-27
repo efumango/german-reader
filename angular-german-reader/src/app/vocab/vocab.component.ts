@@ -71,7 +71,8 @@ export class VocabComponent {
     // Proceed only if there are selected items
     if (selectedItems.length > 0) {
       const data = selectedItems.map(({ word, definition }) => `"${word}","${definition}"`).join('\n');
-      const blob = new Blob([data], { type: 'text/csv' });
+      const utf8BOM = "\uFEFF"; // UTF-8 Byte Order Mark
+      const blob = new Blob([utf8BOM + data], { type: 'text/csv;charset=utf-8;' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

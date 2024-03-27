@@ -1,11 +1,15 @@
 <div *ngIf="visible" class="popup" [style.top.px]="position.y" [style.left.px]="position.x">
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchQuery" placeholder="Show all results" (keydown.enter)="searchAll()" #searchInput>
+    <button (click)="searchAll()">Search</button>
+  </div>  
   <ng-container *ngIf="loading; else loadedContent">
     <div class="loading">Loading...</div>
   </ng-container>
   <ng-template #loadedContent>
     <div *ngFor="let item of data">
       {{ item.word }}: {{ item.definition }}
-      <button *ngIf="item.isWord" (click)="addWordToVocabList(item)">+</button>
+      <button *ngIf="item.isWord && !item.isAdded" (click)="addWordToVocabList(item)">+</button>
     </div>
   </ng-template>
 </div>
