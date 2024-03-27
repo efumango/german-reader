@@ -5,9 +5,9 @@ import nltk
 from extensions import db 
 from sqlalchemy import text
 
-def query_db(raw_text, user_identity, limit):
+def query_dictionary_entries(raw_text, user_identity, limit):
     try:
-        # Check if the user exists with raw SQL
+        # Check if the user exists
         user_result = db.session.execute(
             text("SELECT * FROM user WHERE id = :user_id"),
             {"user_id": user_identity}
@@ -16,56 +16,7 @@ def query_db(raw_text, user_identity, limit):
         if not user_result:
             return jsonify({'error': 'User not found'}), 404
 
-        # Search patterns in the order of preference: 
-        # exact match, start with, contain
-        search_patterns = [
-            raw_text,
-            raw_text + " %",
-            "% " + raw_text + " %"
-        ]
-
-        entries = None
-        for pattern in search_patterns:
-            entries = db.session.execute(
-                text(
-                    "SELECT de.word, de.definition FROM dictionary_entry de "
-                    "JOIN user_dictionary_mapping udm ON de.id = udm.entry_id "
-                    "WHERE de.word LIKE :pattern AND udm.user_id = :user_id "
-                    "ORDER BY LENGTH(de.word) LIMIT :limit"
-                ),
-                {'pattern': pattern, 'user_id': user_identity, 'limit': limit}
-            ).fetchall()
-
-            # Break the loop if entries are found for the current pattern
-            if entries:
-                break
-
-        if entries:
-            results = [
-                {'queried_word': raw_text, 'word': entry[0], 'definition': entry[1]}
-                for entry in entries
-            ]
-            return jsonify(results), 200
-        else:
-            return jsonify({'error': f'Word "{raw_text}" not found in the dictionary for the current user', 'queried_word': raw_text}), 200
-    except Exception as e:
-        # Log the exception to your Flask app's logger
-        current_app.logger.error(f'Error querying database with raw SQL: {str(e)}')
-        return jsonify({'error': 'Internal server error'}), 500
-
-def query_all(raw_text, user_identity):
-    try:
-        # Check if the user exists with raw SQL
-        user_result = db.session.execute(
-            text("SELECT * FROM user WHERE id = :user_id"),
-            {"user_id": user_identity}
-        ).fetchone()
-
-        if not user_result:
-            return jsonify({'error': 'User not found'}), 404
-
-        # Search patterns in the order of preference: 
-        # exact match, start with, contain, broad match
+        # Define search patterns
         search_patterns = [
             raw_text,
             raw_text + " %",
@@ -74,17 +25,23 @@ def query_all(raw_text, user_identity):
 
         all_entries = []
         for pattern in search_patterns:
-            entries = db.session.execute(
+            query = db.session.execute(
                 text(
                     "SELECT de.word, de.definition FROM dictionary_entry de "
                     "JOIN user_dictionary_mapping udm ON de.id = udm.entry_id "
                     "WHERE de.word LIKE :pattern AND udm.user_id = :user_id "
-                    "ORDER BY LENGTH(de.word)"
+                    "ORDER BY LENGTH(de.word)" + (" LIMIT :limit" if limit else "")
                 ),
-                {'pattern': pattern, 'user_id': user_identity}
+                {'pattern': pattern, 'user_id': user_identity, **({'limit': limit} if limit else {})}
             ).fetchall()
 
-            all_entries.extend(entries)
+            if limit and query:
+                # If a limit is set and entries are found, stop searching
+                all_entries = query
+                break
+            elif not limit:
+                # If no limit, accumulate entries from all patterns
+                all_entries.extend(query)
 
         if all_entries:
             results = [
@@ -95,8 +52,7 @@ def query_all(raw_text, user_identity):
         else:
             return jsonify({'error': f'Word "{raw_text}" not found in the dictionary for the current user', 'queried_word': raw_text}), 200
     except Exception as e:
-        # Log the exception to your Flask app's logger
-        current_app.logger.error(f'Error querying database with raw SQL: {str(e)}')
+        current_app.logger.error(f'Error querying database: {str(e)}')
         return jsonify({'error': 'Internal server error'}), 500
 
 

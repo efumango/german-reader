@@ -69,92 +69,44 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
       return paragraphs.map(paragraph => `<p>${paragraph.trim()}</p>`).join('');
     }    
     
-    // Query db without context, max. 10 results 
-    limitedQueryWithoutContext(text: string){
-      this.loadingPopUp = true;
-      this.showPopup = true;
-
-      if (!this.token) {
-        console.error('No token available for authentication.');
-        return;
-      }
-
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.token}`
-      });
-
-      this.loadingPopUp = true;
-      this.http.post(`http://127.0.0.1:5000/api/query-db`, {text}, {headers}).
-      subscribe({
-        next: (response: any) => {
-          console.log('Response from backend:', response);
-          this.processResponse(response);
-        },
-          error: (error) => {
-            console.error('Error:', error);
-            this.loadingPopUp = false;
-          }
-        }
-      );
-    }
-
-    // Query with context, max. 10 results 
-    limitedQueryWithContext(textContext: { text: string, context: string }) {
+    private makeHttpPostRequest(endpoint: string, payload: any, queryParams: any = {}): void {
       if (!this.token) {
         console.error('No token available for authentication.');
         return;
       }
     
       const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.token}`
+        'Authorization': `Bearer ${this.token}`,
       });
-      
+    
+      let queryString = Object.keys(queryParams).map(key => `${key}=${queryParams[key]}`).join('&');
+      if (queryString) queryString = `?${queryString}`;
+    
       this.loadingPopUp = true;
-      // Call the endpoint that handles the selected text with context
-      this.http.post('http://127.0.0.1:5000/api/process-and-query-db', textContext, { headers })
+      this.http.post(`http://127.0.0.1:5000/api/${endpoint}${queryString}`, payload, { headers })
         .subscribe({
           next: (response: any) => {
             console.log('Response from backend:', response);
-            this.processResponse(response);  
+            this.processResponse(response);
           },
           error: (error) => {
             console.error('Error:', error);
             this.loadingPopUp = false;
-          }
+          },
         });
-      }
-    
-    // Query for all results, no context
-    searchAll(searchQuery: string){
-      if (!searchQuery) {
-        return;
-      }
+    }
 
-      this.loadingPopUp = true;
-      this.showPopup = true;
+    limitedQueryWithoutContext(text: string) {
+      this.makeHttpPostRequest('query', { text });
+    }
 
-      if (!this.token) {
-        console.error('No token available for authentication.');
-        return;
-      }
+    limitedQueryWithContext(textContext: { text: string; context: string }) {
+      this.makeHttpPostRequest('process-and-query-db', textContext);
+    }
 
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${this.token}`
-      });
-
-      this.loadingPopUp = true;
-      this.http.post(`http://127.0.0.1:5000/api/query-all`, {searchQuery}, {headers}).
-      subscribe({
-        next: (response: any) => {
-          console.log('Response from backend:', response);
-          this.processResponse(response);
-        },
-          error: (error) => {
-            console.error('Error:', error);
-            this.loadingPopUp = false;
-          }
-        }
-      );
+    queryAllWithoutContext(searchQuery: string) {
+      if (!searchQuery) return;
+      this.makeHttpPostRequest('query', { searchQuery }, { all: 'true' });
     }
 
     private processResponse(response: any): void {
