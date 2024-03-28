@@ -1,4 +1,5 @@
-import os 
+import os
+import tempfile 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class Config(object):
@@ -8,17 +9,18 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = 'shizuo'
-    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
+    UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploaded_dict')
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
     MAX_CONTENT_LENGTH = 20 * 1024 * 1024
     
 class DevelopmentConfig(Config):
     DEBUG = True
    
-    
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'   
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:' 
+    UPLOAD_FOLDER = tempfile.mkdtemp()
+    UPLOADED_TEXT_FOLDER = tempfile.mkdtemp()  
 
 class ProductionConfig(Config):
     SECRET_KEY = 'production_secret_key'

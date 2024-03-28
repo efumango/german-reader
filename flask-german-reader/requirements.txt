@@ -3,3 +3,6 @@ Flask-SQLAlchemy
 Flask-Login
 Flask-JWT-Extended
 Flask-CORS
+nltk
+HanTa
+Werkzeug

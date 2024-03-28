@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: HanTa
+Version: 1.1.1
+Summary: Hannover Tagger: Morphological Analysis and POS Tagging
+Home-page: https://github.com/wartaal/HanTa
+Author: Christian Wartena
+Author-email: Christian.Wartena@hs-hannover.de
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: Dutch
+Classifier: Natural Language :: English
+Classifier: Natural Language :: German
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# HanTa - The Hanover Tagger 
+
+HanTa is a pure Python package for lemmatization and POS tagging of Dutch, English and German sentences. The approach is to some extent language indpendent and language models for more langauges will be added in future.
+
+Lemmatization and POS tagging are based on the morphological analysis of a word. The morphological analysis is done by an Hidden Markov Model that tries to find the best sequence of morphemes underlying each word.
+
+## Usage
+
+First a model has to be loaded:
+
+```python
+
+from HanTa import HanoverTagger as ht
+
+tagger_de = ht.HanoverTagger('morphmodel_ger.pgz')
+tagger_nl = ht.HanoverTagger('morphmodel_dutch.pgz')
+tagger_en = ht.HanoverTagger('morphmodel_en.pgz')
+
+```
+Now we have three methods to anaylze words and sentences:
+
+```python
+tagger_en.tag_word('eating')
+```
+
+will give a list of all possible parts of speech (PoS) for the word *eating* together with a probability score.
+
+```python
+tagger_en.tag_word('eating')
+```
+
+The function analyze gives the most likely PoS and the lemma (VBG and *eat* in the exmaple below).
+
+```python
+tagger_en.analyze('unhappiest')
+```
+
+Using various optional parameters we can get more information like e.g. a list of morphemes:
+
+```python
+tagger_nl.analyze('huishoudhulpje',taglevel=3)
+```
+
+The last call producses the following output:
+
+```
+('huishoudhulp', [('huis', 'N(soort,onz)'), ('houd', 'WW'), ('hulp', 'N(soort,zijd)'), ('je', 'SUF_DIM')], 'N(soort,ev,dim,onz,stan)')
+```
+
+The package also contains a simple trigram based PoS tagger, that uses the probabilities from the morphological analysis for unknown words (and infrequent words from he training data).
+
+
+```python
+import nltk
+from pprint import pprint
+
+sent = "Die Europawahl in den Niederlanden findet immer donnerstags statt."
+
+words = nltk.word_tokenize(sent)
+lemmata = tagger_de.tag_sent(words)
+pprint(lemmata)
+```
+
+## Further reading
+For more information refer to the following resources:
+
+* The main documentation: The Hanover Tagger (Version 1.1.0) - Lemmatization, Morphological Analysis and POS Tagging in Python. Hannover, 2023 [Online Available](https://doi.org/10.25968/opus-2457)
+* Demo.ipynb on GitHub (https://github.com/wartaal/HanTa)
+* Original publication: Christian Wartena. A probabilistic morphology model for German lemmatization.
+In *Proceedings of the 15th Conference on Natural Language Processing
+(KONVENS 2019): Long Papers*, pages 40â€“49, Erlangen, Germany, 2019.
+German Society for Computational Linguistics & Language Technology. [Online Available](https://doi.org/10.25968/opus-1527)
+
