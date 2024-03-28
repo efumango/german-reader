@@ -67,7 +67,6 @@ describe('SignupComponent', () => {
     component.onSubmit();
 
     expect(authServiceMock.signup).toHaveBeenCalledWith("testUser", "password");
-    // Since navigation is a side effect, you might need to spy on router.navigate and check that it has been called
   });
 
   it('should handle signup error when username already exists', () => {

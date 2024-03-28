@@ -1,7 +1,8 @@
-db.sqlite
-db.sqlite-journal
 __pycache__/
 uploads/
 uploaded_texts/
 uploaded_dict/
 .vscode/
+venv/
+instance/
+db.sqlite

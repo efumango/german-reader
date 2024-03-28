@@ -1,13 +1,15 @@
 import pytest
-from app import create_app
-from extensions import db
-from models import User
+from app.app import create_app
+from app.extensions import db
+from app.models import User
 from werkzeug.security import generate_password_hash
+from app.config import TestingConfig
 
 @pytest.fixture
 def app():
     """Create and configure a new app instance for each test."""
-    app = create_app('config.TestingConfig')
+    app = create_app()
+    app.config.from_object(TestingConfig)
     with app.app_context():
         db.create_all()
         yield app 
