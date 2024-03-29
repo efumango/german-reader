@@ -11,11 +11,13 @@ class Config(object):
     JWT_SECRET_KEY = 'shizuo'
     UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploaded_dict')
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
+    WIKI_DICT_PATH = os.path.join(BASE_DIR, 'prepared_dict/wikidict.txt')
     MAX_CONTENT_LENGTH = 20 * 1024 * 1024
     
 class DevelopmentConfig(Config):
     DEBUG = True
-   
+    DB_PATH = "C:\\Users\\efuma\\Downloads\\german_reader\\flask-german-reader\\instance\\db.sqlite"
+
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:' 

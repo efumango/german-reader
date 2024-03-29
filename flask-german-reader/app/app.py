@@ -2,6 +2,8 @@ from flask import Flask
 from app.config import DevelopmentConfig
 from flask_cors import CORS
 from app.extensions import db, login_manager, jwt
+from dotenv import load_dotenv
+load_dotenv() 
 
 def create_app():
 
@@ -37,6 +39,13 @@ def create_app():
     return app
 
 app = create_app()
+
+@app.cli.command("populate-wikidict")
+def populate_wikidict_command():
+    with app.app_context():
+        db.create_all()  # Ensure all tables are created.
+        from app.dict.populate_wikidict import populate_wikidict
+        populate_wikidict()
 
 if __name__ == '__main__':
     app.run(debug=True)

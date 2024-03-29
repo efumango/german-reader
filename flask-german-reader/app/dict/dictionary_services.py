@@ -1,9 +1,10 @@
 import os
 import sqlite3
 from app.models import User
+from app.config import DevelopmentConfig
 
 def process_chunk(chunk_path, user_identity):
-    conn = sqlite3.connect("C:\\Users\\efuma\\Downloads\\german_reader\\flask-german-reader\\app\\instance\\db.sqlite")
+    conn = sqlite3.connect(DevelopmentConfig.DB_PATH)
     cursor = conn.cursor()
     
     user = User.query.filter_by(id=user_identity).first()

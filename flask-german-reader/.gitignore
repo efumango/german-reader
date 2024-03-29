@@ -2,7 +2,8 @@ __pycache__/
 uploads/
 uploaded_texts/
 uploaded_dict/
+prepared_dict/
 .vscode/
 venv/
-instance/
-db.sqlite
+/instance/
+.pytest_cache/
