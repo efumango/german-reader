@@ -25,18 +25,19 @@ def populate_wikidict():
             
             entries_data.append({
                 'word': word,
-                'original_form': original_form,
+                'original_form': original_form or None,
                 'definition': definition,
-                'inflection': inflection
+                'inflection': inflection or None,
+                'source': 'prepared'
             })
 
     # Remove duplicates based on 'word' and prepare for insertion
     unique_entries = {entry['word']: entry for entry in entries_data}.values()
     entries_to_insert = [
-        (entry['word'], entry['original_form'], entry['definition'], entry['inflection']) for entry in unique_entries
+        (entry['word'], entry['original_form'], entry['definition'], entry['inflection'], entry['source']) for entry in unique_entries
     ]
     
-    cursor.executemany('INSERT OR IGNORE INTO wiki_dict_entry (word, original_form, definition, inflection) VALUES (?, ?, ?, ?)', entries_to_insert)
+    cursor.executemany('INSERT OR IGNORE INTO dictionary_entry (word, original_form, definition, inflection, source) VALUES (?, ?, ?, ?, ?)', entries_to_insert)
     
     # Commit and clean up
     conn.commit()

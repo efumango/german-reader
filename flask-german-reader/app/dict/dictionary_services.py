@@ -26,17 +26,20 @@ def process_chunk(chunk_path, user_identity):
             word, definition = parts[0], parts[1]
             entries_data.append({
                 'word': word,
+                'original_form': None,
                 'definition': definition,
+                'inflection': None,
+                'source': 'custom'
             })
 
     unique_entries = {entry['word']: entry for entry in entries_data}.values()
 
     # Insert unique words
     entries_to_insert = [
-        (entry['word'], entry['definition']) for entry in unique_entries
+        (entry['word'], entry['original_form'], entry['definition'], entry['inflection'], entry['source']) for entry in unique_entries
     ]
     
-    cursor.executemany('INSERT OR IGNORE INTO dictionary_entry (word, definition) VALUES (?, ?)', entries_to_insert)
+    cursor.executemany('INSERT OR IGNORE INTO dictionary_entry (word, original_form, definition, inflection, source) VALUES (?, ?, ?, ?, ?)', entries_to_insert)
     
     # Fetch entry_ids for all words in this batch
     words = [entry['word'] for entry in unique_entries]

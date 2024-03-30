@@ -27,8 +27,9 @@ def query_dictionary_entries(raw_text, user_identity, limit):
             query = db.session.execute(
                 text(
                     "SELECT de.word, de.definition FROM dictionary_entry de "
-                    "JOIN user_dictionary_mapping udm ON de.id = udm.entry_id "
-                    "WHERE de.word LIKE :pattern AND udm.user_id = :user_id "
+                    "LEFT JOIN user_dictionary_mapping udm ON de.id = udm.entry_id AND udm.user_id = :user_id "
+                    "WHERE de.word LIKE :pattern "
+                    "AND (de.source = 'prepared' OR (de.source = 'custom' AND udm.user_id IS NOT NULL)) "
                     "ORDER BY LENGTH(de.word)" + (" LIMIT :limit" if limit else "")
                 ),
                 {'pattern': pattern, 'user_id': user_identity, **({'limit': limit} if limit else {})}
