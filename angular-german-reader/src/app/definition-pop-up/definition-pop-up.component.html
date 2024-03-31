@@ -8,8 +8,15 @@
   </ng-container>
   <ng-template #loadedContent>
     <div *ngFor="let item of data">
-      {{ item.word }}: {{ item.definition }}
+      <!-- Add word button -->
       <button *ngIf="item.isWord && !item.isAdded" (click)="addWordToVocabList(item)">+</button>
+      
+      {{ item.word }}: {{ item.definition }}
+      <!-- See more button -->
+      <button *ngIf="item.inflection" (click)="item.showMore = !item.showMore">See more</button>
+      <!-- Inflection displayed with line breaks on 'See more' toggle -->
+      <div *ngIf="item.showMore" [innerHTML]="formatInflection(item.inflection)"></div>
+      
     </div>
   </ng-template>
 </div>

@@ -36,4 +36,12 @@ export class DefinitionPopUpComponent {
     this.searchAllClicked.emit(this.searchQuery);
   }
   
+  formatInflection(inflection: string): string {
+    if (!inflection) {
+      return '';
+    }
+    // Replace '##' with line breaks
+    return inflection.replace(/##/g, '<br>##');
+  }
+  
 }

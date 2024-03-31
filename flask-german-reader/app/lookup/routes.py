@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.lookup.lookup_services import hanta_processing, query_dictionary_entries
+from app.lookup.lookup_services import hanta_processing, query_dict_entries
 
 lookup_bp = Blueprint('lookup_bp', __name__)
 
@@ -20,7 +20,7 @@ def handle_query():
 
     # Query for the text in the database with or without limit based on 'all' parameter
     limit = None if fetch_all else 10
-    response_data = query_dictionary_entries(text, user_identity, limit=limit)
+    response_data = query_dict_entries(text, user_identity, limit, context=None, wordType=None)
 
     return response_data
 
@@ -37,11 +37,11 @@ def process_and_query_db():
     text = data['text']
     context = data.get('context')
     wordType = data.get('wordType')
+    limit = 10 
 
     # Process the text and optional context
     if context:
-        lemmatized_text = hanta_processing(text, context, wordType)
-        response_data = query_dictionary_entries(lemmatized_text, user_identity, limit=10)
+        response_data = query_dict_entries(text, user_identity, limit, context, wordType)
 
     return response_data
 

@@ -116,6 +116,7 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
           word: item.word,
           definition: item.definition,
           queried_word: item.queried_word,
+          inflection: item.inflection,
           isWord: true,
           isAdded: false
         }));
