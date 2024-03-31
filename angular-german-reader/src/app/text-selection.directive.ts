@@ -112,7 +112,7 @@ export class TextSelectionDirective {
   const beginsWithInseparablePrefix = this.beginsWithInseparablePrefix(this.selectedText);
   var wordType = ''
 
-  // For more than two words or two words without a verb, emit only the selected text without context.
+  // For more than two words, emit only the selected text without context.
   if (numWords >= 2) {
     this.textSelected.emit(this.selectedText);
     return; // Exit the method early
@@ -122,7 +122,7 @@ export class TextSelectionDirective {
   let beforeWords = 0, afterWords = 0;
 
   if (containsVerb && !beginsWithInseparablePrefix) {
-    // For single verbs that are likely to be inseparable: find prefix
+    // For single verbs that are likely to be separable: find prefix
     // emit selected text with extended context after the verb: 2 words before, 10 words after
     beforeWords = 2;
     afterWords = 10;

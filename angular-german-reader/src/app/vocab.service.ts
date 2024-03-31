@@ -11,13 +11,13 @@ export class VocabService {
   private apiUrl = 'http://127.0.0.1:5000/api/vocab'
   constructor(private http: HttpClient, private authService: AuthService) { }
   
-  addWord(word: string, definition: string): Observable<any> {
+  addWord(word: string, definition: string, inflection: string): Observable<any> {
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
 
-    return this.http.post(`${this.apiUrl}/add-word`, { word, definition }, {headers});
+    return this.http.post(`${this.apiUrl}/add-word`, { word, definition, inflection }, {headers});
   }
 
   getVocabList(): Observable<any[]> {

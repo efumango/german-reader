@@ -22,7 +22,7 @@ export class DefinitionPopUpComponent {
   constructor(private vocabService: VocabService) {}
 
   addWordToVocabList(item: any): void {
-    this.vocabService.addWord(item.word, item.definition).subscribe({
+    this.vocabService.addWord(item.word, item.definition, item.inflection).subscribe({
       next: response => {
         console.log('Word added', response);
         item.isAdded = true;

@@ -7,3 +7,4 @@ class UserVocab(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     word = db.Column(db.String(255), db.ForeignKey('dictionary_entry.word'), nullable=False)
     definition = db.Column(db.Text, db.ForeignKey('dictionary_entry.definition'), nullable=False)
+    inflection = db.Column(db.Text, db.ForeignKey('dictionary_entry.inflection'))
