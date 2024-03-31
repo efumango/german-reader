@@ -6,7 +6,8 @@ import { CommonModule } from '@angular/common';
 import { TextSelectionDirective } from '../text-selection.directive';
 import nlp from 'de-compromise';
 import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up.component';
- 
+import { environment } from '../../environments/environment';
+
   @Component({
     selector: 'app-reader',
     standalone: true,
@@ -50,7 +51,7 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
         'Authorization': `Bearer ${this.token}`
       });
     
-      this.http.get(`http://127.0.0.1:5000/api/files/${filename}`, { headers, responseType: 'text' })
+      this.http.get(`${environment.apiUrl}/files/${filename}`, { headers, responseType: 'text' })
         .subscribe({
           next: (content) => {
             // Format the content for display
@@ -83,7 +84,7 @@ import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up
       if (queryString) queryString = `?${queryString}`;
     
       this.loadingPopUp = true;
-      this.http.post(`http://127.0.0.1:5000/api/${endpoint}${queryString}`, payload, { headers })
+      this.http.post(`${environment.apiUrl}/${endpoint}${queryString}`, payload, { headers })
         .subscribe({
           next: (response: any) => {
             console.log('Response from backend:', response);

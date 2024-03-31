@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VocabService {
   token = this.authService.getCurrentUserToken();
-  private apiUrl = 'http://127.0.0.1:5000/api/vocab'
+  private apiUrl = `${environment.apiUrl}/vocab`;
   constructor(private http: HttpClient, private authService: AuthService) { }
   
   addWord(word: string, definition: string, inflection: string): Observable<any> {
@@ -21,7 +22,7 @@ export class VocabService {
   }
 
   getVocabList(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`, {
+    return this.http.get<any[]>(`${this.apiUrl}/show-list-vocab`, {
       headers: { Authorization: `Bearer ${this.token}` }
     });
   }

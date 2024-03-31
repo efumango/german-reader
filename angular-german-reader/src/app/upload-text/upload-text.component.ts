@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-upload-text',
   standalone: true,
@@ -12,6 +14,7 @@ import { RouterModule } from '@angular/router';
 })
 
 export class UploadTextComponent {
+  private apiUrl = `${environment.apiUrl}`
   selectedFile: File | null = null;
   uploadedFiles: string[] = [];
   isUploading: boolean = false; 
@@ -52,7 +55,7 @@ export class UploadTextComponent {
       'Authorization' : `Bearer ${this.token}`
     })
 
-    this.http.post('http://127.0.0.1:5000/api/upload-text', formData, {headers})
+    this.http.post(`${this.apiUrl}/upload-text`, formData, {headers})
       .subscribe({
         next: (response) => {
           this.uploadMessage = 'Upload successful!';
@@ -72,7 +75,7 @@ export class UploadTextComponent {
       'Authorization' : `Bearer ${this.token}`
     })
 
-    this.http.get<string[]>('http://127.0.0.1:5000/api/files', {headers})
+    this.http.get<string[]>(`${this.apiUrl}/files`, {headers})
       .subscribe({
         next: (files) => {
           this.uploadedFiles = files;
@@ -90,7 +93,7 @@ export class UploadTextComponent {
       'Authorization' : `Bearer ${this.token}`
     })
     
-    this.http.post('http://127.0.0.1:5000/api/delete_file', {filename}, {headers})
+    this.http.post(`${this.apiUrl}/delete-file`, {filename}, {headers})
       .subscribe({
         next: (response) => {
           console.log('File deleted successfully', response);

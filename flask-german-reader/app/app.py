@@ -18,7 +18,7 @@ def create_app():
     jwt.init_app(app)
 
     from app.auth import auth_blueprint
-    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    app.register_blueprint(auth_blueprint, url_prefix='/api/auth')
 
     from app.dict.routes import dictionary_bp
     app.register_blueprint(dictionary_bp, url_prefix='/api')
@@ -30,7 +30,7 @@ def create_app():
     app.register_blueprint(lookup_bp, url_prefix='/api')
     
     from app.vocab.routes import vocab_bp
-    app.register_blueprint(vocab_bp, url_prefix='/api')
+    app.register_blueprint(vocab_bp, url_prefix='/api/vocab')
     
     db.init_app(app)
     with app.app_context():

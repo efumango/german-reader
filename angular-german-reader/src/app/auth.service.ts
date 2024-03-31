@@ -3,14 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
   public isLoggedIn: Observable<boolean>;
+  private apiUrl = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient, private router: Router) {
     const storedUser = localStorage.getItem('currentUser');
@@ -35,7 +38,7 @@ export class AuthService {
   }
 
   signup(username: string, password: string) {
-    return this.http.post<any>('http://127.0.0.1:5000/auth/signup', { username, password })
+    return this.http.post<any>(`${this.apiUrl}/signup`, { username, password })
       .pipe(
         catchError(error => {
           console.error('Signup error', error);
@@ -45,7 +48,7 @@ export class AuthService {
   }
   
   login(username: string, password: string) {
-    return this.http.post<any>('http://127.0.0.1:5000/auth/login', { username, password })
+    return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
       .pipe(
         map(response => {
           if (response && response.user && response.user.token) {

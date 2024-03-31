@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from '../auth.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-upload-dictionaries',
@@ -80,7 +81,7 @@ export class UploadDictionariesComponent {
       'Authorization': `Bearer ${token}`
     });
 
-    this.http.post('http://127.0.0.1:5000/api/upload-dictionary', formData,
+    this.http.post(`${environment.apiUrl}/upload-dictionary`, formData,
     {headers, reportProgress: true, observe: 'response'}).subscribe({
       next: (response) => {
         callback();
