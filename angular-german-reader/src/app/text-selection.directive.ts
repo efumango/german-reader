@@ -15,28 +15,39 @@ export class TextSelectionDirective {
   @Output() clickOutsidePopUp: EventEmitter<void> = new EventEmitter<void>();
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  @HostListener('mouseup') onMouseUp() {
-    const selection = window.getSelection();
-    if (!selection || selection.toString().trim() === '') {
-      this.removeButton();
-      return;
-    }
+// Listen for pointerdown, pointermove, and pointerup events
+@HostListener('pointerdown', ['$event']) onPointerDown(event: PointerEvent) {
+  this.handlePointerSelection(event);
+}
 
-    // Get selected text
-    this.selectedText = selection.toString().trim();
-    
-    // Determine the number of words selected
-    const numWords = this.selectedText.split(/\s+/).length;
+@HostListener('pointermove', ['$event']) onPointerMove(event: PointerEvent) {
+  this.handlePointerSelection(event);
+}
 
-    // Clear previous highlights
-    this.clearHighlights();
+@HostListener('pointerup', ['$event']) onPointerUp(event: PointerEvent) {
+  this.handlePointerSelection(event);
+}
 
-    // Highlight selection & create lookup button 
-    this.highlightSelection(selection);
-    this.createButton(selection);
-
+handlePointerSelection(event: PointerEvent) {
+  const selection = window.getSelection();
+  if (!selection || selection.toString().trim() === '') {
+    this.removeButton();
+    return;
   }
 
+  // Get selected text
+  this.selectedText = selection.toString().trim();
+
+  // Determine the number of words selected
+  const numWords = this.selectedText.split(/\s+/).length;
+
+  // Clear previous highlights
+  this.clearHighlights();
+
+  // Highlight selection & create lookup button 
+  this.highlightSelection(selection);
+  this.createButton(selection);
+}
   @HostListener('document:click', ['$event']) onDocumentClick(event: MouseEvent) {
     const popUpElement = document.querySelector('.popup'); // Query for pop-up element 
     // Check if the click is outside the pop-up element 
