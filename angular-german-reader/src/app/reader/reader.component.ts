@@ -141,23 +141,31 @@ import { environment } from '../../environments/environment';
 
     ngAfterViewChecked() {
       if (this.showPopup) {
-        this.adjustPopUpPositionIfNeeded();
+        this.adjustPopUpPosition();
       }
     }
     
-    adjustPopUpPositionIfNeeded() {
+    adjustPopUpPosition() {
       requestAnimationFrame(() => { 
           const popUpElement = document.querySelector('.popup') as HTMLElement; 
           if (!popUpElement) return;
   
           const popUpRect = popUpElement.getBoundingClientRect();
-          let { y } = this.popupPosition; 
+          let { x, y } = this.popupPosition; 
   
           if (y + popUpRect.height > window.innerHeight) {
               // The pop-up overflows the viewport, adjust it upwards
               y -= (y + popUpRect.height - window.innerHeight + 10); // 10px for a small buffer
           }
-  
+          
+          // Adjust X if the popup overflows the viewport horizontally
+          if (x + popUpRect.width / 2 > window.innerWidth) {
+            x -= (x + popUpRect.width / 2 - window.innerWidth + 10); // Adjust if overflows to the right
+          } else if (x - popUpRect.width / 2 < 0) {
+              x += Math.abs(x - popUpRect.width / 2) + 10; // Adjust if overflows to the left
+          }
+          
+          popUpElement.style.left = `${x}px`;
           popUpElement.style.top = `${y}px`;
       });
     }
