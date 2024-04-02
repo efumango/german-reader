@@ -1,0 +1,96 @@
+// Define the color palette
+$color-cream: #FEFAE0;
+$color-sand: #EFDCAC;
+$color-terracotta: #D4A373;
+$color-ochre: #BC6C25;
+$color-olive: #606C38;
+$color-forest: #45462A;
+
+// Reset some default styles
+body, h1, p, button {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+// Apply the color scheme
+body {
+    color: $color-forest;
+    background-color: $color-cream;
+}
+
+header {
+    background-color: $color-olive;
+    color: $color-cream;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column; // Stack navbar items vertically on smaller screens
+        align-items: center;
+    
+        .logo-container {
+          margin-bottom: 5px; // Add space between the logo container and the button container
+        }
+      }
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    .brand-name {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+}
+
+.logo {
+    width: 50px; // Adjust size as needed
+    margin-right: 10px;
+}
+
+.nav-buttons {
+    button {
+        background-color: $color-terracotta;
+        color: $color-cream;
+        padding: 10px 20px;
+        margin-left: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $color-ochre;
+        }
+
+        &.logout-button {
+            background-color: $color-forest;
+        }
+        
+    }
+
+     // Mobile view
+     @media (max-width: 768px) {
+        display: flex; // Use flexbox to align buttons
+        justify-content: center; // Center buttons horizontally within the nav-buttons container
+        flex-wrap: wrap; // Allow buttons to wrap if they don't fit in a single row
+
+        button {
+            margin: 5px; // Adds margin around the buttons for spacing
+        }
+    }
+}
+
+
