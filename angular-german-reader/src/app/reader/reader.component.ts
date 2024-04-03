@@ -118,6 +118,7 @@ import { environment } from '../../environments/environment';
           definition: item.definition,
           queried_word: item.queried_word,
           inflection: item.inflection,
+          source: item.source,
           isWord: true,
           isAdded: false
         }));

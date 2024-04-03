@@ -57,7 +57,7 @@ def query_word_in_dict(raw_text, user_identity, limit):
     for pattern in search_patterns:
         query = db.session.execute(
             text(
-                "SELECT de.word, de.original_form, de.definition, de.inflection FROM dictionary_entry de "
+                "SELECT de.word, de.original_form, de.definition, de.inflection, de.source FROM dictionary_entry de "
                 "LEFT JOIN user_dictionary_mapping udm ON de.id = udm.entry_id AND udm.user_id = :user_id "
                 "WHERE de.word LIKE :pattern "
                 "AND (de.source = 'prepared' OR (de.source = 'custom' AND udm.user_id IS NOT NULL)) "
@@ -76,7 +76,7 @@ def query_word_in_dict(raw_text, user_identity, limit):
 
     if all_entries:
         results = [
-            {'queried_word': raw_text, 'word': entry[0], 'original_form': entry[1], 'definition': entry[2], 'inflection': entry[3]}
+            {'queried_word': raw_text, 'word': entry[0], 'original_form': entry[1], 'definition': entry[2], 'inflection': entry[3], 'source': entry[4]}
             for entry in all_entries
         ]
         return results 

@@ -15,7 +15,7 @@ body, h1, p, button {
 
 // Apply the color scheme
 body {
-    color: $color-forest;
+    //color: $color-forest;
     background-color: $color-cream;
 }
 
@@ -26,6 +26,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px; 
 }
 
 .navbar {
@@ -58,7 +59,7 @@ header {
 }
 
 .logo {
-    width: 50px; // Adjust size as needed
+    width: 50px; 
     margin-right: 10px;
 }
 
@@ -88,7 +89,7 @@ header {
         flex-wrap: wrap; // Allow buttons to wrap if they don't fit in a single row
 
         button {
-            margin: 5px; // Adds margin around the buttons for spacing
+            margin: 5px; 
         }
     }
 }
