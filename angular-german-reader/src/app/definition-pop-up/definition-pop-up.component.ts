@@ -1,12 +1,13 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VocabService } from '../vocab.service';
 import { FormsModule } from '@angular/forms';
+import { TextSelectionDirective } from '../text-selection.directive';
 
 @Component({
   selector: 'app-definition-pop-up',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule, TextSelectionDirective],
   templateUrl: './definition-pop-up.component.html',
   styleUrl: './definition-pop-up.component.css'
 })
@@ -21,6 +22,10 @@ export class DefinitionPopUpComponent {
   @Input() searchQuery: string = '';
   @Output() searchAllClicked: EventEmitter<string> = new EventEmitter<string>();
   
+  @ViewChild(TextSelectionDirective) textSelectionDirective!: TextSelectionDirective;
+
+  private sentenceContainingWord: string = '';
+
   constructor(private vocabService: VocabService) {
   }
 
@@ -36,7 +41,10 @@ export class DefinitionPopUpComponent {
   }
   
   addWordToVocabList(item: any): void {
-    this.vocabService.addWord(item.word, item.definition, item.inflection).subscribe({
+    const sentence = this.textSelectionDirective.getLastSelectedSentence();
+    // Update the sentenceContainingWord only if a new sentence is available
+    this.sentenceContainingWord = sentence !== null ? sentence : '';
+    this.vocabService.addWord(item.word, item.definition, item.inflection, this.sentenceContainingWord).subscribe({
       next: response => {
         console.log('Word added', response);
         item.isAdded = true;

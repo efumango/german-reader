@@ -10,10 +10,13 @@ export class TextSelectionDirective {
   private selectedText: string = '';
   private button: HTMLElement | null = null;
   private removeClickListener: Function | null = null;
+  private lastSelectedSentence: string | null = null;
+
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
   @Output() popUpPosition: EventEmitter<{ x: number, y: number}> = new EventEmitter<{ x: number, y: number }>();
   @Output() clickOutsidePopUp: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   // Listen for pointerdown, pointermove, and pointerup events
@@ -38,6 +41,9 @@ export class TextSelectionDirective {
 
     // Get selected text
     this.selectedText = selection.toString().trim();
+
+    // Get sentence that contains selected text 
+    this.lastSelectedSentence = this.getSentenceContainingWord(this.selectedText);
 
     // Determine the number of words selected
     const numWords = this.selectedText.split(/\s+/).length;
@@ -201,6 +207,10 @@ export class TextSelectionDirective {
     }
   
     return null; // Return null if no sentence is found
+  }
+
+  public getLastSelectedSentence(): string | null {
+    return this.lastSelectedSentence;
   }
   
   // Helper method to calculate the selection's start offset relative to the paragraph

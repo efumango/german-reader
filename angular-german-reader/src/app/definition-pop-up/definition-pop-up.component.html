@@ -1,4 +1,4 @@
-<div *ngIf="visible" class="popup" [style.top.px]="position.y" [style.left.px]="position.x">
+<div appTextSelection *ngIf="visible" class="popup" [style.top.px]="position.y" [style.left.px]="position.x">
   <div class="search-container">
     <input type="text" [(ngModel)]="searchQuery" placeholder="Show all results" (keydown.enter)="searchAll()" #searchInput>
     <button (click)="searchAll()">Show all</button>
@@ -13,7 +13,7 @@
         {{ item.word }}: {{ item.definition }}
         <button *ngIf="item.inflection" (click)="item.showMore = !item.showMore">See more</button>
         <!-- Add word button -->
-        <button *ngIf="item.isWord && !item.isAdded" (click)="addWordToVocabList(item)">+</button>
+        <button *ngIf="item.isWord && !item.isAdded" (click)="addWordToVocabList(item)">Add word</button>
         <!-- Inflection displayed with line breaks on 'See more' toggle -->
         <div *ngIf="item.showMore" [innerHTML]="formatInflection(item.inflection)"></div>
       </div>

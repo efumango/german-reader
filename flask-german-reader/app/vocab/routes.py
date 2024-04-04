@@ -10,7 +10,7 @@ vocab_bp = Blueprint('vocab_bp', __name__)
 def add_word():
     data = request.get_json()
     user_identity = get_jwt_identity()
-    new_word = UserVocab(user_id=user_identity, word=data['word'], definition=data['definition'], inflection=data['inflection'])
+    new_word = UserVocab(user_id=user_identity, word=data['word'], definition=data['definition'], inflection=data['inflection'], sentence=data['sentence'])
     db.session.add(new_word)
     db.session.commit()
     return jsonify({"success": True, "response": "Word added"}), 201
@@ -20,7 +20,7 @@ def add_word():
 def get_vocab():
     user_identity = get_jwt_identity()
     words = UserVocab.query.filter_by(user_id=user_identity).all()
-    return jsonify([{'id': word.id, 'word': word.word, 'definition': word.definition, 'inflection': word.inflection} for word in words])
+    return jsonify([{'id': word.id, 'word': word.word, 'definition': word.definition, 'inflection': word.inflection, 'sentence': word.sentence} for word in words])
 
 @vocab_bp.route('/deduplicate', methods=['POST'])
 @jwt_required()
