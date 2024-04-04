@@ -26,3 +26,22 @@
 .popup div:last-child {
   border-bottom: none;
 }
+
+.section {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.prepared-section {
+  background-color: #f0f8ff; /* Light blue background for the prepared section */
+}
+
+.custom-section {
+  background-color: #fff0f5; /* Light pink background for the custom section */
+}
+
+.section h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}

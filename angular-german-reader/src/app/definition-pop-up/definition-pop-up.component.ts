@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VocabService } from '../vocab.service';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class DefinitionPopUpComponent {
   @Input() data: any[] = [];
+  preparedItems: any[] = [];
+  customItems: any[] = [];
   @Input() position: { x: number, y: number } = { x: 0, y: 0 };
   @Input() loading: boolean = true;
   @Input() visible: boolean = false;
@@ -19,8 +21,20 @@ export class DefinitionPopUpComponent {
   @Input() searchQuery: string = '';
   @Output() searchAllClicked: EventEmitter<string> = new EventEmitter<string>();
   
-  constructor(private vocabService: VocabService) {}
+  constructor(private vocabService: VocabService) {
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data']) {
+      this.filterData();
+    }
+  }
+
+  private filterData(): void {
+    this.preparedItems = this.data.filter(item => item.source === 'prepared');
+    this.customItems = this.data.filter(item => item.source !== 'prepared');
+  }
+  
   addWordToVocabList(item: any): void {
     this.vocabService.addWord(item.word, item.definition, item.inflection).subscribe({
       next: response => {
