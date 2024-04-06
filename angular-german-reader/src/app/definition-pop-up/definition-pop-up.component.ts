@@ -24,7 +24,7 @@ export class DefinitionPopUpComponent {
   
   @ViewChild(TextSelectionDirective) textSelectionDirective!: TextSelectionDirective;
 
-  private sentenceContainingWord: string = '';
+  context: string = '';
 
   constructor(private vocabService: VocabService) {
   }
@@ -42,9 +42,10 @@ export class DefinitionPopUpComponent {
   
   addWordToVocabList(item: any): void {
     const sentence = this.textSelectionDirective.getLastSelectedSentence();
-    // Update the sentenceContainingWord only if a new sentence is available
-    this.sentenceContainingWord = sentence !== null ? sentence : '';
-    this.vocabService.addWord(item.word, item.definition, item.inflection, this.sentenceContainingWord).subscribe({
+    const selectedText = this.textSelectionDirective.getSelectedText();
+    const context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence!, selectedText, 5, 5);
+
+    this.vocabService.addWord(item.word, item.definition, item.inflection, context).subscribe({
       next: response => {
         console.log('Word added', response);
         item.isAdded = true;

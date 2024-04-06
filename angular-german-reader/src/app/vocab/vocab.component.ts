@@ -90,7 +90,6 @@ export class VocabComponent {
 }
 
   
-
   selectAllToggle: boolean = false;
 
   selectAll() {
@@ -105,19 +104,31 @@ export class VocabComponent {
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = true;
   }
 
-  saveVocab(vocab: any, field: string, event?: Event) {
-    if (event) {
-      event.preventDefault();
-    }
+  saveVocab(vocab: any, field: string) {
+    vocab.modified = true;
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false;
-    this.vocabService.updateVocab(vocab).subscribe({
-      next: (response) => {
-        console.log('Word updated.')
-      },
-      error: (error) => {
-        console.error('Error updating vocab:', error);
-      }
-    });
   }
+
+  saveAllChanges(): void {
+    const modifiedVocabs = this.vocabList.filter(vocab => vocab.modified);
+    if (modifiedVocabs.length > 0) {
+      this.vocabService.saveModifiedVocabs(modifiedVocabs).subscribe({
+        next: (response) => {
+          // Handle successful save
+          // Clear the modified flag for all processed items
+          modifiedVocabs.forEach(vocab => vocab.modified = false);
+          alert('Changes saved successfully');
+        },
+        error: (error) => {
+          // Handle save error
+          console.error('Error saving changes:', error);
+          alert('Failed to save changes');
+        }
+      });
+    } else {
+      alert('No changes to save');
+    }
+  }
+  
 
 }

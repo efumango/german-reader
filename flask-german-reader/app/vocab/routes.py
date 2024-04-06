@@ -72,25 +72,30 @@ def delete_words():
         db.session.rollback()
         return jsonify({"error": "An error occurred during deletion", "details": str(e)}), 500
 
-@vocab_bp.route('/<int:vocab_id>', methods=['PUT'])
-@jwt_required()
-def update_vocab(vocab_id):
+@vocab_bp.route('/update', methods=['PUT'])
+@jwt_required()  
+def update_vocab_batch():
+    data = request.get_json()
     user_identity = get_jwt_identity()
-    data = request.json
-    vocab = UserVocab.query.filter_by(id=vocab_id, user_id=user_identity).first()
 
-    if not vocab:
-        return jsonify({'message': 'Vocab not found'}), 404
-
-    # Update vocab fields if provided in the request
-    vocab.word = data.get('word', vocab.word)
-    vocab.definition = data.get('definition', vocab.definition)
-    vocab.inflection = data.get('inflection', vocab.inflection)
-    vocab.sentence = data.get('sentence', vocab.sentence)
+    if not data:
+        return jsonify({'message': 'No data provided'}), 400
 
     try:
+        for item in data:
+            vocab_id = item.get('id')
+            vocab = UserVocab.query.filter_by(id=vocab_id, user_id=user_identity).first()
+            
+            if not vocab:
+                continue  # Skip items that don't exist in the database
+
+            vocab.word = item.get('word', vocab.word)
+            vocab.definition = item.get('definition', vocab.definition)
+            vocab.inflection = item.get('inflection', vocab.inflection)
+            vocab.sentence = item.get('sentence', vocab.sentence)
+        
         db.session.commit()
-        return jsonify({'message': 'Vocab updated successfully'}), 200
+        return jsonify({'message': 'Vocabulary items updated successfully'}), 200
     except Exception as e:
         db.session.rollback()
-        return jsonify({'message': 'Error updating vocab', 'error': str(e)}), 500
+        return jsonify({'message': 'Failed to update vocabulary items', 'error': str(e)}), 500

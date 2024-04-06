@@ -209,6 +209,10 @@ export class TextSelectionDirective {
     return null; // Return null if no sentence is found
   }
 
+  public getSelectedText(): string {
+     return this.selectedText;
+  }
+
   public getLastSelectedSentence(): string | null {
     return this.lastSelectedSentence;
   }
@@ -221,7 +225,7 @@ export class TextSelectionDirective {
     return preRange.toString().length;
   }
   
-  private trimSentenceAroundSelectedWord(sentence: string, selectedWord: string, beforeWords: number, afterWords: number): string {
+  public trimSentenceAroundSelectedWord(sentence: string, selectedWord: string, beforeWords: number, afterWords: number): string {
     const words = sentence.split(/\s+/);
     let selectedIndex = words.findIndex(word => new RegExp(`\\b${selectedWord}\\b`, 'i').test(word));
 
@@ -232,6 +236,28 @@ export class TextSelectionDirective {
     return words.slice(start, end).join(' ');
   }
 
+  public trimSentenceWithEllipsis(sentence: string, selectedWord: string, beforeWords: number, afterWords: number): string {
+    const words = sentence.split(/\s+/);
+    let selectedIndex = words.findIndex(word => new RegExp(`\\b${selectedWord}\\b`, 'i').test(word));
+  
+    if (selectedIndex === -1) return sentence;
+    
+    const start = Math.max(0, selectedIndex - beforeWords);
+    const end = Math.min(words.length, selectedIndex + afterWords + 1);
+    
+    // Building the resulting sentence with ellipses if necessary
+    let result = '';
+    if (start > 0) {
+      result += '... ';
+    }
+    result += words.slice(start, end).join(' ');
+    if (end < words.length) {
+      result += ' ...';
+    }
+    
+    return result;
+  }
+  
   // List of separable verb prefixes
   private separableVerbPrefixes: string[] = [
     'ab', 'an', 'auf', 'aus', 'auseinander', 'bei', 'da', 'dabei', 'dar', 'daran',

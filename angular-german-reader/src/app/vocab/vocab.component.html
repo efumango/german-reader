@@ -6,7 +6,7 @@
       <th>Word</th>
       <th>Meaning</th>
       <th>Inflection</th>
-      <th>Sentence</th>
+      <th>Context</th>
     </tr>
   </thead>
   <tbody>
@@ -14,43 +14,39 @@
       <td><input type="checkbox" [(ngModel)]="vocab.selected" /></td>
       <td (click)="enableEdit(vocab, 'word')">
         <span *ngIf="!vocab.isEditingWord">{{ vocab.word }}</span>
-        <input type="text"
+        <textarea
           *ngIf="vocab.isEditingWord"
           [(ngModel)]="vocab.word"
           (blur)="saveVocab(vocab, 'word')"
-          (keyup.enter)="saveVocab(vocab, 'word', $event)"
-        />
+          rows="1"></textarea>
       </td>
       <td (click)="enableEdit(vocab, 'definition')">
         <span *ngIf="!vocab.isEditingDefinition">{{ vocab.definition }}</span>
-        <input type="text"
+        <textarea
           *ngIf="vocab.isEditingDefinition"
           [(ngModel)]="vocab.definition"
           (blur)="saveVocab(vocab, 'definition')"
-          (keyup.enter)="saveVocab(vocab, 'definition', $event)"
-        />
+          rows="1"></textarea>
       </td>
       <td (click)="enableEdit(vocab, 'inflection')">
         <span *ngIf="!vocab.isEditingInflection">{{ vocab.inflection }}</span>
-        <input type="text"
+        <textarea
           *ngIf="vocab.isEditingInflection"
           [(ngModel)]="vocab.inflection"
           (blur)="saveVocab(vocab, 'inflection')"
-          (keyup.enter)="saveVocab(vocab, 'inflection', $event)"
-        />
+          rows="1"></textarea>
       </td>
       <td (click)="enableEdit(vocab, 'sentence')">
         <span *ngIf="!vocab.isEditingSentence">{{ vocab.sentence }}</span>
-        <input type="text"
-          *ngIf="vocab.isEditingSentence"
-          [(ngModel)]="vocab.sentence"
-          (blur)="saveVocab(vocab, 'sentence')"
-          (keyup.enter)="saveVocab(vocab, 'sentence', $event)"
-        />
-      </td>
+        <textarea *ngIf="vocab.isEditingSentence" 
+        [(ngModel)]="vocab.sentence" 
+        (blur)="saveVocab(vocab, 'sentence')"
+        rows="2"></textarea>
+      </td>      
     </tr>
   </tbody>
 </table>
 <button (click)="deleteSelected()">Delete Selected</button>
 <button (click)="deduplicate()">Deduplicate</button>
 <button (click)="exportToCSV()">Export to CSV</button>
+<button (click)="saveAllChanges()">Save Changes</button>

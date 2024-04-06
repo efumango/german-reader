@@ -39,9 +39,9 @@ export class VocabService {
     });
   }
 
-  updateVocab(vocab: any): Observable<any> {
-    const url = `${this.apiUrl}/${vocab.id}`;
-    return this.http.put(url, vocab, {
+  saveModifiedVocabs(modifiedVocabs: any[]): Observable<any> {
+    // Replace with your actual endpoint and adjust HTTP method as needed
+    return this.http.put( `${this.apiUrl}/update`, modifiedVocabs, {
       headers: { Authorization: `Bearer ${this.token}` }
     });
   }
