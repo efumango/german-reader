@@ -67,21 +67,28 @@ export class VocabComponent {
   exportToCSV() {
     // Filter for selected items only
     const selectedItems = this.vocabList.filter(vocab => vocab.selected);
-  
+
     // Proceed only if there are selected items
     if (selectedItems.length > 0) {
-      const data = selectedItems.map(({ word, definition }) => `"${word}","${definition}"`).join('\n');
-      const utf8BOM = "\uFEFF"; // UTF-8 Byte Order Mark
-      const blob = new Blob([utf8BOM + data], { type: 'text/csv;charset=utf-8;' });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'selected-vocab-list.csv';  
-      a.click();
+        const data = selectedItems.map(({ word, definition, inflection, sentence }) => {
+            const csvWord = `"${word.replace(/"/g, '""')}"`;
+            const csvDefinition = `"${definition.replace(/"/g, '""')}"`;
+            const csvInflection = `"${inflection ? inflection.replace(/"/g, '""') : ''}"`;
+            const csvSentence = `"${sentence.replace(/"/g, '""')}"`;
+            return [csvWord, csvDefinition, csvInflection, csvSentence].join(',');
+        }).join('\n');
+        const utf8BOM = "\uFEFF"; // UTF-8 Byte Order Mark
+        const blob = new Blob([utf8BOM + data], { type: 'text/csv;charset=utf-8;' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'selected-vocab-list.csv';  
+        a.click();
     } else {
-      alert('No items selected for export.');
+        alert('No items selected for export.');
     }
-  }
+}
+
   
 
   selectAllToggle: boolean = false;
@@ -91,5 +98,26 @@ export class VocabComponent {
   this.vocabList.forEach(vocab => vocab.selected = this.selectAllToggle);
 }
 
+  enableEdit(vocab: any, field: string) {
+    this.vocabList.forEach(v => {
+      v[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false; // Reset editing state
+    });
+    vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = true;
+  }
+
+  saveVocab(vocab: any, field: string, event?: Event) {
+    if (event) {
+      event.preventDefault();
+    }
+    vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false;
+    this.vocabService.updateVocab(vocab).subscribe({
+      next: (response) => {
+        console.log('Word updated.')
+      },
+      error: (error) => {
+        console.error('Error updating vocab:', error);
+      }
+    });
+  }
 
 }

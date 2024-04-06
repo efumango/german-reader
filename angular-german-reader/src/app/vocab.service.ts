@@ -38,4 +38,11 @@ export class VocabService {
       headers: { Authorization: `Bearer ${this.token}` }
     });
   }
+
+  updateVocab(vocab: any): Observable<any> {
+    const url = `${this.apiUrl}/${vocab.id}`;
+    return this.http.put(url, vocab, {
+      headers: { Authorization: `Bearer ${this.token}` }
+    });
+  }
 }

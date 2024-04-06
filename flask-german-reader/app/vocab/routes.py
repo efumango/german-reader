@@ -71,3 +71,26 @@ def delete_words():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": "An error occurred during deletion", "details": str(e)}), 500
+
+@vocab_bp.route('/<int:vocab_id>', methods=['PUT'])
+@jwt_required()
+def update_vocab(vocab_id):
+    user_identity = get_jwt_identity()
+    data = request.json
+    vocab = UserVocab.query.filter_by(id=vocab_id, user_id=user_identity).first()
+
+    if not vocab:
+        return jsonify({'message': 'Vocab not found'}), 404
+
+    # Update vocab fields if provided in the request
+    vocab.word = data.get('word', vocab.word)
+    vocab.definition = data.get('definition', vocab.definition)
+    vocab.inflection = data.get('inflection', vocab.inflection)
+    vocab.sentence = data.get('sentence', vocab.sentence)
+
+    try:
+        db.session.commit()
+        return jsonify({'message': 'Vocab updated successfully'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'message': 'Error updating vocab', 'error': str(e)}), 500
