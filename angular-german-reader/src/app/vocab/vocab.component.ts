@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class VocabComponent {
   vocabList: any[] = [];
+  editingState: { id: string | null, field: string | null } = { id: null, field: null };
 
   constructor(private vocabService: VocabService){ }
   
@@ -98,15 +99,29 @@ export class VocabComponent {
 }
 
   enableEdit(vocab: any, field: string) {
+    // Check if we are already editing another field
+    if (this.editingState.id !== null && (this.editingState.id !== vocab.id || this.editingState.field !== field)) {
+        console.log("Finish editing the current field before moving to another.");
+        return;
+    }
+
+    this.editingState = { id: vocab.id, field }; 
+
+    // Reset editing state for all items and fields
     this.vocabList.forEach(v => {
-      v[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false; // Reset editing state
+        ['Word', 'Definition', 'Inflection', 'Sentence'].forEach(f => {
+            v[`isEditing${f}`] = false; 
+        });
     });
+
+    // Enable editing for the selected item and field
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = true;
-  }
+}
 
   saveVocab(vocab: any, field: string) {
     vocab.modified = true;
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false;
+    this.editingState = { id: null, field: null }; 
   }
 
   saveAllChanges(): void {
@@ -114,7 +129,6 @@ export class VocabComponent {
     if (modifiedVocabs.length > 0) {
       this.vocabService.saveModifiedVocabs(modifiedVocabs).subscribe({
         next: (response) => {
-          // Handle successful save
           // Clear the modified flag for all processed items
           modifiedVocabs.forEach(vocab => vocab.modified = false);
           alert('Changes saved successfully');
