@@ -5,7 +5,6 @@
       <th>Select</th>
       <th>Word</th>
       <th>Meaning</th>
-      <th>Inflection</th>
       <th>Context</th>
     </tr>
   </thead>
@@ -28,14 +27,7 @@
           (blur)="saveVocab(vocab, 'definition')"
           rows="1"></textarea>
       </td>
-      <td (click)="enableEdit(vocab, 'inflection')">
-        <span *ngIf="!vocab.isEditingInflection">{{ vocab.inflection }}</span>
-        <textarea
-          *ngIf="vocab.isEditingInflection"
-          [(ngModel)]="vocab.inflection"
-          (blur)="saveVocab(vocab, 'inflection')"
-          rows="1"></textarea>
-      </td>
+  
       <td (click)="enableEdit(vocab, 'sentence')">
         <span *ngIf="!vocab.isEditingSentence">{{ vocab.sentence }}</span>
         <textarea *ngIf="vocab.isEditingSentence" 
