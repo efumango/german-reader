@@ -3,7 +3,7 @@ $color-cream: #FEFAE0;
 $color-sand: #EFDCAC;
 $color-terracotta: #D4A373;
 $color-ochre: #BC6C25;
-$color-olive: #606C38;
+$color-olive: #5e6d2e;
 $color-forest: #45462A;
 
 // Reset some default styles
@@ -15,83 +15,87 @@ body, h1, p, button {
 
 // Apply the color scheme
 body {
-    //color: $color-forest;
     background-color: $color-cream;
 }
 
 header {
     background-color: $color-olive;
     color: $color-cream;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px; 
+    padding: 0.25rem 0;
+    border-radius: 5px; 
 }
 
 .navbar {
-    width: 100%;
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 70%;
+    margin: 0 auto; // This centers the navbar
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media (max-width: 768px) {
-        flex-direction: column; // Stack navbar items vertically on smaller screens
-        align-items: center;
-    
-        .logo-container {
-          margin-bottom: 5px; // Add space between the logo container and the button container
-        }
-      }
+    flex-direction: column;
+    align-items: flex-start; // Align items to the start (left side)
 }
 
+.top-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
 .logo-container {
     display: flex;
     align-items: center;
     .brand-name {
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        margin: 5px;
     }
 }
 
-.logo {
-    width: 50px; 
-    margin-right: 10px;
+.nav-tabs {
+    display: flex; // Display flex to allow for inline layout of tabs
+    gap: 10px; // Adds space between the tabs
+    padding-top: 0.25rem; // Adds space between the brand name and tabs
+    margin-left: 5px;
+}
+
+.tab {
+    background-color: $color-terracotta;
+    padding: 5px 10px;
+    margin-bottom: 0.5rem; 
+    text-decoration: none; // Removes the underline from links
+    color: $color-cream;
+    font-weight: bold;
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: $color-ochre; // Changes color on hover
+    }
 }
 
 .nav-buttons {
+    display: flex;
+    align-items: center;
+    margin: 5px;
     button {
-        background-color: $color-terracotta;
-        color: $color-cream;
+        background-color: $color-sand;
+        color: $color-forest;
         padding: 10px 20px;
-        margin-left: 10px;
-        cursor: pointer;
+        margin: 2.5px;
+        border-radius: 5px; // Adds rounded corners to the button
         transition: background-color 0.3s ease;
-
+        cursor: pointer;
         &:hover {
             background-color: $color-ochre;
         }
-
         &.logout-button {
             background-color: $color-forest;
-        }
-        
-    }
-
-     // Mobile view
-     @media (max-width: 768px) {
-        display: flex; // Use flexbox to align buttons
-        justify-content: center; // Center buttons horizontally within the nav-buttons container
-        flex-wrap: wrap; // Allow buttons to wrap if they don't fit in a single row
-
-        button {
-            margin: 5px; 
+            color: $color-cream;
         }
     }
 }
 
-
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        width:100%;
+    }
+}

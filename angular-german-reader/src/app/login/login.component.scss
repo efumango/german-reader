@@ -1,0 +1,75 @@
+$color-cream: #FEFAE0;
+$color-sand: #EFDCAC;
+$color-terracotta: #D4A373;
+$color-ochre: #BC6C25;
+$color-olive: #5e6d2e;
+$color-forest: #45462A;
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $color-cream;
+  }
+  
+  .login-form {
+    background-color: $color-sand;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid $color-terracotta;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: $color-olive;
+  }
+  
+  .login-button {
+    background-color: $color-terracotta;
+    color: $color-cream;
+    border: none;
+    padding: 0.75rem;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  
+    &:hover {
+      background-color: $color-ochre;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-form {
+      padding: 1.5rem;
+      border-radius: 5px;
+    }
+  
+    input[type="text"],
+    input[type="password"] {
+      padding: 0.5rem;
+    }
+  
+    .login-button {
+      padding: 0.5rem;
+    }
+  }
+  

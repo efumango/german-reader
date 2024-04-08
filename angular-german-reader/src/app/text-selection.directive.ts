@@ -236,27 +236,33 @@ export class TextSelectionDirective {
     return words.slice(start, end).join(' ');
   }
 
-  public trimSentenceWithEllipsis(sentence: string, selectedWord: string, beforeWords: number, afterWords: number): string {
+  public trimSentenceWithEllipsis(sentence: string, selectedPhrase: string, beforeWords: number, afterWords: number): string {
     const words = sentence.split(/\s+/);
-    let selectedIndex = words.findIndex(word => new RegExp(`\\b${selectedWord}\\b`, 'i').test(word));
-  
-    if (selectedIndex === -1) return sentence;
-    
-    const start = Math.max(0, selectedIndex - beforeWords);
-    const end = Math.min(words.length, selectedIndex + afterWords + 1);
-    
+    // Find the starting index of the selectedPhrase in the sentence
+    const phraseStartIndex = sentence.toLowerCase().indexOf(selectedPhrase.toLowerCase());
+    if (phraseStartIndex === -1) return sentence; // If phrase not found, return original sentence
+
+    // Convert the start index of the phrase to a word index
+    const wordsBeforePhrase = sentence.substring(0, phraseStartIndex).split(/\s+/).length - 1;
+
+    // Calculate the start and end indexes for slicing the words array
+    const start = Math.max(0, wordsBeforePhrase - beforeWords);
+    const phraseWordCount = selectedPhrase.split(/\s+/).length;
+    const end = Math.min(words.length, wordsBeforePhrase + phraseWordCount + afterWords);
+
     // Building the resulting sentence with ellipses if necessary
     let result = '';
     if (start > 0) {
-      result += '... ';
+        result += '... ';
     }
     result += words.slice(start, end).join(' ');
     if (end < words.length) {
-      result += ' ...';
+        result += ' ...';
     }
     
     return result;
-  }
+}
+
   
   // List of separable verb prefixes
   private separableVerbPrefixes: string[] = [

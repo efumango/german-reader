@@ -23,7 +23,11 @@ bootstrapApplication(AppComponent, {
       { path: '', redirectTo: '/welcome', pathMatch: 'full' }, // Redirect empty path to /welcome
       { path: 'dashboard', loadComponent: () => import('./app/dashboard/dashboard.component').then(m => m.DashboardComponent), canActivate: [AuthGuard.canActivate] },
       { path: 'reader/:filename', loadComponent: () => import('./app/reader/reader.component').then(m=>m.ReaderComponent),canActivate: [AuthGuard.canActivate]},
-      { path: 'vocab', loadComponent: () => import('./app/vocab/vocab.component').then(m=>m.VocabComponent), canActivate: [AuthGuard.canActivate] }
+      { path: 'vocab', loadComponent: () => import('./app/vocab/vocab.component').then(m=>m.VocabComponent), canActivate: [AuthGuard.canActivate] },
+      { path: 'text', loadComponent: () => import('./app/upload-text/upload-text.component').then(m=>m.UploadTextComponent), canActivate: [AuthGuard.canActivate] },
+      { path: 'dictionary', loadComponent: () => import('./app/upload-dictionaries/upload-dictionaries.component').then(m=>m.UploadDictionariesComponent), canActivate: [AuthGuard.canActivate] }
+
+
     ])),
   ],
 }).catch(err => console.error(err));

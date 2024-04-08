@@ -1,13 +1,20 @@
 <header>
   <nav class="navbar">
-    <div class="logo-container">
-      <!-- <img src="assets/3.png" alt="GermanReader Logo" class="logo"> -->
-      <span class="brand-name">GermanReader</span>
+    <div class="top-row">
+      <div class="logo-container">
+        <!-- <img src="assets/logo.png" alt="GermanReader Logo" class="logo"> -->
+        <span class="brand-name">GermanReader</span>
+      </div>
+      <div class="nav-buttons">
+        <button *ngIf="!isLoggedIn" routerLink="/login" class="login-button">Login</button>
+        <button *ngIf="!isLoggedIn" routerLink="/signup" class="signup-button">Signup</button>
+        <button *ngIf="isLoggedIn" (click)="logout()" class="logout-button">Logout</button>
+      </div>
     </div>
-    <div class="nav-buttons">
-      <button *ngIf="!isLoggedIn" routerLink="/login" class="login-button">Login</button>
-      <button *ngIf="!isLoggedIn" routerLink="/signup" class="signup-button">Signup</button>
-      <button *ngIf="isLoggedIn" (click)="logout()" class="logout-button">Logout</button>
+    <div *ngIf="isLoggedIn" class="nav-tabs">
+      <a routerLink="/text" class="tab">Text</a>
+      <a routerLink="/dictionary" class="tab">Dictionary</a>
+      <a routerLink="/vocab" class="tab">Vocabulary</a>
     </div>
   </nav>
 </header>

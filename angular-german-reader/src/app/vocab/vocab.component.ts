@@ -71,12 +71,11 @@ export class VocabComponent {
 
     // Proceed only if there are selected items
     if (selectedItems.length > 0) {
-        const data = selectedItems.map(({ word, definition, inflection, sentence }) => {
+        const data = selectedItems.map(({ word, definition, sentence }) => {
             const csvWord = `"${word.replace(/"/g, '""')}"`;
             const csvDefinition = `"${definition.replace(/"/g, '""')}"`;
-            const csvInflection = `"${inflection ? inflection.replace(/"/g, '""') : ''}"`;
             const csvSentence = `"${sentence.replace(/"/g, '""')}"`;
-            return [csvWord, csvDefinition, csvInflection, csvSentence].join(',');
+            return [csvWord, csvDefinition, csvSentence].join(',');
         }).join('\n');
         const utf8BOM = "\uFEFF"; // UTF-8 Byte Order Mark
         const blob = new Blob([utf8BOM + data], { type: 'text/csv;charset=utf-8;' });

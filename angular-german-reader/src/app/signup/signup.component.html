@@ -1,6 +1,11 @@
-<form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="username" placeholder="Username">
-    <input type="password" formControlName="password" placeholder="Password">
-    <button type="submit">Sign Up</button>
-  </form>
-  
+<div class="signup-container">
+  <form *ngIf="(authService.isLoggedIn | async) === false" [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+    <div class="input-group">  
+      <input type="text" formControlName="username" placeholder="Username">
+    </div>  
+    <div class="input-group">
+      <input type="password" formControlName="password" placeholder="Password">
+    </div> 
+      <button type="submit" class="signup-button">Sign Up</button>
+    </form>
+</div>
