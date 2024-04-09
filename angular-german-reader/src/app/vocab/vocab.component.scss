@@ -1,0 +1,94 @@
+// Define color variables
+$color-cream: #FEFAE0;
+$color-sand: #EFDCAC;
+$color-terracotta: #D4A373;
+$color-ochre: #BC6C25;
+$color-olive: #5e6d2e;
+$color-forest: #45462A;
+
+body {
+  background-color: $color-cream;
+}
+
+.vocab-actions {
+  position: relative;
+  display: inline-block;
+
+  .dropdown-button {
+    background-color: $color-ochre;
+    color: $color-cream;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $color-sand;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    button {
+      color: $color-forest;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+
+      &:hover {
+        background-color: $color-cream;
+      }
+    }
+  }
+
+  &:hover .dropdown-content {
+    display: block;
+  }
+}
+
+button {
+  background-color: $color-terracotta;
+  color: $color-cream;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  &:hover {
+    background-color: darken($color-terracotta, 10%);
+  }
+}
+
+.vocab-list {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: $color-sand;
+  color: $color-forest;
+
+  th, td {
+    border: 1px solid $color-olive;
+    text-align: left;
+    padding: 8px;
+  }
+
+  th {
+    background-color: $color-terracotta;
+  }
+
+  tr:nth-child(even) {
+    background-color: $color-cream;
+  }
+}
+
+.vocab-list textarea {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+  border: 1px solid $color-olive;
+  background-color: $color-cream;
+  color: $color-forest;
+}

@@ -3,19 +3,39 @@ import { VocabService } from '../vocab.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+interface VocabItem {
+  id: number;
+  word: string;
+  definition: string;
+  sentence: string;
+  selected?: boolean; 
+  modified?: boolean;
+  isEditingWord?: boolean;
+  isEditingDefinition?: boolean;
+  isEditingSentence?: boolean;
+  [key: string]: any;
+}
+
 @Component({
   selector: 'app-vocab',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './vocab.component.html',
-  styleUrl: './vocab.component.css'
+  styleUrl: './vocab.component.scss'
 })
 export class VocabComponent {
-  vocabList: any[] = [];
+  vocabList: VocabItem[] = [];
+  currentVocabPage: VocabItem[] = [];
   editingState: { id: string | null, field: string | null } = { id: null, field: null };
+  itemsPerPage = 10;
+  currentPage = 1;
+  totalPages = 0;
+  allSelected = false;
 
-  constructor(private vocabService: VocabService){ }
-  
+  constructor(private vocabService: VocabService){ 
+  }
+
+
   ngOnInit() {
     this.fetchVocabList();
   }
@@ -92,10 +112,10 @@ export class VocabComponent {
   
   selectAllToggle: boolean = false;
 
-  selectAll() {
-  this.selectAllToggle = !this.selectAllToggle;
-  this.vocabList.forEach(vocab => vocab.selected = this.selectAllToggle);
-}
+  toggleAllSelections() {
+    // Ensure only current page items are toggled
+    this.currentVocabPage.forEach(vocab => vocab.selected = this.selectAllToggle);
+  }
 
   enableEdit(vocab: any, field: string) {
     // Check if we are already editing another field

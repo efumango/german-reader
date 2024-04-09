@@ -1,8 +1,19 @@
-<button (click)="selectAll()">Select All / Deselect All</button>
+<div class="vocab-actions">
+  <button class="dropdown-button">Actions &#9660;</button>
+  <div class="dropdown-content">
+    <button (click)="deleteSelected()">Delete Selected</button>
+    <button (click)="deduplicate()">Deduplicate</button>
+    <button (click)="exportToCSV()">Export to CSV</button>
+    <button (click)="saveAllChanges()">Save Changes</button>
+  </div>
+</div>
+
 <table class="vocab-list">
   <thead>
     <tr>
-      <th>Select</th>
+      <th>
+        <input type="checkbox" [(ngModel)]="selectAllToggle" (change)="toggleAllSelections()" />
+      </th>
       <th>Word</th>
       <th>Meaning</th>
       <th>Context</th>
@@ -38,7 +49,3 @@
     </tr>
   </tbody>
 </table>
-<button (click)="deleteSelected()">Delete Selected</button>
-<button (click)="deduplicate()">Deduplicate</button>
-<button (click)="exportToCSV()">Export to CSV</button>
-<button (click)="saveAllChanges()">Save Changes</button>
