@@ -4,21 +4,21 @@ import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
-
+import {FormsModule} from '@angular/forms'
 @Component({
   selector: 'app-upload-text',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,FormsModule],
   templateUrl: './upload-text.component.html',
-  styleUrl: './upload-text.component.css'
+  styleUrl: './upload-text.component.scss'
 })
 
 export class UploadTextComponent {
   private apiUrl = `${environment.apiUrl}`
   selectedFile: File | null = null;
-  uploadedFiles: string[] = [];
-  isUploading: boolean = false; 
+  uploadedFiles: { name: string; selected: boolean }[] = [];  isUploading: boolean = false; 
   uploadMessage: string = ''
+  allSelected: boolean=false;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
   
@@ -33,6 +33,7 @@ export class UploadTextComponent {
       return;
     }
     this.selectedFile = target.files[0];
+    this.onUpload();
   }
 
   token = this.authService.getCurrentUserToken();
@@ -60,6 +61,8 @@ export class UploadTextComponent {
         next: (response) => {
           this.uploadMessage = 'Upload successful!';
           this.isUploading = false; // Upload finished
+
+          this.fetchUploadedFiles();
         },
         error: (error) => {
           this.uploadMessage = 'Upload error. Please try again.';
@@ -78,32 +81,44 @@ export class UploadTextComponent {
     this.http.get<string[]>(`${this.apiUrl}/files`, {headers})
       .subscribe({
         next: (files) => {
-          this.uploadedFiles = files;
-        },
+          this.uploadedFiles = files.map(fileName => ({ name: fileName, selected: false }));        },
         error: (error) => {
           console.error('Failed to fetch uploaded files', error);
         }
     });
   }
 
-  onDelete(filename: string): void{
-    if (!this.token) return; 
+  toggleAllSelections(selectAll: boolean): void {
+    this.uploadedFiles.forEach(file => {
+      file.selected = selectAll;
+    });
+  }
+
+  updateAllSelected(): void {
+    this.allSelected = this.uploadedFiles.every(file => file.selected);
+  }
+  
+  onDeleteSelected(): void {
+    const selectedFiles = this.uploadedFiles.filter(file => file.selected).map(file => file.name);
+    
+    if (!this.token || selectedFiles.length === 0) return;
     
     const headers = new HttpHeaders({
-      'Authorization' : `Bearer ${this.token}`
-    })
-    
-    this.http.post(`${this.apiUrl}/delete-file`, {filename}, {headers})
-      .subscribe({
-        next: (response) => {
-          console.log('File deleted successfully', response);
-          // Refresh the list of uploaded files after deletion
-          this.fetchUploadedFiles(); 
-        },
-        error: (error) => {
-          console.error('File deletion error', error)
-        }
-      }    
-    )
-  }
+      'Authorization': `Bearer ${this.token}`
+    });
+  
+    selectedFiles.forEach(filename => {
+      this.http.post(`${this.apiUrl}/delete-file`, {filename}, {headers})
+        .subscribe({
+          next: (response) => {
+            console.log('File deleted successfully', response);
+            // Remove the deleted file from the uploadedFiles list
+            this.uploadedFiles = this.uploadedFiles.filter(file => !selectedFiles.includes(file.name));
+          },
+          error: (error) => {
+            console.error('File deletion error', error);
+          }
+        });
+    });
+  }  
 }

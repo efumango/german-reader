@@ -1,11 +1,19 @@
-<h2>Upload Text</h2>
-<input type="file" (change)="onFileSelected($event)" accept=".txt">
-<button (click)="onUpload()" [disabled]="isUploading">Upload</button>
-<p>{{ uploadMessage }}</p>
+<div class="main-content">
+<h2>My Texts</h2>
+<button (click)="onDeleteSelected()" [disabled]="isUploading">Delete Text</button>
+<!-- Hidden file input -->
+<input type="file" #fileInput (change)="onFileSelected($event)" accept=".txt" style="display: none;">
+<!-- Custom button to open file dialog -->
+<button (click)="fileInput.click()" [disabled]="isUploading">Upload Text</button>
 
-<h2>Uploaded Texts</h2>
-<div *ngFor="let file of uploadedFiles">
-    <a [routerLink]="['/reader', file]">{{ file }}</a>
-    <button (click)="onDelete(file)">Delete</button>
+<table>
+  <tr>
+    <th><input type="checkbox" [(ngModel)]="allSelected" (change)="toggleAllSelections(allSelected)"></th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let file of uploadedFiles; let i = index">
+    <td><input type="checkbox" [(ngModel)]="file.selected" name="file{{i}}"></td>
+    <td><a [routerLink]="['/reader', file.name]">{{ file.name }}</a></td>
+  </tr>
+</table>
 </div>
-

@@ -1,0 +1,89 @@
+// Color scheme variables
+$color-cream: #FEFAE0;
+$color-sand: #EFDCAC;
+$color-terracotta: #D4A373;
+$color-ochre: #BC6C25;
+$color-olive: #5e6d2e;
+$color-forest: #45462A;
+
+// Base styles
+body {
+  background-color: $color-cream;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content {
+    width: 100%;
+    padding: 20px; 
+    box-sizing: border-box; // Ensure padding does not affect the overall width
+  
+    // For wide screens
+    @media (min-width: 768px) {
+      width: 70%;
+      margin: auto; // Center horizontally
+    }
+  }
+
+// Table styles
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $color-sand;
+  color: $color-forest;
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  th {
+    background-color: $color-terracotta;
+  }
+
+  tr:nth-child(even) {
+    background-color: $color-sand;
+  }
+
+  tr:nth-child(odd) {
+    background-color: $color-cream;
+  }
+}
+
+// Button styles
+button {
+  background-color: $color-ochre;
+  border: none;
+  color: $color-cream;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($color-ochre, 10%);
+  }
+
+  &[disabled] {
+    background-color: darken($color-ochre, 20%);
+    cursor: not-allowed;
+  }
+}
+
+// Checkbox styles
+input[type="checkbox"] {
+  accent-color: $color-olive;
+}
+
+// Link styles
+a {
+  color: $color-forest;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

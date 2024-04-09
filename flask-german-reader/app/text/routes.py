@@ -38,7 +38,7 @@ def get_file(filename):
         file_content = f.read()
     return file_content
 
-@text_bp.route('/delete_file', methods=['POST'])
+@text_bp.route('/delete-file', methods=['POST'])
 @jwt_required()  
 def delete_file():
     current_user = str(get_jwt_identity())
