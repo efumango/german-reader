@@ -1,0 +1,73 @@
+// Color scheme variables
+$color-cream: #FEFAE0;
+$color-sand: #EFDCAC;
+$color-terracotta: #D4A373;
+$color-ochre: #BC6C25;
+$color-olive: #5e6d2e;
+$color-forest: #45462A;
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: $color-cream;
+  border: 2px solid $color-sand;
+  border-radius: 8px;
+  margin: auto;
+  max-width: 800px; // Adjust based on your preference
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: $color-forest;
+  }
+
+  .upload-instructions {
+    background-color: $color-sand;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+
+    p {
+      margin: 10px 0;
+      line-height: 1.5;
+      color: $color-forest;
+
+      a {
+        color: $color-ochre;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  input[type="file"] {
+    margin: 20px 0;
+  }
+
+  button {
+    background-color: $color-terracotta;
+    color: $color-cream;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: darken($color-terracotta, 10%);
+    }
+
+    &[disabled] {
+      background-color: $color-sand;
+      cursor: not-allowed;
+    }
+  }
+
+  p {
+    color: $color-olive;
+  }
+}

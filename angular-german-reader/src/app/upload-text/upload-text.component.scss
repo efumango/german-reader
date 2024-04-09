@@ -8,7 +8,6 @@ $color-forest: #45462A;
 
 // Base styles
 body {
-  background-color: $color-cream;
   display: flex;
   justify-content: center;
 }
@@ -17,7 +16,8 @@ body {
     width: 100%;
     padding: 20px; 
     box-sizing: border-box; // Ensure padding does not affect the overall width
-  
+    color: $color-forest;
+    
     // For wide screens
     @media (min-width: 768px) {
       width: 70%;

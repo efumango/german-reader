@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './upload-dictionaries.component.html',
-  styleUrls: ['./upload-dictionaries.component.css']
+  styleUrls: ['./upload-dictionaries.component.scss']
 })
 
 export class UploadDictionariesComponent {
@@ -28,6 +28,7 @@ export class UploadDictionariesComponent {
     }
     this.fileToUpload = target.files[0];
     this.uploadStatus = ""; // Reset upload status message when a new file is selected
+    this.uploadDictionary();
   }
 
   uploadDictionary() {

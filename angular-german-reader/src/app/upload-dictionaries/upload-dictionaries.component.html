@@ -1,6 +1,17 @@
 <div class="upload-container">
-  <h2>Upload Dictionary</h2>
-  <input type="file" (change)="onFileSelected($event)" accept=".txt" />
-  <button (click)="uploadDictionary()" [disabled]="uploadInProgress || !fileToUpload">Upload Dictionary</button>
+  <h2>My Dictionaries</h2>
+  <div class="upload-instructions">
+    <p><strong>Recommendation for Dictionary Use:</strong> Due to copyright restrictions, the application can only include one dictionary, which is the Wiktionary. However, you can upload your other dictionary data as well, such as the data available on <a href="https://www1.dict.cc/translation_file_request.php?l=e">dict.cc</a>.</p>
+    <p>For bigger files, consider using a client-side text file splitter like <a href="https://textfilesplitter.com/">this</a>.</p>
+    <p>The uploaded dictionary must be a tab-separated text file in UTF-8 format with at least two columns: word and definition. If the file has more than two columns, the remaining columns will be ignored.</p>
+    <p>You can upload multiple dictionaries by refreshing the page between uploads.</p>
+  </div>
+  <!-- Hidden file input for triggering the upload dialog -->
+  <input type="file" #fileInput (change)="onFileSelected($event)" accept=".txt" style="display: none;" />
+
+  <!-- Button to trigger file input click and handle the upload logic -->
+  <button (click)="fileInput.click()" [disabled]="uploadInProgress">Upload Dictionary</button>
+
   <p *ngIf="uploadStatus">{{ uploadStatus }}</p>
 </div>
+
