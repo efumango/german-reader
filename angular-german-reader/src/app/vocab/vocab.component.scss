@@ -10,6 +10,7 @@ body {
   background-color: $color-cream;
 }
 
+
 .vocab-actions {
   position: relative;
   display: inline-block;
@@ -37,7 +38,7 @@ body {
       display: block;
       background: none;
       border: none;
-      width: 100%;
+      width: 95%;
       text-align: left;
 
       &:hover {
@@ -67,6 +68,7 @@ button {
   width: 100%;
   background-color: $color-sand;
   color: $color-forest;
+  margin: auto;
 
   th, td {
     border: 1px solid $color-olive;

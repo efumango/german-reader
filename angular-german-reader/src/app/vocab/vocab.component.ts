@@ -24,12 +24,8 @@ interface VocabItem {
   styleUrl: './vocab.component.scss'
 })
 export class VocabComponent {
-  vocabList: VocabItem[] = [];
-  currentVocabPage: VocabItem[] = [];
+  vocabList: any[] = [];
   editingState: { id: string | null, field: string | null } = { id: null, field: null };
-  itemsPerPage = 10;
-  currentPage = 1;
-  totalPages = 0;
   allSelected = false;
 
   constructor(private vocabService: VocabService){ 
@@ -114,7 +110,7 @@ export class VocabComponent {
 
   toggleAllSelections() {
     // Ensure only current page items are toggled
-    this.currentVocabPage.forEach(vocab => vocab.selected = this.selectAllToggle);
+    this.vocabList.forEach(vocab => vocab.selected = this.selectAllToggle);
   }
 
   enableEdit(vocab: any, field: string) {

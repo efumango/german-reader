@@ -22,7 +22,7 @@ import { environment } from '../../environments/environment';
     popupData: any[] = [];
     popupPosition: { x: number, y: number } = { x: 0, y: 0 };
     showPopup: boolean = false;
-    loadingPopUp: boolean = false;
+    loadingPopUp: boolean = true;
 
     searchQuery: string = '';
 
