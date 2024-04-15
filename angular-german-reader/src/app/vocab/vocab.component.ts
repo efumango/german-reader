@@ -13,7 +13,7 @@ interface VocabItem {
   isEditingWord?: boolean;
   isEditingDefinition?: boolean;
   isEditingSentence?: boolean;
-  [key: string]: any;
+  [key: `isEditing${string}`]: boolean | undefined;  
 }
 
 @Component({
@@ -24,7 +24,11 @@ interface VocabItem {
   styleUrl: './vocab.component.scss'
 })
 export class VocabComponent {
-  vocabList: any[] = [];
+  vocabList: VocabItem[] = [];
+  pagedVocabList: VocabItem[] = [];
+  currentPage = 1;
+  itemsPerPage = 20;
+
   editingState: { id: string | null, field: string | null } = { id: null, field: null };
   allSelected = false;
 
@@ -40,11 +44,24 @@ export class VocabComponent {
     this.vocabService.getVocabList().subscribe({
       next: (data) => {
         this.vocabList = data.map(item => ({ ...item, selected: false }));
+        this.updatePage();
       },
       error: (err) => console.error('Failed to fetch vocab list', err)
     });
   }
 
+  updatePage() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedVocabList = this.vocabList.slice(startIndex, endIndex);
+}
+
+
+  goToPage(n: number) {
+    this.currentPage = n;
+    this.updatePage();
+  }
+  
   deleteSelected() {
     // Collect the IDs of selected vocab words
     const selectedWordIds = this.vocabList.filter(vocab => vocab.selected).map(vocab => vocab.id);
@@ -55,12 +72,15 @@ export class VocabComponent {
       this.vocabService.deleteSelectedWords(selectedWordIds).subscribe({
         next: (response) => {
           console.log('Delete successful', response);
+          alert('Word(s) deleted.');
           this.vocabList = this.vocabList.filter(vocab => !vocab.selected);
+          this.fetchVocabList();
         },
         error: (error) => console.error('Error deleting words', error)
       });
     } else {
       console.log('No words selected for deletion');
+      alert('No words selected for deletion.');
     }
   }
   
@@ -76,6 +96,8 @@ export class VocabComponent {
     this.vocabService.deduplicateWords().subscribe({
       next: (response) => {
         console.log('Deduplicates removed', response);
+        alert('Duplicates removed.');
+        this.fetchVocabList();
       },
       error: (error) => console.error('Error deleting words', error)
     });
