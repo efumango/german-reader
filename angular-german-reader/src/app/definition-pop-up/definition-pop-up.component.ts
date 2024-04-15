@@ -41,8 +41,8 @@ export class DefinitionPopUpComponent {
   }
   
   addWordToVocabList(item: any): void {
-    const sentence = this.textSelectionDirective.getLastSelectedSentence();
     const selectedText = this.textSelectionDirective.getSelectedText();
+    const sentence = this.textSelectionDirective.getSentenceContainingWord(selectedText);
     const context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence!, selectedText, 5, 5);
 
     this.vocabService.addWord(item.word, item.definition, item.inflection, context).subscribe({

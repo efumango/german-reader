@@ -10,7 +10,6 @@ export class TextSelectionDirective {
   private selectedText: string = '';
   private button: HTMLElement | null = null;
   private removeClickListener: Function | null = null;
-  private lastSelectedSentence: string | null = null;
 
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
@@ -162,7 +161,7 @@ export class TextSelectionDirective {
     }
   }
 
-  private getSentenceContainingWord(selectedText: string): string | null {
+  getSentenceContainingWord(selectedText: string): string | null {
     this.clearHighlights();
     const selection = window.getSelection();
     if (!selection || !selection.rangeCount) return null;
@@ -196,10 +195,6 @@ export class TextSelectionDirective {
 
   public getSelectedText(): string {
      return this.selectedText;
-  }
-
-  public getLastSelectedSentence(): string | null {
-    return this.lastSelectedSentence;
   }
   
   // Helper method to calculate the selection's start offset relative to the paragraph
