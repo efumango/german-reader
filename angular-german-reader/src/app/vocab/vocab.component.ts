@@ -27,7 +27,7 @@ export class VocabComponent {
   vocabList: VocabItem[] = [];
   pagedVocabList: VocabItem[] = [];
   currentPage = 1;
-  itemsPerPage = 20;
+  itemsPerPage = 10;
 
   editingState: { id: string | null, field: string | null } = { id: null, field: null };
   allSelected = false;

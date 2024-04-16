@@ -43,9 +43,14 @@ export class DefinitionPopUpComponent {
   addWordToVocabList(item: any): void {
     const selectedText = this.textSelectionDirective.getSelectedText();
     const sentence = this.textSelectionDirective.getSentenceContainingWord(selectedText);
-    const context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence!, selectedText, 5, 5);
+    if (sentence !== null){
+      this.context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence, selectedText, 5, 5);
+    }
+    else {
+      this.context = '';
+    }
 
-    this.vocabService.addWord(item.word, item.definition, item.inflection, context).subscribe({
+    this.vocabService.addWord(item.word, item.definition, item.inflection, this.context).subscribe({
       next: response => {
         console.log('Word added', response);
         item.isAdded = true;
