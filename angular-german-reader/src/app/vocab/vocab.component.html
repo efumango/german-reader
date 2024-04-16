@@ -28,6 +28,7 @@
         <textarea
           *ngIf="vocab.isEditingWord"
           [(ngModel)]="vocab.word"
+          (ngModelChange)="onChange()"
           (blur)="saveVocab(vocab, 'word')"
           rows="1"></textarea>
       </td>
@@ -36,6 +37,7 @@
         <textarea
           *ngIf="vocab.isEditingDefinition"
           [(ngModel)]="vocab.definition"
+          (ngModelChange)="onChange()"
           (blur)="saveVocab(vocab, 'definition')"
           rows="1"></textarea>
       </td>
@@ -44,6 +46,7 @@
         <span *ngIf="!vocab.isEditingSentence">{{ vocab.sentence }}</span>
         <textarea *ngIf="vocab.isEditingSentence" 
         [(ngModel)]="vocab.sentence" 
+        (ngModelChange)="onChange()"
         (blur)="saveVocab(vocab, 'sentence')"
         rows="2"></textarea>
       </td>      
