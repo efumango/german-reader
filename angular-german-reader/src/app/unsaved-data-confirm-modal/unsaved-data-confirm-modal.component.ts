@@ -7,5 +7,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './unsaved-data-confirm-modal.component.html',
 })
 export class UnsavedDataConfirmModal {
-	constructor(public modal: NgbActiveModal) {}
+	constructor(public activeModal: NgbActiveModal) {}
+
+  confirm() {
+    this.activeModal.close();
+  }
+
+  dismiss() {
+    this.activeModal.dismiss();
+  }
 }

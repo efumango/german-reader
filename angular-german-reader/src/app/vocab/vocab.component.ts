@@ -2,7 +2,6 @@ import { Component, HostListener } from '@angular/core';
 import { VocabService } from '../vocab.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DirtyComponent } from '../dirty-component';
 
 interface VocabItem {
   id: number;
@@ -24,7 +23,7 @@ interface VocabItem {
   templateUrl: './vocab.component.html',
   styleUrl: './vocab.component.scss'
 })
-export class VocabComponent implements DirtyComponent {
+export class VocabComponent {
   vocabList: VocabItem[] = [];
   pagedVocabList: VocabItem[] = [];
   currentPage = 1;
@@ -38,13 +37,8 @@ export class VocabComponent implements DirtyComponent {
   constructor(private vocabService: VocabService){ 
   }
 
-
   ngOnInit() {
     this.fetchVocabList();
-  }
-
-  isDirty(): boolean{
-    return this.hasUnsavedChanges;
   }
 
   fetchVocabList() {
@@ -148,7 +142,6 @@ export class VocabComponent implements DirtyComponent {
 
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any): string | undefined {
-    console.log("beforeunload event triggered");  // Debugging line
     if (this.hasUnsavedChanges) {
         const message = "You have unsaved changes. Do you really want to leave?";
         $event.returnValue = message;
@@ -175,14 +168,12 @@ export class VocabComponent implements DirtyComponent {
 
     // Enable editing for the selected item and field
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = true;
-    this.hasUnsavedChanges = true;
 }
 
   saveVocab(vocab: any, field: string) {
     vocab.modified = true;
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false;
     this.editingState = { id: null, field: null }; 
-    this.hasUnsavedChanges = this.vocabList.some(v => v.modified);
   }
 
   saveAllChanges(): void {

@@ -2,17 +2,17 @@
     /* max-width: 800px;   */
     margin: auto;
     padding: 1em;
-    background: white;
+    background: #FEFAE0;
     height: calc(100vh - 2em);
     overflow-y: scroll;
     line-height: 1.6;
-    font-family: 'Times New Roman', serif; 
+    font-family: 'Nunito', serif; 
     font-size: 18px; 
     position: relative
 }
 
 .highlight {
-    background-color: yellow;
+    background-color: #D4A373;
 }
 
 .text-selection-button {
