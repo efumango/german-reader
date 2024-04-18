@@ -14,32 +14,44 @@ def query_dict_entries(raw_text, user_identity, limit, context, wordType):
 
         if not user_result:
             return jsonify({'error': 'User not found'}), 404
-
+        
         results = []
-        # NO CONTEXT: query phrases w/o HanTa processing 
+        # NO CONTEXT: query phrases without HanTa processing 
         if context is None: 
             results = query_word_in_dict(raw_text, user_identity, limit)
         else:
             # CONTAIN CONTEXT: Perform HanTa processing
             hanta_results = hanta_processing(raw_text, context, wordType)
-            # Query for conjugated form first 
-            conjugated_results = query_word_in_dict(hanta_results['conjugated_word'], user_identity, limit)
+            # Check if conjugated form and lemmatized form are the same
+            is_same_form = (hanta_results['conjugated_word'] == hanta_results['lemmatized_word'])
+            # Query for conjugated form first (or only query once if both forms are the same)
+            queried_word = hanta_results['conjugated_word']
+            conjugated_results = query_word_in_dict(queried_word, user_identity, limit)
             if conjugated_results:
+                original_found = False
                 # Check if these results include an original form
                 for result in conjugated_results:
                     if result['original_form']:
+                        original_found = True
                         # Query for the original form of the first result that has one 
                         original_form_results = query_word_in_dict(result['original_form'], user_identity, limit)
                         conjugated_results.extend(original_form_results)
                         break
+                if not original_found and not is_same_form:
+                    # If no original form, query the lemmatized form (if they're different)
+                    lemmatized_results = query_word_in_dict(hanta_results['lemmatized_word'], user_identity, limit)
+                    conjugated_results.extend(lemmatized_results)
                 results = conjugated_results
-            else:
-                # If not exist, query the lemmatized form
+            elif not is_same_form:
+                # If no results for conjugated form and forms are different, query the lemmatized form
                 lemmatized_results = query_word_in_dict(hanta_results['lemmatized_word'], user_identity, limit)
                 results = lemmatized_results
+            else:
+                # Use the same results as the lemmatized and conjugated forms are the same
+                results = conjugated_results
 
-        return jsonify(results if results else {'error': f'Word "{raw_text}" not found in the dictionary', 'queried_word': raw_text}), 200
-    
+        return jsonify(results if results else {'error': f'Word "{queried_word}" not found in the dictionary', 'queried_word': queried_word}), 200
+
     except Exception as e:
         current_app.logger.error(f'Error querying database: {str(e)}')
         return jsonify({'error': 'Internal server error'}), 500

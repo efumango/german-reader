@@ -103,6 +103,7 @@ import { environment } from '../../environments/environment';
 
     limitedQueryWithContext(textContext: { text: string; context: string }) {
       this.makeHttpPostRequest('process-and-query-db', textContext);
+      console.log(textContext);
     }
 
     queryAllWithoutContext(searchQuery: string) {
