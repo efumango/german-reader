@@ -5,6 +5,8 @@ import nltk
 from sqlalchemy import text
 
 def query_dict_entries(raw_text, user_identity, limit, context, wordType):
+    queried_word = None
+
     try: 
         # Check if the user exists
         user_result = db.session.execute(
@@ -18,7 +20,8 @@ def query_dict_entries(raw_text, user_identity, limit, context, wordType):
         results = []
         # NO CONTEXT: query phrases without HanTa processing 
         if context is None: 
-            results = query_word_in_dict(raw_text, user_identity, limit)
+            queried_word = raw_text
+            results = query_word_in_dict(queried_word, user_identity, limit)
         else:
             # CONTAIN CONTEXT: Perform HanTa processing
             hanta_results = hanta_processing(raw_text, context, wordType)
@@ -86,15 +89,11 @@ def query_word_in_dict(raw_text, user_identity, limit):
             # If no limit, accumulate entries from all patterns
             all_entries.extend(query)
 
-    if all_entries:
-        results = [
-            {'queried_word': raw_text, 'word': entry[0], 'original_form': entry[1], 'definition': entry[2], 'inflection': entry[3], 'source': entry[4]}
-            for entry in all_entries
-        ]
-        return results 
-    else:
-        return None 
- 
+    results = [
+        {'queried_word': raw_text, 'word': entry[0], 'original_form': entry[1], 'definition': entry[2], 'inflection': entry[3], 'source': entry[4]}
+        for entry in all_entries
+    ]
+    return results
 
 
 def hanta_processing(text, context, wordType):
@@ -114,33 +113,42 @@ def hanta_processing(text, context, wordType):
                 lemmatized_word = lem[1]
                 break  # Exit loop once the word is found
 
-    else:
+    elif wordType == 'canBeSepVerb':
         for idx, lem in enumerate(lemmata):
             if lem[0].lower() == text.lower():
                 pos = lem[2]
                 # Handle separable verbs
-                if wordType == 'canBeSepVerb' and pos in ['VV(FIN)', 'VV(IMP)']:
+                if pos in ['VV(FIN)', 'VV(IMP)']:
                     for subsequent_lem in lemmata[idx + 1:]:
                         if subsequent_lem[2] == 'PTKVZ':
                             lemmatized_word = subsequent_lem[1] + lem[1]
                             conjugated_word = lem[0] + ' ' + subsequent_lem[1]
                             break
-                    else:  
+                        else:  
+                            lemmatized_word = lem[1]
+                        break 
+                else:  
                         lemmatized_word = lem[1]
-                    break 
-
+                        break 
+    elif wordType == 'canBePrefix':
+        for idx, lem in enumerate(lemmata):
+            if lem[0].lower() == text.lower():
+                pos = lem[2]
                 # Handle prefixes
-                if wordType == 'canBePrefix' and pos == 'PTKVZ':
+                if pos == 'PTKVZ':
                     for previous_lem in reversed(lemmata[:idx]):
                         if previous_lem[2] in ['VV(FIN)', 'VV(IMP)']:
                             lemmatized_word = lem[1] + previous_lem[1]
                             conjugated_word = previous_lem[0] + ' ' + lem[1]
                             break
-                    else:  
+                        else:  
+                            lemmatized_word = lem[1]
+                        break  
+                else:  
                         lemmatized_word = lem[1]
-                    break  
-
+                        break 
     return {
         'lemmatized_word': lemmatized_word if lemmatized_word else text,
         'conjugated_word': conjugated_word
     }
+
