@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { VocabService } from '../vocab.service';
+import { VocabService } from '../services/vocab.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -8,12 +8,12 @@ interface VocabItem {
   word: string;
   definition: string;
   sentence: string;
-  selected?: boolean; 
+  selected?: boolean;
   modified?: boolean;
   isEditingWord?: boolean;
   isEditingDefinition?: boolean;
   isEditingSentence?: boolean;
-  [key: `isEditing${string}`]: boolean | undefined;  
+  [key: `isEditing${string}`]: boolean | undefined;
 }
 
 @Component({
@@ -34,7 +34,7 @@ export class VocabComponent {
 
   hasUnsavedChanges = false;
 
-  constructor(private vocabService: VocabService){ 
+  constructor(private vocabService: VocabService) {
   }
 
   ngOnInit() {
@@ -55,18 +55,18 @@ export class VocabComponent {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.pagedVocabList = this.vocabList.slice(startIndex, endIndex);
-}
+  }
 
 
   goToPage(n: number) {
     this.currentPage = n;
     this.updatePage();
   }
-  
+
   deleteSelected() {
     // Collect the IDs of selected vocab words
     const selectedWordIds = this.vocabList.filter(vocab => vocab.selected).map(vocab => vocab.id);
- 
+
     // Check if there's anything to delete
     if (selectedWordIds.length > 0) {
       // Call the service method to delete selected words
@@ -84,7 +84,7 @@ export class VocabComponent {
       alert('No words selected for deletion.');
     }
   }
-  
+
   deduplicate() {
     const unique = new Map();
     this.vocabList.forEach(vocab => {
@@ -110,25 +110,25 @@ export class VocabComponent {
 
     // Proceed only if there are selected items
     if (selectedItems.length > 0) {
-        const data = selectedItems.map(({ word, definition, sentence }) => {
-            const csvWord = `"${word.replace(/"/g, '""')}"`;
-            const csvDefinition = `"${definition.replace(/"/g, '""')}"`;
-            const csvSentence = `"${sentence.replace(/"/g, '""')}"`;
-            return [csvWord, csvDefinition, csvSentence].join(',');
-        }).join('\n');
-        const utf8BOM = "\uFEFF"; // UTF-8 Byte Order Mark
-        const blob = new Blob([utf8BOM + data], { type: 'text/csv;charset=utf-8;' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'selected-vocab-list.csv';  
-        a.click();
+      const data = selectedItems.map(({ word, definition, sentence }) => {
+        const csvWord = `"${word.replace(/"/g, '""')}"`;
+        const csvDefinition = `"${definition.replace(/"/g, '""')}"`;
+        const csvSentence = `"${sentence.replace(/"/g, '""')}"`;
+        return [csvWord, csvDefinition, csvSentence].join(',');
+      }).join('\n');
+      const utf8BOM = "\uFEFF"; // UTF-8 Byte Order Mark
+      const blob = new Blob([utf8BOM + data], { type: 'text/csv;charset=utf-8;' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'selected-vocab-list.csv';
+      a.click();
     } else {
-        alert('No items selected for export.');
+      alert('No items selected for export.');
     }
-}
+  }
 
-  
+
   selectAllToggle: boolean = false;
 
   toggleAllSelections() {
@@ -143,9 +143,9 @@ export class VocabComponent {
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any): string | undefined {
     if (this.hasUnsavedChanges) {
-        const message = "You have unsaved changes. Do you really want to leave?";
-        $event.returnValue = message;
-        return message;
+      const message = "You have unsaved changes. Do you really want to leave?";
+      $event.returnValue = message;
+      return message;
     }
     return;
   }
@@ -153,27 +153,27 @@ export class VocabComponent {
   enableEdit(vocab: any, field: string) {
     // Check if we are already editing another field
     if (this.editingState.id !== null && (this.editingState.id !== vocab.id || this.editingState.field !== field)) {
-        console.log("Finish editing the current field before moving to another.");
-        return;
+      console.log("Finish editing the current field before moving to another.");
+      return;
     }
 
-    this.editingState = { id: vocab.id, field }; 
+    this.editingState = { id: vocab.id, field };
 
     // Reset editing state for all items and fields
     this.vocabList.forEach(v => {
-        ['Word', 'Definition', 'Inflection', 'Sentence'].forEach(f => {
-            v[`isEditing${f}`] = false; 
-        });
+      ['Word', 'Definition', 'Inflection', 'Sentence'].forEach(f => {
+        v[`isEditing${f}`] = false;
+      });
     });
 
     // Enable editing for the selected item and field
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = true;
-}
+  }
 
   saveVocab(vocab: any, field: string) {
     vocab.modified = true;
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false;
-    this.editingState = { id: null, field: null }; 
+    this.editingState = { id: null, field: null };
   }
 
   saveAllChanges(): void {
@@ -196,6 +196,6 @@ export class VocabComponent {
       alert('No changes to save');
     }
   }
-  
+
 
 }

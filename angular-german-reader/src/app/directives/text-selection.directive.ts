@@ -24,27 +24,30 @@ export class TextSelectionDirective {
       this.removeButton();
       return;
     }
-
+  
     // Get selected text
     this.selectedText = selection.toString().trim();
-
+  
     // Determine the number of words selected
     const numWords = this.selectedText.split(/\s+/).length;
-
+  
     // Clear previous highlights
     this.clearHighlights();
-
-    // Highlight selection & create lookup button 
+  
+    // Highlight selection
     this.highlightSelection(selection);
-    this.createButton(selection);
-
+  
+    // Create button if it doesn't already exist
+    if (!this.button) {
+      this.createButton(selection);
+    }
   }
-
+  
   @HostListener('document:click', ['$event']) onDocumentClick(event: PointerEvent) {
     const popUpElement = document.querySelector('.popup'); // Query for pop-up element 
     // Check if the click is outside the pop-up element 
     if (popUpElement && !popUpElement.contains(event.target as Node)) {
-      this.clickOutsidePopUp.emit(); // Emit event to signal that click happened outside the pop-up.
+      this.clickOutsidePopUp.emit(); // Emit event to signal that click happened outside the pop-up
     }
 
     if (!this.el.nativeElement.contains(event.target)) {
@@ -156,7 +159,7 @@ export class TextSelectionDirective {
         this.removeClickListener();
         this.removeClickListener = null;
       }
-      this.renderer.removeChild(document.body, this.button);
+      this.button.remove();
       this.button = null;
     }
   }

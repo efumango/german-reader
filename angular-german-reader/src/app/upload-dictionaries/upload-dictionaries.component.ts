@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { environment } from '../../environments/environment';
 
 @Component({

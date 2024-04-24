@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,14 @@ export class VocabService {
   token = this.authService.getCurrentUserToken();
   private apiUrl = `${environment.apiUrl}/vocab`;
   constructor(private http: HttpClient, private authService: AuthService) { }
-  
+
   addWord(word: string, definition: string, inflection: string, sentence: string): Observable<any> {
 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
 
-    return this.http.post(`${this.apiUrl}/add-word`, { word, definition, inflection, sentence }, {headers});
+    return this.http.post(`${this.apiUrl}/add-word`, { word, definition, inflection, sentence }, { headers });
   }
 
   getVocabList(): Observable<any[]> {
@@ -40,8 +40,7 @@ export class VocabService {
   }
 
   saveModifiedVocabs(modifiedVocabs: any[]): Observable<any> {
-    // Replace with your actual endpoint and adjust HTTP method as needed
-    return this.http.put( `${this.apiUrl}/update`, modifiedVocabs, {
+    return this.http.put(`${this.apiUrl}/update`, modifiedVocabs, {
       headers: { Authorization: `Bearer ${this.token}` }
     });
   }

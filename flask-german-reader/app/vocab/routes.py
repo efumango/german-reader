@@ -62,11 +62,6 @@ def delete_words():
         # Fetch and delete words that match the provided IDs and belong to the user
         UserVocab.query.filter(UserVocab.id.in_(word_ids), UserVocab.user_id == user_identity).delete(synchronize_session=False)
         db.session.commit()
-        print("Deleting word IDs:", word_ids)
-        print("User Identity:", user_identity)
-        print("Request Data:", request.data)  # Raw data
-        print("Parsed JSON:", request.json)  # Parsed JSON
-
         return jsonify({"success": True, "message": "Words deleted"})
     except Exception as e:
         db.session.rollback()

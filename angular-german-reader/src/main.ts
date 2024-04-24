@@ -7,7 +7,7 @@ import { environment } from './environments/environment';
 import { RouterModule } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { AuthGuard } from './app/auth.guard'; 
+import { AuthGuard } from './app/guards/auth.guard'; 
 
 if (environment.production) {
   enableProdMode();

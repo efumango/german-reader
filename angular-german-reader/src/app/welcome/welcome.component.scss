@@ -1,0 +1,40 @@
+$color-cream: #FEFAE0;
+$color-sand: #EFDCAC;
+$color-terracotta: #D4A373;
+$color-ochre: #BC6C25;
+$color-olive: #5e6d2e;
+$color-forest: #45462A;
+
+.welcome-component .feature {
+  background-color: $color-cream;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Center vertically
+  
+  .description {
+    h2 {
+      color: $color-ochre;
+      margin-bottom: 10px;
+      text-align: left; // Keep left alignment
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      text-align: left; // Keep left alignment
+      
+      li {
+        color: $color-olive;
+        margin-bottom: 5px;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

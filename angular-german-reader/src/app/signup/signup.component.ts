@@ -1,7 +1,7 @@
 // src/app/signup/signup.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service'; // Adjust path as necessary
+import { AuthService } from '../services/auth.service'; // Adjust path as necessary
 import { Router } from '@angular/router';
 import { CommonModule
  } from '@angular/common';

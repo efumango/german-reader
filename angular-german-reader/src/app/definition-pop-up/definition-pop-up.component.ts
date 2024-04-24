@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VocabService } from '../vocab.service';
+import { VocabService } from '../services/vocab.service';
 import { FormsModule } from '@angular/forms';
-import { TextSelectionDirective } from '../text-selection.directive';
+import { TextSelectionDirective } from '../directives/text-selection.directive';
 
 @Component({
   selector: 'app-definition-pop-up',
   standalone: true,
-  imports: [CommonModule,FormsModule, TextSelectionDirective],
+  imports: [CommonModule, FormsModule, TextSelectionDirective],
   templateUrl: './definition-pop-up.component.html',
   styleUrl: './definition-pop-up.component.css'
 })
@@ -21,7 +21,7 @@ export class DefinitionPopUpComponent {
 
   @Input() searchQuery: string = '';
   @Output() searchAllClicked: EventEmitter<string> = new EventEmitter<string>();
-  
+
   @ViewChild(TextSelectionDirective) textSelectionDirective!: TextSelectionDirective;
 
   context: string = '';
@@ -39,11 +39,11 @@ export class DefinitionPopUpComponent {
     this.preparedItems = this.data.filter(item => item.source === 'prepared');
     this.customItems = this.data.filter(item => item.source !== 'prepared');
   }
-  
+
   addWordToVocabList(item: any): void {
     const selectedText = this.textSelectionDirective.getSelectedText();
     const sentence = this.textSelectionDirective.getSentenceContainingWord(selectedText);
-    if (sentence !== null){
+    if (sentence !== null) {
       this.context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence, selectedText, 5, 5);
     }
     else {
@@ -58,12 +58,12 @@ export class DefinitionPopUpComponent {
       error: err => console.error('Error adding word', err)
     });
   }
-  
 
-  searchAll(): void{
+
+  searchAll(): void {
     this.searchAllClicked.emit(this.searchQuery);
   }
-  
+
   formatInflection(inflection: string): string {
     if (!inflection) {
       return '';
@@ -71,5 +71,5 @@ export class DefinitionPopUpComponent {
     // Replace '##' with line breaks
     return inflection.replace(/##/g, '<br>##');
   }
-  
+
 }

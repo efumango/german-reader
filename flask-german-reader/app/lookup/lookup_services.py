@@ -95,7 +95,6 @@ def query_word_in_dict(raw_text, user_identity, limit):
     ]
     return results
 
-
 def hanta_processing(text, context, wordType):
     tagger = ht.HanoverTagger('morphmodel_ger.pgz')
     # Tokenize the context
@@ -119,36 +118,39 @@ def hanta_processing(text, context, wordType):
                 pos = lem[2]
                 # Handle separable verbs
                 if pos in ['VV(FIN)', 'VV(IMP)']:
+                    is_separable = False
                     for subsequent_lem in lemmata[idx + 1:]:
                         if subsequent_lem[2] == 'PTKVZ':
+                            is_separable = True
                             lemmatized_word = subsequent_lem[1] + lem[1]
                             conjugated_word = lem[0] + ' ' + subsequent_lem[1]
                             break
-                        else:  
-                            lemmatized_word = lem[1]
-                        break 
-                else:  
+                    if not is_separable:
                         lemmatized_word = lem[1]
-                        break 
+                else:  
+                    lemmatized_word = lem[1]
+                break 
+
     elif wordType == 'canBePrefix':
         for idx, lem in enumerate(lemmata):
             if lem[0].lower() == text.lower():
                 pos = lem[2]
                 # Handle prefixes
                 if pos == 'PTKVZ':
+                    is_prefix = False
                     for previous_lem in reversed(lemmata[:idx]):
                         if previous_lem[2] in ['VV(FIN)', 'VV(IMP)']:
+                            is_prefix = True
                             lemmatized_word = lem[1] + previous_lem[1]
                             conjugated_word = previous_lem[0] + ' ' + lem[1]
                             break
-                        else:  
-                            lemmatized_word = lem[1]
-                        break  
-                else:  
+                    if not is_prefix:
                         lemmatized_word = lem[1]
-                        break 
+                else:  
+                    lemmatized_word = lem[1]
+                break
+ 
     return {
         'lemmatized_word': lemmatized_word if lemmatized_word else text,
         'conjugated_word': conjugated_word
     }
-

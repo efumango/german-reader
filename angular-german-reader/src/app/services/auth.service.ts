@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +46,7 @@ export class AuthService {
         })
       );
   }
-  
+
   login(username: string, password: string) {
     return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
       .pipe(
@@ -56,7 +56,7 @@ export class AuthService {
             localStorage.setItem('currentUser', JSON.stringify({ username, token }));
             this.currentUserSubject.next(username);
             return { username, token };
-            
+
           } else {
             throw new Error('No token received');
           }
