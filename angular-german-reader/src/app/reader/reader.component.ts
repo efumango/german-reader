@@ -4,9 +4,10 @@ import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TextSelectionDirective } from '../directives/text-selection.directive';
-import nlp from 'de-compromise';
 import { DefinitionPopUpComponent } from '../definition-pop-up/definition-pop-up.component';
 import { environment } from '../../environments/environment';
+import { LoggingService } from '../services/logging.service';
+import { ShareFilename } from '../services/share-filename.service';
 
 @Component({
   selector: 'app-reader',
@@ -30,6 +31,8 @@ export class ReaderComponent {
     private http: HttpClient,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private loggingService: LoggingService,
+    private shareFilenameService: ShareFilename
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +53,12 @@ export class ReaderComponent {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
+
+    // Log the filename when the user opens the file
+    this.loggingService.log('opened file',  `${filename}`);
+
+    // Set filename to share it to other components that need it 
+    this.shareFilenameService.setFilename(`${filename}`);
 
     this.http.get(`${environment.apiUrl}/files/${filename}`, { headers, responseType: 'text' })
       .subscribe({

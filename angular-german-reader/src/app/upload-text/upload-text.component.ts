@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { LoggingService } from '../services/logging.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
@@ -20,7 +21,7 @@ export class UploadTextComponent {
   uploadMessage: string = ''
   allSelected: boolean=false;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private loggingService: LoggingService) { }
   
   ngOnInit(): void {
     this.fetchUploadedFiles();
@@ -60,13 +61,14 @@ export class UploadTextComponent {
       .subscribe({
         next: (response) => {
           this.uploadMessage = 'Upload successful!';
-          this.isUploading = false; // Upload finished
+          this.isUploading = false; 
 
           this.fetchUploadedFiles();
+          this.loggingService.log('uploaded file');
         },
         error: (error) => {
           this.uploadMessage = 'Upload error. Please try again.';
-          this.isUploading = false; // Upload finished
+          this.isUploading = false; 
         }
     })
   }
@@ -114,6 +116,8 @@ export class UploadTextComponent {
             console.log('File deleted successfully', response);
             // Remove the deleted file from the uploadedFiles list
             this.uploadedFiles = this.uploadedFiles.filter(file => !selectedFiles.includes(file.name));
+            // Send logging to backend 
+            this.loggingService.log('deleted file');
           },
           error: (error) => {
             console.error('File deletion error', error);
@@ -121,4 +125,5 @@ export class UploadTextComponent {
         });
     });
   }  
+
 }

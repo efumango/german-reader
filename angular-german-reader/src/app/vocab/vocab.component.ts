@@ -153,7 +153,7 @@ export class VocabComponent {
   enableEdit(vocab: any, field: string) {
     // Check if we are already editing another field
     if (this.editingState.id !== null && (this.editingState.id !== vocab.id || this.editingState.field !== field)) {
-      console.log("Finish editing the current field before moving to another.");
+      alert("Finish editing the current field before moving to another.");
       return;
     }
 

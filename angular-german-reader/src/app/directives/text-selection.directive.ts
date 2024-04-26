@@ -1,6 +1,7 @@
 import { Directive, ElementRef, Renderer2, HostListener, Output, EventEmitter } from '@angular/core';
-import { Pointer } from 'compromise/types/misc';
-import nlp from 'de-compromise'
+import nlp from 'de-compromise';
+import { ShareFilename } from '../services/share-filename.service';
+import { LoggingService } from '../services/logging.service';
 
 @Directive({
   selector: '[appTextSelection]',
@@ -16,7 +17,10 @@ export class TextSelectionDirective {
   @Output() popUpPosition: EventEmitter<{ x: number, y: number}> = new EventEmitter<{ x: number, y: number }>();
   @Output() clickOutsidePopUp: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
+  constructor(private el: ElementRef, 
+              private renderer: Renderer2, 
+              private shareFilenameService: ShareFilename,
+              private loggingService: LoggingService) {}
 
   @HostListener('pointerup') onPointerUp() {
     const selection = window.getSelection();
@@ -107,6 +111,12 @@ export class TextSelectionDirective {
       this.determineContextAndEmit(selection);
       this.emitPopupPosition(selection);
       this.removeButton();
+
+      // Get filename and send log to backend
+      const filename = this.shareFilenameService.getFilename();
+      if (filename !== null) {
+        this.loggingService.log('looked up word', filename);
+      }
     });
   }
 }

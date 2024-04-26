@@ -10,9 +10,10 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
 
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
-  public isLoggedIn: Observable<boolean>;
+  private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public currentUser: Observable<any> = this.currentUserSubject.asObservable();
+  public isLoggedIn: Observable<boolean> = this.currentUser.pipe(map(user => !!user));
+
   private apiUrl = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -22,19 +23,14 @@ export class AuthService {
     this.isLoggedIn = this.currentUser.pipe(map(user => !!user));
   }
 
-  public get currentUserValue() {
-    return this.currentUserSubject.value;
-  }
+  getCurrentUser(): string | null {
+    const currentUser = this.currentUserSubject.value;
+    console.log('Current user: ' + currentUser.username);
+    return currentUser ? currentUser.username : null;
+  }  
 
   getCurrentUserToken(): string | null {
-    const currentUserJson = localStorage.getItem('currentUser');
-    if (!currentUserJson) {
-      console.log('No current user found in local storage');
-      return null;
-    }
-
-    const currentUser = JSON.parse(currentUserJson);
-    return currentUser.token || null;
+    return this.currentUserSubject.value ? this.currentUserSubject.value.token : null;
   }
 
   signup(username: string, password: string) {
@@ -52,11 +48,10 @@ export class AuthService {
       .pipe(
         map(response => {
           if (response && response.user && response.user.token) {
-            const token = response.user.token;
+            const { username, token } = response.user;
             localStorage.setItem('currentUser', JSON.stringify({ username, token }));
-            this.currentUserSubject.next(username);
+            this.currentUserSubject.next({ username, token });
             return { username, token };
-
           } else {
             throw new Error('No token received');
           }

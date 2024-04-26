@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
 
   isLoggedIn: boolean = false;
 
-  constructor(private fb: FormBuilder, public authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, public authService: AuthService, 
+              private router: Router, private loggingService: LoggingService) {}
   
   onSubmit() {
     if (this.loginForm.valid) {
@@ -30,7 +32,8 @@ export class LoginComponent {
         this.authService.login(username, password).subscribe({
           next: (user) => {
             if (user && user.token) {
-              console.log("Login successful.")
+              console.log("Login successful.");
+              this.loggingService.log('logged in');
               this.router.navigate(['/text']); 
             } else {
               console.error('Login successful, but no token received');
