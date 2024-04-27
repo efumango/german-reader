@@ -12,7 +12,7 @@ export class LoggingService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  log(activity: string, filename?: string): void {
+  log(activity: string, filename?: string, word?: string): void {
     const timestamp = new Date().toISOString();
     const username = this.authService.getCurrentUser();
     let logMessage = `${timestamp},${username},${activity}`;
@@ -20,6 +20,11 @@ export class LoggingService {
     // Append filename to log message if it exists
     if (filename) {
       logMessage += `,${filename}`;
+    }
+
+    // Append word to log message if it exists
+    if (word) {
+      logMessage += `,${word}`;
     }
 
     this.http.post(this.apiUrl, { logMessage }).subscribe({

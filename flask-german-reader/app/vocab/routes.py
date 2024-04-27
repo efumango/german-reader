@@ -10,7 +10,7 @@ vocab_bp = Blueprint('vocab_bp', __name__)
 def add_word():
     data = request.get_json()
     user_identity = get_jwt_identity()
-    new_word = UserVocab(user_id=user_identity, word=data['word'], definition=data['definition'], inflection=data['inflection'], sentence=data['sentence'])
+    new_word = UserVocab(user_id=user_identity, word=data['word'], definition=data['definition'], inflection=data['inflection'], sentence=data['sentence'], filename=data['filename'])
     db.session.add(new_word)
     db.session.commit()
     return jsonify({"success": True, "response": "Word added"}), 201
@@ -20,7 +20,7 @@ def add_word():
 def get_vocab():
     user_identity = get_jwt_identity()
     words = UserVocab.query.filter_by(user_id=user_identity).all()
-    return jsonify([{'id': word.id, 'word': word.word, 'definition': word.definition, 'inflection': word.inflection, 'sentence': word.sentence} for word in words])
+    return jsonify([{'id': word.id, 'word': word.word, 'definition': word.definition, 'inflection': word.inflection, 'sentence': word.sentence, 'filename': word.filename} for word in words])
 
 @vocab_bp.route('/deduplicate', methods=['POST'])
 @jwt_required()
@@ -33,9 +33,14 @@ def deduplicate_words():
     seen = {}
     to_delete = []
 
+    # List to store words and their filenames
+    deleted_words = []
+
     for word in words:
         key = (word.word, word.definition)
         if key in seen:
+            # Add word and its filename to the list
+            deleted_words.append({'word': word.word, 'filename': word.filename})
             to_delete.append(word)
         else:
             seen[key] = word
@@ -45,7 +50,10 @@ def deduplicate_words():
         db.session.delete(word)
 
     db.session.commit()
-    return jsonify({"success": True, "message": "Duplicates removed"})
+
+    # Return the list of deleted words and their filenames
+    return jsonify({"success": True, "message": "Duplicates removed", "deleted_words": deleted_words})
+
 
 @vocab_bp.route('/delete', methods=['POST'])
 @jwt_required()

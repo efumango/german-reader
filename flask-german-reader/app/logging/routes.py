@@ -16,15 +16,13 @@ def log_activity():
         username = log_components[1]
         activity = log_components[2]
 
-        # Check if filename exists in the log message
-        if len(log_components) > 3:
-            filename = log_components[3]
-        else:
-            filename = None
+        # Check if filename and word exist in the log message
+        filename = log_components[3] if len(log_components) > 3 else None
+        word = log_components[4] if len(log_components) > 4 else None
 
         # Write log data to CSV file
         with open('user_activity_log.csv', 'a', newline='') as csvfile:
-            fieldnames = ['username', 'activity', 'filename', 'timestamp']
+            fieldnames = ['username', 'activity', 'filename', 'word', 'timestamp']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
             # Write header if file is empty
@@ -37,9 +35,12 @@ def log_activity():
                 'timestamp': timestamp
             }
 
-            # Add filename to log data if it exists
+            # Add filename and word to log data if they exist
             if filename is not None:
                 log_data['filename'] = filename
+
+            if word is not None:
+                log_data['word'] = word
 
             writer.writerow(log_data)
 

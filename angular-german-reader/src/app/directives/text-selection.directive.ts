@@ -112,10 +112,14 @@ export class TextSelectionDirective {
       this.emitPopupPosition(selection);
       this.removeButton();
 
-      // Get filename and send log to backend
+      // Get filename 
       const filename = this.shareFilenameService.getFilename();
+
+      // Get word that is being looked up 
+      const word = selection.toString().trim();
+
       if (filename !== null) {
-        this.loggingService.log('looked up word', filename);
+        this.loggingService.log('look up', filename, word);
       }
     });
   }

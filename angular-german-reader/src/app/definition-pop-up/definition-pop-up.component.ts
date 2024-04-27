@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { VocabService } from '../services/vocab.service';
 import { FormsModule } from '@angular/forms';
 import { TextSelectionDirective } from '../directives/text-selection.directive';
+import { LoggingService } from '../services/logging.service';
+import { ShareFilename } from '../services/share-filename.service';
 
 @Component({
   selector: 'app-definition-pop-up',
@@ -26,7 +28,10 @@ export class DefinitionPopUpComponent {
 
   context: string = '';
 
-  constructor(private vocabService: VocabService) {
+  constructor(private vocabService: VocabService, 
+              private shareFilenameService: ShareFilename,
+              private loggingService: LoggingService
+  ) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -50,10 +55,19 @@ export class DefinitionPopUpComponent {
       this.context = '';
     }
 
-    this.vocabService.addWord(item.word, item.definition, item.inflection, this.context).subscribe({
+    // Get filename 
+    const filename = this.shareFilenameService.getFilename();
+
+    this.vocabService.addWord(item.word, item.definition, item.inflection, this.context, filename!).subscribe({
       next: response => {
         console.log('Word added', response);
         item.isAdded = true;
+
+        // Log word adding activity
+        if (filename !== null) {
+          this.loggingService.log('add to vocab', filename, item.word);
+        }
+
       },
       error: err => console.error('Error adding word', err)
     });

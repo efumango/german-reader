@@ -2,12 +2,15 @@ import { Component, HostListener } from '@angular/core';
 import { VocabService } from '../services/vocab.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ShareFilename } from '../services/share-filename.service';
+import { LoggingService } from '../services/logging.service';
 
 interface VocabItem {
   id: number;
   word: string;
   definition: string;
   sentence: string;
+  filename: string;
   selected?: boolean;
   modified?: boolean;
   isEditingWord?: boolean;
@@ -34,7 +37,10 @@ export class VocabComponent {
 
   hasUnsavedChanges = false;
 
-  constructor(private vocabService: VocabService) {
+  constructor(private vocabService: VocabService,
+              private loggingService: LoggingService,
+              private shareFilenameService: ShareFilename
+  ) {
   }
 
   ngOnInit() {
@@ -65,15 +71,19 @@ export class VocabComponent {
 
   deleteSelected() {
     // Collect the IDs of selected vocab words
-    const selectedWordIds = this.vocabList.filter(vocab => vocab.selected).map(vocab => vocab.id);
-
+    const selectedWords = this.vocabList.filter(vocab => vocab.selected).map(vocab => ({ id: vocab.id, word: vocab.word, filename: vocab.filename }));
+  
     // Check if there's anything to delete
-    if (selectedWordIds.length > 0) {
+    if (selectedWords.length > 0) {
       // Call the service method to delete selected words
-      this.vocabService.deleteSelectedWords(selectedWordIds).subscribe({
+      this.vocabService.deleteSelectedWords(selectedWords.map(word => word.id)).subscribe({
         next: (response) => {
           console.log('Delete successful', response);
           alert('Word(s) deleted.');
+          // Log delete word activity for each selected word
+          selectedWords.forEach(word => {
+            this.loggingService.log('delete word', word.filename, word.word);
+          });
           this.vocabList = this.vocabList.filter(vocab => !vocab.selected);
           this.fetchVocabList();
         },
@@ -84,7 +94,7 @@ export class VocabComponent {
       alert('No words selected for deletion.');
     }
   }
-
+  
   deduplicate() {
     const unique = new Map();
     this.vocabList.forEach(vocab => {
@@ -98,6 +108,12 @@ export class VocabComponent {
       next: (response) => {
         console.log('Deduplicates removed', response);
         alert('Duplicates removed.');
+
+        // Log deduplicate activity for each word
+        response.deleted_words.forEach((word: VocabItem) => {
+        this.loggingService.log('remove deduplicate', word.filename, word.word);
+      });
+
         this.fetchVocabList();
       },
       error: (error) => console.error('Error deleting words', error)
@@ -123,6 +139,9 @@ export class VocabComponent {
       a.href = url;
       a.download = 'selected-vocab-list.csv';
       a.click();
+
+      // Log export activity
+      this.loggingService.log('export vocab list');
     } else {
       alert('No items selected for export.');
     }
@@ -170,10 +189,13 @@ export class VocabComponent {
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = true;
   }
 
-  saveVocab(vocab: any, field: string) {
+  saveVocab(vocab: VocabItem, field: string) {
     vocab.modified = true;
     vocab[`isEditing${field.charAt(0).toUpperCase() + field.slice(1)}`] = false;
     this.editingState = { id: null, field: null };
+
+    // Log edit activity 
+    this.loggingService.log(`edit ${field}`, vocab.filename, vocab.word)
   }
 
   saveAllChanges(): void {
@@ -185,6 +207,9 @@ export class VocabComponent {
           modifiedVocabs.forEach(vocab => vocab.modified = false);
           alert('Changes saved successfully');
           this.hasUnsavedChanges = false;
+
+          // Log save all changes activity 
+          this.loggingService.log('save all changes');
         },
         error: (error) => {
           // Handle save error

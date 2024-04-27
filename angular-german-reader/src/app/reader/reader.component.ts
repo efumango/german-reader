@@ -55,7 +55,7 @@ export class ReaderComponent {
     });
 
     // Log the filename when the user opens the file
-    this.loggingService.log('opened file',  `${filename}`);
+    this.loggingService.log('open file',  `${filename}`);
 
     // Set filename to share it to other components that need it 
     this.shareFilenameService.setFilename(`${filename}`);

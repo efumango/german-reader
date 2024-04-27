@@ -25,7 +25,6 @@ export class AuthService {
 
   getCurrentUser(): string | null {
     const currentUser = this.currentUserSubject.value;
-    console.log('Current user: ' + currentUser.username);
     return currentUser ? currentUser.username : null;
   }  
 

@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
 import { AuthService } from '../services/auth.service';
 import { environment } from '../../environments/environment';
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-upload-dictionaries',
@@ -18,7 +19,7 @@ export class UploadDictionariesComponent {
   uploadStatus: string | null = "File size must not exceed 20 MB.";
   uploadInProgress: boolean = false;
   
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService, private loggingService: LoggingService) {}
 
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -66,6 +67,7 @@ export class UploadDictionariesComponent {
         this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} processed)`;
         if (chunksUploaded === totalChunks) {
           this.uploadStatus = "Data processed.";
+          this.loggingService.log('upload dict');
         }
       });
     });

@@ -62,9 +62,11 @@ export class UploadTextComponent {
         next: (response) => {
           this.uploadMessage = 'Upload successful!';
           this.isUploading = false; 
-
+          
           this.fetchUploadedFiles();
-          this.loggingService.log('uploaded file');
+          
+          // Log file upload activity
+          this.loggingService.log(`upload file: ${this.selectedFile!.name}`);
         },
         error: (error) => {
           this.uploadMessage = 'Upload error. Please try again.';
@@ -116,8 +118,8 @@ export class UploadTextComponent {
             console.log('File deleted successfully', response);
             // Remove the deleted file from the uploadedFiles list
             this.uploadedFiles = this.uploadedFiles.filter(file => !selectedFiles.includes(file.name));
-            // Send logging to backend 
-            this.loggingService.log('deleted file');
+            // Log file deletion activity
+            this.loggingService.log(`delete file: ${filename}`);
           },
           error: (error) => {
             console.error('File deletion error', error);

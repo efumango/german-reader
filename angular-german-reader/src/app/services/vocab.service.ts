@@ -12,13 +12,10 @@ export class VocabService {
   private apiUrl = `${environment.apiUrl}/vocab`;
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  addWord(word: string, definition: string, inflection: string, sentence: string): Observable<any> {
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
+  addWord(word: string, definition: string, inflection: string, sentence: string, filename: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add-word`, { word, definition, inflection, sentence, filename }, {
+      headers: { Authorization: `Bearer ${this.token}` }
     });
-
-    return this.http.post(`${this.apiUrl}/add-word`, { word, definition, inflection, sentence }, { headers });
   }
 
   getVocabList(): Observable<any[]> {

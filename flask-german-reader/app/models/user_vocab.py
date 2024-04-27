@@ -9,3 +9,4 @@ class UserVocab(db.Model):
     definition = db.Column(db.Text, db.ForeignKey('dictionary_entry.definition'), nullable=False)
     inflection = db.Column(db.Text, db.ForeignKey('dictionary_entry.inflection'))
     sentence = db.Column(db.Text)
+    filename = db.Column(db.Text)

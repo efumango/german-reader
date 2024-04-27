@@ -33,7 +33,7 @@ export class LoginComponent {
           next: (user) => {
             if (user && user.token) {
               console.log("Login successful.");
-              this.loggingService.log('logged in');
+              this.loggingService.log('log in');
               this.router.navigate(['/text']); 
             } else {
               console.error('Login successful, but no token received');

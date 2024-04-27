@@ -17,7 +17,7 @@ def upload_text():
     if file:
         filename = secure_filename(f"{current_user}_{file.filename}")  # Concatenate user's identity with filename
         file.save(os.path.join(current_app.config['UPLOADED_TEXT_FOLDER'], filename))
-        return jsonify({'message': 'File uploaded successfully'})
+        return jsonify({'message': 'File uploaded successfully', 'filename': filename})
     return jsonify({'error': 'Upload failed'})
 
 @text_bp.route('/files', methods=['GET'])
@@ -49,4 +49,4 @@ def delete_file():
     if not os.path.isfile(user_file) or not filename.startswith(current_user):
         return jsonify({'error': 'File not found or unauthorized'})
     os.remove(user_file)
-    return jsonify({'message': 'File deleted successfully'})
+    return jsonify({'message': 'File deleted successfully', 'filename': filename})

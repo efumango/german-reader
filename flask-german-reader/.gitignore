@@ -7,3 +7,4 @@ prepared_dict/
 venv/
 /instance/
 .pytest_cache/
+user_activity_log.csv
