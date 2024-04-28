@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { LoggingService } from '../services/logging.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
 import {FormsModule} from '@angular/forms'
+import { catchError, throwError } from 'rxjs';
 @Component({
   selector: 'app-upload-text',
   standalone: true,
@@ -21,7 +22,10 @@ export class UploadTextComponent {
   uploadMessage: string = ''
   allSelected: boolean=false;
 
-  constructor(private http: HttpClient, private authService: AuthService, private loggingService: LoggingService) { }
+  constructor(private http: HttpClient, 
+    private authService: AuthService, 
+    private loggingService: LoggingService,
+    private router: Router) { }
   
   ngOnInit(): void {
     this.fetchUploadedFiles();
@@ -74,22 +78,22 @@ export class UploadTextComponent {
         }
     })
   }
-
   fetchUploadedFiles(): void {
-    if (!this.token) return; 
+    if (!this.token) return;
 
     const headers = new HttpHeaders({
-      'Authorization' : `Bearer ${this.token}`
-    })
+      'Authorization': `Bearer ${this.token}`
+    });
 
-    this.http.get<string[]>(`${this.apiUrl}/files`, {headers})
+    this.http.get<string[]>(`${this.apiUrl}/files`, { headers })
       .subscribe({
         next: (files) => {
-          this.uploadedFiles = files.map(fileName => ({ name: fileName, selected: false }));        },
+          this.uploadedFiles = files.map(fileName => ({ name: fileName, selected: false }));
+        },
         error: (error) => {
           console.error('Failed to fetch uploaded files', error);
         }
-    });
+      });
   }
 
   toggleAllSelections(selectAll: boolean): void {

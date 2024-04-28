@@ -16,7 +16,6 @@ def handle_file_too_large(e):
 def upload_dictionary():
     user_identity = get_jwt_identity()
     uuid = request.form.get('dzuuid')
-    total_chunks = request.form.get('dztotalchunkcount')
     
     file = request.files['dictionary']
     if not file:

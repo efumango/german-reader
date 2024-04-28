@@ -11,6 +11,7 @@ export class TextSelectionDirective {
   private selectedText: string = '';
   private button: HTMLElement | null = null;
   private removeClickListener: Function | null = null;
+  private isSelecting: boolean = false;
 
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
@@ -21,26 +22,45 @@ export class TextSelectionDirective {
               private renderer: Renderer2, 
               private shareFilenameService: ShareFilename,
               private loggingService: LoggingService) {}
+  
+    
+  @HostListener('pointerdown', ['$event'])
+  onPointerDown(event: PointerEvent) {
+    this.isSelecting = true; // Start the selection tracking
+  }
 
+  @HostListener('pointermove', ['$event'])
+  onPointerMove(event: PointerEvent) {
+    if (!this.isSelecting) return; // Only process moves if a selection started
+  }
+            
   @HostListener('pointerup') onPointerUp() {
+  
+    if (!this.isSelecting) return;
+    this.isSelecting = false; // End the selection tracking
+    
     const selection = window.getSelection();
     if (!selection || selection.toString().trim() === '') {
       this.removeButton();
       return;
     }
-  
+
     // Get selected text
-    this.selectedText = selection.toString().trim();
-  
-    // Determine the number of words selected
-    const numWords = this.selectedText.split(/\s+/).length;
-  
+    const currentSelectedText = selection.toString().trim();
+
+    // Only proceed if the selected text is different from the already selected text
+    if (this.selectedText === currentSelectedText && this.button) {
+      return; // If the selected text hasn't changed and button exists, do nothing
+    }
+
+    this.selectedText = currentSelectedText;
+
     // Clear previous highlights
     this.clearHighlights();
-  
+
     // Highlight selection
     this.highlightSelection(selection);
-  
+
     // Create button if it doesn't already exist
     if (!this.button) {
       this.createButton(selection);
@@ -126,57 +146,64 @@ export class TextSelectionDirective {
 }
 
   private determineContextAndEmit(selection: Selection) {
-  const numWords = this.selectedText.split(/\s+/).length;
-  const containsVerb = this.containsVerb(this.selectedText);
-  const isLikelyPrefix = this.isLikelyPrefix(this.selectedText);
-  const beginsWithInseparablePrefix = this.beginsWithInseparablePrefix(this.selectedText);
-  var wordType = ''
+    const numWords = this.selectedText.split(/\s+/).length;
+    const containsVerb = this.containsVerb(this.selectedText);
+    const isLikelyPrefix = this.isLikelyPrefix(this.selectedText);
+    const beginsWithInseparablePrefix = this.beginsWithInseparablePrefix(this.selectedText);
+    var wordType = ''
 
-  // For more than two words, emit only the selected text without context.
-  if (numWords >= 2) {
-    this.textSelected.emit(this.selectedText);
-    return; // Exit the method early
+    // For more than two words, emit only the selected text without context.
+    if (numWords >= 2) {
+      this.textSelected.emit(this.selectedText);
+      return; // Exit the method early
+    }
+
+    // Proceed with context determination for other cases
+    let beforeWords = 0, afterWords = 0;
+
+    if (containsVerb && !beginsWithInseparablePrefix) {
+      // For single verbs that are likely to be separable: find prefix
+      // emit selected text with extended context after the verb: 2 words before, 10 words after
+      beforeWords = 2;
+      afterWords = 10;
+      wordType = 'canBeSepVerb'
+    } else if (numWords === 1 && isLikelyPrefix) {
+      // For single words that are likely prefixes: find verb
+      // emit selected text with extended context before the prefix: 10 words before, 2 words after
+      beforeWords = 10;
+      afterWords = 2;
+      wordType = 'canBePrefix'
+    } else {
+      beforeWords = 2;
+      afterWords = 2;
+      wordType = 'default'
+    }
+
+    // Retrieve and trim the sentence based on calculated beforeWords and afterWords
+    const sentence = this.getSentenceContainingWord(this.selectedText);
+    if (sentence) {
+      const context = (beforeWords === 0 && afterWords === 0) ? "" : this.trimSentenceAroundSelectedWord(sentence, this.selectedText, beforeWords, afterWords);
+      this.textContext.emit({ text: this.selectedText, context, wordType });
+    }
   }
-
-  // Proceed with context determination for other cases
-  let beforeWords = 0, afterWords = 0;
-
-  if (containsVerb && !beginsWithInseparablePrefix) {
-    // For single verbs that are likely to be separable: find prefix
-    // emit selected text with extended context after the verb: 2 words before, 10 words after
-    beforeWords = 2;
-    afterWords = 10;
-    wordType = 'canBeSepVerb'
-  } else if (numWords === 1 && isLikelyPrefix) {
-    // For single words that are likely prefixes: find verb
-    // emit selected text with extended context before the prefix: 10 words before, 2 words after
-    beforeWords = 10;
-    afterWords = 2;
-    wordType = 'canBePrefix'
-  } else {
-    beforeWords = 2;
-    afterWords = 2;
-    wordType = 'default'
-  }
-
-  // Retrieve and trim the sentence based on calculated beforeWords and afterWords
-  const sentence = this.getSentenceContainingWord(this.selectedText);
-  if (sentence) {
-    const context = (beforeWords === 0 && afterWords === 0) ? "" : this.trimSentenceAroundSelectedWord(sentence, this.selectedText, beforeWords, afterWords);
-    this.textContext.emit({ text: this.selectedText, context, wordType });
-  }
-}
 
   private removeButton() {
     if (this.button) {
+
+      // Remove the event listener to prevent any potential memory leaks or accidental re-bindings
       if (this.removeClickListener) {
         this.removeClickListener();
         this.removeClickListener = null;
       }
+
+      // Remove the button from the DOM
       this.button.remove();
+
+      // Nullify the button reference to prevent accidental re-use
       this.button = null;
     }
   }
+
 
   getSentenceContainingWord(selectedText: string): string | null {
     this.clearHighlights();
@@ -258,9 +285,8 @@ export class TextSelectionDirective {
     }
     
     return result;
-}
+  }
 
-  
   // List of separable verb prefixes
   private separableVerbPrefixes: string[] = [
     'ab', 'an', 'auf', 'aus', 'auseinander', 'bei', 'da', 'dabei', 'dar', 'daran',
@@ -323,7 +349,7 @@ export class TextSelectionDirective {
         x: popupPositionX,
         y: popupPositionY
     });
-}
+  }
   
 }
 

@@ -53,7 +53,9 @@ export class VocabComponent {
         this.vocabList = data.map(item => ({ ...item, selected: false }));
         this.updatePage();
       },
-      error: (err) => console.error('Failed to fetch vocab list', err)
+      error: (error) => {
+        console.error('Failed to fetch vocab list', error);
+      }
     });
   }
 

@@ -6,8 +6,9 @@ import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { RouterModule } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { AuthGuard } from './app/guards/auth.guard'; 
+import { AuthInterceptor } from './app/auth.interceptor';
 
 if (environment.production) {
   enableProdMode();
@@ -28,8 +29,7 @@ bootstrapApplication(AppComponent, {
       { path: 'vocab', loadComponent: () => import('./app/vocab/vocab.component').then(m=>m.VocabComponent), canActivate: [AuthGuard.canActivate] },
       { path: 'text', loadComponent: () => import('./app/upload-text/upload-text.component').then(m=>m.UploadTextComponent), canActivate: [AuthGuard.canActivate] },
       { path: 'dictionary', loadComponent: () => import('./app/upload-dictionaries/upload-dictionaries.component').then(m=>m.UploadDictionariesComponent), canActivate: [AuthGuard.canActivate] }
-
-
     ])),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 }).catch(err => console.error(err));
