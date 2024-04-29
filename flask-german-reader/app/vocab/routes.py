@@ -19,7 +19,15 @@ def add_word():
         return jsonify({"error": "Word does not exist in the dictionary"}), 404
     
     # Create UserVocab entry
-    new_word = UserVocab(user_id=user_identity, dictionary_entry_id=entry.id, sentence=data['sentence'], filename=data['filename'])
+    new_word = UserVocab(
+        user_id=user_identity,
+        dictionary_entry_id=entry.id,
+        word=entry.word,  # Copy word from DictionaryEntry
+        definition=entry.definition,  # Copy definition from DictionaryEntry
+        inflection=entry.inflection, # Copy inflection from DictionaryEntry
+        sentence=data['sentence'],
+        filename=data['filename']
+    )
     db.session.add(new_word)
     db.session.commit()
     return jsonify({"success": True, "response": "Word added"}), 201
@@ -28,28 +36,28 @@ def add_word():
 @jwt_required()
 def get_vocab():
     user_identity = get_jwt_identity()
-    words = UserVocab.query.options(joinedload(UserVocab.dictionary_entry)).filter_by(user_id=user_identity).all()
-    return jsonify([{'id': word.id, 'word': word.dictionary_entry.word, 'definition': word.dictionary_entry.definition, 'inflection': word.dictionary_entry.inflection, 'sentence': word.sentence, 'filename': word.filename} for word in words])
+    words = UserVocab.query.filter_by(user_id=user_identity).all()
+    return jsonify([{'id': word.id, 'word': word.word, 'definition': word.definition, 'inflection': word.inflection, 'sentence': word.sentence, 'filename': word.filename} for word in words])
 
 @vocab_bp.route('/deduplicate', methods=['POST'])
 @jwt_required()
 def deduplicate_words():
     user_identity = get_jwt_identity()
-    words = UserVocab.query.options(joinedload(UserVocab.dictionary_entry)).filter_by(user_id=user_identity).all()
+    words = UserVocab.query.filter_by(user_id=user_identity).all()
 
     seen = {}
     to_delete = []
     deleted_words = []  # List to store details of deleted words
 
     for word in words:
-        key = (word.dictionary_entry_id, word.sentence)
+        key = (word.word, word.definition)
         if key in seen:
             to_delete.append(word)
             deleted_words.append({
                 'id': word.id,
-                'word': word.dictionary_entry.word,
-                'definition': word.dictionary_entry.definition,
-                'inflection': word.dictionary_entry.inflection,
+                'word': word.word,
+                'definition': word.definition,
+                'inflection': word.inflection,
                 'sentence': word.sentence,
                 'filename': word.filename
             })
@@ -101,8 +109,13 @@ def update_vocab_batch():
             if not vocab:
                 continue
 
+            # Update sentence
             vocab.sentence = item.get('sentence', vocab.sentence)
-        
+            
+            # Update word and definition
+            vocab.word = item.get('word', vocab.word)
+            vocab.definition = item.get('definition', vocab.definition)
+
         db.session.commit()
         return jsonify({'message': 'Vocabulary items updated successfully'}), 200
     except Exception as e:

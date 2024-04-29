@@ -50,7 +50,7 @@ export class VocabComponent {
   fetchVocabList() {
     this.vocabService.getVocabList().subscribe({
       next: (data) => {
-        this.vocabList = data.map(item => ({ ...item, selected: false }));
+        this.vocabList = data.map(item => ({ ...item, selected: false })).sort((a, b) => a.id - b.id);
         this.updatePage();
       },
       error: (error) => {
@@ -149,7 +149,6 @@ export class VocabComponent {
     }
   }
 
-
   selectAllToggle: boolean = false;
 
   toggleAllSelections() {
@@ -212,6 +211,8 @@ export class VocabComponent {
 
           // Log save all changes activity 
           this.loggingService.log('save all changes');
+
+          this.fetchVocabList();
         },
         error: (error) => {
           // Handle save error
