@@ -1,5 +1,5 @@
 from . import auth_blueprint
-from sqlite3 import IntegrityError
+from sqlalchemy.exc import IntegrityError
 from flask import request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
@@ -37,4 +37,3 @@ def signup():
     except IntegrityError:
         db.session.rollback()
         return jsonify({'message': 'Failed to register user'}), 500
-

@@ -1,22 +1,34 @@
 from flask import Flask
-from app.config import DevelopmentConfig
+from app.config import DevelopmentConfig, ProductionConfig
 from flask_cors import CORS
-from app.extensions import db, login_manager, jwt
+from app.extensions import db, login_manager, jwt, migrate
 from dotenv import load_dotenv
+import os
 load_dotenv() 
 
-def create_app():
+def create_app(config_class=None):
 
     app = Flask(__name__)
-    app.config.from_object(DevelopmentConfig)
+
+    # Determine configuration class from environment variable or default to DevelopmentConfig
+    if config_class is None:
+        env = os.getenv('FLASK_ENV', 'development')
+        config_class = ProductionConfig if env == 'production' else DevelopmentConfig
+
+    app.config.from_object(config_class)
     
     CORS(app)
+
+    # Initialize db, migrate, login_manager, jwt
+    db.init_app(app)
+    migrate.init_app(app, db) 
 
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
 
     jwt.init_app(app)
 
+    # Register blueprints
     from app.auth import auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/api/auth')
 
@@ -34,10 +46,6 @@ def create_app():
     
     from app.logging.routes import logging_bp
     app.register_blueprint(logging_bp, url_prefix='/api')
-    
-    db.init_app(app)
-    with app.app_context():
-        db.create_all()
 
     return app
 
@@ -46,7 +54,6 @@ app = create_app()
 @app.cli.command("populate-wikidict")
 def populate_wikidict_command():
     with app.app_context():
-        db.create_all()  # Ensure all tables are created.
         from app.dict.populate_wikidict import populate_wikidict
         populate_wikidict()
 

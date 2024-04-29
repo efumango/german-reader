@@ -1,63 +1,60 @@
 import os
-import sqlite3
-from app.models import User
-from app.config import DevelopmentConfig
+import psycopg2
+from app.config import ProductionConfig
 
 def process_chunk(chunk_path, user_identity):
-    conn = sqlite3.connect(DevelopmentConfig.DB_PATH)
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(ProductionConfig.SQLALCHEMY_DATABASE_URI)
     cursor = conn.cursor()
-    
-    user = User.query.filter_by(id=user_identity).first()
-    if not user:
+
+    # Check user exists
+    cursor.execute('SELECT id FROM "user" WHERE id = %s', (user_identity,))
+    if cursor.fetchone() is None:
         raise Exception('User not found')
 
     # Parse file
     entries_data = []
     with open(chunk_path, 'r', encoding='utf-8') as file:
-        content = file.read()
-        lines = content.split('\n')
+        content = file.readlines()
         
-        for line in lines:
-            if line.startswith('#'):  # Skipping comment lines
-                continue
-            parts = line.strip().split('\t')
-            if len(parts) < 2:  # Ensure there's at least a word and definition
-                continue
-            word, definition = parts[0], parts[1]
-            entries_data.append({
-                'word': word,
-                'original_form': None,
-                'definition': definition,
-                'inflection': None,
-                'source': 'custom'
-            })
+    for line in content:
+        if line.startswith('#'):  # Skipping comment lines
+            continue
+        parts = line.strip().split('\t')
+        if len(parts) < 2:  # Ensure there's at least a word and definition
+            continue
+        word, definition = parts[0], parts[1]
+        entries_data.append((word, None, definition, None, 'custom'))
 
-    unique_entries = {entry['word']: entry for entry in entries_data}.values()
-
-    # Insert unique words
-    entries_to_insert = [
-        (entry['word'], entry['original_form'], entry['definition'], entry['inflection'], entry['source']) for entry in unique_entries
-    ]
-    
-    cursor.executemany('INSERT OR IGNORE INTO dictionary_entry (word, original_form, definition, inflection, source) VALUES (?, ?, ?, ?, ?)', entries_to_insert)
-    
-    # Fetch entry_ids for all words in this batch
-    words = [entry['word'] for entry in unique_entries]
-    cursor.execute('SELECT id, word FROM dictionary_entry WHERE word IN ({seq})'.format(seq=','.join(['?']*len(words))), words)
-    word_to_entry_id = {word: entry_id for entry_id, word in cursor.fetchall()}
-    
-    # Prepare UserDictionaryMapping
-    mappings_to_insert = []
-    for entry in unique_entries:
-        entry_id = word_to_entry_id.get(entry['word'])
-        if entry_id:
-            mappings_to_insert.append((user_identity, entry_id))
-    
-    cursor.executemany('INSERT OR IGNORE INTO user_dictionary_mapping (user_id, entry_id) VALUES (?, ?)', mappings_to_insert)
-
-    # Commit and clean up
+    # Insert unique words using ON CONFLICT to ignore duplicates
+    insert_query = """
+        INSERT INTO dictionary_entry (word, original_form, definition, inflection, source) 
+        VALUES (%s, %s, %s, %s, %s) ON CONFLICT (word) DO NOTHING
+    """
+    cursor.executemany(insert_query, entries_data)
     conn.commit()
-    conn.close()
-    os.remove(chunk_path)
 
-  
+    # Fetch entry_ids for all words in this batch
+    words = tuple(entry[0] for entry in entries_data)  # Make a tuple for SQL IN clause
+    cursor.execute("""
+        SELECT id, word FROM dictionary_entry WHERE word IN %s
+    """, (words,))
+    word_to_entry_id = {word: entry_id for entry_id, word in cursor.fetchall()}
+
+    # Prepare UserDictionaryMapping
+    mappings_data = [
+        (user_identity, word_to_entry_id[word]) for word in words if word in word_to_entry_id
+    ]
+    insert_mapping_query = """
+        INSERT INTO user_dictionary_mapping (user_id, entry_id) 
+        VALUES (%s, %s) ON CONFLICT (user_id, entry_id) DO NOTHING
+    """
+    cursor.executemany(insert_mapping_query, mappings_data)
+    conn.commit()
+
+    # Close the cursor and connection
+    cursor.close()
+    conn.close()
+
+    # Remove the chunk file
+    os.remove(chunk_path)

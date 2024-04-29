@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // Remove any user-related data from local storage
         localStorage.removeItem('currentUser');
         // Alert the user 
-        alert('Your session has expired. Please log in again.');
+        alert('Your session has expired. Please refresh the page to log in again.');
         // Redirect to the login page
         this.router.navigate(['/login']);
         console.log('redirecting');

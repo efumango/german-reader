@@ -1,8 +1,9 @@
-import sqlite3
-from app.config import DevelopmentConfig, Config
+import psycopg2
+from app.config import ProductionConfig, Config
 
 def populate_wikidict():
-    conn = sqlite3.connect(DevelopmentConfig.DB_PATH)
+    # Connect to the PostgreSQL database
+    conn = psycopg2.connect(ProductionConfig.SQLALCHEMY_DATABASE_URI)
     cursor = conn.cursor()
     
     # Parse file
@@ -13,7 +14,6 @@ def populate_wikidict():
         
         for line in lines:
             parts = line.strip().split('\t')
-            # Initialize missing parts as None
             word = parts[0] if len(parts) > 0 else None
             original_form = parts[1] if len(parts) > 1 else None
             definition = parts[2] if len(parts) > 2 else None
@@ -37,7 +37,13 @@ def populate_wikidict():
         (entry['word'], entry['original_form'], entry['definition'], entry['inflection'], entry['source']) for entry in unique_entries
     ]
     
-    cursor.executemany('INSERT OR IGNORE INTO dictionary_entry (word, original_form, definition, inflection, source) VALUES (?, ?, ?, ?, ?)', entries_to_insert)
+    # Prepare the SQL command to insert data, handling duplicates using ON CONFLICT
+    insert_query = '''
+    INSERT INTO dictionary_entry (word, original_form, definition, inflection, source)
+    VALUES (%s, %s, %s, %s, %s)
+    ON CONFLICT (word) DO NOTHING;
+    '''
+    cursor.executemany(insert_query, entries_to_insert)
     
     # Commit and clean up
     conn.commit()

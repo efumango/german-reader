@@ -1,5 +1,7 @@
 import os
 import tempfile 
+from dotenv import load_dotenv
+load_dotenv()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 class Config(object):
@@ -25,6 +27,6 @@ class TestingConfig(Config):
     UPLOADED_TEXT_FOLDER = tempfile.mkdtemp()  
 
 class ProductionConfig(Config):
-    SECRET_KEY = 'production_secret_key'
-    JWT_SECRET_KEY = 'production_jwt_secret_key'
-    
+    SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'default_jwt_secret_key')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://myuser:mypassword@localhost/mydatabase')

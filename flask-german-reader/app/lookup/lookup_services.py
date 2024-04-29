@@ -10,7 +10,7 @@ def query_dict_entries(raw_text, user_identity, limit, context, wordType):
     try: 
         # Check if the user exists
         user_result = db.session.execute(
-            text("SELECT * FROM user WHERE id = :user_id"),
+            text('SELECT id FROM "user" WHERE id = :user_id'),
             {"user_id": user_identity}
         ).fetchone()
 

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.models import UserVocab
+from sqlalchemy.orm import joinedload
+from app.models import UserVocab, DictionaryEntry
 from app.extensions import db
 
 vocab_bp = Blueprint('vocab_bp', __name__)
@@ -10,7 +11,15 @@ vocab_bp = Blueprint('vocab_bp', __name__)
 def add_word():
     data = request.get_json()
     user_identity = get_jwt_identity()
-    new_word = UserVocab(user_id=user_identity, word=data['word'], definition=data['definition'], inflection=data['inflection'], sentence=data['sentence'], filename=data['filename'])
+    
+    # Look up the dictionary entry
+    word = data['word']
+    entry = DictionaryEntry.query.filter_by(word=word).first()
+    if not entry:
+        return jsonify({"error": "Word does not exist in the dictionary"}), 404
+    
+    # Create UserVocab entry
+    new_word = UserVocab(user_id=user_identity, dictionary_entry_id=entry.id, sentence=data['sentence'], filename=data['filename'])
     db.session.add(new_word)
     db.session.commit()
     return jsonify({"success": True, "response": "Word added"}), 201
@@ -19,56 +28,56 @@ def add_word():
 @jwt_required()
 def get_vocab():
     user_identity = get_jwt_identity()
-    words = UserVocab.query.filter_by(user_id=user_identity).all()
-    return jsonify([{'id': word.id, 'word': word.word, 'definition': word.definition, 'inflection': word.inflection, 'sentence': word.sentence, 'filename': word.filename} for word in words])
+    words = UserVocab.query.options(joinedload(UserVocab.dictionary_entry)).filter_by(user_id=user_identity).all()
+    return jsonify([{'id': word.id, 'word': word.dictionary_entry.word, 'definition': word.dictionary_entry.definition, 'inflection': word.dictionary_entry.inflection, 'sentence': word.sentence, 'filename': word.filename} for word in words])
 
 @vocab_bp.route('/deduplicate', methods=['POST'])
 @jwt_required()
 def deduplicate_words():
     user_identity = get_jwt_identity()
-
-    # Fetch all words
-    words = UserVocab.query.filter_by(user_id=user_identity).all()
+    words = UserVocab.query.options(joinedload(UserVocab.dictionary_entry)).filter_by(user_id=user_identity).all()
 
     seen = {}
     to_delete = []
-
-    # List to store words and their filenames
-    deleted_words = []
+    deleted_words = []  # List to store details of deleted words
 
     for word in words:
-        key = (word.word, word.definition)
+        key = (word.dictionary_entry_id, word.sentence)
         if key in seen:
-            # Add word and its filename to the list
-            deleted_words.append({'word': word.word, 'filename': word.filename})
             to_delete.append(word)
+            deleted_words.append({
+                'id': word.id,
+                'word': word.dictionary_entry.word,
+                'definition': word.dictionary_entry.definition,
+                'inflection': word.dictionary_entry.inflection,
+                'sentence': word.sentence,
+                'filename': word.filename
+            })
         else:
             seen[key] = word
 
-    # Delete duplicates
     for word in to_delete:
         db.session.delete(word)
 
     db.session.commit()
-
-    # Return the list of deleted words and their filenames
-    return jsonify({"success": True, "message": "Duplicates removed", "deleted_words": deleted_words})
-
+    return jsonify({
+        "success": True,
+        "message": "Duplicates removed",
+        "deleted_words": deleted_words
+    })
 
 @vocab_bp.route('/delete', methods=['POST'])
 @jwt_required()
 def delete_words():
     user_identity = get_jwt_identity()
     data = request.get_json()
-    word_ids = data.get('word_ids')  # Expect a list of word IDs to delete
-
-    # Validate input
+    word_ids = data.get('word_ids')
+    
     if not word_ids:
         return jsonify({"error": "No word IDs provided"}), 400
 
     try:
-        # Fetch and delete words that match the provided IDs and belong to the user
-        UserVocab.query.filter(UserVocab.id.in_(word_ids), UserVocab.user_id == user_identity).delete(synchronize_session=False)
+        UserVocab.query.filter(UserVocab.id.in_(word_ids), UserVocab.user_id == user_identity).delete(synchronize_session='fetch')
         db.session.commit()
         return jsonify({"success": True, "message": "Words deleted"})
     except Exception as e:
@@ -90,11 +99,8 @@ def update_vocab_batch():
             vocab = UserVocab.query.filter_by(id=vocab_id, user_id=user_identity).first()
             
             if not vocab:
-                continue  # Skip items that don't exist in the database
+                continue
 
-            vocab.word = item.get('word', vocab.word)
-            vocab.definition = item.get('definition', vocab.definition)
-            vocab.inflection = item.get('inflection', vocab.inflection)
             vocab.sentence = item.get('sentence', vocab.sentence)
         
         db.session.commit()

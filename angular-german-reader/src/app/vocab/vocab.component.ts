@@ -110,13 +110,13 @@ export class VocabComponent {
       next: (response) => {
         console.log('Deduplicates removed', response);
         alert('Duplicates removed.');
-
+        this.fetchVocabList();
+        
         // Log deduplicate activity for each word
         response.deleted_words.forEach((word: VocabItem) => {
         this.loggingService.log('remove deduplicate', word.filename, word.word);
       });
 
-        this.fetchVocabList();
       },
       error: (error) => console.error('Error deleting words', error)
     });

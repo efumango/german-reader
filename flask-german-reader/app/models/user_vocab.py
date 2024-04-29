@@ -5,8 +5,8 @@ class UserVocab(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    word = db.Column(db.String(255), db.ForeignKey('dictionary_entry.word'), nullable=False)
-    definition = db.Column(db.Text, db.ForeignKey('dictionary_entry.definition'), nullable=False)
-    inflection = db.Column(db.Text, db.ForeignKey('dictionary_entry.inflection'))
+    dictionary_entry_id = db.Column(db.Integer, db.ForeignKey('dictionary_entry.id'), nullable=False)
+    dictionary_entry = db.relationship('DictionaryEntry', backref='user_vocab_entries')
     sentence = db.Column(db.Text)
     filename = db.Column(db.Text)
+    
