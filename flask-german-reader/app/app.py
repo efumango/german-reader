@@ -44,7 +44,7 @@ def create_app(config_class=None):
     from app.vocab.routes import vocab_bp
     app.register_blueprint(vocab_bp, url_prefix='/api/vocab')
     
-    from app.logging.routes import logging_bp
+    from app.log.routes import logging_bp
     app.register_blueprint(logging_bp, url_prefix='/api')
 
     return app

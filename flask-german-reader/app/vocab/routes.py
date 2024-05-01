@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from sqlalchemy.orm import joinedload
 from app.models import UserVocab, DictionaryEntry
 from app.extensions import db
 

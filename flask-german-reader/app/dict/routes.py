@@ -24,7 +24,7 @@ def upload_dictionary():
     filename = secure_filename(file.filename)
     chunk_index = request.form.get('dzchunkindex')
     
-    temp_dir = os.path.join(current_app.config['UPLOAD_FOLDER'], uuid)
+    temp_dir = os.path.join(current_app.config['UPLOADED_DICT_FOLDER'], uuid)
     os.makedirs(temp_dir, exist_ok=True)
     
     chunk_path = os.path.join(temp_dir, f"{filename}.part{chunk_index}")

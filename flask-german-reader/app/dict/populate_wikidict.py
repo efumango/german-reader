@@ -1,5 +1,5 @@
 import psycopg2
-from app.config import ProductionConfig, Config
+from app.config import ProductionConfig
 
 def populate_wikidict():
     # Connect to the PostgreSQL database
@@ -8,7 +8,7 @@ def populate_wikidict():
     
     # Parse file
     entries_data = []
-    with open(Config.WIKI_DICT_PATH, 'r', encoding='utf-8') as file:
+    with open(ProductionConfig.WIKI_DICT_PATH, 'r', encoding='utf-8') as file:
         content = file.read()
         lines = content.split('\n')
         

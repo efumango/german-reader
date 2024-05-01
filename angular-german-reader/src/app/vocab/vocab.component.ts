@@ -2,7 +2,6 @@ import { Component, HostListener } from '@angular/core';
 import { VocabService } from '../services/vocab.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ShareFilename } from '../services/share-filename.service';
 import { LoggingService } from '../services/logging.service';
 
 interface VocabItem {
@@ -39,7 +38,6 @@ export class VocabComponent {
 
   constructor(private vocabService: VocabService,
               private loggingService: LoggingService,
-              private shareFilenameService: ShareFilename
   ) {
   }
 
