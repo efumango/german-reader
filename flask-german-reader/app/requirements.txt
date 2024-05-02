@@ -7,6 +7,7 @@ Flask_Migrate==4.0.7
 flask_sqlalchemy==3.1.1
 HanTa==1.1.1
 nltk==3.8.1
+numpy
 psycopg2_binary==2.9.9
 python-dotenv==1.0.1
 SQLAlchemy==2.0.29

@@ -4,6 +4,8 @@ from flask_cors import CORS
 from app.extensions import db, login_manager, jwt, migrate
 from dotenv import load_dotenv
 import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 load_dotenv() 
 
 def create_app(config_class=None):
@@ -58,4 +60,4 @@ def populate_wikidict_command():
         populate_wikidict()
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
