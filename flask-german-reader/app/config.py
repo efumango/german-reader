@@ -29,7 +29,7 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'default_jwt_secret_key')
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql+psycopg2://myuser:mypassword@localhost/mydatabase')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://myuser:mypassword@localhost/mydatabase')    
     MAX_CONTENT_LENGTH = 20 * 1024 * 1024
     UPLOADED_DICT_FOLDER = os.path.join(BASE_DIR, 'uploaded_dict')
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')

@@ -1,8 +1,9 @@
 from flask import jsonify, current_app
 from app.extensions import db
 from HanTa import HanoverTagger as ht
-import nltk
 from sqlalchemy import text
+import nltk
+nltk.download('punkt')
 
 def query_dict_entries(raw_text, user_identity, limit, context, wordType):
     queried_word = None
