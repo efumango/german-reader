@@ -8,8 +8,9 @@ import { RouterModule } from '@angular/router';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { AuthGuard } from './app/guards/auth.guard'; 
-import { AuthInterceptor } from './app/auth.interceptor';
-
+import { AuthInterceptor
+  
+ } from './app/interceptor/auth.interceptor';
 if (environment.production) {
   enableProdMode();
 }

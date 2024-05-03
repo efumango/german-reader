@@ -1,0 +1,6 @@
+services:
+  angular-app:
+    container_name: angular_app
+    build: .
+    ports:
+      - 1939:80
