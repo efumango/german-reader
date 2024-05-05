@@ -34,6 +34,18 @@ export class DefinitionPopUpComponent {
   ) {
   }
 
+  ngOnInit() {
+    document.addEventListener('pointerdown', this.stopPropagating, true);
+  }
+
+  ngOnDestroy() {
+    document.removeEventListener('pointerdown', this.stopPropagating, true);
+  }
+
+  private stopPropagating(event: Event) {
+    event.stopPropagation();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data']) {
       this.filterData();
