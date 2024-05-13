@@ -1,5 +1,6 @@
 import os
 import psycopg2
+import psycopg2.extras
 from app.config import ProductionConfig
 
 def process_chunk(chunk_path, user_identity):
@@ -16,7 +17,7 @@ def process_chunk(chunk_path, user_identity):
     entries_data = []
     with open(chunk_path, 'r', encoding='utf-8') as file:
         content = file.readlines()
-        
+
     for line in content:
         if line.startswith('#'):  # Skipping comment lines
             continue
@@ -31,7 +32,7 @@ def process_chunk(chunk_path, user_identity):
         INSERT INTO dictionary_entry (word, original_form, definition, inflection, source) 
         VALUES (%s, %s, %s, %s, %s) ON CONFLICT (word) DO NOTHING
     """
-    cursor.executemany(insert_query, entries_data)
+    psycopg2.extras.execute_batch(cursor, insert_query, entries_data)
     conn.commit()
 
     # Fetch entry_ids for all words in this batch
@@ -49,7 +50,7 @@ def process_chunk(chunk_path, user_identity):
         INSERT INTO user_dictionary_mapping (user_id, entry_id) 
         VALUES (%s, %s) ON CONFLICT (user_id, entry_id) DO NOTHING
     """
-    cursor.executemany(insert_mapping_query, mappings_data)
+    psycopg2.extras.execute_batch(cursor, insert_mapping_query, mappings_data)
     conn.commit()
 
     # Close the cursor and connection

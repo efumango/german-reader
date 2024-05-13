@@ -7,9 +7,6 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Copy the requirements file into the container at /app
-COPY app/requirements.txt /app/requirements.txt
-
 # Install needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
@@ -19,7 +16,7 @@ EXPOSE 5000
 # Define environment variable
 ENV NAME World
 ENV PYTHONPATH=/app
-ENV FLASK_APP=app.py
+ENV FLASK_APP=app.app:app
 
 # Run app.py when the container launches
 CMD ["gunicorn", "--workers=3", "--bind=0.0.0.0:5000", "app.app:app"]

@@ -190,7 +190,6 @@ export class TextSelectionDirective {
   private removeButton() {
     if (this.button) {
 
-      // Remove the event listener to prevent any potential memory leaks or accidental re-bindings
       if (this.removeClickListener) {
         this.removeClickListener();
         this.removeClickListener = null;
@@ -260,6 +259,7 @@ export class TextSelectionDirective {
     return words.slice(start, end).join(' ');
   }
 
+  // Get context for vocabulary list 
   public trimSentenceWithEllipsis(sentence: string, selectedPhrase: string, beforeWords: number, afterWords: number): string {
     const words = sentence.split(/\s+/);
     // Find the starting index of the selectedPhrase in the sentence
