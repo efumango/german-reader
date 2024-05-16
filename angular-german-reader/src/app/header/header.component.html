@@ -6,15 +6,15 @@
         <span class="brand-name">GermanReader</span>
       </div>
       <div class="nav-buttons">
-        <button *ngIf="!isLoggedIn" routerLink="/login" class="login-button">Login</button>
-        <button *ngIf="!isLoggedIn" routerLink="/signup" class="signup-button">Signup</button>
+        <button *ngIf="!isLoggedIn" routerLink="/german-reader/login" class="login-button">Login</button>
+        <button *ngIf="!isLoggedIn" routerLink="/german-reader/signup" class="signup-button">Signup</button>
         <button *ngIf="isLoggedIn" (click)="logout()" class="logout-button">Logout</button>
       </div>
     </div>
     <div *ngIf="isLoggedIn" class="nav-tabs">
-      <a routerLink="/text" class="tab">Text</a>
-      <a routerLink="/dictionary" class="tab">Dictionary</a>
-      <a routerLink="/vocab" class="tab">Vocabulary</a>
+      <a routerLink="/german-reader/text" class="tab">Text</a>
+      <a routerLink="/german-reader/dictionary" class="tab">Dictionary</a>
+      <a routerLink="/german-reader/vocab" class="tab">Vocabulary</a>
     </div>
   </nav>
 </header>

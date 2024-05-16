@@ -34,7 +34,7 @@ export class LoginComponent {
             if (user && user.token) {
               console.log("Login successful.");
               this.loggingService.log('log in');
-              this.router.navigate(['/text']); 
+              this.router.navigate(['/german-reader/text']); 
             } else {
               console.error('Login successful, but no token received');
             }

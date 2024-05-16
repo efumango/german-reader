@@ -65,7 +65,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/welcome']);
+    this.router.navigate(['/german-reader/welcome']);
     console.log("Logged out");
   }
 }

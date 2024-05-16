@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 from app.config import ProductionConfig
 
 def populate_wikidict():
@@ -43,7 +44,7 @@ def populate_wikidict():
     VALUES (%s, %s, %s, %s, %s)
     ON CONFLICT (word) DO NOTHING;
     '''
-    cursor.executemany(insert_query, entries_to_insert)
+    psycopg2.extras.execute_batch(cursor, insert_query, entries_to_insert)
     
     # Commit and clean up
     conn.commit()

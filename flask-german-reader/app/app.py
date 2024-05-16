@@ -32,22 +32,22 @@ def create_app(config_class=None):
 
     # Register blueprints
     from app.auth import auth_blueprint
-    app.register_blueprint(auth_blueprint, url_prefix='/api/auth')
+    app.register_blueprint(auth_blueprint, url_prefix='/german-reader/api/auth')
 
     from app.dict.routes import dictionary_bp
-    app.register_blueprint(dictionary_bp, url_prefix='/api')
+    app.register_blueprint(dictionary_bp, url_prefix='/german-reader/api')
 
     from app.text.routes import text_bp 
-    app.register_blueprint(text_bp, url_prefix='/api')
+    app.register_blueprint(text_bp, url_prefix='/german-reader/api')
 
     from app.lookup.routes import lookup_bp 
-    app.register_blueprint(lookup_bp, url_prefix='/api')
+    app.register_blueprint(lookup_bp, url_prefix='/german-reader/api')
     
     from app.vocab.routes import vocab_bp
-    app.register_blueprint(vocab_bp, url_prefix='/api/vocab')
+    app.register_blueprint(vocab_bp, url_prefix='/german-reader/api/vocab')
     
     from app.log.routes import logging_bp
-    app.register_blueprint(logging_bp, url_prefix='/api')
+    app.register_blueprint(logging_bp, url_prefix='/german-reader/api')
 
     return app
 

@@ -13,7 +13,7 @@
   </tr>
   <tr *ngFor="let file of uploadedFiles; let i = index">
     <td><input type="checkbox" [(ngModel)]="file.selected" name="file{{i}}"></td>
-    <td><a [routerLink]="['/reader', file.name]">{{ file.name }}</a></td>
+    <td><a [routerLink]="['/german-reader/reader', file.name]">{{ file.name }}</a></td>
   </tr>
 </table>
 </div>

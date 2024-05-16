@@ -180,7 +180,7 @@ export class TextSelectionDirective {
     }
 
     // Retrieve and trim the sentence based on calculated beforeWords and afterWords
-    const sentence = this.getSentenceContainingWord(this.selectedText);
+    const sentence = this.getSentenceContainingWord();
     if (sentence) {
       const context = (beforeWords === 0 && afterWords === 0) ? "" : this.trimSentenceAroundSelectedWord(sentence, this.selectedText, beforeWords, afterWords);
       this.textContext.emit({ text: this.selectedText, context, wordType });
@@ -204,7 +204,7 @@ export class TextSelectionDirective {
   }
 
 
-  getSentenceContainingWord(selectedText: string): string | null {
+  getSentenceContainingWord(): string | null {
     this.clearHighlights();
     const selection = window.getSelection();
     if (!selection || !selection.rangeCount) return null;
@@ -237,7 +237,7 @@ export class TextSelectionDirective {
   }
 
   public getSelectedText(): string {
-     return this.selectedText;
+    return window.getSelection()?.toString().trim() || '';
   }
   
   // Helper method to calculate the selection's start offset relative to the paragraph

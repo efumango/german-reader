@@ -36,8 +36,10 @@ export class ReaderComponent {
   ) { }
 
   ngOnInit(): void {
+    console.log('ReaderComponent initialized');
     this.route.params.subscribe(params => {
       const filename = params['filename'];
+      console.log('Route params:', params);
       if (filename) {
         this.onView(filename);
       }

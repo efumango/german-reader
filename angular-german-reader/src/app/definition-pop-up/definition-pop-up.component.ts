@@ -59,7 +59,7 @@ export class DefinitionPopUpComponent {
 
   addWordToVocabList(item: any): void {
     const selectedText = this.textSelectionDirective.getSelectedText();
-    const sentence = this.textSelectionDirective.getSentenceContainingWord(selectedText);
+    const sentence = this.textSelectionDirective.getSentenceContainingWord();
     if (sentence !== null) {
       this.context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence, selectedText, 5, 5);
     }
