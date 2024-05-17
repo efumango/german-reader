@@ -8,16 +8,23 @@ services:
       - DATABASE_URL=postgresql://myuser:mypassword@db/mydatabase
     depends_on:
       - db
+    networks:
+      - internal_network
+
   db:
     image: postgres
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_USER=myuser
       - POSTGRES_PASSWORD=mypassword
       - POSTGRES_DB=mydatabase
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - internal_network
 
 volumes:
   postgres_data:
+
+networks:
+  internal_network:
+    driver: bridge
