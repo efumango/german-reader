@@ -88,6 +88,12 @@ export class DefinitionPopUpComponent {
 
   searchAll(): void {
     this.searchAllClicked.emit(this.searchQuery);
+    // Get filename 
+    const filename = this.shareFilenameService.getFilename();
+    // Log 'show all' activity
+    if (filename !== null) {
+      this.loggingService.log('search all results', filename, this.searchQuery);
+    }
   }
 
   formatInflection(inflection: string): string {
