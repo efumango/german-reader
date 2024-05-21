@@ -32,7 +32,8 @@ def get_files():
 def get_file(filename):
     current_user = str(get_jwt_identity())
     user_file = os.path.join(current_app.config['UPLOADED_TEXT_FOLDER'], filename)
-    if not os.path.isfile(user_file) or not filename.startswith(current_user):
+    # Check if the file exists and belongs to the current user
+    if not os.path.isfile(user_file) or not filename.startswith(current_user + '_'):
         return jsonify({'error': 'File not found or unauthorized'})
     with open(user_file, 'r', encoding='utf-8') as f:
         file_content = f.read()
