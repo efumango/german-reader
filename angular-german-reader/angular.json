@@ -35,6 +35,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/german-reader/",
+              "deployUrl": "/german-reader/",
               "budgets": [
                 {
                   "type": "initial",

@@ -10,7 +10,7 @@ RUN npm run build
 FROM nginx:alpine
 # Remove default NGINX files
 RUN rm -rf /usr/share/nginx/html/*
-COPY --from=build /app/dist/angular-german-reader/browser /usr/share/nginx/html
+COPY --from=build /app/dist/angular-german-reader/browser /usr/share/nginx/html/german-reader
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
