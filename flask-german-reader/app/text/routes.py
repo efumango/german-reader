@@ -24,7 +24,7 @@ def upload_text():
 @jwt_required() 
 def get_files():
     current_user = str(get_jwt_identity())
-    user_files = [file for file in os.listdir(current_app.config['UPLOADED_TEXT_FOLDER']) if file.startswith(current_user)]
+    user_files = [file for file in os.listdir(current_app.config['UPLOADED_TEXT_FOLDER']) if file.startswith(current_user + '_')]
     return jsonify(user_files)
 
 @text_bp.route('/files/<filename>', methods=['GET'])
