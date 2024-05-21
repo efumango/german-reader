@@ -49,6 +49,10 @@ def create_app(config_class=None):
     from app.log.routes import logging_bp
     app.register_blueprint(logging_bp, url_prefix='/german-reader/api')
 
+    @app.route('/index')
+    def index():
+        return 'Flask is running'
+
     return app
 
 app = create_app()

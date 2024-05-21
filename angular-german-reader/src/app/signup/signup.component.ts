@@ -36,7 +36,7 @@ export class SignupComponent {
             // Handle successful signup
             console.log('Signup successful');
             // Redirect the user
-            this.router.navigate(['/german-reader/login']);
+            this.router.navigate(['/login']);
           },
           error: error => {
             // Handle signup error

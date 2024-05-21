@@ -21,14 +21,14 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(withFetch()),
     importProvidersFrom(
       RouterModule.forRoot([
-      { path: 'german-reader/login', loadComponent: () => import('./app/login/login.component').then(m => m.LoginComponent) },
-      { path: 'german-reader/signup', loadComponent: () => import('./app/signup/signup.component').then(m => m.SignupComponent) },
-      { path: 'german-reader/welcome', loadComponent: () => import('./app/welcome/welcome.component').then(m => m.WelcomeComponent) },
-      { path: '', redirectTo: '/german-reader/welcome', pathMatch: 'full' }, // Redirect empty path to /welcome
-      { path: 'german-reader/reader/:filename', loadComponent: () => import('./app/reader/reader.component').then(m=>m.ReaderComponent),canActivate: [AuthGuard.canActivate]},
-      { path: 'german-reader/vocab', loadComponent: () => import('./app/vocab/vocab.component').then(m=>m.VocabComponent), canActivate: [AuthGuard.canActivate] },
-      { path: 'german-reader/text', loadComponent: () => import('./app/upload-text/upload-text.component').then(m=>m.UploadTextComponent), canActivate: [AuthGuard.canActivate] },
-      { path: 'german-reader/dictionary', loadComponent: () => import('./app/upload-dictionaries/upload-dictionaries.component').then(m=>m.UploadDictionariesComponent), canActivate: [AuthGuard.canActivate] }
+      { path: 'login', loadComponent: () => import('./app/login/login.component').then(m => m.LoginComponent) },
+      { path: 'signup', loadComponent: () => import('./app/signup/signup.component').then(m => m.SignupComponent) },
+      { path: 'welcome', loadComponent: () => import('./app/welcome/welcome.component').then(m => m.WelcomeComponent) },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Redirect empty path to /welcome
+      { path: 'reader/:filename', loadComponent: () => import('./app/reader/reader.component').then(m=>m.ReaderComponent),canActivate: [AuthGuard.canActivate]},
+      { path: 'vocab', loadComponent: () => import('./app/vocab/vocab.component').then(m=>m.VocabComponent), canActivate: [AuthGuard.canActivate] },
+      { path: 'text', loadComponent: () => import('./app/upload-text/upload-text.component').then(m=>m.UploadTextComponent), canActivate: [AuthGuard.canActivate] },
+      { path: 'dictionary', loadComponent: () => import('./app/upload-dictionaries/upload-dictionaries.component').then(m=>m.UploadDictionariesComponent), canActivate: [AuthGuard.canActivate] }
     ])),
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

@@ -4,4 +4,8 @@ venv/
 /instance/
 .pytest_cache/
 tests/
+uploaded_dict/*
+!uploaded_dict/
+uploaded_texts/*
+!uploaded_texts/
 user_activity_log.csv
