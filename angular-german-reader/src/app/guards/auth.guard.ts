@@ -13,7 +13,7 @@ export const AuthGuard: { canActivate: CanActivateFn } = {
       map(isLoggedIn => {
         if (!isLoggedIn) {
           // If not logged in, redirect to the welcome page
-          router.navigate(['/german-reader/welcome']);
+          router.navigate(['/welcome']);
           return false;
         }
         // If logged in, allow the route activation
