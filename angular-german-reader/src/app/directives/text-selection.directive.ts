@@ -12,6 +12,8 @@ export class TextSelectionDirective {
   private button: HTMLElement | null = null;
   private removeClickListener: Function | null = null;
   private isSelecting: boolean = false;
+  private lastSelectedText: string = '';
+  private lastSelectedSentence: string | null = null;
 
   @Output() textSelected: EventEmitter<string> = new EventEmitter<string>();
   @Output() textContext: EventEmitter<{ text: string, context: string, wordType: string }> = new EventEmitter<{ text: string, context: string, wordType: string }>();
@@ -65,7 +67,12 @@ export class TextSelectionDirective {
     if (!this.button) {
       this.createButton(selection);
     }
+
+    // Update last selected text and sentence
+    this.lastSelectedText = currentSelectedText;
+    this.lastSelectedSentence = this.getSentenceContainingWord();
   }
+  
   
   @HostListener('document:click', ['$event']) onDocumentClick(event: PointerEvent) {
     const popUpElement = document.querySelector('.popup'); // Query for pop-up element 
@@ -240,6 +247,14 @@ export class TextSelectionDirective {
     return window.getSelection()?.toString().trim() || '';
   }
   
+  public getLastSelectedText(): string {
+    return this.lastSelectedText;
+  }
+  
+  public getSentenceContainingLastSelectedWord(): string | null {
+    return this.lastSelectedSentence;
+  }
+
   // Helper method to calculate the selection's start offset relative to the paragraph
   private getRangeStartOffsetWithinParagraph(range: Range, paragraph: Element): number {
     const preRange = document.createRange();

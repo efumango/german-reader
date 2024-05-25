@@ -58,12 +58,17 @@ export class DefinitionPopUpComponent {
   }
 
   addWordToVocabList(item: any): void {
-    const selectedText = this.textSelectionDirective.getSelectedText();
-    const sentence = this.textSelectionDirective.getSentenceContainingWord();
+    let selectedText = this.textSelectionDirective.getSelectedText();
+
+    let sentence = this.textSelectionDirective.getSentenceContainingWord();
+    // If sentence is empty, use the sentence that contains last selected text 
+    if (sentence === null) {
+      sentence = this.textSelectionDirective.getSentenceContainingLastSelectedWord();
+    }
+  
     if (sentence !== null) {
       this.context = this.textSelectionDirective.trimSentenceWithEllipsis(sentence, selectedText, 5, 5);
-    }
-    else {
+    } else {
       this.context = '';
     }
 
