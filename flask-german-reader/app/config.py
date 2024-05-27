@@ -14,11 +14,11 @@ class Config(object):
     UPLOADED_DICT_FOLDER = os.path.join(BASE_DIR, 'uploaded_dict')
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
     WIKI_DICT_PATH = os.path.join(BASE_DIR, 'prepared_dict/wikidict.txt')
+    NLTK_DATA_PATH = os.path.join(BASE_DIR, 'nltk_data')
     MAX_CONTENT_LENGTH = 20 * 1024 * 1024
     
 class DevelopmentConfig(Config):
     DEBUG = True
-    DB_PATH = "C:\\Users\\efuma\\Downloads\\german_reader\\flask-german-reader\\instance\\db.sqlite"
 
 class TestingConfig(Config):
     TESTING = True
@@ -34,3 +34,4 @@ class ProductionConfig(Config):
     UPLOADED_DICT_FOLDER = os.path.join(BASE_DIR, 'uploaded_dict')
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
     WIKI_DICT_PATH = os.path.join(BASE_DIR, 'prepared_dict/wikidict.txt')
+    NLTK_DATA_PATH = os.path.join(BASE_DIR, 'nltk_data')

@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from app.dict.dictionary_services import process_chunk
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import os 
+from config import ProductionConfig
 
 dictionary_bp = Blueprint('dictionary_bp', __name__)
 
@@ -24,7 +25,7 @@ def upload_dictionary():
     filename = secure_filename(file.filename)
     chunk_index = request.form.get('dzchunkindex')
     
-    temp_dir = os.path.join(current_app.config['UPLOADED_DICT_FOLDER'], uuid)
+    temp_dir = os.path.join(ProductionConfig.UPLOADED_DICT_FOLDER, uuid)
     os.makedirs(temp_dir, exist_ok=True)
     
     chunk_path = os.path.join(temp_dir, f"{filename}.part{chunk_index}")

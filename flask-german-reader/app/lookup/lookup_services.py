@@ -3,7 +3,9 @@ from app.extensions import db
 from HanTa import HanoverTagger as ht
 from sqlalchemy import text
 import nltk
-nltk.download('punkt')
+from config import ProductionConfig
+nltk.data.path.append(ProductionConfig.NLTK_DATA_PATH)
+from nltk.tokenize import word_tokenize
 
 def query_dict_entries(raw_text, user_identity, limit, context, wordType):
     queried_word = None
