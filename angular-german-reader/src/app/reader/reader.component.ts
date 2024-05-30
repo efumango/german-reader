@@ -142,6 +142,9 @@ export class ReaderComponent {
     this.loadingPopUp = false;
     this.showPopup = true;
     this.searchQuery = this.popupData[0].queried_word;
+
+    // Logging lookup results
+    this.loggingService.log('receive lookup results');
   }
 
   handlePopUp(position: { x: number, y: number }) {

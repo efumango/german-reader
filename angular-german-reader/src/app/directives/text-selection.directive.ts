@@ -135,19 +135,21 @@ export class TextSelectionDirective {
     // Listen for the click event on the button
     this.removeClickListener = this.renderer.listen(this.button, 'click', (event) => {
       event.stopPropagation(); // Prevent the document:click event
-      this.determineContextAndEmit(selection);
-      this.emitPopupPosition(selection);
-      this.removeButton();
 
       // Get filename 
       const filename = this.shareFilenameService.getFilename();
 
       // Get word that is being looked up 
       const word = selection.toString().trim();
-
+      
+      // Logging look up activity
       if (filename !== null) {
         this.loggingService.log('look up', filename, word);
       }
+
+      this.determineContextAndEmit(selection);
+      this.emitPopupPosition(selection);
+      this.removeButton();
     });
   }
 }

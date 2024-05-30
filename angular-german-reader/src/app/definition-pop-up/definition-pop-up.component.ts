@@ -58,6 +58,8 @@ export class DefinitionPopUpComponent {
   }
 
   addWordToVocabList(item: any): void {
+    this.loggingService.log('click add word button');
+    
     let selectedText = this.textSelectionDirective.getSelectedText();
 
     let sentence = this.textSelectionDirective.getSentenceContainingWord();

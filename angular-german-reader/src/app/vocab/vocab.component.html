@@ -22,7 +22,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let vocab of pagedVocabList; let i = index">
-      <td><input type="checkbox" [(ngModel)]="vocab.selected" /></td>
+      <td><input type="checkbox" [(ngModel)]="vocab.selected" (change)="logSelectionChange(vocab, $event)"/></td>
       <td (click)="enableEdit(vocab, 'word')">
         <span *ngIf="!vocab.isEditingWord">{{ vocab.word }}</span>
         <textarea

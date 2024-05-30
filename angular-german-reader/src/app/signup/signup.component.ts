@@ -1,10 +1,10 @@
-// src/app/signup/signup.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service'; // Adjust path as necessary
+import { AuthService } from '../services/auth.service'; 
 import { Router } from '@angular/router';
-import { CommonModule
- } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { LoggingService } from '../services/logging.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -20,7 +20,8 @@ export class SignupComponent {
 
   constructor(private fb: FormBuilder, 
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private loggingService: LoggingService
     ) {}
 
   onSubmit() {

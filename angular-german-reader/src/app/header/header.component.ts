@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
+import { LoggingService } from '../services/logging.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class HeaderComponent {
   isLoggedIn: boolean = false;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private loggingService: LoggingService) {
     this.authService.currentUser.subscribe(user => {
       this.isLoggedIn = !!user;
     });

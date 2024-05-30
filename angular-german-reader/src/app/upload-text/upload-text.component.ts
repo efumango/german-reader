@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
 import {FormsModule} from '@angular/forms'
-import { catchError, throwError } from 'rxjs';
+
 @Component({
   selector: 'app-upload-text',
   standalone: true,
@@ -39,6 +39,7 @@ export class UploadTextComponent {
     }
     this.selectedFile = target.files[0];
     this.onUpload();
+    this.loggingService.log('select file to upload');
   }
 
   token = this.authService.getCurrentUserToken();

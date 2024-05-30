@@ -29,6 +29,7 @@ export class UploadDictionariesComponent {
     }
     this.fileToUpload = target.files[0];
     this.uploadStatus = ""; // Reset upload status message when a new file is selected
+    this.loggingService.log('select dict to upload');
     this.uploadDictionary();
   }
 
@@ -67,7 +68,7 @@ export class UploadDictionariesComponent {
         this.uploadStatus = `Processing... (${chunksUploaded}/${totalChunks} processed)`;
         if (chunksUploaded === totalChunks) {
           this.uploadStatus = "Data processed.";
-          this.loggingService.log('upload dict');
+          this.loggingService.log('dict processed');
         }
       });
     });

@@ -150,7 +150,6 @@ export class VocabComponent {
   selectAllToggle: boolean = false;
 
   toggleAllSelections() {
-    // Ensure only current page items are toggled
     this.vocabList.forEach(vocab => vocab.selected = this.selectAllToggle);
   }
 
@@ -223,5 +222,13 @@ export class VocabComponent {
     }
   }
 
-
+  logSelectionChange(vocab: any, event: any): void {
+    const isChecked = event.target.checked;
+    if (isChecked){
+      this.loggingService.log('select word in vocab list', undefined, `${vocab.word}`);
+    }
+    else{
+      this.loggingService.log('deselect word in vocab list', undefined, `${vocab.word}`);
+    }
+  }
 }
