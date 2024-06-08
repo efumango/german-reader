@@ -20,9 +20,8 @@ export class SignupComponent {
 
   constructor(private fb: FormBuilder, 
     public authService: AuthService,
-    private router: Router,
-    private loggingService: LoggingService
-    ) {}
+    private router: Router
+  ) {}
 
   onSubmit() {
     if (this.signupForm.valid) {

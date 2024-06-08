@@ -99,13 +99,16 @@ export class TextSelectionDirective {
     highlightedElements.forEach((element: HTMLElement) => {
       const parent = this.renderer.parentNode(element);
       while (element.firstChild) {
+        // moves the first child of the element (the highlighted <span>) to be a direct child of the parent (<p>)
         this.renderer.insertBefore(parent, element.firstChild, element);
       }
+      // removes the now-empty <span> element
       this.renderer.removeChild(parent, element);
     });
   }
 
   private createButton(selection: Selection) {
+    // Remove button if already exists
     if (this.button) {
       this.removeButton();
     }
@@ -183,8 +186,8 @@ export class TextSelectionDirective {
       afterWords = 2;
       wordType = 'canBePrefix'
     } else {
-      beforeWords = 2;
-      afterWords = 2;
+      beforeWords = 10;
+      afterWords = 10;
       wordType = 'default'
     }
 
@@ -230,7 +233,7 @@ export class TextSelectionDirective {
     if (!(container instanceof HTMLParagraphElement)) return null;
   
     const paragraphText = container.textContent || '';
-    const sentences = paragraphText.split(/(?<=[.!?;])\s+/);
+    const sentences = paragraphText.split(/(?<=[.!?;.«])\s+/);
     const rangeStartOffset = this.getRangeStartOffsetWithinParagraph(range, container);
   
     let cumulativeLength = 0;

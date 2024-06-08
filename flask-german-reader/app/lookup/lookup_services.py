@@ -107,52 +107,50 @@ def hanta_processing(text, context, wordType):
     lemmata = tagger.tag_sent(words)
 
     lemmatized_word = None
-    conjugated_word = text 
+    conjugated_word = text
 
-    if wordType == 'default':
-        for lem in lemmata:
-            if lem[0].lower() == text.lower():
-                lemmatized_word = lem[1]
-                break  # Exit loop once the word is found
+    def handle_separable_verb(idx, lem):
+        for subsequent_lem in lemmata[idx + 1:]:
+            if subsequent_lem[2] == 'PTKVZ':
+                return subsequent_lem[1] + lem[1], lem[0] + ' ' + subsequent_lem[1]
+        return lem[1], lem[0]
 
-    elif wordType == 'canBeSepVerb':
-        for idx, lem in enumerate(lemmata):
-            if lem[0].lower() == text.lower():
-                pos = lem[2]
-                # Handle separable verbs
+    def handle_prefix(idx, lem):
+        for previous_lem in reversed(lemmata[:idx]):
+            if previous_lem[2] in ['VV(FIN)', 'VV(IMP)']:
+                return lem[1] + previous_lem[1], previous_lem[0] + ' ' + lem[1]
+        return lem[1], lem[0]
+
+    for idx, lem in enumerate(lemmata):
+        if lem[0].lower() == text.lower():
+            pos = lem[2]
+            if wordType == 'default':
+                # In case frontend processing fails to recognize separable verb or prefix 
                 if pos in ['VV(FIN)', 'VV(IMP)']:
-                    is_separable = False
-                    for subsequent_lem in lemmata[idx + 1:]:
-                        if subsequent_lem[2] == 'PTKVZ':
-                            is_separable = True
-                            lemmatized_word = subsequent_lem[1] + lem[1]
-                            conjugated_word = lem[0] + ' ' + subsequent_lem[1]
-                            break
-                    if not is_separable:
-                        lemmatized_word = lem[1]
-                else:  
+                    lemmatized_word, conjugated_word = handle_separable_verb(idx, lem)
+                elif pos == 'PTKVZ':
+                    lemmatized_word, conjugated_word = handle_prefix(idx, lem)
+                else:
                     lemmatized_word = lem[1]
-                break 
-
-    elif wordType == 'canBePrefix':
-        for idx, lem in enumerate(lemmata):
-            if lem[0].lower() == text.lower():
-                pos = lem[2]
-                # Handle prefixes
-                if pos == 'PTKVZ':
-                    is_prefix = False
-                    for previous_lem in reversed(lemmata[:idx]):
-                        if previous_lem[2] in ['VV(FIN)', 'VV(IMP)']:
-                            is_prefix = True
-                            lemmatized_word = lem[1] + previous_lem[1]
-                            conjugated_word = previous_lem[0] + ' ' + lem[1]
-                            break
-                    if not is_prefix:
-                        lemmatized_word = lem[1]
-                else:  
-                    lemmatized_word = lem[1]
+                    conjugated_word = lem[0]
                 break
- 
+
+            elif wordType == 'canBeSepVerb':
+                if pos in ['VV(FIN)', 'VV(IMP)']:
+                    lemmatized_word, conjugated_word = handle_separable_verb(idx, lem)
+                else:
+                    lemmatized_word = lem[1]
+                    conjugated_word = lem[0]
+                break
+
+            elif wordType == 'canBePrefix':
+                if pos == 'PTKVZ':
+                    lemmatized_word, conjugated_word = handle_prefix(idx, lem)
+                else:
+                    lemmatized_word = lem[1]
+                    conjugated_word = lem[0]
+                break
+
     return {
         'lemmatized_word': lemmatized_word if lemmatized_word else text,
         'conjugated_word': conjugated_word

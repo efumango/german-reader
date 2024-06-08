@@ -6,7 +6,7 @@ $color-ochre: #BC6C25;
 $color-olive: #5e6d2e;
 $color-forest: #45462A;
 
-// Reset some default styles
+// Reset default styles
 body, h1, p, button {
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ header {
 
 .navbar {
     width: 70%;
-    margin: 0 auto; // This centers the navbar
+    margin: 0 auto; // Centers the navbar
     display: flex;
     flex-direction: column;
     align-items: flex-start; // Align items to the start (left side)
