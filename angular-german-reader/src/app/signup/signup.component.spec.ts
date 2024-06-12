@@ -1,39 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from '../auth.service'; 
-import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
-  let authServiceMock: any;
-  let router: any;
+  let authService: jasmine.SpyObj<AuthService>;
+  let router: Router;
+  let routerNavigateSpy: jasmine.Spy;
 
   beforeEach(async () => {
-    // Create a mock for AuthService with stubs for the signup method
-    authServiceMock = {
-      signup: jasmine.createSpy('signup').and.returnValue(of({})) // Simulate successful signup
-    };
+    const authServiceSpy = jasmine.createSpyObj('AuthService', ['signup']);
 
     await TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule,
-        RouterTestingModule, // Provide stubs for router dependencies
-        SignupComponent // Import standalone component directly
-      ],
+      imports: [ReactiveFormsModule, RouterTestingModule],
       providers: [
-        FormBuilder,
-        { provide: AuthService, useValue: authServiceMock } // Provide the mock AuthService
+        { provide: AuthService, useValue: authServiceSpy }
       ]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
-    router = TestBed.inject(RouterTestingModule);
+    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+    router = TestBed.inject(Router);
+    routerNavigateSpy = spyOn(router, 'navigate');
     fixture.detectChanges();
   });
 
@@ -41,45 +35,36 @@ describe('SignupComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('form invalid when empty', () => {
-    expect(component.signupForm.valid).toBeFalsy();
+  it('should not call signup when form is invalid', () => {
+    component.signupForm.controls['username'].setValue('');
+    component.signupForm.controls['password'].setValue('');
+    component.onSubmit();
+    expect(authService.signup.calls.any()).toBe(false);
   });
 
-  it('username and password fields validity', () => {
-    let username = component.signupForm.controls['username'];
-    let password = component.signupForm.controls['password'];
+  it('should call signup and navigate on successful signup', () => {
+    component.signupForm.controls['username'].setValue('testuser');
+    component.signupForm.controls['password'].setValue('password');
 
-    expect(username.valid).toBeFalsy();
-    expect(password.valid).toBeFalsy();
-
-    // Set values to the form fields
-    username.setValue("testUser");
-    password.setValue("password");
-
-    expect(username.valid).toBeTruthy();
-    expect(password.valid).toBeTruthy();
-  });
-
-  it('should call AuthService.signup and navigate on valid form submission', () => {
-    component.signupForm.controls['username'].setValue("testUser");
-    component.signupForm.controls['password'].setValue("password");
+    authService.signup.and.returnValue(of({}));
 
     component.onSubmit();
 
-    expect(authServiceMock.signup).toHaveBeenCalledWith("testUser", "password");
+    expect(authService.signup).toHaveBeenCalledWith('testuser', 'password');
+    expect(routerNavigateSpy).toHaveBeenCalledWith(['/login']);
   });
 
-  it('should handle signup error when username already exists', () => {
-    authServiceMock.signup.and.returnValue(throwError(() => new Error('Username already existed.')));
+  it('should handle signup error', () => {
+    spyOn(window, 'alert');
+    component.signupForm.controls['username'].setValue('testuser');
+    component.signupForm.controls['password'].setValue('password');
 
-    component.signupForm.controls['username'].setValue("existingUser");
-    component.signupForm.controls['password'].setValue("password");
-
-    spyOn(window, 'alert'); // Spy on window.alert to check if it gets called
+    authService.signup.and.returnValue(throwError(() => new Error('Username already existed.')));
 
     component.onSubmit();
 
-    expect(authServiceMock.signup).toHaveBeenCalledWith("existingUser", "password");
+    expect(authService.signup).toHaveBeenCalledWith('testuser', 'password');
+    expect(routerNavigateSpy).not.toHaveBeenCalled();
     expect(window.alert).toHaveBeenCalledWith('Username already existed.');
   });
 });
