@@ -108,18 +108,26 @@ export class ReaderComponent {
       });
   }
 
+  // Query phrases, no need for context 
   limitedQueryWithoutContext(text: string) {
     this.makeHttpPostRequest('query', { text });
   }
 
+  // Query single word 
   limitedQueryWithContext(textContext: { text: string; context: string }) {
     this.makeHttpPostRequest('process-and-query-db', textContext);
     console.log(textContext);
   }
 
+  // When user clicks "Show all", no need for context 
   queryAllWithoutContext(searchQuery: string) {
     if (!searchQuery) return;
     this.makeHttpPostRequest('query', { searchQuery }, { all: 'true' });
+  }
+
+  // Decompound, no need for context 
+  decompound(searchQuery: string){
+    this.makeHttpPostRequest('decompound', { searchQuery });
   }
 
   private processResponse(response: any): void {

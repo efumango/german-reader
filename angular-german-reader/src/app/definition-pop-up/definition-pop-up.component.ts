@@ -23,6 +23,7 @@ export class DefinitionPopUpComponent {
 
   @Input() searchQuery: string = '';
   @Output() searchAllClicked: EventEmitter<string> = new EventEmitter<string>();
+  @Output() decompoundClicked: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild(TextSelectionDirective) textSelectionDirective!: TextSelectionDirective;
 
@@ -103,6 +104,15 @@ export class DefinitionPopUpComponent {
     }
   }
 
+  decompound(): void {
+    this.decompoundClicked.emit(this.searchQuery);
+    // Get filename 
+    const filename = this.shareFilenameService.getFilename();
+    // Log 'show all' activity
+    if (filename !== null) {
+      this.loggingService.log('decompound', filename, this.searchQuery);
+    }
+  }
   formatInflection(inflection: string): string {
     if (!inflection) {
       return '';

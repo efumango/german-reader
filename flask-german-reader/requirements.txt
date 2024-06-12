@@ -13,3 +13,4 @@ python-dotenv==1.0.1
 SQLAlchemy==2.0.29
 Werkzeug==3.0.2
 gunicorn==20.0.0
+git+https://github.com/repodiac/german_compound_splitter

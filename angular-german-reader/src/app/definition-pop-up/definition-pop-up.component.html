@@ -2,6 +2,7 @@
   <div class="search-container">
     <input type="text" [(ngModel)]="searchQuery" placeholder="Show all results" (keydown.enter)="searchAll()" #searchInput>
     <button (click)="searchAll()">Show all</button>
+    <button (click)="decompound()">Decompound</button>
   </div>  
   <ng-container *ngIf="loading; else loadedContent">
     <div class="loading">Loading...</div>

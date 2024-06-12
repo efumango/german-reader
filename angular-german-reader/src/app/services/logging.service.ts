@@ -28,7 +28,7 @@ export class LoggingService {
     }
 
     this.http.post(this.apiUrl, { logMessage }).subscribe({
-      next: () => console.log('Log sent to backend'),
+      next: () => console.log('Log sent to backend', logMessage),
       error: error => console.error('Error sending log to backend', error)
     });
   }

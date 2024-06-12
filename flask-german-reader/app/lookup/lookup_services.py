@@ -6,6 +6,7 @@ import nltk
 from config import ProductionConfig
 nltk.data.path.append(ProductionConfig.NLTK_DATA_PATH)
 from nltk.tokenize import word_tokenize
+from german_compound_splitter import comp_split
 
 def query_dict_entries(raw_text, user_identity, limit, context, wordType):
     queried_word = None
@@ -155,3 +156,20 @@ def hanta_processing(text, context, wordType):
         'lemmatized_word': lemmatized_word if lemmatized_word else text,
         'conjugated_word': conjugated_word
     }
+
+def decompound(compound, user_identity, limit):
+    input_file = ProductionConfig.GERMAN_WORDLIST
+    ahocs = comp_split.read_dictionary_from_file(input_file)
+
+    # Decompound the word
+    dissection = comp_split.dissect(compound, ahocs, make_singular=True)
+    print('SPLIT WORDS (plain):', dissection)
+
+    all_results = []
+
+    for word in dissection:
+        # Query the dictionary for each decompounded word
+        results = query_word_in_dict(word, user_identity, limit)
+        all_results.extend(results)
+
+    return jsonify(all_results)

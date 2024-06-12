@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.lookup.lookup_services import hanta_processing, query_dict_entries
+from app.lookup.lookup_services import query_dict_entries, decompound as decompound_service
 
 lookup_bp = Blueprint('lookup_bp', __name__)
 
@@ -21,6 +21,24 @@ def handle_query():
     # Query for the text in the database with or without limit based on 'all' parameter
     limit = None if fetch_all else 10
     response_data = query_dict_entries(text, user_identity, limit, context=None, wordType=None)
+
+    return response_data
+
+@lookup_bp.route('/decompound', methods=['POST'])
+@jwt_required()
+def decompound():
+    data = request.get_json()
+    user_identity = get_jwt_identity()
+
+    # Check if the required 'searchQuery' field is present
+    if not data or 'searchQuery' not in data:
+        return jsonify({'error': 'Missing search query'}), 400
+
+    compound = data['searchQuery']
+
+    # Decompound the word and return results for the decompounded words 
+    limit = 5
+    response_data = decompound_service(compound, user_identity, limit)
 
     return response_data
 

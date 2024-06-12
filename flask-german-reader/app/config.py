@@ -35,3 +35,4 @@ class ProductionConfig(Config):
     UPLOADED_TEXT_FOLDER = os.path.join(BASE_DIR, 'uploaded_texts')
     WIKI_DICT_PATH = os.path.join(BASE_DIR, 'prepared_dict/wikidict.txt')
     NLTK_DATA_PATH = os.path.join(BASE_DIR, 'nltk_data')
+    GERMAN_WORDLIST = os.path.join(BASE_DIR, 'german_wordlist/wordlist-german.txt')
