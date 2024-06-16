@@ -233,15 +233,17 @@ export class TextSelectionDirective {
     if (!(container instanceof HTMLParagraphElement)) return null;
   
     const paragraphText = container.textContent || '';
-    const sentences = paragraphText.split(/(?<=[.!?;.«])\s+/);
+    const sentences = paragraphText.split(/(?<=[.!?;.])\s+/);
     const rangeStartOffset = this.getRangeStartOffsetWithinParagraph(range, container);
   
     let cumulativeLength = 0;
     for (const sentence of sentences) {
       cumulativeLength += sentence.length + 1; // +1 for the space after the sentence
       if (cumulativeLength > rangeStartOffset) {
+        // Replace » and « with '
+        const cleanedSentence = sentence.replace(/[»«]/g, "'");
         // Found the sentence containing the selection
-        return sentence.trim();
+        return cleanedSentence.trim();
       }
     }
   
@@ -276,7 +278,9 @@ export class TextSelectionDirective {
     
     const start = Math.max(0, selectedIndex - beforeWords);
     const end = Math.min(words.length, selectedIndex + afterWords + 1);
+    console.log('context: ' + words.slice(start, end).join(' '));
     return words.slice(start, end).join(' ');
+    
   }
 
   // Get context for vocabulary list 
