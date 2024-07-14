@@ -20,7 +20,7 @@ def handle_query():
 
     # Query for the text in the database with or without limit based on 'all' parameter
     limit = None if fetch_all else 10
-    response_data = query_dict_entries(text, user_identity, limit, context=None, wordType=None)
+    response_data = query_dict_entries(text, user_identity, limit, context=None)
 
     return response_data
 
@@ -54,12 +54,11 @@ def process_and_query_db():
 
     text = data['text']
     context = data.get('context')
-    wordType = data.get('wordType')
     limit = 10 
 
     # Process the text and optional context
     if context:
-        response_data = query_dict_entries(text, user_identity, limit, context, wordType)
+        response_data = query_dict_entries(text, user_identity, limit, context)
 
     return response_data
 
