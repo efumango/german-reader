@@ -108,11 +108,6 @@ export class ReaderComponent {
       });
   }
 
-  // Query phrases, no need for context 
-  limitedQueryWithoutContext(text: string) {
-    this.makeHttpPostRequest('query', { text });
-  }
-
   // Query single word 
   limitedQueryWithContext(textContext: { text: string; context: string }) {
     this.makeHttpPostRequest('process-and-query-db', textContext);

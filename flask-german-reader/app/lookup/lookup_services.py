@@ -30,39 +30,39 @@ def query_dict_entries(raw_text, user_identity, limit, context):
             # CONTAIN CONTEXT: Perform HanTa processing
             hanta_results = hanta_processing(raw_text, context)
             
-            # Query for conjugated form 
-            conjugated_word = hanta_results['conjugated_word']
-            conjugated_results = query_word_in_dict(conjugated_word, user_identity, limit)
+            # Query for inflected form 
+            inflected_form = hanta_results['inflected_form']
+            inflected_results = query_word_in_dict(inflected_form, user_identity, limit)
 
-            lemmatized_word = hanta_results['lemmatized_word']
+            lemma = hanta_results['lemma']
 
-            # Check if conjugated form and lemmatized form are the same
-            is_same_form = (conjugated_word == lemmatized_word)
+            # Check if inflected form and lemmatized form are the same
+            is_same_form = (inflected_form == lemma)
 
-            if conjugated_results:
+            if inflected_results:
                 original_found = False
                 # Check if these results include an original form
-                for result in conjugated_results:
+                for result in inflected_results:
                     if result['original_form']:
                         original_found = True
                         # Query for the original form of the first result that has one 
                         original_form_results = query_word_in_dict(result['original_form'], user_identity, limit)
-                        conjugated_results.extend(original_form_results)
+                        inflected_results.extend(original_form_results)
                         break
                 if not original_found and not is_same_form:
                     # If no original form, query the lemmatized form (if they're different)
-                    lemmatized_results = query_word_in_dict(lemmatized_word, user_identity, limit)
-                    conjugated_results.extend(lemmatized_results)
-                results = conjugated_results
+                    lemmatized_results = query_word_in_dict(lemma, user_identity, limit)
+                    inflected_results.extend(lemmatized_results)
+                results = inflected_results
             elif not is_same_form:
-                # If no results for conjugated form and forms are different, query the lemmatized form
-                lemmatized_results = query_word_in_dict(lemmatized_word, user_identity, limit)
+                # If no results for inflected form and forms are different, query the lemmatized form
+                lemmatized_results = query_word_in_dict(lemma, user_identity, limit)
                 results = lemmatized_results
             else:
-                # Use the same results as the lemmatized and conjugated forms are the same
-                results = conjugated_results
+                # Use the same results as the lemmatized and inflected forms are the same
+                results = inflected_results
 
-        return jsonify(results if results else {'error': f'Word "{conjugated_word}" and its lemma "{lemmatized_word}" not found in the dictionary', 'queried_word': queried_word}), 200
+        return jsonify(results if results else {'error': f'Word "{inflected_form}" and its lemma "{lemma}" not found in the dictionary', 'queried_word': queried_word}), 200
 
     except Exception as e:
         current_app.logger.error(f'Error querying database: {str(e)}')
@@ -70,6 +70,10 @@ def query_dict_entries(raw_text, user_identity, limit, context):
 
 
 def query_word_in_dict(raw_text, user_identity, limit):
+
+    # Remove ' from raw_text 
+    raw_text = raw_text.replace("'", "")
+
     # Define search patterns
     def get_search_patterns(text):
         return [
@@ -126,8 +130,8 @@ def hanta_processing(text, context):
     # Lemmatize and tag POS
     lemmata = tagger.tag_sent(words)
 
-    lemmatized_word = None
-    conjugated_word = text
+    lemma = None
+    inflected_form = text
 
     def handle_separable_verb(idx, lem):
         for subsequent_idx in range(idx + 1, len(lemmata)):
@@ -140,26 +144,29 @@ def hanta_processing(text, context):
         return lem[1], lem[0]
 
     def handle_prefix(idx, lem):
-        for previous_lem in reversed(lemmata[:idx]):
+    # Iterate from the current index backwards to the start
+        for i in range(idx - 1, -1, -1):
+            previous_lem = lemmata[i]
             if previous_lem[2] in ['VV(FIN)', 'VV(IMP)']:
                 return lem[1] + previous_lem[1], previous_lem[0] + ' ' + lem[1]
         return lem[1], lem[0]
+
 
     for idx, lem in enumerate(lemmata):
         if lem[0].lower() == text.lower():
             pos = lem[2]
             if pos in ['VV(FIN)', 'VV(IMP)']:
-                lemmatized_word, conjugated_word = handle_separable_verb(idx, lem)
+                lemma, inflected_form = handle_separable_verb(idx, lem)
             elif pos == 'PTKVZ':
-                lemmatized_word, conjugated_word = handle_prefix(idx, lem)
+                lemma, inflected_form = handle_prefix(idx, lem)
             else:
-                lemmatized_word = lem[1]
-                conjugated_word = lem[0]
+                lemma = lem[1]
+                inflected_form = lem[0]
             break
 
     return {
-        'lemmatized_word': lemmatized_word if lemmatized_word else text,
-        'conjugated_word': conjugated_word
+        'lemma': lemma if lemma else text,
+        'inflected_form': inflected_form
     }
 
 

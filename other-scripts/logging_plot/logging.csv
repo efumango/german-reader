@@ -1,0 +1,1728 @@
+﻿id,timestamp,user,activity,filename,word
+379,7/3/2024 9:40:36,nav_speaker1,log in, , 
+380,7/3/2024 9:40:42,nav_speaker1,select file to upload, , 
+381,7/3/2024 9:40:43,nav_speaker1,upload file: Die Verwandlung.txt, , 
+382,7/3/2024 9:40:52,nav_speaker1,select dict to upload, , 
+383,7/3/2024 9:42:02,nav_speaker1,select dict to upload, , 
+384,7/3/2024 9:43:04,nav_speaker1,select dict to upload, , 
+385,7/3/2024 9:44:46,nav_speaker1,select dict to upload, , 
+386,7/3/2024 9:48:35,nav_speaker1,select dict to upload, , 
+387,7/3/2024 9:49:04,nav_speaker1,dict processed, , 
+388,7/3/2024 9:49:47,nav_speaker1,select dict to upload, , 
+389,7/3/2024 9:50:13,nav_speaker1,dict processed, , 
+390,7/3/2024 9:50:19,nav_speaker1,select dict to upload, , 
+391,7/3/2024 9:50:43,nav_speaker1,dict processed, , 
+392,7/3/2024 9:51:13,nav_speaker1,select dict to upload, , 
+393,7/3/2024 9:51:37,nav_speaker1,dict processed, , 
+394,7/3/2024 9:51:41,nav_speaker1,select dict to upload, , 
+395,7/3/2024 9:52:07,nav_speaker1,dict processed, , 
+396,7/3/2024 10:01:39,nav_speaker1,log in, , 
+397,7/3/2024 10:09:36,nav_speaker1,open file,3_Die_Verwandlung.txt, 
+398,7/3/2024 10:10:29,nav_speaker1,look up,3_Die_Verwandlung.txt,schaukelte
+399,7/3/2024 10:10:31,nav_speaker1,receive lookup results, , 
+400,7/3/2024 10:11:22,nav_speaker1,look up,3_Die_Verwandlung.txt,fühlte
+401,7/3/2024 10:11:22,nav_speaker1,receive lookup results, , 
+402,7/3/2024 10:12:19,nav_speaker1,look up,3_Die_Verwandlung.txt,gemacht
+403,7/3/2024 10:12:20,nav_speaker1,receive lookup results, , 
+404,7/3/2024 10:13:57,nav_speaker1,look up,3_Die_Verwandlung.txt,lag
+405,7/3/2024 10:13:58,nav_speaker1,receive lookup results, , 
+406,7/3/2024 10:15:33,nav_speaker1,look up,3_Die_Verwandlung.txt,stehe
+407,7/3/2024 10:15:33,nav_speaker1,receive lookup results, , 
+408,7/3/2024 10:16:15,nav_speaker1,look up,3_Die_Verwandlung.txt,mach
+409,7/3/2024 10:16:15,nav_speaker1,receive lookup results, , 
+410,7/3/2024 10:18:29,nav_speaker1,look up,3_Die_Verwandlung.txt,fiel
+411,7/3/2024 10:19:22,nav_speaker1,log in, , 
+412,7/3/2024 10:19:25,nav_speaker1,open file,3_Die_Verwandlung.txt, 
+413,7/3/2024 10:20:55,nav_speaker1,look up,3_Die_Verwandlung.txt,stärkerem
+414,7/3/2024 10:20:56,nav_speaker1,receive lookup results, , 
+415,7/3/2024 10:21:19,nav_speaker1,look up,3_Die_Verwandlung.txt,eiliger
+416,7/3/2024 10:21:19,nav_speaker1,receive lookup results, , 
+417,7/3/2024 10:21:56,nav_speaker1,look up,3_Die_Verwandlung.txt,elastischer
+418,7/3/2024 10:21:57,nav_speaker1,receive lookup results, , 
+419,7/3/2024 10:23:00,nav_speaker1,look up,3_Die_Verwandlung.txt,Fahrpläne
+420,7/3/2024 10:23:01,nav_speaker1,receive lookup results, , 
+421,7/3/2024 10:23:31,nav_speaker1,look up,3_Die_Verwandlung.txt,Gespräche
+422,7/3/2024 10:23:31,nav_speaker1,receive lookup results, , 
+423,7/3/2024 10:23:47,nav_speaker1,look up,3_Die_Verwandlung.txt,Geschäftsleute
+424,7/3/2024 10:23:47,nav_speaker1,receive lookup results, , 
+425,7/3/2024 10:25:30,nav_speaker1,look up,3_Die_Verwandlung.txt,Eltern
+426,7/3/2024 10:25:31,nav_speaker1,receive lookup results, , 
+427,7/3/2024 10:25:56,nav_speaker1,look up,3_Die_Verwandlung.txt,Sorgen
+428,7/3/2024 10:25:57,nav_speaker1,receive lookup results, , 
+429,7/3/2024 10:26:18,nav_speaker1,select file to upload, , 
+430,7/3/2024 10:26:18,nav_speaker1,upload file: compounds.txt, , 
+431,7/3/2024 10:26:20,nav_speaker1,open file,3_compounds.txt, 
+432,7/3/2024 10:26:43,nav_speaker1,look up,3_compounds.txt,Elektrizitätswirtschaftsorganisationsgesetz
+433,7/3/2024 10:26:44,nav_speaker1,receive lookup results, , 
+434,7/3/2024 10:26:47,nav_speaker1,decompound,3_compounds.txt,Elektrizitätswirtschaftsorganisationsgesetz
+435,7/3/2024 10:26:52,nav_speaker1,receive decompound results, , 
+436,7/3/2024 10:28:01,nav_speaker1,look up,3_compounds.txt,Grundstücksverkehrsgenehmigungszuständigkeitsübertragungsverordnung
+437,7/3/2024 10:28:02,nav_speaker1,receive lookup results, , 
+438,7/3/2024 10:28:04,nav_speaker1,decompound,3_compounds.txt,Grundstücksverkehrsgenehmigungszuständigkeitsübertragungsverordnung
+439,7/3/2024 10:28:10,nav_speaker1,receive decompound results, , 
+440,7/3/2024 10:30:01,nav_speaker1,look up,3_compounds.txt,Bundesausbildungsförderungsgesetz
+441,7/3/2024 10:30:02,nav_speaker1,receive lookup results, , 
+442,7/3/2024 10:30:11,nav_speaker1,decompound,3_compounds.txt,Bundesausbildungsförderungsgesetz
+443,7/3/2024 10:30:16,nav_speaker1,receive decompound results, , 
+444,7/3/2024 10:31:38,nav_speaker1,open file,3_Die_Verwandlung.txt, 
+445,7/3/2024 10:31:46,nav_speaker1,open file,3_Die_Verwandlung.txt, 
+446,7/3/2024 10:31:59,nav_speaker1,look up,3_Die_Verwandlung.txt,copy
+447,7/3/2024 10:32:00,nav_speaker1,receive lookup results, , 
+448,7/3/2024 10:32:08,nav_speaker1,look up,3_Die_Verwandlung.txt,copy
+449,7/3/2024 10:32:09,nav_speaker1,receive lookup results, , 
+450,7/3/2024 10:32:22,nav_speaker1,look up,3_Die_Verwandlung.txt,the
+451,7/3/2024 10:32:23,nav_speaker1,receive lookup results, , 
+452,7/3/2024 10:32:32,nav_speaker1,look up,3_Die_Verwandlung.txt,You
+453,7/3/2024 10:32:33,nav_speaker1,receive lookup results, , 
+454,7/3/2024 10:32:47,nav_speaker1,search all results,3_Die_Verwandlung.txt,You
+455,7/3/2024 10:32:47,nav_speaker1,receive lookup results, , 
+456,7/3/2024 10:33:10,nav_speaker1,decompound,3_Die_Verwandlung.txt,You
+457,7/3/2024 10:33:15,nav_speaker1,receive decompound results, , 
+458,7/3/2024 10:33:25,nav_speaker1,look up,3_Die_Verwandlung.txt,Verwandlung
+459,7/3/2024 10:33:25,nav_speaker1,receive lookup results, , 
+460,7/3/2024 10:33:28,nav_speaker1,search all results,3_Die_Verwandlung.txt,Verwandlung
+461,7/3/2024 10:33:28,nav_speaker1,receive lookup results, , 
+462,7/3/2024 10:33:41,nav_speaker1,click add word button, , 
+463,7/3/2024 10:33:41,nav_speaker1,add to vocab,3_Die_Verwandlung.txt,Verwandlung
+464,7/3/2024 10:33:55,nav_speaker1,edit definition,3_Die_Verwandlung.txt,Verwandlung
+465,7/3/2024 10:34:02,nav_speaker1,open file,3_Die_Verwandlung.txt, 
+466,7/3/2024 10:34:05,nav_speaker1,look up,3_Die_Verwandlung.txt,the
+467,7/3/2024 10:34:05,nav_speaker1,receive lookup results, , 
+468,7/3/2024 10:34:07,nav_speaker1,decompound,3_Die_Verwandlung.txt,the
+469,7/3/2024 10:34:11,nav_speaker1,receive decompound results, , 
+470,7/3/2024 10:34:19,nav_speaker1,look up,3_Die_Verwandlung.txt,Verwandlung
+471,7/3/2024 10:34:19,nav_speaker1,receive lookup results, , 
+472,7/3/2024 10:34:21,nav_speaker1,decompound,3_Die_Verwandlung.txt,Verwandlung
+473,7/3/2024 10:34:26,nav_speaker1,receive decompound results, , 
+474,7/3/2024 12:10:16,native_speaker2,log in, , 
+475,7/3/2024 12:11:25,native_speaker2,select dict to upload, , 
+476,7/3/2024 12:11:46,native_speaker2,dict processed, , 
+477,7/3/2024 12:12:44,native_speaker2,select dict to upload, , 
+478,7/3/2024 12:13:07,native_speaker2,dict processed, , 
+479,7/3/2024 12:15:20,native_speaker2,select dict to upload, , 
+480,7/3/2024 12:16:59,native_speaker2,select dict to upload, , 
+481,7/3/2024 12:18:07,native_speaker2,select dict to upload, , 
+482,7/3/2024 12:19:12,native_speaker2,select file to upload, , 
+483,7/3/2024 12:19:12,native_speaker2,upload file: Ein Hungerkünstler.txt, , 
+484,7/3/2024 12:21:02,native_speaker2,select file to upload, , 
+485,7/3/2024 12:21:02,native_speaker2,upload file: sample_text.txt, , 
+486,7/3/2024 12:21:05,native_speaker2,delete file: 4_Ein_Hungerkunstler.txt, , 
+487,7/3/2024 12:23:04,native_speaker2,select file to upload, , 
+488,7/3/2024 12:23:04,native_speaker2,upload file: compound_words.txt, , 
+489,7/3/2024 12:23:06,native_speaker2,open file,4_compound_words.txt, 
+490,7/3/2024 12:23:08,native_speaker2,look up,4_compound_words.txt,Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+491,7/3/2024 12:23:10,native_speaker2,receive lookup results, , 
+492,7/3/2024 12:23:11,native_speaker2,decompound,4_compound_words.txt,Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+493,7/3/2024 12:23:18,native_speaker2,receive decompound results, , 
+494,7/3/2024 12:24:52,native_speaker2,select dict to upload, , 
+495,7/3/2024 12:25:17,native_speaker2,dict processed, , 
+496,7/3/2024 12:25:34,native_speaker2,select dict to upload, , 
+497,7/3/2024 12:25:50,native_speaker2,log in, , 
+498,7/3/2024 12:25:57,native_speaker2,select dict to upload, , 
+499,7/3/2024 12:26:14,native_speaker2,dict processed, , 
+500,7/3/2024 12:26:20,native_speaker2,select dict to upload, , 
+501,7/3/2024 12:26:40,native_speaker2,dict processed, , 
+502,7/3/2024 12:26:45,native_speaker2,select dict to upload, , 
+503,7/3/2024 12:26:55,native_speaker2,select dict to upload, , 
+504,7/3/2024 12:27:26,native_speaker2,select dict to upload, , 
+505,7/3/2024 12:27:52,native_speaker2,select dict to upload, , 
+506,7/3/2024 12:28:44,native_speaker2,select dict to upload, , 
+507,7/3/2024 12:29:19,native_speaker2,select dict to upload, , 
+508,7/3/2024 12:29:40,native_speaker2,dict processed, , 
+509,7/3/2024 12:32:09,native_speaker3,log in, , 
+510,7/3/2024 12:32:25,native_speaker3,select dict to upload, , 
+511,7/3/2024 12:37:11,native_speaker3,select dict to upload, , 
+512,7/3/2024 12:37:34,native_speaker3,dict processed, , 
+513,7/3/2024 12:37:40,native_speaker3,select dict to upload, , 
+514,7/3/2024 12:38:05,native_speaker3,dict processed, , 
+515,7/3/2024 12:38:11,native_speaker3,select dict to upload, , 
+516,7/3/2024 12:38:41,native_speaker3,dict processed, , 
+517,7/3/2024 12:38:47,native_speaker3,select dict to upload, , 
+518,7/3/2024 12:39:13,native_speaker3,dict processed, , 
+519,7/3/2024 12:40:04,native_speaker3,select file to upload, , 
+520,7/3/2024 12:40:04,native_speaker3,upload file: sample_text_daumelieschen.txt, , 
+521,7/3/2024 12:50:34,native_speaker3,open file,5_sample_text_daumelieschen.txt, 
+522,7/3/2024 12:50:45,native_speaker3,log in, , 
+523,7/3/2024 12:50:46,native_speaker3,open file,5_sample_text_daumelieschen.txt, 
+524,7/3/2024 12:50:56,native_speaker3,look up,5_sample_text_daumelieschen.txt,hinunter
+525,7/3/2024 12:50:57,native_speaker3,receive lookup results, , 
+526,7/3/2024 12:51:02,native_speaker3,look up,5_sample_text_daumelieschen.txt,hereingehüpft
+527,7/3/2024 12:51:03,native_speaker3,receive lookup results, , 
+528,7/3/2024 12:51:14,native_speaker3,look up,5_sample_text_daumelieschen.txt,fragte
+529,7/3/2024 12:51:14,native_speaker3,receive lookup results, , 
+530,7/3/2024 12:51:22,native_speaker3,look up,5_sample_text_daumelieschen.txt,Bauernfelde
+531,7/3/2024 12:51:24,native_speaker3,receive lookup results, , 
+532,7/3/2024 12:51:44,native_speaker3,look up,5_sample_text_daumelieschen.txt,hervor
+533,7/3/2024 12:51:45,native_speaker3,receive lookup results, , 
+534,7/3/2024 12:51:50,native_speaker3,look up,5_sample_text_daumelieschen.txt,heim
+535,7/3/2024 12:51:51,native_speaker3,receive lookup results, , 
+536,7/3/2024 12:51:56,native_speaker3,look up,5_sample_text_daumelieschen.txt,Knospe
+537,7/3/2024 12:51:57,native_speaker3,receive lookup results, , 
+538,7/3/2024 12:52:01,native_speaker3,look up,5_sample_text_daumelieschen.txt,gefüttert
+539,7/3/2024 12:52:01,native_speaker3,receive lookup results, , 
+540,7/3/2024 12:52:04,native_speaker3,look up,5_sample_text_daumelieschen.txt,Lege
+541,7/3/2024 12:52:05,native_speaker3,receive lookup results, , 
+542,7/3/2024 12:52:11,native_speaker3,look up,5_sample_text_daumelieschen.txt,hervor
+543,7/3/2024 12:52:12,native_speaker3,receive lookup results, , 
+544,7/3/2024 12:52:25,native_speaker3,look up,5_sample_text_daumelieschen.txt,_Däumelieschen_
+545,7/3/2024 12:52:26,native_speaker3,receive lookup results, , 
+546,7/3/2024 12:52:31,native_speaker3,search all results,5_sample_text_daumelieschen.txt,Däumelieschen
+547,7/3/2024 12:52:32,native_speaker3,receive lookup results, , 
+548,7/3/2024 12:52:38,native_speaker3,look up,5_sample_text_daumelieschen.txt,Blumengriffel
+549,7/3/2024 12:52:39,native_speaker3,receive lookup results, , 
+550,7/3/2024 12:52:42,native_speaker3,look up,5_sample_text_daumelieschen.txt,Knall
+551,7/3/2024 12:52:43,native_speaker3,receive lookup results, , 
+552,7/3/2024 12:52:46,native_speaker3,look up,5_sample_text_daumelieschen.txt,Wallnußschale
+553,7/3/2024 12:52:47,native_speaker3,receive lookup results, , 
+554,7/3/2024 12:52:51,native_speaker3,look up,5_sample_text_daumelieschen.txt,Wiege
+555,7/3/2024 12:52:51,native_speaker3,receive lookup results, , 
+556,7/3/2024 12:52:54,native_speaker3,look up,5_sample_text_daumelieschen.txt,Veilchenblätter
+557,7/3/2024 12:52:55,native_speaker3,receive lookup results, , 
+558,7/3/2024 12:52:56,native_speaker3,decompound,5_sample_text_daumelieschen.txt,Veilchenblätter
+559,7/3/2024 12:53:02,native_speaker3,receive decompound results, , 
+560,7/3/2024 12:53:44,native_speaker3,look up,5_sample_text_daumelieschen.txt,größer
+561,7/3/2024 12:53:44,native_speaker3,receive lookup results, , 
+562,7/3/2024 12:53:53,native_speaker3,look up,5_sample_text_daumelieschen.txt,hernieder
+563,7/3/2024 12:53:54,native_speaker3,receive lookup results, , 
+564,7/3/2024 12:53:59,native_speaker3,look up,5_sample_text_daumelieschen.txt,schlief
+565,7/3/2024 12:53:59,native_speaker3,receive lookup results, , 
+566,7/3/2024 12:54:03,native_speaker3,look up,5_sample_text_daumelieschen.txt,sumpfig
+567,7/3/2024 12:54:04,native_speaker3,receive lookup results, , 
+568,7/3/2024 12:54:12,native_speaker3,look up,5_sample_text_daumelieschen.txt,inmitten
+569,7/3/2024 12:54:12,native_speaker3,receive lookup results, , 
+570,7/3/2024 12:54:16,native_speaker3,look up,5_sample_text_daumelieschen.txt,Morgengrauen
+571,7/3/2024 12:54:16,native_speaker3,receive lookup results, , 
+572,7/3/2024 12:54:21,native_speaker3,look up,5_sample_text_daumelieschen.txt,wahrnahm
+573,7/3/2024 12:54:22,native_speaker3,receive lookup results, , 
+574,7/3/2024 12:54:46,native_speaker3,look up,5_sample_text_daumelieschen.txt,pflanzte
+575,7/3/2024 12:54:47,native_speaker3,receive lookup results, , 
+576,7/3/2024 12:54:54,native_speaker3,look up,5_sample_text_daumelieschen.txt,hervor
+577,7/3/2024 12:54:56,native_speaker3,receive lookup results, , 
+578,7/3/2024 12:55:03,native_speaker3,search all results,5_sample_text_daumelieschen.txt,hervorwachsen
+579,7/3/2024 12:55:03,native_speaker3,receive lookup results, , 
+580,7/3/2024 12:59:26,native_speaker3,select file to upload, , 
+581,7/3/2024 12:59:27,native_speaker3,upload file: sample_text3.txt, , 
+582,7/3/2024 12:59:32,native_speaker3,delete file: 5_sample_text3.txt, , 
+583,7/3/2024 12:59:35,native_speaker3,select file to upload, , 
+584,7/3/2024 12:59:35,native_speaker3,upload file: sample_text_die_stoerche.txt, , 
+585,7/3/2024 12:59:36,native_speaker3,open file,5_sample_text_die_stoerche.txt, 
+586,7/3/2024 12:59:40,native_speaker3,look up,5_sample_text_die_stoerche.txt,Storchnest
+587,7/3/2024 12:59:41,native_speaker3,receive lookup results, , 
+588,7/3/2024 12:59:43,native_speaker3,decompound,5_sample_text_die_stoerche.txt,Storchnest
+589,7/3/2024 12:59:48,native_speaker3,receive decompound results, , 
+590,7/3/2024 12:59:51,native_speaker3,look up,5_sample_text_die_stoerche.txt,gedrechselt
+591,7/3/2024 12:59:52,native_speaker3,receive lookup results, , 
+592,7/3/2024 12:59:58,native_speaker3,look up,5_sample_text_die_stoerche.txt,stand
+593,7/3/2024 12:59:58,native_speaker3,receive lookup results, , 
+594,7/3/2024 13:00:02,native_speaker3,look up,5_sample_text_die_stoerche.txt,sieht
+595,7/3/2024 13:00:02,native_speaker3,receive lookup results, , 
+596,7/3/2024 13:00:07,native_speaker3,look up,5_sample_text_die_stoerche.txt,Schildwache
+597,7/3/2024 13:00:07,native_speaker3,receive lookup results, , 
+598,7/3/2024 13:00:11,native_speaker3,look up,5_sample_text_die_stoerche.txt,Kinder
+599,7/3/2024 13:00:11,native_speaker3,receive lookup results, , 
+600,7/3/2024 13:00:14,native_speaker3,look up,5_sample_text_die_stoerche.txt,Schar
+601,7/3/2024 13:00:14,native_speaker3,receive lookup results, , 
+602,7/3/2024 13:00:18,native_speaker3,look up,5_sample_text_die_stoerche.txt,hervorstreckten
+603,7/3/2024 13:00:20,native_speaker3,receive lookup results, , 
+604,7/3/2024 13:00:26,native_speaker3,look up,5_sample_text_die_stoerche.txt,steif
+605,7/3/2024 13:00:26,native_speaker3,receive lookup results, , 
+606,7/3/2024 13:00:30,native_speaker3,look up,5_sample_text_die_stoerche.txt,stand
+607,7/3/2024 13:00:31,native_speaker3,receive lookup results, , 
+608,7/3/2024 13:00:33,native_speaker3,look up,5_sample_text_die_stoerche.txt,starr
+609,7/3/2024 13:00:34,native_speaker3,receive lookup results, , 
+610,7/3/2024 13:00:42,native_speaker3,look up,5_sample_text_die_stoerche.txt,Sünde
+611,7/3/2024 13:00:43,native_speaker3,receive lookup results, , 
+612,7/3/2024 13:00:48,native_speaker3,look up,5_sample_text_die_stoerche.txt,Kinder
+613,7/3/2024 13:00:48,native_speaker3,receive lookup results, , 
+614,7/3/2024 13:00:52,native_speaker3,look up,5_sample_text_die_stoerche.txt,Teil
+615,7/3/2024 13:00:53,native_speaker3,receive lookup results, , 
+616,7/3/2024 13:00:57,native_speaker3,look up,5_sample_text_die_stoerche.txt,nahm
+617,7/3/2024 13:00:58,native_speaker3,receive lookup results, , 
+618,7/3/2024 13:01:06,native_speaker3,look up,5_sample_text_die_stoerche.txt,zurück
+619,7/3/2024 13:01:06,native_speaker3,receive lookup results, , 
+620,7/3/2024 13:01:16,native_speaker3,look up,5_sample_text_die_stoerche.txt,abgekehlt
+621,7/3/2024 13:01:18,native_speaker3,receive lookup results, , 
+622,7/3/2024 13:01:22,native_speaker3,look up,5_sample_text_die_stoerche.txt,gepfählt
+623,7/3/2024 13:01:23,native_speaker3,receive lookup results, , 
+624,7/3/2024 13:01:29,native_speaker3,look up,5_sample_text_die_stoerche.txt,einüben
+625,7/3/2024 13:01:30,native_speaker3,receive lookup results, , 
+626,7/3/2024 13:01:37,native_speaker3,look up,5_sample_text_die_stoerche.txt,gepfählt
+627,7/3/2024 13:01:38,native_speaker3,receive lookup results, , 
+628,7/3/2024 13:01:42,native_speaker3,look up,5_sample_text_die_stoerche.txt,sagen
+629,7/3/2024 13:01:42,native_speaker3,receive lookup results, , 
+630,7/3/2024 13:04:29,native_speaker3,select file to upload, , 
+631,7/3/2024 13:04:29,native_speaker3,upload file: sample_text_doktorwein.txt, , 
+632,7/3/2024 13:04:34,native_speaker3,delete file: 5_sample_text_daumelieschen.txt, , 
+633,7/3/2024 13:04:34,native_speaker3,delete file: 5_sample_text_die_stoerche.txt, , 
+634,7/3/2024 13:04:35,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+635,7/3/2024 13:04:40,native_speaker3,look up,5_sample_text_doktorwein.txt,alter
+636,7/3/2024 13:04:40,native_speaker3,receive lookup results, , 
+637,7/3/2024 13:04:53,native_speaker3,look up,5_sample_text_doktorwein.txt,ruft
+638,7/3/2024 13:04:54,native_speaker3,receive lookup results, , 
+639,7/3/2024 13:05:00,native_speaker3,look up,5_sample_text_doktorwein.txt,nimmt
+640,7/3/2024 13:05:00,native_speaker3,receive lookup results, , 
+641,7/3/2024 13:05:03,native_speaker3,look up,5_sample_text_doktorwein.txt,reitet
+642,7/3/2024 13:05:04,native_speaker3,receive lookup results, , 
+643,7/3/2024 13:05:31,native_speaker3,look up,5_sample_text_doktorwein.txt,trinkt
+644,7/3/2024 13:05:32,native_speaker3,receive lookup results, , 
+645,7/3/2024 13:05:35,native_speaker3,look up,5_sample_text_doktorwein.txt,dar
+646,7/3/2024 13:05:37,native_speaker3,receive lookup results, , 
+647,7/3/2024 13:07:30,native_speaker3,select file to upload, , 
+648,7/3/2024 13:07:40,native_speaker3,log in, , 
+649,7/3/2024 13:07:43,native_speaker3,select file to upload, , 
+650,7/3/2024 13:07:43,native_speaker3,upload file: compound_words_3 .txt, , 
+651,7/3/2024 13:07:45,native_speaker3,open file,5_compound_words_3_.txt, 
+652,7/3/2024 13:08:18,native_speaker3,select file to upload, , 
+653,7/3/2024 13:08:18,native_speaker3,upload file: compound_words_3 .txt, , 
+654,7/3/2024 13:08:20,native_speaker3,open file,5_compound_words_3_.txt, 
+655,7/3/2024 13:08:51,native_speaker3,delete file: 5_compound_words_3_.txt, , 
+656,7/3/2024 13:08:53,native_speaker3,select file to upload, , 
+657,7/3/2024 13:08:53,native_speaker3,upload file: compound_words_3 .txt, , 
+658,7/3/2024 13:08:54,native_speaker3,open file,5_compound_words_3_.txt, 
+659,7/3/2024 13:08:58,native_speaker3,look up,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+660,7/3/2024 13:08:59,native_speaker3,receive lookup results, , 
+661,7/3/2024 13:09:01,native_speaker3,decompound,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+662,7/3/2024 13:09:07,native_speaker3,receive decompound results, , 
+663,7/3/2024 13:09:15,native_speaker3,look up,5_compound_words_3_.txt,Bezirksschornsteinfegermeister
+664,7/3/2024 13:09:16,native_speaker3,receive lookup results, , 
+665,7/3/2024 13:09:17,native_speaker3,decompound,5_compound_words_3_.txt,Bezirksschornsteinfegermeister
+666,7/3/2024 13:09:22,native_speaker3,receive decompound results, , 
+667,7/3/2024 13:09:31,native_speaker3,look up,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+668,7/3/2024 13:09:31,native_speaker3,receive lookup results, , 
+669,7/3/2024 13:09:33,native_speaker3,decompound,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+670,7/3/2024 13:09:38,native_speaker3,receive decompound results, , 
+671,7/3/2024 13:09:46,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+672,7/3/2024 13:09:58,native_speaker3,look up,5_sample_text_doktorwein.txt,entzückt
+673,7/3/2024 13:09:58,native_speaker3,receive lookup results, , 
+674,7/3/2024 13:10:04,native_speaker3,look up,5_sample_text_doktorwein.txt,ein
+675,7/3/2024 13:10:04,native_speaker3,receive lookup results, , 
+676,7/3/2024 13:15:54,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+677,7/3/2024 13:15:58,native_speaker3,look up,5_sample_text_doktorwein.txt,todtkrant
+678,7/3/2024 13:15:59,native_speaker3,receive lookup results, , 
+679,7/3/2024 13:16:03,native_speaker3,look up,5_sample_text_doktorwein.txt,fromm
+680,7/3/2024 13:16:04,native_speaker3,receive lookup results, , 
+681,7/3/2024 13:16:08,native_speaker3,look up,5_sample_text_doktorwein.txt,darnieder
+682,7/3/2024 13:16:08,native_speaker3,receive lookup results, , 
+683,7/3/2024 13:16:15,native_speaker3,look up,5_sample_text_doktorwein.txt,schrie’n
+684,7/3/2024 13:16:17,native_speaker3,receive lookup results, , 
+685,7/3/2024 13:16:19,native_speaker3,search all results,5_sample_text_doktorwein.txt,schrie
+686,7/3/2024 13:16:20,native_speaker3,receive lookup results, , 
+687,7/3/2024 13:16:41,native_speaker3,look up,5_sample_text_doktorwein.txt,auf
+688,7/3/2024 13:16:42,native_speaker3,receive lookup results, , 
+689,7/3/2024 13:30:40,native_speaker3,log in, , 
+690,7/3/2024 13:30:43,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+691,7/3/2024 13:31:04,native_speaker4,log in, , 
+692,7/3/2024 13:31:10,native_speaker4,select file to upload, , 
+693,7/3/2024 13:31:11,native_speaker4,upload file: sample_text_Feuerzeug.txt, , 
+694,7/3/2024 13:31:12,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+695,7/3/2024 13:31:17,native_speaker4,look up,6_sample_text_Feuerzeug.txt,hohl
+696,7/3/2024 13:31:18,native_speaker4,receive lookup results, , 
+697,7/3/2024 13:31:23,native_speaker4,look up,6_sample_text_Feuerzeug.txt,marschiert
+698,7/3/2024 13:31:24,native_speaker4,receive lookup results, , 
+699,7/3/2024 13:32:16,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Gänseeier
+700,7/3/2024 13:32:17,native_speaker4,receive lookup results, , 
+701,7/3/2024 13:32:19,native_speaker4,decompound,6_sample_text_Feuerzeug.txt,Gänseeier
+702,7/3/2024 13:32:24,native_speaker4,receive decompound results, , 
+703,7/3/2024 13:32:28,native_speaker4,look up,6_sample_text_Feuerzeug.txt,an
+704,7/3/2024 13:32:29,native_speaker4,receive lookup results, , 
+705,7/3/2024 13:33:36,native_speaker4,look up,6_sample_text_Feuerzeug.txt,hinauf
+706,7/3/2024 13:33:37,native_speaker4,receive lookup results, , 
+707,7/3/2024 13:33:49,native_speaker4,look up,6_sample_text_Feuerzeug.txt,warf
+708,7/3/2024 13:33:51,native_speaker4,receive lookup results, , 
+709,7/3/2024 13:33:57,native_speaker4,search all results,6_sample_text_Feuerzeug.txt,fortwerfen
+710,7/3/2024 13:33:57,native_speaker4,receive lookup results, , 
+711,7/3/2024 13:34:06,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Kopenhagen
+712,7/3/2024 13:34:06,native_speaker4,receive lookup results, , 
+713,7/3/2024 13:34:11,native_speaker4,look up,6_sample_text_Feuerzeug.txt,fort
+714,7/3/2024 13:34:11,native_speaker4,receive lookup results, , 
+715,7/3/2024 13:34:23,native_speaker4,look up,6_sample_text_Feuerzeug.txt,empor
+716,7/3/2024 13:34:23,native_speaker4,receive lookup results, , 
+717,7/3/2024 13:34:32,native_speaker4,look up,6_sample_text_Feuerzeug.txt,zog
+718,7/3/2024 13:34:34,native_speaker4,receive lookup results, , 
+719,7/3/2024 13:37:42,native_speaker4,look up,6_sample_text_Feuerzeug.txt,herabstieg
+720,7/3/2024 13:37:43,native_speaker4,receive lookup results, , 
+721,7/3/2024 13:37:52,native_speaker4,look up,6_sample_text_Feuerzeug.txt,an
+722,7/3/2024 13:37:53,native_speaker4,receive lookup results, , 
+723,7/3/2024 13:38:00,native_speaker4,look up,6_sample_text_Feuerzeug.txt,mausetot
+724,7/3/2024 13:38:00,native_speaker4,receive lookup results, , 
+725,7/3/2024 13:38:08,native_speaker4,look up,6_sample_text_Feuerzeug.txt,aus
+726,7/3/2024 13:38:09,native_speaker4,receive lookup results, , 
+727,7/3/2024 13:38:23,native_speaker4,look up,6_sample_text_Feuerzeug.txt,sprang
+728,7/3/2024 13:38:23,native_speaker4,receive lookup results, , 
+729,7/3/2024 13:40:18,native_speaker4,select file to upload, , 
+730,7/3/2024 13:40:19,native_speaker4,upload file: compound_words_4.txt, , 
+731,7/3/2024 13:40:21,native_speaker4,open file,6_compound_words_4.txt, 
+732,7/3/2024 13:40:24,native_speaker4,look up,6_compound_words_4.txt,Rechtsschutzversicherungsgesellschaften
+733,7/3/2024 13:40:24,native_speaker4,receive lookup results, , 
+734,7/3/2024 13:40:26,native_speaker4,decompound,6_compound_words_4.txt,Rechtsschutzversicherungsgesellschaften
+735,7/3/2024 13:40:31,native_speaker4,receive decompound results, , 
+736,7/3/2024 13:40:36,native_speaker4,look up,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+737,7/3/2024 13:40:37,native_speaker4,receive lookup results, , 
+738,7/3/2024 13:40:39,native_speaker4,decompound,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+739,7/3/2024 13:40:45,native_speaker4,receive decompound results, , 
+740,7/3/2024 13:40:51,native_speaker4,look up,6_compound_words_4.txt,Nahrungsmittelunverträglichkeit
+741,7/3/2024 13:40:52,native_speaker4,receive lookup results, , 
+742,7/3/2024 13:40:53,native_speaker4,decompound,6_compound_words_4.txt,Nahrungsmittelunverträglichkeit
+743,7/3/2024 13:40:58,native_speaker4,receive decompound results, , 
+744,7/3/2024 13:41:07,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+745,7/3/2024 13:41:10,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Landstraße
+746,7/3/2024 13:41:10,native_speaker4,receive lookup results, , 
+747,7/3/2024 13:41:11,native_speaker4,decompound,6_sample_text_Feuerzeug.txt,Landstraße
+748,7/3/2024 13:41:16,native_speaker4,receive decompound results, , 
+749,7/3/2024 13:41:19,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Landstraße
+750,7/3/2024 13:41:19,native_speaker4,receive lookup results, , 
+751,7/3/2024 13:41:20,native_speaker4,search all results,6_sample_text_Feuerzeug.txt,Landstraße
+752,7/3/2024 13:41:20,native_speaker4,receive lookup results, , 
+753,7/3/2024 13:41:28,native_speaker4,select dict to upload, , 
+754,7/3/2024 13:42:41,native_speaker4,select dict to upload, , 
+755,7/3/2024 13:43:35,native_speaker4,select dict to upload, , 
+756,7/3/2024 13:45:02,native_speaker4,select dict to upload, , 
+757,7/3/2024 13:47:07,native_speaker4,select dict to upload, , 
+758,7/3/2024 13:47:28,native_speaker4,log in, , 
+759,7/3/2024 13:47:35,native_speaker4,select dict to upload, , 
+760,7/3/2024 13:47:59,native_speaker4,dict processed, , 
+761,7/3/2024 13:48:04,native_speaker4,select dict to upload, , 
+762,7/3/2024 13:48:27,native_speaker4,dict processed, , 
+763,7/3/2024 13:48:35,native_speaker4,select dict to upload, , 
+764,7/3/2024 13:48:57,native_speaker4,dict processed, , 
+765,7/3/2024 13:49:07,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+766,7/3/2024 13:49:18,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Kriege
+767,7/3/2024 13:49:19,native_speaker4,receive lookup results, , 
+768,7/3/2024 13:49:31,native_speaker4,look up,6_sample_text_Feuerzeug.txt,hinunterkommst
+769,7/3/2024 13:49:32,native_speaker4,receive lookup results, , 
+770,7/3/2024 13:49:45,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Fußboden
+771,7/3/2024 13:49:45,native_speaker4,receive lookup results, , 
+772,7/3/2024 13:49:53,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Mühlräder
+773,7/3/2024 13:49:54,native_speaker4,receive lookup results, , 
+774,7/3/2024 13:49:56,native_speaker4,decompound,6_sample_text_Feuerzeug.txt,Mühlräder
+775,7/3/2024 13:50:00,native_speaker4,receive decompound results, , 
+776,7/3/2024 13:50:18,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Schürze
+777,7/3/2024 13:50:18,native_speaker4,receive lookup results, , 
+778,7/3/2024 13:50:30,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Kupfergeld
+779,7/3/2024 13:50:31,native_speaker4,receive lookup results, , 
+780,7/3/2024 13:51:09,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Kopenhagen
+781,7/3/2024 13:51:09,native_speaker4,receive lookup results, , 
+782,7/3/2024 13:51:16,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Zuckerferkel
+783,7/3/2024 13:51:17,native_speaker4,receive lookup results, , 
+784,7/3/2024 13:51:21,native_speaker4,decompound,6_sample_text_Feuerzeug.txt,Zuckerferkel
+785,7/3/2024 13:51:26,native_speaker4,receive decompound results, , 
+786,7/3/2024 13:51:31,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Zinnsoldaten
+787,7/3/2024 13:51:32,native_speaker4,receive lookup results, , 
+788,7/3/2024 13:51:38,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Peitschen
+789,7/3/2024 13:51:38,native_speaker4,receive lookup results, , 
+790,7/3/2024 13:51:41,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Schaukelpferde
+791,7/3/2024 13:51:41,native_speaker4,receive lookup results, , 
+792,7/3/2024 14:18:09,native_speaker5,log in, , 
+793,7/3/2024 14:19:14,native_speaker5,select dict to upload, , 
+794,7/3/2024 14:19:42,native_speaker5,dict processed, , 
+795,7/3/2024 14:20:06,native_speaker5,select dict to upload, , 
+796,7/3/2024 14:20:32,native_speaker5,dict processed, , 
+797,7/3/2024 14:21:11,native_speaker5,select dict to upload, , 
+798,7/3/2024 14:21:37,native_speaker5,dict processed, , 
+799,7/3/2024 14:21:59,native_speaker5,select dict to upload, , 
+800,7/3/2024 14:22:25,native_speaker5,dict processed, , 
+801,7/3/2024 14:31:24,native_speaker5,select file to upload, , 
+802,7/3/2024 14:31:24,native_speaker5,upload file: sample_text_das haessliche_entlein.txt, , 
+803,7/3/2024 14:33:17,native_speaker5,select file to upload, , 
+804,7/3/2024 14:33:31,native_speaker5,log in, , 
+805,7/3/2024 14:33:37,native_speaker5,select file to upload, , 
+806,7/3/2024 14:33:37,native_speaker5,upload file: compound_words_5.txt, , 
+807,7/3/2024 14:33:39,native_speaker5,open file,7_sample_text_das_haessliche_entlein.txt, 
+808,7/3/2024 14:33:43,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,bersten
+809,7/3/2024 14:33:44,native_speaker5,receive lookup results, , 
+810,7/3/2024 14:33:47,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,Verlaß
+811,7/3/2024 14:33:47,native_speaker5,receive lookup results, , 
+812,7/3/2024 14:33:56,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,heraus
+813,7/3/2024 14:33:58,native_speaker5,receive lookup results, , 
+814,7/3/2024 14:34:05,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,plumpste
+815,7/3/2024 14:34:06,native_speaker5,receive lookup results, , 
+816,7/3/2024 14:34:13,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,sprang
+817,7/3/2024 14:34:13,native_speaker5,receive lookup results, , 
+818,7/3/2024 14:34:19,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,schwamm
+819,7/3/2024 14:34:20,native_speaker5,receive lookup results, , 
+820,7/3/2024 14:34:28,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,hinein
+821,7/3/2024 14:34:29,native_speaker5,receive lookup results, , 
+822,7/3/2024 14:50:04,native_speaker2,log in, , 
+823,7/3/2024 14:50:06,native_speaker2,open file,4_compound_words.txt, 
+824,7/3/2024 14:50:09,native_speaker2,look up,4_compound_words.txt,Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+825,7/3/2024 14:50:11,native_speaker2,receive lookup results, , 
+930,7/5/2024 16:40:06,JuneNguyen,log in, , 
+933,7/5/2024 16:40:32,JuneNguyen,select file to upload, , 
+934,7/5/2024 16:40:36,JuneNguyen,upload file: Die Verwandlung.txt, , 
+937,7/5/2024 16:41:47,JuneNguyen,select file to upload, , 
+938,7/5/2024 16:41:48,JuneNguyen,upload file: Die Verwandlung.txt, , 
+945,7/5/2024 16:42:31,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+946,7/5/2024 16:42:38,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+947,7/5/2024 16:42:43,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+948,7/5/2024 16:42:52,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+950,7/5/2024 16:42:58,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+953,7/5/2024 16:43:06,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+956,7/5/2024 16:43:19,JuneNguyen,look up,8_Die_Verwandlung.txt,unruhigen
+957,7/5/2024 16:43:20,JuneNguyen,receive lookup results, , 
+961,7/5/2024 17:01:35,JuneNguyen,select dict to upload, , 
+962,7/5/2024 17:01:59,JuneNguyen,log in, , 
+963,7/5/2024 17:02:04,JuneNguyen,select dict to upload, , 
+964,7/5/2024 17:03:35,JuneNguyen,select dict to upload, , 
+966,7/5/2024 17:04:00,JuneNguyen,dict processed, , 
+968,7/5/2024 17:04:38,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+970,7/5/2024 17:04:48,JuneNguyen,look up,8_Die_Verwandlung.txt,ausgeschnitten
+971,7/5/2024 17:04:48,JuneNguyen,receive lookup results, , 
+972,7/5/2024 17:04:57,JuneNguyen,decompound,8_Die_Verwandlung.txt,ausgeschnitten
+977,7/5/2024 17:05:18,JuneNguyen,click add word button, , 
+978,7/5/2024 17:05:18,JuneNguyen,add to vocab,8_Die_Verwandlung.txt,ausgeschnitten
+979,7/5/2024 17:05:21,JuneNguyen,click add word button, , 
+980,7/5/2024 17:05:21,JuneNguyen,add to vocab,8_Die_Verwandlung.txt,ausschneiden
+985,7/5/2024 17:05:31,JuneNguyen,look up,8_Die_Verwandlung.txt,hübschen
+988,7/5/2024 17:05:32,JuneNguyen,receive lookup results, , 
+989,7/5/2024 17:05:33,JuneNguyen,click add word button, , 
+990,7/5/2024 17:05:33,JuneNguyen,add to vocab,8_Die_Verwandlung.txt,hübschen
+999,7/5/2024 17:06:02,JuneNguyen,select word in vocab list,ausgeschnitten, 
+1000,7/5/2024 17:06:07,JuneNguyen,edit word,8_Die_Verwandlung.txt,ausgeschnitten
+1001,7/5/2024 17:06:09,JuneNguyen,deselect word in vocab list,ausgeschnitten, 
+1002,7/5/2024 17:06:09,JuneNguyen,select word in vocab list,ausgeschnitten, 
+1003,7/5/2024 17:06:11,JuneNguyen,deselect word in vocab list,ausgeschnitten, 
+1004,7/5/2024 17:06:11,JuneNguyen,select word in vocab list,ausgeschnitten, 
+1006,7/5/2024 17:06:16,JuneNguyen,delete word,8_Die_Verwandlung.txt,ausgeschnitten
+1007,7/5/2024 17:06:16,JuneNguyen,delete word,8_Die_Verwandlung.txt,ausschneiden
+1008,7/5/2024 17:06:16,JuneNguyen,delete word,8_Die_Verwandlung.txt,hübschen
+1013,7/5/2024 17:06:27,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+1014,7/5/2024 17:06:32,JuneNguyen,open file,8_Die_Verwandlung.txt, 
+1016,7/5/2024 17:06:39,JuneNguyen,look up,8_Die_Verwandlung.txt,Regentropfen
+1017,7/5/2024 17:06:40,JuneNguyen,receive lookup results, , 
+1019,7/5/2024 17:06:42,JuneNguyen,click add word button, , 
+1020,7/5/2024 17:06:43,JuneNguyen,add to vocab,8_Die_Verwandlung.txt,Regentropfen
+1021,7/5/2024 17:06:46,JuneNguyen,look up,8_Die_Verwandlung.txt,Regentropfen
+1022,7/5/2024 17:06:46,JuneNguyen,receive lookup results, , 
+1023,7/5/2024 17:06:48,JuneNguyen,click add word button, , 
+1024,7/5/2024 17:06:48,JuneNguyen,add to vocab,8_Die_Verwandlung.txt,Regentropfen
+1025,7/5/2024 17:07:01,JuneNguyen,select word in vocab list,Regentropfen, 
+1026,7/5/2024 17:07:05,JuneNguyen,remove deduplicate,8_Die_Verwandlung.txt,Regentropfen
+1027,7/5/2024 17:07:18,JuneNguyen,edit word,8_Die_Verwandlung.txt,Regentropfen
+1028,7/5/2024 17:07:28,JuneNguyen,export vocab list, , 
+1133,7/8/2024 8:04:58,native_speaker4,log in, , 
+1134,7/8/2024 8:06:34,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+1135,7/8/2024 8:07:47,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+1136,7/8/2024 8:07:49,native_speaker4,look up,6_sample_text_Feuerzeug.txt, 
+1137,7/8/2024 8:07:54,native_speaker4,look up,6_sample_text_Feuerzeug.txt,kam
+1138,7/8/2024 8:07:55,native_speaker4,receive lookup results, , 
+1139,7/8/2024 8:08:25,native_speaker4,look up,6_sample_text_Feuerzeug.txt,marschiert
+1140,7/8/2024 8:08:25,native_speaker4,receive lookup results, , 
+1141,7/8/2024 8:08:43,native_speaker4,look up,6_sample_text_Feuerzeug.txt,ersteigst
+1142,7/8/2024 8:08:44,native_speaker4,receive lookup results, , 
+1143,7/8/2024 8:12:46,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Glotz
+1144,7/8/2024 8:12:47,native_speaker4,receive lookup results, , 
+1145,7/8/2024 8:13:10,native_speaker4,look up,6_sample_text_Feuerzeug.txt,geht
+1146,7/8/2024 8:13:10,native_speaker4,receive lookup results, , 
+1147,7/8/2024 8:13:17,native_speaker4,look up,6_sample_text_Feuerzeug.txt,geht
+1148,7/8/2024 8:13:17,native_speaker4,receive lookup results, , 
+1149,7/8/2024 8:13:47,native_speaker4,look up,6_sample_text_Feuerzeug.txt,zog
+1150,7/8/2024 8:13:48,native_speaker4,receive lookup results, , 
+1151,7/8/2024 8:14:32,native_speaker4,look up,6_sample_text_Feuerzeug.txt,großen
+1152,7/8/2024 8:14:33,native_speaker4,receive lookup results, , 
+1153,7/8/2024 8:15:16,native_speaker4,look up,6_sample_text_Feuerzeug.txt,langen
+1154,7/8/2024 8:15:16,native_speaker4,receive lookup results, , 
+1155,7/8/2024 8:15:43,native_speaker4,look up,6_sample_text_Feuerzeug.txt,beherzte
+1156,7/8/2024 8:15:43,native_speaker4,receive lookup results, , 
+1157,7/8/2024 8:16:14,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Taschen
+1158,7/8/2024 8:16:15,native_speaker4,receive lookup results, , 
+1159,7/8/2024 8:16:28,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Goldstücke
+1160,7/8/2024 8:16:29,native_speaker4,receive lookup results, , 
+1161,7/8/2024 8:16:47,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Speisen
+1162,7/8/2024 8:16:47,native_speaker4,receive lookup results, , 
+1163,7/8/2024 8:17:10,native_speaker4,open file,6_compound_words_4.txt, 
+1164,7/8/2024 8:17:34,native_speaker4,look up,6_compound_words_4.txt,Nahrungsmittelunverträglichkeit
+1165,7/8/2024 8:17:35,native_speaker4,receive lookup results, , 
+1166,7/8/2024 8:17:42,native_speaker4,decompound,6_compound_words_4.txt,Nahrungsmittelunverträglichkeit
+1167,7/8/2024 8:17:46,native_speaker4,receive decompound results, , 
+1168,7/8/2024 8:18:21,native_speaker4,look up,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+1169,7/8/2024 8:18:37,native_speaker4,look up,6_compound_words_4.txt,Rechtsschutzversicherungsgesellschaften
+1170,7/8/2024 8:18:52,native_speaker4,look up,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+1171,7/8/2024 8:18:53,native_speaker4,receive lookup results, , 
+1172,7/8/2024 8:18:59,native_speaker4,look up,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+1173,7/8/2024 8:19:00,native_speaker4,receive lookup results, , 
+1174,7/8/2024 8:19:05,native_speaker4,decompound,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+1175,7/8/2024 8:19:11,native_speaker4,receive decompound results, , 
+1176,7/8/2024 8:19:52,native_speaker4,look up,6_compound_words_4.txt,Rechtsschutzversicherungsgesellschaften
+1177,7/8/2024 8:19:53,native_speaker4,receive lookup results, , 
+1178,7/8/2024 8:19:55,native_speaker4,decompound,6_compound_words_4.txt,Rechtsschutzversicherungsgesellschaften
+1179,7/8/2024 8:20:00,native_speaker4,receive decompound results, , 
+1180,7/8/2024 8:20:44,native_speaker4,look up,6_compound_words_4.txt,Arbeiterunfallverischerungsgesetz
+1181,7/8/2024 15:35:04,native_speaker3,log in, , 
+1182,7/8/2024 15:36:54,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+1183,7/8/2024 15:38:20,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1184,7/8/2024 15:38:20,native_speaker3,receive lookup results, , 
+1185,7/8/2024 15:38:41,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1186,7/8/2024 15:38:42,native_speaker3,receive lookup results, , 
+1187,7/8/2024 15:38:56,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1188,7/8/2024 15:38:56,native_speaker3,receive lookup results, , 
+1189,7/8/2024 15:39:06,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1190,7/8/2024 15:39:06,native_speaker3,receive lookup results, , 
+1191,7/8/2024 15:39:33,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1192,7/8/2024 15:39:33,native_speaker3,receive lookup results, , 
+1193,7/8/2024 15:40:45,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1194,7/8/2024 15:40:46,native_speaker3,receive lookup results, , 
+1195,7/8/2024 15:40:53,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1196,7/8/2024 15:40:53,native_speaker3,receive lookup results, , 
+1197,7/8/2024 15:41:20,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1198,7/8/2024 15:41:21,native_speaker3,receive lookup results, , 
+1199,7/8/2024 15:41:40,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1200,7/8/2024 15:41:42,native_speaker3,receive lookup results, , 
+1201,7/8/2024 15:41:44,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1202,7/8/2024 15:41:45,native_speaker3,receive lookup results, , 
+1203,7/8/2024 15:41:50,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1204,7/8/2024 15:41:51,native_speaker3,receive lookup results, , 
+1205,7/8/2024 15:41:58,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1206,7/8/2024 15:41:59,native_speaker3,receive lookup results, , 
+1207,7/8/2024 15:42:03,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1208,7/8/2024 15:42:03,native_speaker3,receive lookup results, , 
+1209,7/8/2024 15:42:31,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1210,7/8/2024 15:42:32,native_speaker3,receive lookup results, , 
+1211,7/8/2024 15:43:24,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1212,7/8/2024 15:43:25,native_speaker3,receive lookup results, , 
+1213,7/8/2024 15:43:42,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1214,7/8/2024 15:43:43,native_speaker3,receive lookup results, , 
+1215,7/8/2024 15:44:34,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1216,7/8/2024 15:44:34,native_speaker3,receive lookup results, , 
+1217,7/8/2024 15:44:45,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1218,7/8/2024 15:44:45,native_speaker3,receive lookup results, , 
+1219,7/8/2024 15:45:22,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1220,7/8/2024 15:45:22,native_speaker3,receive lookup results, , 
+1221,7/8/2024 15:45:40,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1222,7/8/2024 15:45:41,native_speaker3,receive lookup results, , 
+1223,7/8/2024 15:46:27,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1224,7/8/2024 15:46:27,native_speaker3,receive lookup results, , 
+1226,7/8/2024 15:47:08,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1227,7/8/2024 15:47:09,native_speaker3,receive lookup results, , 
+1228,7/8/2024 15:49:42,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1229,7/8/2024 15:49:43,native_speaker3,receive lookup results, , 
+1230,7/8/2024 15:50:13,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1231,7/8/2024 15:50:33,native_speaker3,log in, , 
+1232,7/8/2024 15:50:37,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+1233,7/8/2024 15:50:40,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1234,7/8/2024 15:50:41,native_speaker3,receive lookup results, , 
+1235,7/8/2024 15:51:09,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1236,7/8/2024 15:51:11,native_speaker3,receive lookup results, , 
+1237,7/8/2024 15:51:15,native_speaker3,look up,5_sample_text_doktorwein.txt, 
+1238,7/8/2024 15:51:17,native_speaker3,receive lookup results, , 
+1239,7/8/2024 15:51:37,native_speaker3,open file,5_compound_words_3_.txt, 
+1240,7/8/2024 15:52:28,native_speaker3,look up,5_compound_words_3_.txt, 
+1241,7/8/2024 15:52:29,native_speaker3,receive lookup results, , 
+1242,7/8/2024 15:52:37,native_speaker3,decompound,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+1243,7/8/2024 15:52:42,native_speaker3,receive decompound results, , 
+1244,7/8/2024 15:53:13,native_speaker3,look up,5_compound_words_3_.txt, 
+1245,7/8/2024 15:53:14,native_speaker3,receive lookup results, , 
+1246,7/8/2024 15:53:28,native_speaker3,decompound,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+1247,7/8/2024 15:53:33,native_speaker3,receive decompound results, , 
+1248,7/8/2024 15:54:22,native_speaker3,look up,5_compound_words_3_.txt, 
+1249,7/8/2024 15:54:23,native_speaker3,receive lookup results, , 
+1250,7/8/2024 15:54:26,native_speaker3,decompound,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+1251,7/8/2024 15:54:31,native_speaker3,receive decompound results, , 
+1252,7/8/2024 15:54:45,native_speaker3,look up,5_compound_words_3_.txt, 
+1253,7/8/2024 15:54:46,native_speaker3,receive lookup results, , 
+1254,7/8/2024 15:54:53,native_speaker3,decompound,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+1255,7/8/2024 15:54:59,native_speaker3,receive decompound results, , 
+1256,7/8/2024 15:58:36,native_speaker3,look up,5_compound_words_3_.txt, 
+1257,7/8/2024 15:58:37,native_speaker3,receive lookup results, , 
+1258,7/8/2024 15:58:39,native_speaker3,decompound,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+1259,7/8/2024 15:58:44,native_speaker3,receive decompound results, , 
+1260,7/8/2024 15:59:40,native_speaker3,look up,5_compound_words_3_.txt, 
+1261,7/8/2024 15:59:41,native_speaker3,receive lookup results, , 
+1262,7/8/2024 15:59:52,native_speaker3,decompound,5_compound_words_3_.txt,Bezirksschornsteinfegermeister
+1263,7/8/2024 15:59:57,native_speaker3,receive decompound results, , 
+1264,7/8/2024 16:02:15,native_speaker3,look up,5_compound_words_3_.txt, 
+1265,7/8/2024 16:02:16,native_speaker3,receive lookup results, , 
+1266,7/8/2024 16:02:18,native_speaker3,decompound,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+1267,7/8/2024 16:02:24,native_speaker3,receive decompound results, , 
+1268,7/9/2024 11:01:21,thao,log in, , 
+1269,7/9/2024 11:04:00,thao,select file to upload, , 
+1270,7/9/2024 11:04:00,thao,upload file: Bäume – Wunder der Natur.txt, , 
+1271,7/9/2024 11:04:11,thao,delete file: 9_Baume_Wunder_der_Natur.txt, , 
+1272,7/9/2024 11:04:46,thao,select file to upload, , 
+1273,7/9/2024 11:04:47,thao,upload file: Bäume – Wunder der Natur.txt, , 
+1274,7/9/2024 11:04:51,thao,delete file: 9_Baume_Wunder_der_Natur.txt, , 
+1275,7/9/2024 11:05:01,thao,select file to upload, , 
+1276,7/9/2024 11:05:01,thao,upload file: Bäume – Wunder der Natur.txt, , 
+1277,7/9/2024 11:05:06,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1278,7/9/2024 11:07:11,thao,select dict to upload, , 
+1279,7/9/2024 11:28:42,thao,select dict to upload, , 
+1280,7/9/2024 11:30:24,thao,log in, , 
+1281,7/9/2024 11:31:25,thao,select dict to upload, , 
+1282,7/9/2024 11:35:24,thao,select dict to upload, , 
+1283,7/9/2024 11:40:29,thao,select dict to upload, , 
+1284,7/9/2024 11:48:42,thao,log in, , 
+1285,7/9/2024 11:48:52,thao,select dict to upload, , 
+1286,7/9/2024 11:49:40,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1287,7/9/2024 11:49:52,thao,look up,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1288,7/9/2024 11:49:52,thao,receive lookup results, , 
+1293,7/9/2024 11:50:11,thao,decompound,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1296,7/9/2024 11:50:16,thao,receive decompound results, , 
+1297,7/9/2024 11:50:43,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1298,7/9/2024 11:50:47,thao,look up,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1299,7/9/2024 11:50:47,thao,receive lookup results, , 
+1300,7/9/2024 11:50:49,thao,decompound,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1301,7/9/2024 11:50:54,thao,receive decompound results, , 
+1302,7/9/2024 11:51:00,thao,click add word button, , 
+1303,7/9/2024 11:51:00,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1304,7/9/2024 11:51:08,thao,look up,9_Baume_Wunder_der_Natur.txt,versorgen
+1305,7/9/2024 11:51:08,thao,receive lookup results, , 
+1306,7/9/2024 11:51:18,thao,decompound,9_Baume_Wunder_der_Natur.txt,versorgen
+1307,7/9/2024 11:51:23,thao,receive decompound results, , 
+1308,7/9/2024 11:51:35,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1309,7/9/2024 11:51:38,thao,look up,9_Baume_Wunder_der_Natur.txt,versorgen
+1310,7/9/2024 11:51:39,thao,receive lookup results, , 
+1311,7/9/2024 11:51:41,thao,decompound,9_Baume_Wunder_der_Natur.txt,versorgen
+1312,7/9/2024 11:51:46,thao,receive decompound results, , 
+1313,7/9/2024 11:51:50,thao,look up,9_Baume_Wunder_der_Natur.txt,Schatten
+1314,7/9/2024 11:51:50,thao,receive lookup results, , 
+1315,7/9/2024 11:51:53,thao,decompound,9_Baume_Wunder_der_Natur.txt,Schatten
+1316,7/9/2024 11:52:01,thao,look up,9_Baume_Wunder_der_Natur.txt,versorgen
+1317,7/9/2024 11:52:02,thao,receive lookup results, , 
+1318,7/9/2024 11:52:07,thao,click add word button, , 
+1319,7/9/2024 11:52:07,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,versorgen
+1320,7/9/2024 11:53:01,thao,delete word,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1321,7/9/2024 11:53:01,thao,delete word,9_Baume_Wunder_der_Natur.txt,versorgen
+1322,7/9/2024 11:53:04,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1323,7/9/2024 11:53:10,thao,look up,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1324,7/9/2024 11:53:10,thao,receive lookup results, , 
+1325,7/9/2024 11:53:11,thao,click add word button, , 
+1326,7/9/2024 11:53:11,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,Alleskönner
+1327,7/9/2024 11:53:16,thao,look up,9_Baume_Wunder_der_Natur.txt,versorgen
+1328,7/9/2024 11:53:16,thao,receive lookup results, , 
+1329,7/9/2024 11:53:17,thao,click add word button, , 
+1330,7/9/2024 11:53:17,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,versorgen
+1331,7/9/2024 11:53:22,thao,look up,9_Baume_Wunder_der_Natur.txt,Schatten
+1332,7/9/2024 11:53:22,thao,receive lookup results, , 
+1333,7/9/2024 11:53:24,thao,click add word button, , 
+1334,7/9/2024 11:53:24,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,Schatten
+1335,7/9/2024 11:53:27,thao,look up,9_Baume_Wunder_der_Natur.txt,verwandeln
+1336,7/9/2024 11:53:29,thao,receive lookup results, , 
+1337,7/9/2024 11:55:24,thao,decompound,9_Baume_Wunder_der_Natur.txt,verwandeln bei
+1338,7/9/2024 11:55:36,thao,look up,9_Baume_Wunder_der_Natur.txt,verwandeln
+1339,7/9/2024 11:55:37,thao,receive lookup results, , 
+1340,7/9/2024 11:55:44,thao,look up,9_Baume_Wunder_der_Natur.txt,Atemluft
+1341,7/9/2024 11:55:45,thao,receive lookup results, , 
+1342,7/9/2024 11:55:51,thao,click add word button, , 
+1343,7/9/2024 11:55:51,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,Atemluft
+1344,7/9/2024 11:55:55,thao,look up,9_Baume_Wunder_der_Natur.txt,wohlfühlen
+1345,7/9/2024 11:55:56,thao,receive lookup results, , 
+1346,7/9/2024 11:56:08,thao,click add word button, , 
+1347,7/9/2024 11:56:08,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,wohlfühlen
+1361,7/9/2024 12:05:47,thao,log in, , 
+1362,7/9/2024 12:05:58,thao,export vocab list, , 
+1387,7/9/2024 13:23:37,thao,log in, , 
+1388,7/9/2024 13:23:39,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1389,7/9/2024 13:23:52,thao,look up,9_Baume_Wunder_der_Natur.txt,sind
+1390,7/9/2024 13:23:53,thao,receive lookup results, , 
+1403,7/9/2024 13:28:54,thao,log in, , 
+1406,7/9/2024 13:28:57,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1409,7/9/2024 13:29:06,thao,select dict to upload, , 
+1418,7/9/2024 13:29:41,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1419,7/9/2024 13:29:45,thao,look up,9_Baume_Wunder_der_Natur.txt,verwandeln
+1420,7/9/2024 13:29:46,thao,receive lookup results, , 
+1423,7/9/2024 13:29:57,thao,search all results,9_Baume_Wunder_der_Natur.txt,verwandeln
+1424,7/9/2024 13:29:57,thao,receive lookup results, , 
+1429,7/9/2024 13:30:23,thao,click add word button, , 
+1430,7/9/2024 13:30:23,thao,click add word button, , 
+1431,7/9/2024 13:30:23,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,verwandeln
+1432,7/9/2024 13:30:23,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,verwandeln
+1433,7/9/2024 13:30:45,thao,remove deduplicate,9_Baume_Wunder_der_Natur.txt,verwandeln
+1434,7/9/2024 13:31:01,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1435,7/9/2024 13:31:05,thao,look up,9_Baume_Wunder_der_Natur.txt,sind
+1436,7/9/2024 13:31:06,thao,receive lookup results, , 
+1439,7/9/2024 13:31:08,thao,click add word button, , 
+1440,7/9/2024 13:31:08,thao,add to vocab,9_Baume_Wunder_der_Natur.txt,sind
+1445,7/9/2024 13:32:30,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1446,7/9/2024 13:32:33,thao,look up,9_Baume_Wunder_der_Natur.txt,sind
+1447,7/9/2024 13:32:33,thao,receive lookup results, , 
+1449,7/9/2024 13:32:39,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1450,7/9/2024 13:32:41,thao,look up,9_Baume_Wunder_der_Natur.txt,sind
+1451,7/9/2024 13:32:42,thao,receive lookup results, , 
+1452,7/9/2024 13:32:45,thao,search all results,9_Baume_Wunder_der_Natur.txt,sein
+1453,7/9/2024 13:32:46,thao,receive lookup results, , 
+1475,7/9/2024 13:34:49,thao,edit word,9_Baume_Wunder_der_Natur.txt,sind
+1476,7/9/2024 13:34:51,thao,open file,9_Baume_Wunder_der_Natur.txt, 
+1477,7/9/2024 13:35:07,thao,look up,9_Baume_Wunder_der_Natur.txt,versorgen
+1478,7/9/2024 13:35:07,thao,receive lookup results, , 
+1479,7/9/2024 13:35:08,thao,decompound,9_Baume_Wunder_der_Natur.txt,versorgen
+1480,7/9/2024 13:35:12,thao,receive decompound results, , 
+1507,7/11/2024 18:05:58,TP,log in, , 
+1508,7/11/2024 18:06:44,TP,open file,11_Die_Hunger copy.txt, 
+1509,7/11/2024 18:07:57,TP,select file to upload, , 
+1510,7/11/2024 18:07:57,TP,upload file: Die-Hunger.txt, , 
+1511,7/11/2024 18:08:02,TP,delete file: 11_Die_Hunger copy.txt, , 
+1512,7/11/2024 18:08:14,TP,open file,11_Die-Hunger.txt, 
+1513,7/11/2024 18:11:40,TP,select dict to upload, , 
+1514,7/11/2024 18:12:16,TP,dict processed, , 
+1515,7/11/2024 18:12:55,TP,open file,11_Die-Hunger.txt, 
+1519,7/11/2024 18:13:58,TP,look up,11_Die-Hunger.txt, 
+1520,7/11/2024 18:14:00,TP,receive lookup results, , 
+1521,7/11/2024 18:14:01,TP,look up,11_Die-Hunger.txt, 
+1522,7/11/2024 18:14:03,TP,receive lookup results, , 
+1523,7/11/2024 18:14:24,TP,look up,11_Die-Hunger.txt, 
+1524,7/11/2024 18:14:25,TP,receive lookup results, , 
+1529,7/11/2024 18:14:37,TP,click add word button, , 
+1530,7/11/2024 18:14:37,TP,add to vocab,11_Die-Hunger.txt,Dachstube
+1531,7/11/2024 18:14:47,TP,look up,11_Die-Hunger.txt, 
+1532,7/11/2024 18:14:48,TP,receive lookup results, , 
+1533,7/11/2024 18:14:56,TP,click add word button, , 
+1534,7/11/2024 18:14:56,TP,add to vocab,11_Die-Hunger.txt,hörte
+1537,7/11/2024 18:15:06,TP,look up,11_Die-Hunger.txt, 
+1538,7/11/2024 18:15:06,TP,receive lookup results, , 
+1541,7/11/2024 18:15:09,TP,decompound,11_Die-Hunger.txt,wach
+1544,7/11/2024 18:15:14,TP,receive decompound results, , 
+1547,7/11/2024 18:15:27,TP,click add word button, , 
+1548,7/11/2024 18:15:27,TP,add to vocab,11_Die-Hunger.txt,wach
+1549,7/11/2024 18:15:28,TP,look up,11_Die-Hunger.txt, 
+1551,7/11/2024 18:15:29,TP,receive lookup results, , 
+1557,7/11/2024 18:16:25,TP,click add word button, , 
+1558,7/11/2024 18:16:25,TP,add to vocab,11_Die-Hunger.txt,lag
+1559,7/11/2024 18:16:28,TP,click add word button, , 
+1560,7/11/2024 18:16:28,TP,add to vocab,11_Die-Hunger.txt,liegen
+1561,7/11/2024 18:16:34,TP,look up,11_Die-Hunger.txt, 
+1562,7/11/2024 18:16:35,TP,receive lookup results, , 
+1563,7/11/2024 18:17:01,TP,click add word button, , 
+1564,7/11/2024 18:17:01,TP,add to vocab,11_Die-Hunger.txt,nachzudenken
+1565,7/11/2024 18:17:03,TP,click add word button, , 
+1566,7/11/2024 18:17:03,TP,add to vocab,11_Die-Hunger.txt,nachdenken
+1567,7/11/2024 18:17:13,TP,look up,11_Die-Hunger.txt, 
+1568,7/11/2024 18:17:14,TP,receive lookup results, , 
+1569,7/11/2024 18:17:24,TP,click add word button, , 
+1570,7/11/2024 18:17:24,TP,add to vocab,11_Die-Hunger.txt,hätte
+1571,7/11/2024 18:17:25,TP,click add word button, , 
+1572,7/11/2024 18:17:25,TP,add to vocab,11_Die-Hunger.txt,haben
+1575,7/11/2024 18:17:40,TP,look up,11_Die-Hunger.txt, 
+1576,7/11/2024 18:17:41,TP,receive lookup results, , 
+1577,7/11/2024 18:18:02,TP,decompound,11_Die-Hunger.txt,meinem
+1578,7/11/2024 18:18:06,TP,receive decompound results, , 
+1579,7/11/2024 18:18:10,TP,decompound,11_Die-Hunger.txt,meinem
+1580,7/11/2024 18:18:15,TP,receive decompound results, , 
+1582,7/11/2024 18:18:27,TP,open file,11_Die-Hunger.txt, 
+1584,7/11/2024 18:18:33,TP,look up,11_Die-Hunger.txt, 
+1585,7/11/2024 18:18:34,TP,receive lookup results, , 
+1590,7/11/2024 18:18:54,TP,look up,11_Die-Hunger.txt, 
+1591,7/11/2024 18:18:54,TP,receive lookup results, , 
+1600,7/11/2024 18:19:51,TP,look up,11_Die-Hunger.txt, 
+1601,7/11/2024 18:19:52,TP,receive lookup results, , 
+1602,7/11/2024 18:19:58,TP,click add word button, , 
+1603,7/11/2024 18:19:58,TP,add to vocab,11_Die-Hunger.txt,Strumpf
+1605,7/11/2024 18:20:07,TP,look up,11_Die-Hunger.txt, 
+1606,7/11/2024 18:20:08,TP,receive lookup results, , 
+1609,7/11/2024 18:20:21,TP,look up,11_Die-Hunger.txt, 
+1610,7/11/2024 18:20:22,TP,receive lookup results, , 
+1612,7/11/2024 18:20:25,TP,click add word button, , 
+1613,7/11/2024 18:20:25,TP,add to vocab,11_Die-Hunger.txt,trocken
+1617,7/11/2024 18:20:46,TP,look up,11_Die-Hunger.txt, 
+1618,7/11/2024 18:20:47,TP,receive lookup results, , 
+1620,7/11/2024 18:20:51,TP,click add word button, , 
+1621,7/11/2024 18:20:51,TP,add to vocab,11_Die-Hunger.txt,dösen
+1622,7/11/2024 18:20:52,TP,click add word button, , 
+1623,7/11/2024 18:20:52,TP,add to vocab,11_Die-Hunger.txt,döste
+1624,7/11/2024 18:20:55,TP,look up,11_Die-Hunger.txt, 
+1625,7/11/2024 18:20:56,TP,receive lookup results, , 
+1632,7/11/2024 18:22:02,TP,look up,11_Die-Hunger.txt, 
+1641,7/11/2024 18:22:32,TP,log in, , 
+1642,7/11/2024 18:22:33,TP,open file,11_Die-Hunger.txt, 
+1643,7/11/2024 18:22:40,TP,open file,11_Die-Hunger.txt, 
+1644,7/11/2024 18:22:54,TP,look up,11_Die-Hunger.txt, 
+1645,7/11/2024 18:22:55,TP,receive lookup results, , 
+1647,7/11/2024 18:22:59,TP,click add word button, , 
+1648,7/11/2024 18:22:59,TP,add to vocab,11_Die-Hunger.txt,jene
+1652,7/11/2024 18:23:13,TP,look up,11_Die-Hunger.txt, 
+1653,7/11/2024 18:23:13,TP,receive lookup results, , 
+1654,7/11/2024 18:23:22,TP,click add word button, , 
+1655,7/11/2024 18:23:22,TP,add to vocab,11_Die-Hunger.txt,sei
+1656,7/11/2024 18:23:28,TP,look up,11_Die-Hunger.txt, 
+1657,7/11/2024 18:23:29,TP,receive lookup results, , 
+1660,7/11/2024 18:23:35,TP,click add word button, , 
+1661,7/11/2024 18:23:35,TP,add to vocab,11_Die-Hunger.txt,gerunzelt
+1664,7/11/2024 18:23:48,TP,look up,11_Die-Hunger.txt, 
+1665,7/11/2024 18:23:50,TP,receive lookup results, , 
+1666,7/11/2024 18:23:50,TP,look up,11_Die-Hunger.txt, 
+1667,7/11/2024 18:23:52,TP,receive lookup results, , 
+1678,7/11/2024 18:24:55,TP,look up,11_Die-Hunger.txt, 
+1679,7/11/2024 18:24:56,TP,receive lookup results, , 
+1680,7/11/2024 18:24:58,TP,click add word button, , 
+1681,7/11/2024 18:24:58,TP,add to vocab,11_Die-Hunger.txt,nirgends
+1684,7/11/2024 18:25:04,TP,look up,11_Die-Hunger.txt, 
+1685,7/11/2024 18:25:04,TP,receive lookup results, , 
+1686,7/11/2024 18:25:08,TP,click add word button, , 
+1687,7/11/2024 18:25:09,TP,add to vocab,11_Die-Hunger.txt,gleichförmig
+1692,7/11/2024 18:25:36,TP,look up,11_Die-Hunger.txt, 
+1693,7/11/2024 18:25:37,TP,receive lookup results, , 
+1696,7/11/2024 18:25:43,TP,decompound,11_Die-Hunger.txt,verfassen
+1697,7/11/2024 18:25:49,TP,search all results,11_Die-Hunger.txt,verfassen
+1698,7/11/2024 18:25:50,TP,receive lookup results, , 
+1699,7/11/2024 18:25:57,TP,click add word button, , 
+1700,7/11/2024 18:25:57,TP,add to vocab,11_Die-Hunger.txt,verfassen
+1705,7/11/2024 18:26:13,TP,look up,11_Die-Hunger.txt, 
+1706,7/11/2024 18:26:14,TP,receive lookup results, , 
+1707,7/11/2024 18:26:37,TP,look up,11_Die-Hunger.txt, 
+1708,7/11/2024 18:26:38,TP,receive lookup results, , 
+1711,7/11/2024 18:26:46,TP,look up,11_Die-Hunger.txt, 
+1712,7/11/2024 18:26:47,TP,receive lookup results, , 
+1715,7/11/2024 18:27:00,TP,look up,11_Die-Hunger.txt, 
+1716,7/11/2024 18:27:01,TP,receive lookup results, , 
+1717,7/11/2024 18:27:07,TP,click add word button, , 
+1718,7/11/2024 18:27:07,TP,add to vocab,11_Die-Hunger.txt,würgen
+1721,7/11/2024 18:27:11,TP,look up,11_Die-Hunger.txt, 
+1722,7/11/2024 18:27:12,TP,receive lookup results, , 
+1723,7/11/2024 18:27:15,TP,click add word button, , 
+1724,7/11/2024 18:27:15,TP,add to vocab,11_Die-Hunger.txt,Basaren
+1727,7/11/2024 18:27:23,TP,look up,11_Die-Hunger.txt, 
+1728,7/11/2024 18:27:24,TP,receive lookup results, , 
+1729,7/11/2024 18:27:28,TP,click add word button, , 
+1730,7/11/2024 18:27:28,TP,add to vocab,11_Die-Hunger.txt,Erlöserkirche {f}
+1731,7/11/2024 18:27:45,TP,look up,11_Die-Hunger.txt, 
+1732,7/11/2024 18:27:45,TP,receive lookup results, , 
+1733,7/11/2024 18:27:51,TP,click add word button, , 
+1734,7/11/2024 18:27:51,TP,add to vocab,11_Die-Hunger.txt,die Straßen säumen
+1735,7/11/2024 18:27:55,TP,look up,11_Die-Hunger.txt, 
+1736,7/11/2024 18:27:55,TP,receive lookup results, , 
+1737,7/11/2024 18:27:59,TP,search all results,11_Die-Hunger.txt,bekümmern
+1738,7/11/2024 18:27:59,TP,receive lookup results, , 
+1739,7/11/2024 18:28:04,TP,click add word button, , 
+1740,7/11/2024 18:28:04,TP,add to vocab,11_Die-Hunger.txt,bekümmern
+1741,7/11/2024 18:28:14,TP,look up,11_Die-Hunger.txt, 
+1742,7/11/2024 18:28:14,TP,receive lookup results, , 
+1743,7/11/2024 18:28:19,TP,search all results,11_Die-Hunger.txt,grundlos
+1744,7/11/2024 18:28:20,TP,receive lookup results, , 
+1745,7/11/2024 18:28:22,TP,click add word button, , 
+1746,7/11/2024 18:28:22,TP,add to vocab,11_Die-Hunger.txt,grundlos
+1747,7/11/2024 18:28:27,TP,look up,11_Die-Hunger.txt, 
+1748,7/11/2024 18:28:27,TP,receive lookup results, , 
+1752,7/11/2024 18:28:35,TP,click add word button, , 
+1753,7/11/2024 18:28:35,TP,add to vocab,11_Die-Hunger.txt,darauf
+1754,7/11/2024 18:28:45,TP,search all results,11_Die-Hunger.txt,darauf
+1755,7/11/2024 18:28:46,TP,receive lookup results, , 
+1765,7/11/2024 18:31:15,TP,look up,11_Die-Hunger.txt, 
+1766,7/11/2024 18:31:15,TP,receive lookup results, , 
+1767,7/11/2024 18:31:20,TP,search all results,11_Die-Hunger.txt,ankommen
+1768,7/11/2024 18:31:21,TP,receive lookup results, , 
+1784,7/11/2024 18:37:33,TP,look up,11_Die-Hunger.txt, 
+1787,7/11/2024 18:37:46,TP,log in, , 
+1788,7/11/2024 18:37:48,TP,open file,11_Die-Hunger.txt, 
+1790,7/11/2024 18:37:59,TP,look up,11_Die-Hunger.txt, 
+1792,7/11/2024 18:38:00,TP,receive lookup results, , 
+1794,7/11/2024 18:38:04,TP,decompound,11_Die-Hunger.txt,überwältigte an
+1795,7/11/2024 18:38:06,TP,search all results,11_Die-Hunger.txt,überwältigte an
+1796,7/11/2024 18:38:06,TP,receive lookup results, , 
+1798,7/11/2024 18:38:08,TP,search all results,11_Die-Hunger.txt,überwältigte an
+1799,7/11/2024 18:38:08,TP,receive lookup results, , 
+1806,7/11/2024 18:38:57,TP,look up,11_Die-Hunger.txt, 
+1807,7/11/2024 18:38:57,TP,receive lookup results, , 
+1808,7/11/2024 18:39:01,TP,search all results,11_Die-Hunger.txt,überwältigte mich
+1809,7/11/2024 18:39:01,TP,receive lookup results, , 
+1812,7/11/2024 18:39:22,TP,look up,11_Die-Hunger.txt, 
+1813,7/11/2024 18:39:22,TP,receive lookup results, , 
+1814,7/11/2024 18:39:39,TP,search all results,11_Die-Hunger.txt,fing an
+1815,7/11/2024 18:39:40,TP,receive lookup results, , 
+1816,7/11/2024 18:39:44,TP,click add word button, , 
+1817,7/11/2024 18:39:44,TP,add to vocab,11_Die-Hunger.txt,fing an
+1818,7/11/2024 18:39:52,TP,look up,11_Die-Hunger.txt, 
+1819,7/11/2024 18:39:53,TP,receive lookup results, , 
+1820,7/11/2024 18:40:06,TP,look up,11_Die-Hunger.txt, 
+1821,7/11/2024 18:40:06,TP,receive lookup results, , 
+1822,7/11/2024 18:40:27,TP,look up,11_Die-Hunger.txt, 
+1823,7/11/2024 18:40:28,TP,receive lookup results, , 
+1826,7/11/2024 18:41:00,TP,look up,11_Die-Hunger.txt, 
+1828,7/11/2024 18:41:01,TP,receive lookup results, , 
+1830,7/11/2024 18:41:05,TP,look up,11_Die-Hunger.txt, 
+1831,7/11/2024 18:41:05,TP,receive lookup results, , 
+1832,7/11/2024 18:41:08,TP,search all results,11_Die-Hunger.txt,an
+1833,7/11/2024 18:41:09,TP,receive lookup results, , 
+1834,7/11/2024 18:41:21,TP,look up,11_Die-Hunger.txt, 
+1835,7/11/2024 18:41:21,TP,receive lookup results, , 
+1838,7/11/2024 18:41:26,TP,search all results,11_Die-Hunger.txt,an
+1839,7/11/2024 18:41:26,TP,receive lookup results, , 
+1846,7/11/2024 18:41:49,TP,look up,11_Die-Hunger.txt, 
+1847,7/11/2024 18:41:50,TP,receive lookup results, , 
+1850,7/11/2024 18:41:57,TP,look up,11_Die-Hunger.txt, 
+1851,7/11/2024 18:41:59,TP,receive lookup results, , 
+1856,7/11/2024 18:42:18,TP,decompound,11_Die-Hunger.txt,vorüberging an
+1857,7/11/2024 18:42:25,TP,search all results,11_Die-Hunger.txt,vorüberging
+1858,7/11/2024 18:42:26,TP,receive lookup results, , 
+1859,7/11/2024 18:42:39,TP,click add word button, , 
+1860,7/11/2024 18:42:40,TP,add to vocab,11_Die-Hunger.txt,vorüberging
+1861,7/11/2024 18:42:50,TP,look up,11_Die-Hunger.txt, 
+1862,7/11/2024 18:42:51,TP,receive lookup results, , 
+1863,7/11/2024 18:43:03,TP,look up,11_Die-Hunger.txt, 
+1864,7/11/2024 18:43:04,TP,receive lookup results, , 
+1865,7/11/2024 18:43:07,TP,search all results,11_Die-Hunger.txt,vorne
+1866,7/11/2024 18:43:07,TP,receive lookup results, , 
+1867,7/11/2024 18:43:22,TP,look up,11_Die-Hunger.txt, 
+1868,7/11/2024 18:43:23,TP,receive lookup results, , 
+1871,7/11/2024 18:43:37,TP,search all results,11_Die-Hunger.txt,geworden
+1872,7/11/2024 18:43:38,TP,receive lookup results, , 
+1881,7/11/2024 18:44:30,TP,look up,11_Die-Hunger.txt, 
+1882,7/11/2024 18:44:32,TP,receive lookup results, , 
+1883,7/11/2024 18:44:54,TP,search all results,11_Die-Hunger.txt,vorbeihastet
+1884,7/11/2024 18:44:54,TP,receive lookup results, , 
+1885,7/11/2024 18:44:58,TP,search all results,11_Die-Hunger.txt,vorbeihasten
+1886,7/11/2024 18:44:58,TP,receive lookup results, , 
+1889,7/11/2024 18:45:05,TP,look up,11_Die-Hunger.txt, 
+1890,7/11/2024 18:45:06,TP,receive lookup results, , 
+1893,7/11/2024 18:45:11,TP,search all results,11_Die-Hunger.txt,zurücksenden
+1894,7/11/2024 18:45:11,TP,receive lookup results, , 
+1897,7/11/2024 18:45:39,TP,look up,11_Die-Hunger.txt, 
+1898,7/11/2024 18:45:40,TP,receive lookup results, , 
+1901,7/11/2024 18:46:01,TP,decompound,11_Die-Hunger.txt,Schloßpark
+1902,7/11/2024 18:46:10,TP,search all results,11_Die-Hunger.txt,Schloßpark
+1903,7/11/2024 18:46:11,TP,receive lookup results, , 
+1908,7/11/2024 18:46:38,TP,look up,11_Die-Hunger.txt, 
+1909,7/11/2024 18:46:39,TP,receive lookup results, , 
+1910,7/11/2024 18:46:43,TP,search all results,11_Die-Hunger.txt,zappelnd
+1911,7/11/2024 18:46:44,TP,receive lookup results, , 
+1912,7/11/2024 18:46:49,TP,search all results,11_Die-Hunger.txt,zappelnd
+1913,7/11/2024 18:46:50,TP,receive lookup results, , 
+1914,7/11/2024 18:46:51,TP,click add word button, , 
+1915,7/11/2024 18:46:51,TP,add to vocab,11_Die-Hunger.txt,zappelnd
+1916,7/11/2024 18:46:56,TP,look up,11_Die-Hunger.txt, 
+1917,7/11/2024 18:46:57,TP,receive lookup results, , 
+1918,7/11/2024 18:47:00,TP,decompound,11_Die-Hunger.txt,Querstraße
+1921,7/11/2024 18:47:09,TP,search all results,11_Die-Hunger.txt,Querstraße
+1923,7/11/2024 18:47:09,TP,receive lookup results, , 
+1929,7/11/2024 18:47:47,TP,select file to upload, , 
+1930,7/11/2024 18:47:47,TP,upload file: compound.txt, , 
+1932,7/11/2024 18:47:50,TP,open file,11_compound.txt, 
+1933,7/11/2024 18:47:54,TP,look up,11_compound.txt, 
+1934,7/11/2024 18:47:55,TP,receive lookup results, , 
+1935,7/11/2024 18:47:58,TP,decompound,11_compound.txt,Matchbox
+1939,7/11/2024 18:48:02,TP,receive decompound results, , 
+1942,7/11/2024 18:49:09,TP,look up,11_compound.txt, 
+1943,7/11/2024 18:49:10,TP,receive lookup results, , 
+1945,7/11/2024 18:49:14,TP,decompound,11_compound.txt,Massenkommunikationsdienstleistungsunternehmen
+1946,7/11/2024 18:49:19,TP,receive decompound results, , 
+1947,7/11/2024 18:49:46,TP,look up,11_compound.txt, 
+1948,7/11/2024 18:49:47,TP,receive lookup results, , 
+1949,7/11/2024 18:50:06,TP,look up,11_compound.txt, 
+1950,7/11/2024 18:50:07,TP,receive lookup results, , 
+1951,7/11/2024 18:52:20,TP,open file,11_Die-Hunger.txt, 
+1957,7/11/2024 18:53:04,TP,look up,11_Die-Hunger.txt, 
+1958,7/11/2024 18:53:15,TP,log in, , 
+1959,7/11/2024 18:53:17,TP,open file,11_Die-Hunger.txt, 
+1964,7/11/2024 18:53:38,TP,look up,11_Die-Hunger.txt, 
+1966,7/11/2024 18:53:40,TP,receive lookup results, , 
+1967,7/11/2024 18:53:42,TP,decompound,11_Die-Hunger.txt,Graensenstraße
+1968,7/11/2024 18:53:50,TP,search all results,11_Die-Hunger.txt,Graensenstraße
+1969,7/11/2024 18:53:50,TP,receive lookup results, , 
+1972,7/11/2024 18:54:01,TP,look up,11_Die-Hunger.txt, 
+1973,7/11/2024 18:54:03,TP,receive lookup results, , 
+1974,7/11/2024 18:54:13,TP,decompound,11_Die-Hunger.txt,Lesenswertes
+1975,7/11/2024 18:54:18,TP,receive decompound results, , 
+1978,7/11/2024 18:54:33,TP,look up,11_Die-Hunger.txt, 
+1979,7/11/2024 18:54:35,TP,receive lookup results, , 
+1980,7/11/2024 18:54:37,TP,decompound,11_Die-Hunger.txt,Lesenswertes
+1981,7/11/2024 18:54:41,TP,receive decompound results, , 
+1982,7/11/2024 18:54:45,TP,search all results,11_Die-Hunger.txt,Lesens
+1983,7/11/2024 18:54:46,TP,receive lookup results, , 
+1990,7/11/2024 18:56:32,TP,look up,11_Die-Hunger.txt, 
+1991,7/11/2024 18:56:33,TP,receive lookup results, , 
+1994,7/11/2024 18:56:50,TP,look up,11_Die-Hunger.txt, 
+1995,7/11/2024 18:56:50,TP,receive lookup results, , 
+1998,7/11/2024 18:57:10,TP,look up,11_Die-Hunger.txt, 
+1999,7/11/2024 18:57:11,TP,receive lookup results, , 
+2000,7/11/2024 18:57:19,TP,look up,11_Die-Hunger.txt, 
+2001,7/11/2024 18:57:20,TP,receive lookup results, , 
+2004,7/11/2024 18:57:37,TP,look up,11_Die-Hunger.txt, 
+2005,7/11/2024 18:57:38,TP,receive lookup results, , 
+2006,7/11/2024 18:57:47,TP,look up,11_Die-Hunger.txt, 
+2007,7/11/2024 18:57:48,TP,receive lookup results, , 
+2008,7/11/2024 18:58:10,TP,edit definition,11_Die-Hunger.txt,Dachstube
+2011,7/11/2024 18:59:37,TP,select word in vocab list,Dachstube, 
+2012,7/11/2024 18:59:41,TP,deselect word in vocab list,Dachstube, 
+2013,7/11/2024 19:01:27,TP,open file,11_Die-Hunger.txt, 
+2030,7/11/2024 19:27:16,TP,log in, , 
+2031,7/11/2024 19:27:18,TP,open file,11_Die-Hunger.txt, 
+2032,7/11/2024 19:27:24,TP,select word in vocab list,wach, 
+2033,7/11/2024 19:28:00,TP,deselect word in vocab list,wach, 
+2034,7/11/2024 19:28:10,TP,open file,11_Die-Hunger.txt, 
+2035,7/11/2024 19:28:19,TP,look up,11_Die-Hunger.txt, 
+2036,7/11/2024 19:28:20,TP,receive lookup results, , 
+2037,7/11/2024 19:28:23,TP,click add word button, , 
+2038,7/11/2024 19:28:23,TP,add to vocab,11_Die-Hunger.txt,lag
+2039,7/11/2024 19:28:24,TP,click add word button, , 
+2040,7/11/2024 19:28:24,TP,add to vocab,11_Die-Hunger.txt,liegen
+2041,7/11/2024 19:28:35,TP,look up,11_Die-Hunger.txt, 
+2042,7/11/2024 19:28:36,TP,receive lookup results, , 
+2043,7/11/2024 19:28:38,TP,decompound,11_Die-Hunger.txt,Leichenwäsche
+2044,7/11/2024 19:28:43,TP,receive decompound results, , 
+2045,7/11/2024 19:28:46,TP,click add word button, , 
+2046,7/11/2024 19:28:46,TP,add to vocab,11_Die-Hunger.txt,Leiche
+2047,7/11/2024 19:29:07,TP,search all results,11_Die-Hunger.txt,Leiche
+2048,7/11/2024 19:29:08,TP,receive lookup results, , 
+2049,7/11/2024 19:29:22,TP,look up,11_Die-Hunger.txt, 
+2050,7/11/2024 19:29:22,TP,receive lookup results, , 
+2051,7/11/2024 19:29:25,TP,click add word button, , 
+2052,7/11/2024 19:29:25,TP,add to vocab,11_Die-Hunger.txt,erhob
+2060,7/11/2024 19:30:42,TP,open file,11_Die-Hunger.txt, 
+2063,7/11/2024 19:30:46,TP,look up,11_Die-Hunger.txt, 
+2064,7/11/2024 19:30:47,TP,receive lookup results, , 
+2067,7/11/2024 19:30:48,TP,click add word button, , 
+2068,7/11/2024 19:30:48,TP,add to vocab,11_Die-Hunger.txt,lag
+2070,7/11/2024 19:31:05,TP,select word in vocab list,liegen, 
+2071,7/11/2024 19:31:08,TP,deselect word in vocab list,liegen, 
+2072,7/11/2024 19:31:09,TP,select word in vocab list,lag, 
+2074,7/11/2024 19:31:24,TP,deselect word in vocab list,lag, 
+2075,7/11/2024 19:31:26,TP,select word in vocab list,lag, 
+2076,7/11/2024 19:31:33,TP,delete word,11_Die-Hunger.txt,lag
+2077,7/11/2024 19:31:38,TP,select word in vocab list,liegen, 
+2078,7/11/2024 19:31:44,TP,remove deduplicate,11_Die-Hunger.txt,liegen
+2079,7/11/2024 19:31:44,TP,remove deduplicate,11_Die-Hunger.txt,lag
+2084,7/11/2024 19:32:00,TP,select word in vocab list,hörte, 
+2086,7/11/2024 19:32:03,TP,deselect word in vocab list,hörte, 
+2088,7/11/2024 19:32:09,TP,open file,11_Die-Hunger.txt, 
+2089,7/11/2024 19:32:17,TP,look up,11_Die-Hunger.txt, 
+2090,7/11/2024 19:32:19,TP,receive lookup results, , 
+2094,7/11/2024 19:32:42,TP,search all results,11_Die-Hunger.txt,öffnete
+2095,7/11/2024 19:32:43,TP,receive lookup results, , 
+2096,7/11/2024 19:32:47,TP,click add word button, , 
+2097,7/11/2024 19:32:47,TP,add to vocab,11_Die-Hunger.txt,öffnete
+2100,7/11/2024 19:32:52,TP,look up,11_Die-Hunger.txt, 
+2101,7/11/2024 19:32:54,TP,receive lookup results, , 
+2102,7/11/2024 19:32:57,TP,search all results,11_Die-Hunger.txt,öffnete
+2103,7/11/2024 19:32:58,TP,receive lookup results, , 
+2104,7/11/2024 19:32:59,TP,click add word button, , 
+2105,7/11/2024 19:32:59,TP,add to vocab,11_Die-Hunger.txt,öffnete
+2106,7/11/2024 19:34:05,TP,edit word,11_Die-Hunger.txt,nachdenken
+2107,7/11/2024 19:34:11,TP,edit word,11_Die-Hunger.txt,nachdenken
+2108,7/11/2024 19:34:21,TP,select word in vocab list,nachdenken, 
+2109,7/11/2024 19:34:26,TP,delete word,11_Die-Hunger.txt,nachdenken
+2110,7/11/2024 19:34:55,TP,remove deduplicate,11_Die-Hunger.txt,öffnete
+2111,7/11/2024 19:35:10,TP,open file,11_Die-Hunger.txt, 
+2112,7/11/2024 19:35:14,TP,look up,11_Die-Hunger.txt, 
+2113,7/11/2024 19:35:15,TP,receive lookup results, , 
+2114,7/11/2024 19:35:17,TP,click add word button, , 
+2115,7/11/2024 19:35:17,TP,add to vocab,11_Die-Hunger.txt,lag
+2116,7/11/2024 19:35:26,TP,look up,11_Die-Hunger.txt, 
+2117,7/11/2024 19:35:26,TP,receive lookup results, , 
+2118,7/11/2024 19:35:28,TP,click add word button, , 
+2119,7/11/2024 19:35:28,TP,add to vocab,11_Die-Hunger.txt,lag
+2120,7/11/2024 19:35:53,TP,open file,11_Die-Hunger.txt, 
+2121,7/11/2024 19:35:59,TP,look up,11_Die-Hunger.txt,lag
+2122,7/11/2024 19:36:00,TP,receive lookup results, , 
+2123,7/11/2024 19:36:05,TP,search all results,11_Die-Hunger.txt,lag
+2124,7/11/2024 19:36:06,TP,receive lookup results, , 
+2125,7/11/2024 19:36:07,TP,click add word button, , 
+2126,7/11/2024 19:36:07,TP,add to vocab,11_Die-Hunger.txt,lag
+2127,7/11/2024 19:36:12,TP,look up,11_Die-Hunger.txt, 
+2128,7/11/2024 19:36:12,TP,receive lookup results, , 
+2129,7/11/2024 19:36:15,TP,click add word button, , 
+2130,7/11/2024 19:36:15,TP,add to vocab,11_Die-Hunger.txt,lag
+2131,7/11/2024 19:36:30,TP,open file,11_Die-Hunger.txt, 
+2132,7/11/2024 19:36:35,TP,look up,11_Die-Hunger.txt, 
+2133,7/11/2024 19:36:36,TP,receive lookup results, , 
+2134,7/11/2024 19:36:41,TP,click add word button, , 
+2135,7/11/2024 19:36:41,TP,add to vocab,11_Die-Hunger.txt,lag
+2136,7/11/2024 19:38:11,TP,remove deduplicate,11_Die-Hunger.txt,lag
+2137,7/11/2024 19:38:11,TP,remove deduplicate,11_Die-Hunger.txt,lag
+2138,7/11/2024 19:38:11,TP,remove deduplicate,11_Die-Hunger.txt,lag
+2140,7/11/2024 19:38:11,TP,remove deduplicate,11_Die-Hunger.txt,lag
+2139,7/11/2024 19:38:11,TP,remove deduplicate,11_Die-Hunger.txt,lag
+2141,7/11/2024 19:39:21,TP,edit sentence,11_Die-Hunger.txt,nachzudenken
+2142,7/11/2024 19:39:27,TP,edit definition,11_Die-Hunger.txt,nachzudenken
+2143,7/11/2024 19:39:28,TP,edit sentence,11_Die-Hunger.txt,nachzudenken
+2144,7/11/2024 19:40:02,TP,edit sentence,11_Die-Hunger.txt,liegen
+2145,7/11/2024 19:40:15,TP,save all changes, , 
+2146,7/11/2024 19:40:23,TP,select word in vocab list,Dachstube, 
+2147,7/11/2024 19:40:24,TP,deselect word in vocab list,Dachstube, 
+2148,7/11/2024 19:40:30,TP,export vocab list, , 
+2149,7/11/2024 19:41:01,TP,select word in vocab list,liegen, 
+2150,7/11/2024 19:41:02,TP,select word in vocab list,Strumpf, 
+2151,7/11/2024 19:41:35,TP,select word in vocab list,hätte, 
+2152,7/11/2024 19:41:39,TP,export vocab list, , 
+2153,7/11/2024 19:41:50,TP,deselect word in vocab list,liegen, 
+2154,7/11/2024 19:41:51,TP,deselect word in vocab list,hätte, 
+2155,7/11/2024 19:41:52,TP,deselect word in vocab list,Strumpf, 
+2156,7/11/2024 19:42:33,TP,edit sentence,11_Die-Hunger.txt,wach
+2157,7/12/2024 12:46:45,native_speaker2,log in, , 
+2158,7/12/2024 12:49:53,native_speaker2,delete file: 4_sample_text.txt, , 
+2159,7/12/2024 12:49:55,native_speaker2,delete file: 4_compound_words.txt, , 
+2160,7/12/2024 12:50:31,native_speaker2,log in, , 
+2161,7/12/2024 12:53:50,native_speaker3,log in, , 
+2162,7/12/2024 12:54:05,native_speaker3,log in, , 
+2163,7/12/2024 12:54:17,native_speaker4,log in, , 
+2164,7/12/2024 12:54:29,native_speaker5,log in, , 
+2181,7/12/2024 12:59:15,nav_speaker1,log in, , 
+2182,7/12/2024 12:59:19,nav_speaker1,open file,3_compounds.txt, 
+2183,7/12/2024 13:00:56,nav_speaker1,open file,3_compounds.txt, 
+2184,7/12/2024 13:01:12,native_speaker2,log in, , 
+2185,7/12/2024 13:01:23,native_speaker3,log in, , 
+2186,7/12/2024 13:01:25,native_speaker3,open file,5_compound_words_3_.txt, 
+2187,7/12/2024 13:01:48,native_speaker4,log in, , 
+2188,7/12/2024 13:01:51,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+2189,7/12/2024 13:01:55,native_speaker4,open file,6_compound_words_4.txt, 
+2190,7/12/2024 13:02:10,native_speaker5,log in, , 
+2191,7/12/2024 13:02:12,native_speaker5,open file,7_compound_words_5.txt, 
+2192,7/12/2024 13:02:22,native_speaker5,look up,7_compound_words_5.txt, 
+2193,7/12/2024 13:02:33,native_speaker2,log in, , 
+2194,7/12/2024 13:03:17,native_speaker2,select file to upload, , 
+2195,7/12/2024 13:03:17,native_speaker2,upload file: compound_words2.txt, , 
+2196,7/12/2024 13:03:25,native_speaker2,select file to upload, , 
+2197,7/12/2024 13:03:25,native_speaker2,upload file: sample_text_die_stoerche.txt, , 
+2244,7/12/2024 13:10:12,native_speaker2,log in, , 
+2245,7/12/2024 13:10:15,native_speaker2,delete file: 4_sample_text_die_stoerche.txt, , 
+2246,7/12/2024 13:10:24,native_speaker2,select file to upload, , 
+2247,7/12/2024 13:10:24,native_speaker2,upload file: sample_text_daumelieschen.txt, , 
+2248,7/12/2024 13:10:25,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2249,7/12/2024 13:10:38,native_speaker2,look up,4_sample_text_daumelieschen.txt,auf
+2250,7/12/2024 13:10:38,native_speaker2,receive lookup results, , 
+2251,7/12/2024 13:12:26,native_speaker2,log in, , 
+2252,7/12/2024 13:12:30,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2253,7/12/2024 13:12:48,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2254,7/12/2024 13:13:52,native_speaker2,open file,4_compound_words2.txt, 
+2255,7/12/2024 13:13:56,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2256,7/12/2024 13:15:34,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2257,7/12/2024 13:16:44,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2258,7/12/2024 13:16:46,native_speaker2,log in, , 
+2259,7/12/2024 13:16:47,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2260,7/12/2024 13:16:50,native_speaker2,look up,4_sample_text_daumelieschen.txt,Geldstück
+2261,7/12/2024 13:16:51,native_speaker2,receive lookup results, , 
+2262,7/12/2024 13:17:15,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2263,7/12/2024 13:18:03,native_speaker2,look up,4_sample_text_daumelieschen.txt,Lege
+2264,7/12/2024 13:18:04,native_speaker2,receive lookup results, , 
+2265,7/12/2024 13:18:09,native_speaker2,look up,4_sample_text_daumelieschen.txt,heim
+2266,7/12/2024 13:18:10,native_speaker2,receive lookup results, , 
+2267,7/12/2024 13:18:14,native_speaker2,look up,4_sample_text_daumelieschen.txt,morastig
+2268,7/12/2024 13:18:14,native_speaker2,receive lookup results, , 
+2269,7/12/2024 13:18:18,native_speaker2,look up,4_sample_text_daumelieschen.txt,sumpfig
+2270,7/12/2024 13:18:18,native_speaker2,receive lookup results, , 
+2271,7/12/2024 13:18:34,native_speaker2,look up,4_sample_text_daumelieschen.txt,konnte
+2272,7/12/2024 13:18:35,native_speaker2,receive lookup results, , 
+2273,7/12/2024 13:18:38,native_speaker2,look up,4_sample_text_daumelieschen.txt,schwamm
+2274,7/12/2024 13:18:39,native_speaker2,receive lookup results, , 
+2275,7/12/2024 13:18:54,native_speaker2,search all results,4_sample_text_daumelieschen.txt,fortschwimmen
+2276,7/12/2024 13:18:55,native_speaker2,receive lookup results, , 
+2277,7/12/2024 13:18:58,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2278,7/12/2024 13:19:57,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2279,7/12/2024 13:19:57,native_speaker2,receive lookup results, , 
+2280,7/12/2024 13:20:07,native_speaker2,search all results,4_sample_text_daumelieschen.txt,entlaufen
+2281,7/12/2024 13:20:07,native_speaker2,receive lookup results, , 
+2282,7/12/2024 13:20:08,native_speaker2,decompound,4_sample_text_daumelieschen.txt,entlaufen
+2283,7/12/2024 13:20:09,native_speaker2,look up,4_sample_text_daumelieschen.txt,konnte
+2284,7/12/2024 13:20:09,native_speaker2,receive lookup results, , 
+2285,7/12/2024 13:20:13,native_speaker2,receive lookup results, , 
+2286,7/12/2024 13:20:17,native_speaker2,look up,4_sample_text_daumelieschen.txt,konnte
+2287,7/12/2024 13:20:18,native_speaker2,receive lookup results, , 
+2288,7/12/2024 13:20:42,native_speaker2,look up,4_sample_text_daumelieschen.txt,schwamm
+2289,7/12/2024 13:20:43,native_speaker2,receive lookup results, , 
+2290,7/12/2024 13:21:08,native_speaker2,look up,4_sample_text_daumelieschen.txt,ab
+2291,7/12/2024 13:21:08,native_speaker2,receive lookup results, , 
+2292,7/12/2024 13:21:28,native_speaker2,decompound,4_sample_text_daumelieschen.txt,entlaufen
+2293,7/12/2024 13:21:33,native_speaker2,receive decompound results, , 
+2294,7/12/2024 13:21:46,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2295,7/12/2024 13:21:47,native_speaker2,receive lookup results, , 
+2296,7/12/2024 13:21:48,native_speaker2,decompound,4_sample_text_daumelieschen.txt,schmückte
+2297,7/12/2024 13:21:52,native_speaker2,receive decompound results, , 
+2298,7/12/2024 13:22:06,native_speaker2,look up,4_sample_text_daumelieschen.txt,hinab
+2299,7/12/2024 13:22:07,native_speaker2,receive lookup results, , 
+2300,7/12/2024 13:22:50,native_speaker2,look up,4_sample_text_daumelieschen.txt,entgegnete
+2301,7/12/2024 13:22:50,native_speaker2,receive lookup results, , 
+2302,7/12/2024 13:22:52,native_speaker2,decompound,4_sample_text_daumelieschen.txt,entgegnete
+2303,7/12/2024 13:22:56,native_speaker2,receive decompound results, , 
+2304,7/12/2024 13:24:03,native_speaker2,look up,4_sample_text_daumelieschen.txt,geerntet
+2305,7/12/2024 13:24:04,native_speaker2,receive lookup results, , 
+2306,7/12/2024 13:24:05,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geerntet
+2307,7/12/2024 13:24:10,native_speaker2,receive decompound results, , 
+2308,7/12/2024 13:24:12,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geerntet
+2309,7/12/2024 13:24:13,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geerntet
+2310,7/12/2024 13:24:16,native_speaker2,receive decompound results, , 
+2311,7/12/2024 13:24:18,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geerntet
+2312,7/12/2024 13:24:18,native_speaker2,receive decompound results, , 
+2313,7/12/2024 13:24:19,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geerntet
+2314,7/12/2024 13:24:23,native_speaker2,receive decompound results, , 
+2315,7/12/2024 13:24:24,native_speaker2,receive lookup results, , 
+2316,7/12/2024 13:26:41,native_speaker2,look up,4_sample_text_daumelieschen.txt,erschrak
+2317,7/12/2024 13:26:41,native_speaker2,receive lookup results, , 
+2318,7/12/2024 13:26:49,native_speaker2,look up,4_sample_text_daumelieschen.txt,gegen
+2319,7/12/2024 13:26:49,native_speaker2,receive lookup results, , 
+2320,7/12/2024 13:26:54,native_speaker2,look up,4_sample_text_daumelieschen.txt,erschrak
+2321,7/12/2024 13:26:54,native_speaker2,receive lookup results, , 
+2322,7/12/2024 13:26:55,native_speaker2,decompound,4_sample_text_daumelieschen.txt,erschrak
+2323,7/12/2024 13:27:39,native_speaker2,look up,4_sample_text_daumelieschen.txt,gewahrte
+2324,7/12/2024 13:27:43,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2325,7/12/2024 13:27:50,native_speaker2,log in, , 
+2326,7/12/2024 13:27:52,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2327,7/12/2024 13:28:03,native_speaker2,look up,4_sample_text_daumelieschen.txt,erhielt
+2328,7/12/2024 13:28:04,native_speaker2,receive lookup results, , 
+2329,7/12/2024 13:28:05,native_speaker2,decompound,4_sample_text_daumelieschen.txt,erhielt
+2330,7/12/2024 13:28:09,native_speaker2,receive decompound results, , 
+2331,7/12/2024 13:29:16,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2332,7/12/2024 13:29:18,native_speaker2,receive lookup results, , 
+2333,7/12/2024 13:29:51,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2334,7/12/2024 13:29:52,native_speaker2,receive lookup results, , 
+2335,7/12/2024 13:32:41,native_speaker2,look up,4_sample_text_daumelieschen.txt,vor
+2336,7/12/2024 13:32:42,native_speaker2,receive lookup results, , 
+2337,7/12/2024 13:33:31,native_speaker2,look up,4_sample_text_daumelieschen.txt,auf
+2338,7/12/2024 13:33:32,native_speaker2,receive lookup results, , 
+2339,7/12/2024 13:34:11,native_speaker2,look up,4_sample_text_daumelieschen.txt,hüllte
+2340,7/12/2024 13:34:12,native_speaker2,receive lookup results, , 
+2341,7/12/2024 13:34:14,native_speaker2,decompound,4_sample_text_daumelieschen.txt,hüllte
+2342,7/12/2024 13:34:15,native_speaker2,decompound,4_sample_text_daumelieschen.txt,hüllte
+2343,7/12/2024 13:34:19,native_speaker2,decompound,4_sample_text_daumelieschen.txt,hüllte
+2344,7/12/2024 13:34:19,native_speaker2,receive decompound results, , 
+2345,7/12/2024 13:34:20,native_speaker2,receive decompound results, , 
+2346,7/12/2024 13:34:22,native_speaker2,receive decompound results, , 
+2347,7/12/2024 13:34:47,native_speaker2,look up,4_sample_text_daumelieschen.txt,klapperte
+2348,7/12/2024 13:34:47,native_speaker2,receive lookup results, , 
+2349,7/12/2024 13:34:49,native_speaker2,decompound,4_sample_text_daumelieschen.txt,klapperte nur so vor Kälte. Da kam sie vor die Thür der Feldmaus. Deren ganzes Reich bestand in einer kleinen Höhle unter den Kornstoppeln. Dort wohnte die Feldmaus geschützt und behaglich
+2350,7/12/2024 13:35:56,native_speaker2,look up,4_sample_text_daumelieschen.txt,gebracht
+2351,7/12/2024 13:35:56,native_speaker2,receive lookup results, , 
+2352,7/12/2024 13:35:58,native_speaker2,decompound,4_sample_text_daumelieschen.txt,gebracht
+2353,7/12/2024 13:35:59,native_speaker2,decompound,4_sample_text_daumelieschen.txt,gebracht
+2354,7/12/2024 13:36:03,native_speaker2,receive decompound results, , 
+2355,7/12/2024 13:36:05,native_speaker2,receive decompound results, , 
+2356,7/12/2024 13:36:19,native_speaker2,look up,4_sample_text_daumelieschen.txt,haben
+2357,7/12/2024 13:36:20,native_speaker2,receive lookup results, , 
+2358,7/12/2024 13:36:24,native_speaker2,decompound,4_sample_text_daumelieschen.txt,haben
+2359,7/12/2024 13:37:34,native_speaker2,look up,4_sample_text_daumelieschen.txt,stieß
+2360,7/12/2024 13:37:34,native_speaker2,receive lookup results, , 
+2361,7/12/2024 13:37:37,native_speaker2,decompound,4_sample_text_daumelieschen.txt,stieß auf
+2362,7/12/2024 13:37:41,native_speaker2,receive decompound results, , 
+2363,7/12/2024 13:38:22,native_speaker2,look up,4_sample_text_daumelieschen.txt,vorgesungen
+2364,7/12/2024 13:38:23,native_speaker2,receive lookup results, , 
+2365,7/12/2024 13:38:24,native_speaker2,decompound,4_sample_text_daumelieschen.txt,vorgesungen
+2366,7/12/2024 13:39:07,native_speaker2,look up,4_sample_text_daumelieschen.txt,hinab
+2367,7/12/2024 13:39:08,native_speaker2,receive lookup results, , 
+2368,7/12/2024 13:39:11,native_speaker2,decompound,4_sample_text_daumelieschen.txt,neigte hinab
+2369,7/12/2024 13:39:13,native_speaker2,decompound,4_sample_text_daumelieschen.txt,neigte hinab
+2370,7/12/2024 13:40:06,native_speaker2,look up,4_sample_text_daumelieschen.txt,schien
+2371,7/12/2024 13:40:07,native_speaker2,receive lookup results, , 
+2372,7/12/2024 13:40:49,native_speaker2,look up,4_sample_text_daumelieschen.txt,legte
+2373,7/12/2024 13:40:50,native_speaker2,receive lookup results, , 
+2374,7/12/2024 13:41:59,native_speaker2,look up,4_sample_text_daumelieschen.txt,umherfliegen
+2375,7/12/2024 13:42:00,native_speaker2,receive lookup results, , 
+2376,7/12/2024 13:42:01,native_speaker2,decompound,4_sample_text_daumelieschen.txt,umherfliegen
+2377,7/12/2024 13:43:22,native_speaker2,look up,4_sample_text_daumelieschen.txt,flog
+2378,7/12/2024 13:43:25,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2379,7/12/2024 13:43:32,native_speaker2,log in, , 
+2380,7/12/2024 13:43:35,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2381,7/12/2024 13:43:47,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2382,7/12/2024 13:43:49,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2383,7/12/2024 13:44:15,native_speaker2,look up,4_sample_text_daumelieschen.txt,hervor
+2384,7/12/2024 13:44:17,native_speaker2,receive lookup results, , 
+2385,7/12/2024 13:44:19,native_speaker2,decompound,4_sample_text_daumelieschen.txt,wuchs hervor
+2386,7/12/2024 13:44:36,native_speaker2,look up,4_sample_text_daumelieschen.txt,zusammen
+2387,7/12/2024 13:44:36,native_speaker2,receive lookup results, , 
+2388,7/12/2024 13:46:14,native_speaker2,look up,4_sample_text_daumelieschen.txt,größer
+2389,7/12/2024 13:46:14,native_speaker2,receive lookup results, , 
+2390,7/12/2024 13:46:43,native_speaker2,look up,4_sample_text_daumelieschen.txt,sie
+2391,7/12/2024 13:46:44,native_speaker2,receive lookup results, , 
+2392,7/12/2024 13:46:47,native_speaker2,look up,4_sample_text_daumelieschen.txt,prächtige
+2393,7/12/2024 13:46:47,native_speaker2,receive lookup results, , 
+2394,7/12/2024 13:46:48,native_speaker2,decompound,4_sample_text_daumelieschen.txt,prächtige
+2395,7/12/2024 13:46:52,native_speaker2,receive decompound results, , 
+2396,7/12/2024 13:47:07,native_speaker2,look up,4_sample_text_daumelieschen.txt,vor
+2421,7/12/2024 13:49:05,native_speaker2,look up,4_sample_text_daumelieschen.txt,an
+2422,7/12/2024 13:49:05,native_speaker2,receive lookup results, , 
+2427,7/12/2024 13:49:32,native_speaker2,look up,4_sample_text_daumelieschen.txt,größte
+2428,7/12/2024 13:49:32,native_speaker2,receive lookup results, , 
+2429,7/12/2024 13:49:33,native_speaker2,decompound,4_sample_text_daumelieschen.txt,größte
+2430,7/12/2024 13:49:38,native_speaker2,receive decompound results, , 
+2439,7/12/2024 13:50:08,native_speaker2,look up,4_sample_text_daumelieschen.txt,Blütenhonig
+2440,7/12/2024 13:50:08,native_speaker2,receive lookup results, , 
+2443,7/12/2024 13:50:15,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2444,7/12/2024 13:50:15,native_speaker2,receive lookup results, , 
+2453,7/12/2024 13:50:51,native_speaker2,look up,4_sample_text_daumelieschen.txt,Walde
+2454,7/12/2024 13:50:51,native_speaker2,receive lookup results, , 
+2457,7/12/2024 13:51:15,native_speaker2,look up,4_sample_text_daumelieschen.txt,Blättern
+2458,7/12/2024 13:51:15,native_speaker2,receive lookup results, , 
+2461,7/12/2024 13:51:18,native_speaker2,decompound,4_sample_text_daumelieschen.txt,Blättern
+2462,7/12/2024 13:51:22,native_speaker2,receive decompound results, , 
+2463,7/12/2024 13:51:52,native_speaker2,open file,4_compound_words2.txt, 
+2464,7/12/2024 15:47:07,native_speaker2,log in, , 
+2465,7/12/2024 15:47:12,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2466,7/12/2024 15:48:22,native_speaker2,open file,4_compound_words2.txt, 
+2467,7/12/2024 15:48:27,native_speaker2,log in, , 
+2468,7/12/2024 15:48:28,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+2469,7/12/2024 15:48:37,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2470,7/12/2024 15:48:37,native_speaker2,receive lookup results, , 
+2471,7/12/2024 15:48:39,native_speaker2,decompound,4_sample_text_daumelieschen.txt,suchend
+2472,7/12/2024 15:49:08,native_speaker2,look up,4_sample_text_daumelieschen.txt,pflanzte
+2473,7/12/2024 15:49:09,native_speaker2,receive lookup results, , 
+2474,7/12/2024 15:49:10,native_speaker2,decompound,4_sample_text_daumelieschen.txt,pflanzte hervor
+2475,7/12/2024 15:49:13,native_speaker2,decompound,4_sample_text_daumelieschen.txt,pflanzte hervor
+2476,7/12/2024 15:49:50,native_speaker2,look up,4_sample_text_daumelieschen.txt,wuchs
+2477,7/12/2024 15:49:51,native_speaker2,receive lookup results, , 
+2478,7/12/2024 15:49:52,native_speaker2,decompound,4_sample_text_daumelieschen.txt,wuchs hervor
+2479,7/12/2024 15:49:53,native_speaker2,decompound,4_sample_text_daumelieschen.txt,wuchs hervor
+2480,7/12/2024 15:49:58,native_speaker2,decompound,4_sample_text_daumelieschen.txt,wuchs hervor
+2481,7/12/2024 15:50:09,native_speaker2,decompound,4_sample_text_daumelieschen.txt,wuchs hervor
+2482,7/12/2024 15:50:25,native_speaker2,look up,4_sample_text_daumelieschen.txt,pflanzte
+2483,7/12/2024 15:50:27,native_speaker2,receive lookup results, , 
+2484,7/12/2024 15:50:28,native_speaker2,decompound,4_sample_text_daumelieschen.txt,pflanzte hervor
+2485,7/12/2024 15:50:30,native_speaker2,decompound,4_sample_text_daumelieschen.txt,pflanzte hervor
+2486,7/12/2024 15:50:33,native_speaker2,search all results,4_sample_text_daumelieschen.txt,pflanzte
+2487,7/12/2024 15:50:33,native_speaker2,receive lookup results, , 
+2488,7/12/2024 15:50:34,native_speaker2,decompound,4_sample_text_daumelieschen.txt,pflanzte
+2489,7/12/2024 15:51:22,native_speaker2,look up,4_sample_text_daumelieschen.txt,öffnete
+2490,7/12/2024 15:51:23,native_speaker2,receive lookup results, , 
+2491,7/12/2024 15:51:24,native_speaker2,decompound,4_sample_text_daumelieschen.txt,öffnete
+2492,7/12/2024 15:51:25,native_speaker2,decompound,4_sample_text_daumelieschen.txt,öffnete
+2493,7/12/2024 15:51:28,native_speaker2,receive decompound results, , 
+2494,7/12/2024 15:51:30,native_speaker2,receive decompound results, , 
+2495,7/12/2024 15:51:31,native_speaker2,decompound,4_sample_text_daumelieschen.txt,öffnete
+2496,7/12/2024 15:51:36,native_speaker2,receive decompound results, , 
+2497,7/12/2024 15:52:20,native_speaker2,look up,4_sample_text_daumelieschen.txt,ergriff
+2498,7/12/2024 15:52:22,native_speaker2,receive lookup results, , 
+2499,7/12/2024 15:52:23,native_speaker2,decompound,4_sample_text_daumelieschen.txt,ergriff mit
+2500,7/12/2024 15:54:09,native_speaker2,look up,4_sample_text_daumelieschen.txt,grüne
+2501,7/12/2024 15:54:09,native_speaker2,receive lookup results, , 
+2502,7/12/2024 15:54:11,native_speaker2,decompound,4_sample_text_daumelieschen.txt,grüne
+2503,7/12/2024 15:54:15,native_speaker2,receive decompound results, , 
+2504,7/12/2024 15:54:49,native_speaker2,look up,4_sample_text_daumelieschen.txt,scharfen
+2505,7/12/2024 15:54:49,native_speaker2,receive lookup results, , 
+2506,7/12/2024 15:54:51,native_speaker2,decompound,4_sample_text_daumelieschen.txt,scharfen
+2507,7/12/2024 15:54:52,native_speaker2,decompound,4_sample_text_daumelieschen.txt,scharfen
+2508,7/12/2024 15:54:56,native_speaker2,receive decompound results, , 
+2509,7/12/2024 15:54:57,native_speaker2,receive decompound results, , 
+2510,7/12/2024 15:55:03,native_speaker2,decompound,4_sample_text_daumelieschen.txt,Schar
+2511,7/12/2024 15:55:08,native_speaker2,receive decompound results, , 
+2512,7/12/2024 15:55:14,native_speaker2,decompound,4_sample_text_daumelieschen.txt,Scharfen
+2513,7/12/2024 15:55:18,native_speaker2,receive decompound results, , 
+2514,7/12/2024 15:55:26,native_speaker2,look up,4_sample_text_daumelieschen.txt,häßlichen
+2515,7/12/2024 15:55:27,native_speaker2,receive lookup results, , 
+2516,7/12/2024 15:55:55,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2517,7/12/2024 15:55:56,native_speaker2,receive lookup results, , 
+2518,7/12/2024 15:56:17,native_speaker2,look up,4_sample_text_daumelieschen.txt,niedliches
+2519,7/12/2024 15:56:17,native_speaker2,receive lookup results, , 
+2520,7/12/2024 15:56:19,native_speaker2,decompound,4_sample_text_daumelieschen.txt,niedliches
+2521,7/12/2024 15:56:20,native_speaker2,decompound,4_sample_text_daumelieschen.txt,niedliches
+2522,7/12/2024 15:56:49,native_speaker2,look up,4_sample_text_daumelieschen.txt,glitt
+2523,7/12/2024 15:56:51,native_speaker2,receive lookup results, , 
+2524,7/12/2024 15:56:52,native_speaker2,decompound,4_sample_text_daumelieschen.txt,glitt mit
+2525,7/12/2024 15:56:56,native_speaker2,decompound,4_sample_text_daumelieschen.txt,glitt mit
+2526,7/12/2024 15:56:58,native_speaker2,decompound,4_sample_text_daumelieschen.txt,glitt mit
+2527,7/12/2024 15:57:20,native_speaker2,look up,4_sample_text_daumelieschen.txt,schwamm
+2528,7/12/2024 15:57:22,native_speaker2,look up,4_sample_text_daumelieschen.txt,schwamm
+2529,7/12/2024 15:57:22,native_speaker2,receive lookup results, , 
+2530,7/12/2024 15:57:23,native_speaker2,decompound,4_sample_text_daumelieschen.txt,schwamm hinab
+2531,7/12/2024 15:57:24,native_speaker2,receive decompound results, , 
+2532,7/12/2024 15:57:34,native_speaker2,look up,4_sample_text_daumelieschen.txt,hinaufflog
+2533,7/12/2024 15:57:35,native_speaker2,look up,4_sample_text_daumelieschen.txt,hinaufflog
+2534,7/12/2024 15:57:35,native_speaker2,receive lookup results, , 
+2535,7/12/2024 15:57:36,native_speaker2,receive lookup results, , 
+2536,7/12/2024 15:57:36,native_speaker2,decompound,4_sample_text_daumelieschen.txt,hinaufflog
+2537,7/12/2024 15:57:50,native_speaker2,look up,4_sample_text_daumelieschen.txt,loskommen
+2538,7/12/2024 15:57:51,native_speaker2,receive lookup results, , 
+2539,7/12/2024 15:57:56,native_speaker2,decompound,4_sample_text_daumelieschen.txt,loskommen
+2540,7/12/2024 15:58:01,native_speaker2,receive decompound results, , 
+2541,7/12/2024 15:58:23,native_speaker2,look up,4_sample_text_daumelieschen.txt,Sommers
+2542,7/12/2024 15:58:23,native_speaker2,receive lookup results, , 
+2543,7/12/2024 15:58:28,native_speaker2,decompound,4_sample_text_daumelieschen.txt,Sommers
+2544,7/12/2024 15:58:32,native_speaker2,receive decompound results, , 
+2545,7/12/2024 15:58:55,native_speaker2,look up,4_sample_text_daumelieschen.txt,Vögel
+2546,7/12/2024 15:58:55,native_speaker2,receive lookup results, , 
+2547,7/12/2024 15:59:13,native_speaker2,look up,4_sample_text_daumelieschen.txt,Waldes
+2548,7/12/2024 15:59:13,native_speaker2,receive lookup results, , 
+2549,7/12/2024 15:59:51,native_speaker2,look up,4_sample_text_daumelieschen.txt, 
+2550,7/12/2024 15:59:52,native_speaker2,receive lookup results, , 
+2551,7/12/2024 15:59:53,native_speaker2,decompound,4_sample_text_daumelieschen.txt,eingeerntet
+2552,7/12/2024 16:00:10,native_speaker2,look up,4_sample_text_daumelieschen.txt,ragten
+2553,7/12/2024 16:00:12,native_speaker2,receive lookup results, , 
+2554,7/12/2024 16:00:13,native_speaker2,decompound,4_sample_text_daumelieschen.txt,hervorragen
+2555,7/12/2024 16:00:18,native_speaker2,receive decompound results, , 
+2556,7/12/2024 16:01:01,native_speaker2,look up,4_sample_text_daumelieschen.txt,herein
+2557,7/12/2024 16:01:02,native_speaker2,receive lookup results, , 
+2558,7/12/2024 16:01:03,native_speaker2,decompound,4_sample_text_daumelieschen.txt,herein
+2559,7/12/2024 16:01:03,native_speaker2,decompound,4_sample_text_daumelieschen.txt,herein
+2560,7/12/2024 16:01:07,native_speaker2,decompound,4_sample_text_daumelieschen.txt,herein
+2561,7/12/2024 16:01:07,native_speaker2,receive decompound results, , 
+2562,7/12/2024 16:01:08,native_speaker2,receive decompound results, , 
+2563,7/12/2024 16:01:10,native_speaker2,receive decompound results, , 
+2564,7/12/2024 16:01:39,native_speaker2,look up,4_sample_text_daumelieschen.txt,einher
+2565,7/12/2024 16:01:40,native_speaker2,receive lookup results, , 
+2566,7/12/2024 16:01:41,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geht einher
+2567,7/12/2024 16:01:44,native_speaker2,decompound,4_sample_text_daumelieschen.txt,geht einher
+2568,7/12/2024 16:02:36,native_speaker2,look up,4_sample_text_daumelieschen.txt,stieß
+2569,7/12/2024 16:02:37,native_speaker2,receive lookup results, , 
+2570,7/12/2024 16:02:38,native_speaker2,decompound,4_sample_text_daumelieschen.txt,stieß auf
+2571,7/12/2024 16:02:43,native_speaker2,receive decompound results, , 
+2572,7/12/2024 16:02:47,native_speaker2,decompound,4_sample_text_daumelieschen.txt,stieß auf
+2573,7/12/2024 16:02:51,native_speaker2,receive decompound results, , 
+2574,7/12/2024 16:03:14,native_speaker2,open file,4_compound_words2.txt, 
+2575,7/12/2024 16:21:12,am,log in, , 
+2576,7/12/2024 16:21:30,am,select file to upload, , 
+2577,7/12/2024 16:21:32,am,upload file: Die Hunger.txt, , 
+2578,7/12/2024 16:21:49,am,delete file: 12_Die_Hunger.txt, , 
+2579,7/12/2024 16:22:48,am,log in, , 
+2580,7/12/2024 16:22:55,am,select file to upload, , 
+2581,7/12/2024 16:22:55,am,upload file: Die Hunger.txt, , 
+2582,7/12/2024 16:23:06,am,open file,12_Die_Hunger.txt, 
+2583,7/12/2024 16:28:18,am,select dict to upload, , 
+2584,7/12/2024 16:29:13,am,select dict to upload, , 
+2585,7/12/2024 16:30:36,am,select dict to upload, , 
+2586,7/12/2024 16:31:31,am,select dict to upload, , 
+2587,7/12/2024 16:36:28,am,select dict to upload, , 
+2588,7/12/2024 16:37:41,am,dict processed, , 
+2589,7/12/2024 16:38:49,am,log in, , 
+2590,7/12/2024 16:38:56,am,open file,12_Die_Hunger.txt, 
+2591,7/12/2024 16:39:10,am,look up,12_Die_Hunger.txt,Es war in jener Zeit
+2592,7/12/2024 16:39:11,am,receive lookup results, , 
+2593,7/12/2024 16:39:25,am,look up,12_Die_Hunger.txt,umhergin
+2594,7/12/2024 16:39:26,am,receive lookup results, , 
+2595,7/12/2024 16:39:33,am,look up,12_Die_Hunger.txt,umhergin
+2596,7/12/2024 16:39:34,am,receive lookup results, , 
+2597,7/12/2024 16:39:41,am,look up,12_Die_Hunger.txt,hungert
+2598,7/12/2024 16:39:41,am,receive lookup results, , 
+2599,7/12/2024 16:39:49,am,look up,12_Die_Hunger.txt,umhergin
+2600,7/12/2024 16:39:49,am,receive lookup results, , 
+2601,7/12/2024 16:40:13,am,look up,12_Die_Hunger.txt,Dachstube
+2602,7/12/2024 16:40:13,am,receive lookup results, , 
+2603,7/12/2024 16:40:33,am,look up,12_Die_Hunger.txt,wenig
+2604,7/12/2024 16:40:33,am,receive lookup results, , 
+2605,7/12/2024 16:40:52,am,look up,12_Die_Hunger.txt,fingen an
+2606,7/12/2024 16:40:52,am,receive lookup results, , 
+2607,7/12/2024 16:40:54,am,decompound,12_Die_Hunger.txt,fingen an
+2608,7/12/2024 16:41:15,am,look up,12_Die_Hunger.txt,Wäscheleine
+2609,7/12/2024 16:41:16,am,receive lookup results, , 
+2610,7/12/2024 16:41:17,am,decompound,12_Die_Hunger.txt,Wäscheleine
+2611,7/12/2024 16:41:22,am,receive decompound results, , 
+2612,7/12/2024 16:41:45,am,look up,12_Die_Hunger.txt,a
+2613,7/12/2024 16:41:45,am,receive lookup results, , 
+2614,7/12/2024 16:41:50,am,decompound,12_Die_Hunger.txt,abgebrannten
+2615,7/12/2024 16:42:00,am,look up,12_Die_Hunger.txt,Leichenwäsche
+2616,7/12/2024 16:42:01,am,receive lookup results, , 
+2617,7/12/2024 16:42:33,am,open file,12_Die_Hunger.txt, 
+2618,7/12/2024 16:42:38,am,look up,12_Die_Hunger.txt,begann
+2619,7/12/2024 16:42:39,am,receive lookup results, , 
+2620,7/12/2024 16:42:42,am,click add word button, , 
+2621,7/12/2024 16:42:42,am,add to vocab,12_Die_Hunger.txt,begann
+2622,7/12/2024 16:42:47,am,look up,12_Die_Hunger.txt,Gewohnheit
+2623,7/12/2024 16:42:47,am,receive lookup results, , 
+2624,7/12/2024 16:42:50,am,click add word button, , 
+2625,7/12/2024 16:42:50,am,add to vocab,12_Die_Hunger.txt,Gewohnheit
+2626,7/12/2024 16:43:06,am,look up,12_Die_Hunger.txt,Uhr
+2627,7/12/2024 16:43:07,am,receive lookup results, , 
+2628,7/12/2024 16:43:08,am,click add word button, , 
+2629,7/12/2024 16:43:08,am,add to vocab,12_Die_Hunger.txt,Uhr
+2630,7/12/2024 16:43:15,am,look up,12_Die_Hunger.txt,Uhr
+2631,7/12/2024 16:43:15,am,receive lookup results, , 
+2632,7/12/2024 16:43:18,am,click add word button, , 
+2633,7/12/2024 16:43:18,am,add to vocab,12_Die_Hunger.txt,Uhr
+2634,7/12/2024 16:43:42,am,select word in vocab list,Uhr, 
+2635,7/12/2024 16:43:48,am,delete word,12_Die_Hunger.txt,Uhr
+2636,7/12/2024 16:43:50,am,select word in vocab list,Gewohnheit, 
+2637,7/12/2024 16:44:15,am,open file,12_Die_Hunger.txt, 
+2638,7/12/2024 16:44:29,am,edit sentence,12_Die_Hunger.txt,begann
+2639,7/12/2024 16:44:41,am,edit sentence,12_Die_Hunger.txt,Gewohnheit
+2640,7/12/2024 16:44:58,am,export vocab list, , 
+2641,7/12/2024 16:48:58,am,open file,12_Die_Hunger.txt, 
+3000,7/13/2024 20:25:02,baochau,log in, , 
+3001,7/13/2024 20:30:36,baochau,select file to upload, , 
+3002,7/13/2024 20:30:36,baochau,upload file: Die Verwandlung.txt, , 
+3003,7/13/2024 20:30:58,baochau,delete file: 13_Die_Verwandlung.txt, , 
+3021,7/13/2024 20:37:11,baochau,select file to upload, , 
+3022,7/13/2024 20:37:11,baochau,upload file: Die Verwandlung.txt, , 
+3023,7/13/2024 20:37:18,baochau,delete file: 13_Die_Verwandlung.txt, , 
+3024,7/13/2024 20:38:46,baochau,select file to upload, , 
+3025,7/13/2024 20:38:46,baochau,upload file: Die Verwandlung.txt, , 
+3029,7/13/2024 20:39:06,baochau,open file,13_Die_Verwandlung.txt, 
+3032,7/13/2024 20:39:46,baochau,look up,13_Die_Verwandlung.txt,verstünde
+3033,7/13/2024 20:39:46,baochau,receive lookup results, , 
+3034,7/13/2024 20:45:55,baochau,look up,13_Die_Verwandlung.txt,unmöglich
+3035,7/13/2024 20:46:07,baochau,log in, , 
+3036,7/13/2024 20:46:08,baochau,open file,13_Die_Verwandlung.txt, 
+3037,7/13/2024 20:46:21,baochau,look up,13_Die_Verwandlung.txt,draußen
+3038,7/13/2024 20:46:21,baochau,receive lookup results, , 
+3039,7/13/2024 20:46:40,baochau,look up,13_Die_Verwandlung.txt,Familienmitglieder
+3040,7/13/2024 20:46:40,baochau,receive lookup results, , 
+3041,7/13/2024 20:46:48,baochau,decompound,13_Die_Verwandlung.txt,Familienmitglieder
+3042,7/13/2024 20:46:52,baochau,receive decompound results, , 
+3043,7/13/2024 20:51:57,baochau,look up,13_Die_Verwandlung.txt,mitarbeitete
+3044,7/13/2024 20:51:58,baochau,receive lookup results, , 
+3045,7/13/2024 20:52:06,baochau,decompound,13_Die_Verwandlung.txt,mitarbeiten
+3046,7/13/2024 20:52:11,baochau,receive decompound results, , 
+3047,7/13/2024 20:52:52,baochau,look up,13_Die_Verwandlung.txt,steckten
+3048,7/13/2024 20:52:53,baochau,receive lookup results, , 
+3049,7/13/2024 20:56:06,baochau,look up,13_Die_Verwandlung.txt,fürchterlichen
+3050,7/13/2024 20:56:06,baochau,receive lookup results, , 
+3051,7/13/2024 21:02:00,baochau,select dict to upload, , 
+3052,7/13/2024 21:02:17,baochau,log in, , 
+3053,7/13/2024 21:02:35,baochau,select dict to upload, , 
+3054,7/13/2024 21:03:50,baochau,select dict to upload, , 
+3055,7/13/2024 21:04:10,baochau,dict processed, , 
+3056,7/13/2024 21:05:30,baochau,open file,13_Die_Verwandlung.txt, 
+3057,7/13/2024 21:05:41,baochau,look up,13_Die_Verwandlung.txt,tatsächlich
+3058,7/13/2024 21:05:42,baochau,receive lookup results, , 
+3059,7/13/2024 21:05:46,baochau,search all results,13_Die_Verwandlung.txt,tatsächlich
+3060,7/13/2024 21:05:47,baochau,receive lookup results, , 
+3061,7/13/2024 21:06:03,baochau,look up,13_Die_Verwandlung.txt,Nachdenken
+3062,7/13/2024 21:06:03,baochau,receive lookup results, , 
+3063,7/13/2024 21:06:06,baochau,search all results,13_Die_Verwandlung.txt,Nachdenken
+3064,7/13/2024 21:06:07,baochau,receive lookup results, , 
+3065,7/13/2024 21:06:31,baochau,look up,13_Die_Verwandlung.txt,vorwärtsstieß
+3066,7/13/2024 21:06:32,baochau,receive lookup results, , 
+3067,7/13/2024 21:06:57,baochau,look up,13_Die_Verwandlung.txt,empfindlichste
+3068,7/13/2024 21:06:57,baochau,receive lookup results, , 
+3069,7/13/2024 21:07:37,baochau,click add word button, , 
+3070,7/13/2024 21:07:37,baochau,add to vocab,13_Die_Verwandlung.txt,empfindlich
+3071,7/13/2024 21:07:42,baochau,click add word button, , 
+3072,7/13/2024 21:07:42,baochau,add to vocab,13_Die_Verwandlung.txt,empfindlichste
+3073,7/13/2024 21:07:51,baochau,look up,13_Die_Verwandlung.txt,Morgennebels
+3074,7/13/2024 21:07:52,baochau,receive lookup results, , 
+3075,7/13/2024 21:08:20,baochau,look up,13_Die_Verwandlung.txt,Besorgnisse
+3076,7/13/2024 21:08:20,baochau,receive lookup results, , 
+3077,7/13/2024 21:08:22,baochau,click add word button, , 
+3078,7/13/2024 21:08:22,baochau,add to vocab,13_Die_Verwandlung.txt,Besorgnis
+3079,7/13/2024 21:08:25,baochau,click add word button, , 
+3080,7/13/2024 21:08:25,baochau,add to vocab,13_Die_Verwandlung.txt,Besorgnisse
+3081,7/13/2024 21:08:48,baochau,look up,13_Die_Verwandlung.txt,Nebenzimmer
+3082,7/13/2024 21:08:49,baochau,receive lookup results, , 
+3083,7/13/2024 21:09:57,baochau,look up,13_Die_Verwandlung.txt,Nebenzimmer
+3084,7/13/2024 21:09:57,baochau,receive lookup results, , 
+3085,7/13/2024 21:10:08,baochau,look up,13_Die_Verwandlung.txt,Unhöflichkeit
+3086,7/13/2024 21:10:09,baochau,receive lookup results, , 
+3087,7/13/2024 21:10:11,baochau,click add word button, , 
+3088,7/13/2024 21:10:11,baochau,add to vocab,13_Die_Verwandlung.txt,Unhöflichkeit
+3089,7/13/2024 21:11:42,baochau,edit definition,13_Die_Verwandlung.txt,Unhöflichkeit
+3090,7/13/2024 21:11:47,baochau,select word in vocab list,empfindlichste, 
+3091,7/13/2024 21:11:48,baochau,select word in vocab list,empfindlich, 
+3092,7/13/2024 21:11:49,baochau,select word in vocab list,Besorgnis, 
+3093,7/13/2024 21:11:50,baochau,select word in vocab list,Besorgnisse, 
+3094,7/13/2024 21:13:48,baochau,select word in vocab list,empfindlich, 
+3095,7/13/2024 21:13:59,baochau,delete word,13_Die_Verwandlung.txt,empfindlich
+3096,7/13/2024 21:14:15,baochau,select word in vocab list,empfindlichste, 
+3097,7/13/2024 21:14:18,baochau,deselect word in vocab list,empfindlichste, 
+3098,7/13/2024 21:14:28,baochau,edit sentence,13_Die_Verwandlung.txt,Besorgnis
+3099,7/13/2024 21:14:29,baochau,edit sentence,13_Die_Verwandlung.txt,Besorgnisse
+3100,7/13/2024 21:14:29,baochau,edit sentence,13_Die_Verwandlung.txt,Unhöflichkeit
+3101,7/13/2024 21:14:50,baochau,edit sentence,13_Die_Verwandlung.txt,Besorgnis
+3102,7/13/2024 21:14:53,baochau,save all changes, , 
+3103,7/13/2024 21:15:54,baochau,export vocab list, , 
+3104,7/13/2024 21:34:50,baochau,log in, , 
+3105,7/13/2024 21:34:52,baochau,open file,13_Die_Verwandlung.txt, 
+3106,7/13/2024 21:34:57,baochau,look up,13_Die_Verwandlung.txt,illustrierten
+3107,7/13/2024 21:34:57,baochau,receive lookup results, , 
+3108,7/13/2024 21:35:00,baochau,click add word button, , 
+3109,7/13/2024 21:35:00,baochau,add to vocab,13_Die_Verwandlung.txt,illustrieren
+3110,7/13/2024 21:35:04,baochau,look up,13_Die_Verwandlung.txt,hundertmal
+3111,7/13/2024 21:35:05,baochau,receive lookup results, , 
+3239,7/18/2024 8:45:06,native_speaker5,log in, , 
+3240,7/18/2024 8:46:51,native_speaker5,open file,7_sample_text_das_haessliche_entlein.txt, 
+3241,7/18/2024 8:48:22,native_speaker5,open file,7_compound_words_5.txt, 
+3242,7/18/2024 8:48:29,native_speaker5,open file,7_sample_text_das_haessliche_entlein.txt, 
+3243,7/18/2024 8:52:27,native_speaker5,open file,7_sample_text_das_haessliche_entlein.txt, 
+3244,7/18/2024 8:52:28,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt, 
+3245,7/18/2024 8:52:34,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,plapperte
+3246,7/18/2024 8:52:35,native_speaker5,receive lookup results, , 
+3247,7/18/2024 8:52:53,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,zogen
+3248,7/18/2024 8:52:53,native_speaker5,receive lookup results, , 
+3249,7/18/2024 8:53:11,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,platzte
+3250,7/18/2024 8:53:11,native_speaker5,receive lookup results, , 
+3251,7/18/2024 8:53:36,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,gelernt
+3252,7/18/2024 8:53:37,native_speaker5,receive lookup results, , 
+3253,7/18/2024 8:53:41,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,hatte
+3254,7/18/2024 8:53:41,native_speaker5,receive lookup results, , 
+3255,7/18/2024 8:53:48,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,hatte
+3256,7/18/2024 8:53:49,native_speaker5,receive lookup results, , 
+3257,7/18/2024 8:55:09,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,über
+3258,7/18/2024 8:55:10,native_speaker5,receive lookup results, , 
+3259,7/18/2024 8:55:16,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,geht
+3260,7/18/2024 8:55:16,native_speaker5,receive lookup results, , 
+3261,7/18/2024 8:55:52,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,nachhalf
+3262,7/18/2024 8:55:53,native_speaker5,receive lookup results, , 
+3263,7/18/2024 8:57:19,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,zusammen
+3264,7/18/2024 8:57:20,native_speaker5,receive lookup results, , 
+3265,7/18/2024 8:58:02,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,nehmt
+3266,7/18/2024 8:58:02,native_speaker5,receive lookup results, , 
+3267,7/18/2024 8:58:20,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,seht
+3268,7/18/2024 8:58:20,native_speaker5,receive lookup results, , 
+3269,7/18/2024 8:58:25,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,zu
+3270,7/18/2024 8:58:26,native_speaker5,receive lookup results, , 
+3271,7/18/2024 8:58:44,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,auseinander
+3272,7/18/2024 8:58:45,native_speaker5,receive lookup results, , 
+3273,7/18/2024 8:59:17,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,werden
+3274,7/18/2024 8:59:17,native_speaker5,receive lookup results, , 
+3275,7/18/2024 8:59:57,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,blies
+3276,7/18/2024 8:59:58,native_speaker5,receive lookup results, , 
+3277,7/18/2024 9:00:39,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,tiefen
+3278,7/18/2024 9:00:56,native_speaker5,open file,7_sample_text_das_haessliche_entlein.txt, 
+3279,7/18/2024 9:01:09,native_speaker5,log in, , 
+3280,7/18/2024 9:01:11,native_speaker5,open file,7_sample_text_das_haessliche_entlein.txt, 
+3281,7/18/2024 9:01:15,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,tiefen
+3282,7/18/2024 9:01:15,native_speaker5,receive lookup results, , 
+3283,7/18/2024 9:01:31,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,tiefsten
+3284,7/18/2024 9:01:32,native_speaker5,receive lookup results, , 
+3285,7/18/2024 9:01:49,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,grünen
+3286,7/18/2024 9:01:50,native_speaker5,receive lookup results, , 
+3287,7/18/2024 9:02:11,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,Blättern
+3288,7/18/2024 9:02:12,native_speaker5,receive lookup results, , 
+3289,7/18/2024 9:02:28,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,Pfarrers
+3290,7/18/2024 9:02:28,native_speaker5,receive lookup results, , 
+3291,7/18/2024 9:02:40,native_speaker5,look up,7_sample_text_das_haessliche_entlein.txt,Gartens
+3292,7/18/2024 9:02:40,native_speaker5,receive lookup results, , 
+3293,7/18/2024 9:03:13,native_speaker5,open file,7_compound_words_5.txt, 
+3294,7/18/2024 9:03:22,native_speaker5,look up,7_compound_words_5.txt,Streichholzschächtelchen
+3295,7/18/2024 9:03:23,native_speaker5,receive lookup results, , 
+3296,7/18/2024 9:03:41,native_speaker5,look up,7_compound_words_5.txt,Streichholzschächtelchen
+3297,7/18/2024 9:03:42,native_speaker5,receive lookup results, , 
+3298,7/18/2024 9:03:46,native_speaker5,decompound,7_compound_words_5.txt,Streichholzschächtelchen
+3299,7/18/2024 9:03:51,native_speaker5,receive decompound results, , 
+3300,7/18/2024 9:04:29,native_speaker5,look up,7_compound_words_5.txt,Lebensabschnittsgefährte
+3301,7/18/2024 9:04:30,native_speaker5,receive lookup results, , 
+3302,7/18/2024 9:04:31,native_speaker5,decompound,7_compound_words_5.txt,Lebensabschnittsgefährte
+3303,7/18/2024 9:04:35,native_speaker5,receive decompound results, , 
+3304,7/18/2024 9:05:37,native_speaker5,look up,7_compound_words_5.txt,Freundschaftsbeziehungen
+3305,7/18/2024 9:05:38,native_speaker5,receive lookup results, , 
+3306,7/18/2024 9:05:40,native_speaker5,decompound,7_compound_words_5.txt,Freundschaftsbeziehungen
+3307,7/18/2024 9:05:44,native_speaker5,receive decompound results, , 
+3308,7/21/2024 12:08:14,nav_speaker1,log in, , 
+3309,7/21/2024 12:08:18,nav_speaker1,open file,3_Die_Verwandlung.txt, 
+3310,7/21/2024 12:09:04,native_speaker2,log in, , 
+3311,7/21/2024 12:09:06,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+3312,7/21/2024 12:09:27,native_speaker3,log in, , 
+3313,7/21/2024 12:09:29,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+3314,7/21/2024 12:09:53,native_speaker4,log in, , 
+3315,7/21/2024 12:09:55,native_speaker4,open file,6_sample_text_Feuerzeug.txt, 
+3316,7/21/2024 12:09:59,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Glotz
+3317,7/21/2024 12:10:00,native_speaker4,receive lookup results, , 
+3318,7/21/2024 12:10:09,native_speaker4,look up,6_sample_text_Feuerzeug.txt,Glotz
+3319,7/21/2024 12:10:10,native_speaker4,receive lookup results, , 
+3320,7/21/2024 12:10:15,native_speaker4,search all results,6_sample_text_Feuerzeug.txt,anglotzen
+3321,7/21/2024 12:10:15,native_speaker4,receive lookup results, , 
+3322,7/21/2024 12:10:21,native_speaker4,search all results,6_sample_text_Feuerzeug.txt,glotz
+3323,7/21/2024 12:10:22,native_speaker4,receive lookup results, , 
+3324,7/21/2024 12:22:18,native_speaker2,log in, , 
+3325,7/21/2024 12:22:19,native_speaker2,open file,4_sample_text_daumelieschen.txt, 
+3326,7/21/2024 12:22:34,native_speaker3,log in, , 
+3327,7/21/2024 12:22:38,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+3328,7/21/2024 12:22:49,native_speaker3,look up,5_sample_text_doktorwein.txt,reitet
+3329,7/21/2024 12:22:50,native_speaker3,receive lookup results, , 
+3330,7/21/2024 12:22:54,native_speaker3,look up,5_sample_text_doktorwein.txt,ein
+3331,7/21/2024 12:22:54,native_speaker3,receive lookup results, , 
+3332,7/21/2024 12:22:57,native_speaker3,look up,5_sample_text_doktorwein.txt,reitet
+3333,7/21/2024 12:22:58,native_speaker3,receive lookup results, , 
+3334,7/21/2024 12:30:57,native_speaker3,open file,5_sample_text_doktorwein.txt, 
+3335,7/21/2024 12:31:00,native_speaker3,look up,5_sample_text_doktorwein.txt,ein
+3336,7/21/2024 12:31:01,native_speaker3,receive lookup results, , 
+3337,7/21/2024 12:31:06,native_speaker3,look up,5_sample_text_doktorwein.txt,reitet
+3338,7/21/2024 12:31:07,native_speaker3,receive lookup results, , 
+3339,7/21/2024 13:07:24,native_speaker3,look up,5_sample_text_doktorwein.txt,auf
+3377,7/21/2024 13:51:33,native_speaker3,log in, , 
+3378,7/21/2024 13:51:35,native_speaker3,open file,5_compound_words_3_.txt, 
+3379,7/21/2024 13:51:38,native_speaker3,look up,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+3380,7/21/2024 13:51:39,native_speaker3,receive lookup results, , 
+3381,7/21/2024 13:51:41,native_speaker3,decompound,5_compound_words_3_.txt,Betäubungsmittelverschreibungsverordnung
+3382,7/21/2024 13:51:45,native_speaker3,receive decompound results, , 
+3383,7/21/2024 13:52:01,native_speaker3,look up,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+3384,7/21/2024 13:52:01,native_speaker3,receive lookup results, , 
+3385,7/21/2024 13:52:03,native_speaker3,decompound,5_compound_words_3_.txt,Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+3386,7/21/2024 13:52:08,native_speaker3,receive decompound results, , 
+3387,7/21/2024 13:52:12,native_speaker3,look up,5_compound_words_3_.txt,Bezirksschornsteinfegermeister
+3388,7/21/2024 13:52:13,native_speaker3,receive lookup results, , 
+3389,7/21/2024 13:52:14,native_speaker3,decompound,5_compound_words_3_.txt,Bezirksschornsteinfegermeister
+3390,7/21/2024 13:52:19,native_speaker3,receive decompound results, , 
+3391,7/21/2024 13:52:40,native_speaker2,log in, , 
+3392,7/21/2024 13:52:41,native_speaker2,open file,4_compound_words2.txt, 
+3393,7/21/2024 13:52:44,native_speaker2,look up,4_compound_words2.txt,Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+3394,7/21/2024 13:52:44,native_speaker2,receive lookup results, , 
+3395,7/21/2024 13:52:46,native_speaker2,decompound,4_compound_words2.txt,Rinderkennzeichnungsfleischetikettierungsüberwachungsaufgabenübertragungsgesetz
+3396,7/21/2024 13:52:51,native_speaker2,receive decompound results, , 
+3397,7/21/2024 13:53:28,native_speaker2,look up,4_compound_words2.txt,Donaudampfschiffahrtselektrizitätenhauptbetriebswerkbauunterbeamtengesellschaft
+3398,7/21/2024 13:53:29,native_speaker2,receive lookup results, , 
+3399,7/21/2024 13:53:31,native_speaker2,decompound,4_compound_words2.txt,Donaudampfschiffahrtselektrizitätenhauptbetriebswerkbauunterbeamtengesellschaft
+3400,7/21/2024 13:53:37,native_speaker2,receive decompound results, , 
+3401,7/21/2024 13:56:21,native_speaker2,look up,4_compound_words2.txt,Massenkommunikationsdienstleistungsunternehmen
+3402,7/21/2024 13:56:22,native_speaker2,receive lookup results, , 
+3403,7/21/2024 13:56:27,native_speaker2,decompound,4_compound_words2.txt,Massenkommunikationsdienstleistungsunternehmen
+3404,7/21/2024 13:56:32,native_speaker2,receive decompound results, , 

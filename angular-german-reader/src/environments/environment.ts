@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://demo.colaps.team/german-reader/api'
+    apiUrl: 'http://localhost:5000/german-reader/api'
   };
   

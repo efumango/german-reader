@@ -13,4 +13,7 @@ python-dotenv==1.0.1
 SQLAlchemy==2.0.29
 Werkzeug>=3.0.3
 gunicorn>=22.0.0
+pandas
+matplotlib
 git+https://github.com/repodiac/german_compound_splitter
+praw

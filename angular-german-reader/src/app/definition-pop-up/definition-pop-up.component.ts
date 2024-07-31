@@ -95,8 +95,7 @@ export class DefinitionPopUpComponent {
 
 
   searchAll(): void {
-    this.searchAllClicked.emit(this.searchQuery);
-    // Get filename 
+    this.searchAllClicked.emit(this.searchQuery);    // Get filename 
     const filename = this.shareFilenameService.getFilename();
     // Log 'show all' activity
     if (filename !== null) {

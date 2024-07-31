@@ -1,6 +1,5 @@
 <div class="text-container" *ngIf="textContent" 
 appTextSelection 
-(textSelected)="limitedQueryWithoutContext($event)" 
 (textContext)="limitedQueryWithContext($event)"
 (popUpPosition)="handlePopUp($event)"
 (clickOutsidePopUp)="handleClickOutsidePopUp()"
