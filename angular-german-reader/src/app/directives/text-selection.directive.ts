@@ -43,7 +43,6 @@ export class TextSelectionDirective {
     
     const selection = window.getSelection();
     if (!selection || selection.toString().trim() === '') {
-      this.removeButton();
       return;
     }
 
@@ -63,9 +62,23 @@ export class TextSelectionDirective {
     // Highlight selection
     this.highlightSelection(selection);
 
-    // Create button if it doesn't already exist
-    if (!this.button) {
-      this.createButton(selection);
+    // Check if the selected text contains more than 5 words
+    const wordCount = currentSelectedText.split(/\s+/).length;
+
+    if (wordCount < 5) {
+      // Get filename 
+      const filename = this.shareFilenameService.getFilename();
+
+      // Get the word that is being looked up 
+      const word = selection.toString().trim();
+      
+      // Logging look up activity
+      if (filename !== null) {
+        this.loggingService.log('look up', filename, word);
+      }
+
+      this.emitContextAndSelection(selection);
+      this.emitPopupPosition(selection);
     }
 
     // Update last selected text and sentence
@@ -82,7 +95,6 @@ export class TextSelectionDirective {
     }
 
     if (!this.el.nativeElement.contains(event.target)) {
-      this.removeButton();
       this.clearHighlights();
     }
   }
@@ -107,55 +119,6 @@ export class TextSelectionDirective {
     });
   }
 
-  private createButton(selection: Selection) {
-    // Remove button if already exists
-    if (this.button) {
-      this.removeButton();
-    }
-  
-    // Create a button element
-    this.button = this.renderer.createElement('button');
-    this.renderer.addClass(this.button, 'text-selection-button');
-    if (this.button){
-    this.button.textContent = 'Look Up';
-  
-    // Get the bounding rectangle of the selection
-    const range = selection.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-  
-    // Calculate the top and left positions
-    const topPosition = rect.top + window.scrollY - 30; 
-    // Center the button over the selection
-    const leftPosition = rect.left + window.scrollX + (rect.width / 2);
-  
-    // Set position for the button
-    this.renderer.setStyle(this.button, 'top', `${topPosition}px`);
-    this.renderer.setStyle(this.button, 'left', `${leftPosition}px`);
-  
-    // Append the button to the body of the document
-    this.renderer.appendChild(document.body, this.button);
-  
-    // Listen for the click event on the button
-    this.removeClickListener = this.renderer.listen(this.button, 'click', (event) => {
-      event.stopPropagation(); // Prevent the document:click event
-
-      // Get filename 
-      const filename = this.shareFilenameService.getFilename();
-
-      // Get word that is being looked up 
-      const word = selection.toString().trim();
-      
-      // Logging look up activity
-      if (filename !== null) {
-        this.loggingService.log('look up', filename, word);
-      }
-
-      this.emitContextAndSelection(selection);
-      this.emitPopupPosition(selection);
-      this.removeButton();
-    });
-  }
-}
 
 private emitContextAndSelection(selection: Selection) {
   const sentence = this.getSentenceContainingWord();
@@ -163,23 +126,6 @@ private emitContextAndSelection(selection: Selection) {
     this.textContext.emit({ text: this.selectedText, context: sentence });
   }
 }
-
-  private removeButton() {
-    if (this.button) {
-
-      if (this.removeClickListener) {
-        this.removeClickListener();
-        this.removeClickListener = null;
-      }
-
-      // Remove the button from the DOM
-      this.button.remove();
-
-      // Nullify the button reference to prevent accidental re-use
-      this.button = null;
-    }
-  }
-
 
   getSentenceContainingWord(): string | null {
     this.clearHighlights();

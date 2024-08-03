@@ -34,10 +34,18 @@ export class UploadTextComponent {
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
     if (!target.files || target.files.length === 0) {
-      console.error('No file selected.');
+      alert('No file selected.');
       return;
     }
-    this.selectedFile = target.files[0];
+
+    const file = target.files[0];
+    if (file.type !== 'text/plain') { // Check for .txt files
+      alert('Please select a .txt file.');
+      return;
+    }
+
+    // If file is valid
+    this.selectedFile = file;
     this.onUpload();
     this.loggingService.log('select file to upload');
   }
