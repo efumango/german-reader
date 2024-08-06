@@ -1,0 +1,33 @@
+To run the app locally with docker: 
+
+# build and run containers (both flask and angular)
+docker-compose build --no-cache
+docker-compose up 
+
+# open container for the web app
+docker-compose exec web sh 
+
+# initialize & upgrade database
+flask db init 
+flask db stamp head
+flask db migrate
+flask db upgrade 
+
+# populate dictionary_entry table w/ entries from populate-wikidict 
+flask populate-wikidict 
+
+
+To generate the db dump:
+
+# docker network (connect to db) 
+docker-compose exec db sh 
+
+#(install psql if needs to) 
+apt-get update && apt-get install -y postgresql-client 
+
+# access psql db 
+psql -h db -U myuser -d mydatabase
+
+# create db dump 
+docker-compose exec db sh
+pg_dump -U myuser -d mydatabase -f db_dump.sql 
